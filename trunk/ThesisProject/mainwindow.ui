@@ -1,0 +1,674 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ThesisProjectClass</class>
+ <widget class="QMainWindow" name="ThesisProjectClass">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>510</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Hand Tracking: Mouse virtual multi-funcional</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QFrame" name="LeftFrame">
+      <property name="minimumSize">
+       <size>
+        <width>388</width>
+        <height>438</height>
+       </size>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QGroupBox" name="EntryObjectBox">
+         <property name="minimumSize">
+          <size>
+           <width>368</width>
+           <height>321</height>
+          </size>
+         </property>
+         <property name="title">
+          <string>Entrada</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_7">
+          <item row="0" column="0">
+           <widget class="QLabel" name="capturedImage">
+            <property name="minimumSize">
+             <size>
+              <width>348</width>
+              <height>287</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>348</width>
+              <height>287</height>
+             </size>
+            </property>
+            <property name="toolTip">
+             <string>Configuración actual de cámara</string>
+            </property>
+            <property name="text">
+             <string>Obteniendo Imagen...</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignJustify|Qt::AlignVCenter</set>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="RotacionBox">
+         <property name="title">
+          <string>Rotación</string>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <item>
+           <widget class="QWidget" name="LeftRotacionFrame" native="true">
+            <layout class="QGridLayout" name="gridLayout">
+             <item row="0" column="0">
+              <widget class="QCheckBox" name="XRotationBox">
+               <property name="toolTip">
+                <string>Rotación horizontal</string>
+               </property>
+               <property name="text">
+                <string>Rotar X</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QWidget" name="widget_4" native="true">
+            <layout class="QGridLayout" name="gridLayout_2">
+             <item row="0" column="0">
+              <widget class="QCheckBox" name="YRotationBox">
+               <property name="toolTip">
+                <string>Rotación vertical</string>
+               </property>
+               <property name="layoutDirection">
+                <enum>Qt::RightToLeft</enum>
+               </property>
+               <property name="text">
+                <string>Rotar Y</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QWidget" name="RightFrame" native="true">
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QTabWidget" name="tabWidget">
+         <property name="currentIndex">
+          <number>1</number>
+         </property>
+         <widget class="QWidget" name="tab">
+          <attribute name="title">
+           <string>Configuración</string>
+          </attribute>
+          <layout class="QVBoxLayout" name="verticalLayout_2">
+           <item>
+            <widget class="QCheckBox" name="GestureSupport">
+             <property name="text">
+              <string>Habilitar soporte de gestos</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="StateSupport">
+             <property name="text">
+              <string>Habilitar visualizador de estado</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="viewPointer">
+             <property name="text">
+              <string>Visualizar puntero del Mouse</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="ClickSupport">
+             <property name="text">
+              <string>Habilitar Click</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QGroupBox" name="ClickGroupBox">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="title">
+              <string>GroupBox</string>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_3">
+              <item row="0" column="0">
+               <widget class="QRadioButton" name="OpenHandRadio">
+                <property name="text">
+                 <string>Mano Abierta</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QRadioButton" name="CloseHandRadio">
+                <property name="layoutDirection">
+                 <enum>Qt::RightToLeft</enum>
+                </property>
+                <property name="text">
+                 <string>Mano Cerrada</string>
+                </property>
+                <property name="checked">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0" colspan="2">
+               <widget class="QPushButton" name="ConfigButton">
+                <property name="text">
+                 <string>Configurar</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0" colspan="2">
+               <widget class="QWidget" name="HandPicture" native="true">
+                <property name="toolTip">
+                 <string>Imagen que debe ser imitada para realizar click</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="tab_2">
+          <attribute name="title">
+           <string>Entrenamiento</string>
+          </attribute>
+          <layout class="QVBoxLayout" name="verticalLayout_3">
+           <item>
+            <widget class="QGroupBox" name="GestosGroupBox">
+             <property name="title">
+              <string>Gestos</string>
+             </property>
+             <layout class="QHBoxLayout" name="horizontalLayout_4">
+              <item>
+               <widget class="QWidget" name="widget_5" native="true">
+                <layout class="QGridLayout" name="gridLayout_4">
+                 <item row="0" column="0">
+                  <widget class="QListWidget" name="GestosList">
+                   <property name="toolTip">
+                    <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Segoe UI'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Seleccione los gestos a habilitar&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QWidget" name="widget_6" native="true">
+                <layout class="QVBoxLayout" name="verticalLayout_4">
+                 <item>
+                  <widget class="QPushButton" name="addGesto">
+                   <property name="toolTip">
+                    <string>Agregar nuevo gesto</string>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="icon">
+                    <iconset resource="Resources/resources.qrc">
+                     <normaloff>:/buttonsImages/Add.jpg</normaloff>:/buttonsImages/Add.jpg</iconset>
+                   </property>
+                   <property name="iconSize">
+                    <size>
+                     <width>36</width>
+                     <height>36</height>
+                    </size>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="RemoveGesto">
+                   <property name="toolTip">
+                    <string>Remover gesto seleccionado</string>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="icon">
+                    <iconset resource="Resources/resources.qrc">
+                     <normaloff>:/buttonsImages/Remove.jpg</normaloff>:/buttonsImages/Remove.jpg</iconset>
+                   </property>
+                   <property name="iconSize">
+                    <size>
+                     <width>36</width>
+                     <height>36</height>
+                    </size>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QGroupBox" name="EventosGroupBox">
+             <property name="title">
+              <string>Eventos</string>
+             </property>
+             <layout class="QHBoxLayout" name="horizontalLayout_5">
+              <item>
+               <widget class="QWidget" name="widget_7" native="true">
+                <layout class="QGridLayout" name="gridLayout_5">
+                 <item row="0" column="0">
+                  <widget class="QListWidget" name="EventosList">
+                   <property name="toolTip">
+                    <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Segoe UI'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Seleccione los eventos a habilitar&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                   </property>
+                   <property name="selectionBehavior">
+                    <enum>QAbstractItemView::SelectItems</enum>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QWidget" name="widget_8" native="true">
+                <layout class="QVBoxLayout" name="verticalLayout_5">
+                 <item>
+                  <widget class="QPushButton" name="addEvento">
+                   <property name="toolTip">
+                    <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Segoe UI'; font-size:9pt;&quot;&gt;Agregar Evento&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="icon">
+                    <iconset resource="Resources/resources.qrc">
+                     <normaloff>:/buttonsImages/Add.jpg</normaloff>:/buttonsImages/Add.jpg</iconset>
+                   </property>
+                   <property name="iconSize">
+                    <size>
+                     <width>36</width>
+                     <height>36</height>
+                    </size>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="RemoveEvento">
+                   <property name="toolTip">
+                    <string>Eliminar Evento seleccionado</string>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="icon">
+                    <iconset resource="Resources/resources.qrc">
+                     <normaloff>:/buttonsImages/Remove.jpg</normaloff>:/buttonsImages/Remove.jpg</iconset>
+                   </property>
+                   <property name="iconSize">
+                    <size>
+                     <width>36</width>
+                     <height>36</height>
+                    </size>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QGroupBox" name="AsociacionGroupBox">
+             <property name="title">
+              <string>Asociación Gestos-Eventos</string>
+             </property>
+             <layout class="QHBoxLayout" name="horizontalLayout_6">
+              <item>
+               <widget class="QWidget" name="widget_9" native="true">
+                <layout class="QGridLayout" name="gridLayout_6">
+                 <item row="0" column="0">
+                  <widget class="QListWidget" name="AsociacionList">
+                   <property name="toolTip">
+                    <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Segoe UI'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Seleccione las asociaciones Gesto-Evento a habilitar&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QWidget" name="widget_10" native="true">
+                <layout class="QVBoxLayout" name="verticalLayout_6">
+                 <item>
+                  <widget class="QPushButton" name="addAsociacion">
+                   <property name="toolTip">
+                    <string>Agregar Asociaciones</string>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="icon">
+                    <iconset resource="Resources/resources.qrc">
+                     <normaloff>:/buttonsImages/Add.jpg</normaloff>:/buttonsImages/Add.jpg</iconset>
+                   </property>
+                   <property name="iconSize">
+                    <size>
+                     <width>36</width>
+                     <height>36</height>
+                    </size>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="RemoveAsociacion">
+                   <property name="toolTip">
+                    <string>Eliminar Asociación seleccionada</string>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="icon">
+                    <iconset resource="Resources/resources.qrc">
+                     <normaloff>:/buttonsImages/Remove.jpg</normaloff>:/buttonsImages/Remove.jpg</iconset>
+                   </property>
+                   <property name="iconSize">
+                    <size>
+                     <width>36</width>
+                     <height>36</height>
+                    </size>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="tab_3">
+          <attribute name="title">
+           <string>Comienzo</string>
+          </attribute>
+          <layout class="QVBoxLayout" name="verticalLayout_7">
+           <item>
+            <widget class="QWidget" name="widget_11" native="true"/>
+           </item>
+           <item>
+            <widget class="QPushButton" name="startButton">
+             <property name="toolTip">
+              <string>Comenzar aplicación</string>
+             </property>
+             <property name="text">
+              <string>Comenzar</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources>
+  <include location="Resources/resources.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>ClickSupport</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>ClickGroupBox</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>768</x>
+     <y>144</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>768</x>
+     <y>173</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>addGesto</sender>
+   <signal>clicked()</signal>
+   <receiver>ThesisProjectClass</receiver>
+   <slot>addGesture()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>749</x>
+     <y>125</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>771</x>
+     <y>26</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>addEvento</sender>
+   <signal>clicked()</signal>
+   <receiver>ThesisProjectClass</receiver>
+   <slot>addEvent()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>749</x>
+     <y>243</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>795</x>
+     <y>264</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>addAsociacion</sender>
+   <signal>clicked()</signal>
+   <receiver>ThesisProjectClass</receiver>
+   <slot>addAsociation()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>749</x>
+     <y>373</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>795</x>
+     <y>389</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>RemoveGesto</sender>
+   <signal>clicked()</signal>
+   <receiver>ThesisProjectClass</receiver>
+   <slot>removeGesture()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>749</x>
+     <y>170</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>796</x>
+     <y>162</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>RemoveEvento</sender>
+   <signal>clicked()</signal>
+   <receiver>ThesisProjectClass</receiver>
+   <slot>removeEvent()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>749</x>
+     <y>285</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>797</x>
+     <y>316</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>RemoveAsociacion</sender>
+   <signal>clicked()</signal>
+   <receiver>ThesisProjectClass</receiver>
+   <slot>removeAsociation()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>749</x>
+     <y>408</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>796</x>
+     <y>444</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>YRotationBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>ThesisProjectClass</receiver>
+   <slot>rotateY(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>310</x>
+     <y>421</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>302</x>
+     <y>484</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>XRotationBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>ThesisProjectClass</receiver>
+   <slot>rotateX(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>78</x>
+     <y>429</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>95</x>
+     <y>485</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>startButton</sender>
+   <signal>clicked()</signal>
+   <receiver>ThesisProjectClass</receiver>
+   <slot>startApplication()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>768</x>
+     <y>457</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>596</x>
+     <y>485</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ConfigButton</sender>
+   <signal>clicked()</signal>
+   <receiver>ThesisProjectClass</receiver>
+   <slot>runHandDiagnostic()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>568</x>
+     <y>433</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>608</x>
+     <y>484</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>addGesture()</slot>
+  <slot>addEvent()</slot>
+  <slot>addAsociation()</slot>
+  <slot>removeGesture()</slot>
+  <slot>removeEvent()</slot>
+  <slot>removeAsociation()</slot>
+  <slot>rotateX(bool)</slot>
+  <slot>rotateY(bool)</slot>
+  <slot>startApplication()</slot>
+  <slot>runHandDiagnostic()</slot>
+ </slots>
+</ui>

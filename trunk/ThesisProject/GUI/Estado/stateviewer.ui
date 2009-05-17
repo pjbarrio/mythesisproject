@@ -1,0 +1,719 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>StateViewerClass</class>
+ <widget class="QDialog" name="StateViewerClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>650</width>
+    <height>723</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Hand Tracking: Estado</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="1">
+    <widget class="QGroupBox" name="groupBox">
+     <property name="title">
+      <string>Imagen procesada</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_4">
+      <item row="0" column="0">
+       <widget class="QLabel" name="processedImage">
+        <property name="text">
+         <string>TextLabel</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="0" column="0">
+    <widget class="QGroupBox" name="groupBox_2">
+     <property name="minimumSize">
+      <size>
+       <width>350</width>
+       <height>300</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>350</width>
+       <height>300</height>
+      </size>
+     </property>
+     <property name="title">
+      <string>Estado de la mano</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_3">
+      <item row="0" column="0">
+       <widget class="QLabel" name="handState">
+        <property name="minimumSize">
+         <size>
+          <width>320</width>
+          <height>240</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>320</width>
+          <height>240</height>
+         </size>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap>:/HandState/hand_open.jpg</pixmap>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QGroupBox" name="groupBox_3">
+     <property name="minimumSize">
+      <size>
+       <width>276</width>
+       <height>399</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>276</width>
+       <height>399</height>
+      </size>
+     </property>
+     <property name="title">
+      <string>Velocidad y Aceleración</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="1" column="0">
+       <widget class="QWidget" name="widget" native="true">
+        <layout class="QVBoxLayout" name="verticalLayout">
+         <item>
+          <widget class="QLabel" name="vred1">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::NoFrame</enum>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap>:/GraphicalEqualizer/Red.jpg</pixmap>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="vred2">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap>:/GraphicalEqualizer/Red.jpg</pixmap>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="vred3">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap>:/GraphicalEqualizer/Red.jpg</pixmap>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="vorange1">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap>:/GraphicalEqualizer/Orange.jpg</pixmap>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="vorange2">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap>:/GraphicalEqualizer/Orange.jpg</pixmap>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="vorange3">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap>:/GraphicalEqualizer/Orange.jpg</pixmap>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="vyellow1">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap>:/GraphicalEqualizer/Yellow.jpg</pixmap>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="vyellow2">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap>:/GraphicalEqualizer/Yellow.jpg</pixmap>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="vyellow3">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap>:/GraphicalEqualizer/Yellow.jpg</pixmap>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="vyellowlight1">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap>:/GraphicalEqualizer/YellowLight.jpg</pixmap>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="vyellowlight2">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap>:/GraphicalEqualizer/YellowLight.jpg</pixmap>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="vyellowlight3">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap>:/GraphicalEqualizer/YellowLight.jpg</pixmap>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="vgreen1">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap>:/GraphicalEqualizer/Green.jpg</pixmap>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="vgreen2">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap>:/GraphicalEqualizer/Green.jpg</pixmap>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="vgreen3">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap>:/GraphicalEqualizer/Green.jpg</pixmap>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="vgreendark1">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap>:/GraphicalEqualizer/GreenDark.jpg</pixmap>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="vgreendark2">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap>:/GraphicalEqualizer/GreenDark.jpg</pixmap>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="vgreendark3">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap>:/GraphicalEqualizer/GreenDark.jpg</pixmap>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item row="1" column="3">
+       <widget class="QWidget" name="widget_2" native="true">
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <item>
+          <widget class="QLabel" name="ared1">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap>:/GraphicalEqualizer/Red.jpg</pixmap>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="ared2">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap>:/GraphicalEqualizer/Red.jpg</pixmap>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="ared3">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap>:/GraphicalEqualizer/Red.jpg</pixmap>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="aorange1">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap>:/GraphicalEqualizer/Orange.jpg</pixmap>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="aorange2">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap>:/GraphicalEqualizer/Orange.jpg</pixmap>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="aorange3">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap>:/GraphicalEqualizer/Orange.jpg</pixmap>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="ayellow1">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap>:/GraphicalEqualizer/Yellow.jpg</pixmap>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="ayellow2">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap>:/GraphicalEqualizer/Yellow.jpg</pixmap>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="ayellow3">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap>:/GraphicalEqualizer/Yellow.jpg</pixmap>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="ayellowlight1">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap>:/GraphicalEqualizer/YellowLight.jpg</pixmap>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="ayellowlight2">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap>:/GraphicalEqualizer/YellowLight.jpg</pixmap>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="ayellowlight3">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap>:/GraphicalEqualizer/YellowLight.jpg</pixmap>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="agreen1">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap>:/GraphicalEqualizer/Green.jpg</pixmap>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="agreen2">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap>:/GraphicalEqualizer/Green.jpg</pixmap>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="agreen3">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap>:/GraphicalEqualizer/Green.jpg</pixmap>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="agreendark1">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap>:/GraphicalEqualizer/GreenDark.jpg</pixmap>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="agreendark2">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap>:/GraphicalEqualizer/GreenDark.jpg</pixmap>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="agreendark3">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap>:/GraphicalEqualizer/GreenDark.jpg</pixmap>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Velocidad</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="3">
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>Aceleración</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QGroupBox" name="groupBox_4">
+     <property name="title">
+      <string>Trayecto detectado</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_3">
+      <item>
+       <widget class="QWidget" name="widget_3" native="true">
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <item>
+          <widget class="QWidget" name="widget_6" native="true">
+           <layout class="QVBoxLayout" name="verticalLayout_4">
+            <item>
+             <widget class="QLabel" name="label_39">
+              <property name="text">
+               <string>Coordenada X</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="XCoord">
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Sunken</enum>
+              </property>
+              <property name="lineWidth">
+               <number>3</number>
+              </property>
+              <property name="midLineWidth">
+               <number>6</number>
+              </property>
+              <property name="text">
+               <string>TextLabel</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QWidget" name="widget_5" native="true">
+           <layout class="QVBoxLayout" name="verticalLayout_5">
+            <item>
+             <widget class="QLabel" name="label_40">
+              <property name="text">
+               <string>Coordenada Y</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="YCoord">
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Sunken</enum>
+              </property>
+              <property name="lineWidth">
+               <number>3</number>
+              </property>
+              <property name="midLineWidth">
+               <number>6</number>
+              </property>
+              <property name="text">
+               <string>TextLabel</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="paintMovement" name="widget_4" native="true"/>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>paintMovement</class>
+   <extends>QWidget</extends>
+   <header location="global">paintmovement.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="../../Resources/resources.qrc"/>
+  <include location="../../Resources/resources.qrc"/>
+  <include location="../../Resources/resources.qrc"/>
+  <include location="../../Resources/resources.qrc"/>
+  <include location="../../Resources/resources.qrc"/>
+  <include location="../../Resources/resources.qrc"/>
+  <include location="../../Resources/resources.qrc"/>
+  <include location="../../Resources/resources.qrc"/>
+ </resources>
+ <connections/>
+</ui>

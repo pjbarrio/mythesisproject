@@ -1,0 +1,21 @@
+<RCC>
+    <qresource prefix="/GraphicalEqualizer" >
+        <file>Green.jpg</file>
+        <file>GreenDark.jpg</file>
+        <file>Orange.jpg</file>
+        <file>Red.jpg</file>
+        <file>Yellow.jpg</file>
+        <file>YellowLight.jpg</file>
+    </qresource>
+    <qresource prefix="/HandState" >
+        <file>hand_close.jpg</file>
+        <file>hand_open.jpg</file>
+    </qresource>
+    <qresource prefix="/Icon" >
+        <file>webcamicon.jpg</file>
+    </qresource>
+    <qresource prefix="/buttonsImages" >
+        <file>Add.jpg</file>
+        <file>Remove.jpg</file>
+    </qresource>
+</RCC>
