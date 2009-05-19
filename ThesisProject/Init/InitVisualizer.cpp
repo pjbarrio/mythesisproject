@@ -48,8 +48,7 @@ void InitVisualizer::init()
 	close_Hand = new QPixmap("hand_close.jpg");
 	cb1 = new CircularBuffer(DRAW_SIZE);
 	cb2 = new CircularBuffer(DRAW_SIZE);
-	sv->setBufferX(cb1);
-	sv->setBufferY(cb2);
+	sv->setBufferXY(cb1,cb2);
 }
 
 /*
@@ -59,29 +58,38 @@ void InitVisualizer::init()
 
 void InitVisualizer::setNewInput(double x, double y, double t)
 {
-	QPixmap* image = getFilteredImage();
+//	QPixmap* image = getFilteredImage();
 
-	bool closed = getIsClosed();
+//	bool closed = getIsClosed();
 
-	double velocity = getVelocity(x,y,t);
+//	double velocity = getVelocity(x,y,t);
 
-	double acc = getAcceleration(velocity,t);
+//	double acc = getAcceleration(velocity,t);
 
-	updateVelocityDrawer(velocity);
+//	updateVelocityDrawer(velocity);
 
-	updateAccelerationDrawer(acc);
+//	updateAccelerationDrawer(acc);
 
-	drawPoints(x,y);
+//	drawPoints(x,y);
 
 	writeCoords(x,y);
 
-	drawHand(closed);
+//	drawHand(closed);
+
+//	drawFilteredImage(image);
 
 	lastX = x;
 	lastY = y;
 	lastT = t;
-	lastVelocity = velocity;
+//	lastVelocity = velocity;
 
+}
+
+/*
+ * This method paints the filtered image on the window
+ */
+void InitVisualizer::drawFilteredImage(QPixmap* image){
+	sv->setFilteredImage(image);
 }
 
 /*

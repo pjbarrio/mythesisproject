@@ -31,7 +31,7 @@ paintMovement::~paintMovement()
 
 void paintMovement::paintEvent(QPaintEvent *event)
 {
-
+/*
     QPainter painter(this);
 
     painter.setRenderHint(QPainter::Antialiasing, true);
@@ -77,7 +77,7 @@ void paintMovement::paintEvent(QPaintEvent *event)
     	index++;
 
     }
-
+*/
  }
 
 /*

@@ -18,6 +18,7 @@
 #include "../GUI/Estado/stateviewer.h"
 #include "../DynamicGestureRecognition/src/DistanceCalculator.h"
 #include "../DynamicGestureRecognition/DistanceCalculators/EuclideanDistance.h"
+#include <QPixmap>
 
 
 class InitVisualizer: public Initializer {
@@ -48,6 +49,7 @@ private:
 	void drawPoints(double,double);
 	void updateVelocityDrawer(double);
 	void updateAccelerationDrawer(double);
+	void drawFilteredImage(QPixmap*);
 	static const double NO_VELOCITY_DETECTED = -1.0;
 	static const double NO_ACCELERATION_DETECTED = -0.1;
 	static const double MAX_VELOCITY = 10000.0;

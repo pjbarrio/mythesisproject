@@ -126,7 +126,7 @@
        <item>
         <widget class="QTabWidget" name="tabWidget">
          <property name="currentIndex">
-          <number>1</number>
+          <number>2</number>
          </property>
          <widget class="QWidget" name="tab">
           <attribute name="title">
@@ -475,8 +475,204 @@ p, li { white-space: pre-wrap; }
      <height>22</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuConfiguraci_n">
+    <property name="title">
+     <string>&amp;Configuración</string>
+    </property>
+    <widget class="QMenu" name="menuImportar">
+     <property name="title">
+      <string>Importar</string>
+     </property>
+     <property name="icon">
+      <iconset resource="Resources/resources.qrc">
+       <normaloff>:/ToolBar/import.jpg</normaloff>:/ToolBar/import.jpg</iconset>
+     </property>
+     <widget class="QMenu" name="menuEventos">
+      <property name="title">
+       <string>Eventos</string>
+      </property>
+      <property name="icon">
+       <iconset resource="Resources/resources.qrc">
+        <normaloff>:/ToolBar/Events.jpg</normaloff>:/ToolBar/Events.jpg</iconset>
+      </property>
+      <addaction name="actionSimulaci_n_Tecla"/>
+      <addaction name="actionEjecuci_n_Aplicaci_n"/>
+      <addaction name="actionAbrir_Archivo"/>
+      <addaction name="actionCombinaci_n_Teclas"/>
+      <addaction name="separator"/>
+      <addaction name="actionImportar_Todos"/>
+     </widget>
+     <addaction name="menuEventos"/>
+     <addaction name="actionGestos"/>
+    </widget>
+    <addaction name="actionAbrir_Configuraci_n"/>
+    <addaction name="actionSalvar_Configuraci_n"/>
+    <addaction name="separator"/>
+    <addaction name="menuImportar"/>
+    <addaction name="separator"/>
+    <addaction name="actionSalir"/>
+   </widget>
+   <widget class="QMenu" name="menuAcerca_de">
+    <property name="title">
+     <string>Acerca de...</string>
+    </property>
+    <addaction name="actionAcerca_de"/>
+   </widget>
+   <widget class="QMenu" name="menuControl">
+    <property name="title">
+     <string>Control</string>
+    </property>
+    <addaction name="action_Detener_Captura"/>
+   </widget>
+   <addaction name="menuConfiguraci_n"/>
+   <addaction name="menuControl"/>
+   <addaction name="menuAcerca_de"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionAbrir_Configuraci_n">
+   <property name="icon">
+    <iconset resource="Resources/resources.qrc">
+     <normaloff>:/ToolBar/openconf.jpg</normaloff>:/ToolBar/openconf.jpg</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Abrir Configuración</string>
+   </property>
+   <property name="iconText">
+    <string>Abrir Configuración</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+A</string>
+   </property>
+  </action>
+  <action name="actionGestos">
+   <property name="icon">
+    <iconset resource="Resources/resources.qrc">
+     <normaloff>:/ToolBar/gesture.png</normaloff>:/ToolBar/gesture.png</iconset>
+   </property>
+   <property name="text">
+    <string>Gestos</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+G</string>
+   </property>
+  </action>
+  <action name="actionSalir">
+   <property name="icon">
+    <iconset resource="Resources/resources.qrc">
+     <normaloff>:/ToolBar/quit.jpg</normaloff>:/ToolBar/quit.jpg</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Minimizar</string>
+   </property>
+   <property name="iconText">
+    <string>Minimizar</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+M</string>
+   </property>
+  </action>
+  <action name="actionAcerca_de">
+   <property name="icon">
+    <iconset resource="Resources/resources.qrc">
+     <normaloff>:/ToolBar/about.jpg</normaloff>:/ToolBar/about.jpg</iconset>
+   </property>
+   <property name="text">
+    <string>Acerca de</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+K</string>
+   </property>
+  </action>
+  <action name="actionSimulaci_n_Tecla">
+   <property name="icon">
+    <iconset resource="Resources/resources.qrc">
+     <normaloff>:/ToolBar/key.jpg</normaloff>:/ToolBar/key.jpg</iconset>
+   </property>
+   <property name="text">
+    <string>Simulación Tecla</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+T</string>
+   </property>
+  </action>
+  <action name="actionEjecuci_n_Aplicaci_n">
+   <property name="icon">
+    <iconset resource="Resources/resources.qrc">
+     <normaloff>:/ToolBar/ExeApp.jpg</normaloff>:/ToolBar/ExeApp.jpg</iconset>
+   </property>
+   <property name="text">
+    <string>Ejecución Aplicación</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+X</string>
+   </property>
+  </action>
+  <action name="actionAbrir_Archivo">
+   <property name="icon">
+    <iconset resource="Resources/resources.qrc">
+     <normaloff>:/ToolBar/OpenFile.jpg</normaloff>:/ToolBar/OpenFile.jpg</iconset>
+   </property>
+   <property name="text">
+    <string>Abrir Archivo</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+F</string>
+   </property>
+  </action>
+  <action name="actionImportar_Todos">
+   <property name="icon">
+    <iconset resource="Resources/resources.qrc">
+     <normaloff>:/ToolBar/importall.jpg</normaloff>:/ToolBar/importall.jpg</iconset>
+   </property>
+   <property name="text">
+    <string>Imp&amp;ortar Todos</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+I</string>
+   </property>
+  </action>
+  <action name="actionCombinaci_n_Teclas">
+   <property name="icon">
+    <iconset resource="Resources/resources.qrc">
+     <normaloff>:/ToolBar/combined.jpg</normaloff>:/ToolBar/combined.jpg</iconset>
+   </property>
+   <property name="text">
+    <string>Combinación Teclas</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+T</string>
+   </property>
+  </action>
+  <action name="actionSalvar_Configuraci_n">
+   <property name="icon">
+    <iconset resource="Resources/resources.qrc">
+     <normaloff>:/ToolBar/saveConfig.jpg</normaloff>:/ToolBar/saveConfig.jpg</iconset>
+   </property>
+   <property name="text">
+    <string>Salvar Configuración</string>
+   </property>
+   <property name="whatsThis">
+    <string/>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+V</string>
+   </property>
+  </action>
+  <action name="action_Detener_Captura">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="Resources/resources.qrc">
+     <normaloff>:/ToolBar/Stop.jpg</normaloff>:/ToolBar/Stop.jpg</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Detener Captura</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+D</string>
+   </property>
+  </action>
  </widget>
  <resources>
   <include location="Resources/resources.qrc"/>
@@ -489,12 +685,12 @@ p, li { white-space: pre-wrap; }
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>768</x>
-     <y>144</y>
+     <x>1182</x>
+     <y>264</y>
     </hint>
     <hint type="destinationlabel">
-     <x>768</x>
-     <y>173</y>
+     <x>1182</x>
+     <y>288</y>
     </hint>
    </hints>
   </connection>
@@ -649,8 +845,8 @@ p, li { white-space: pre-wrap; }
    <slot>runHandDiagnostic()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>568</x>
-     <y>433</y>
+     <x>622</x>
+     <y>317</y>
     </hint>
     <hint type="destinationlabel">
      <x>608</x>
