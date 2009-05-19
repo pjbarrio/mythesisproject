@@ -14,9 +14,11 @@
  * State Visualizer.
  */
 
-ThesisStart::ThesisStart(ThesisProject* tp, StateViewer* sv):QThread() {
+ThesisStart::ThesisStart(ThesisProject* tp, StateViewer* sv,SystemInfo*si,CoordsSaver*cs):QThread() {
 	this->tp = tp;
 	this->sv = sv;
+	this->cs = cs;
+	this->si = si;
 }
 
 /*
@@ -49,10 +51,6 @@ void ThesisStart::run() {
 	bool gesture = cont->getGestureSupport();
 
 	bool state = cont->getStateSupport();
-
-	SystemInfo* si = new SystemInfo(80,60);
-
-	CoordsSaver* cs = new CoordsSaver();
 
 	//Cursor
 	if (showCursor){
@@ -104,15 +102,15 @@ void ThesisStart::run() {
 	}
 	//Tracker
 
-	CamHandler* ch = new CamHandler(Container::getInstance()->getLog());
 
-	InitTracker* it = new InitTracker(cs,si,ch);
+
+/*	InitTracker* it = new InitTracker(cs,si,ch);
 
 	Thread_Tracker* tt = new Thread_Tracker(it);
 
 	tt->start();
 
-	tt->wait();
+	tt->wait();*/
 
 	if (showCursor)
 		tw1->wait();

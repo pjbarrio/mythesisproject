@@ -15,7 +15,16 @@
 #include <QSystemTrayIcon>
 #include <QMenu>
 #include <QAction>
-
+#include "cv.h"
+#include "CommonProject/src/CoordsSaver.h"
+#include "Utils/SystemInfo.h"
+#include "Camera/Camera.h"
+#include "ConfigurationHandler/ConfigHandler.h"
+#include "NeuralNetwork/NeuralNet.h"
+#include "stabilizers/LightStabilizer.h"
+#include "Filters/FilterHandler.h"
+#include "Utils/ImageUtilities.h"
+#include <QTimer>
 
 
 
@@ -100,6 +109,30 @@ private:
     PressCharEvent *createPressCharEvent(QString*, QString*);
     void saveConfiguration();
     void createCompleteTrayIcon();
+
+    int initTrack(CoordsSaver*, SystemInfo* , Camera*);
+    void finishTrack();
+
+    CoordsSaver* coordSaver;
+	SystemInfo* sysInfo;
+	Camera* cam;
+
+	LogHandler* logger;
+	ConfigHandler* config;
+	NeuralNet* net;
+	LightStabilizer* lightStabilizer;
+	FilterHandler* filterHandler;
+	ImageUtilities* util;
+	int Xcoord,Ycoord,XcoordFIR,YcoordFIR;
+
+	IplImage* currentFrame;
+
+	IplImage* filteredImage;
+	CoordsSaver* getCoordSaver();
+	SystemInfo* getSystemInfo();
+	QTimer *timer;
+	bool initiatedCamera;
+	void createToolbar();
 private slots:
 	void showNormal();
 	void addGesture();
@@ -114,6 +147,17 @@ private slots:
 	void runHandDiagnostic();
 	void stopCapture();
 	void ViewCaptureState();
+	void captureNextFrame();
+	void openAbout();
+	void openConfiguration();
+	void importAllEvents();
+	void importOpenFileEvents();
+	void importExecutionApplicationEvents();
+	void importPressKeyEvents();
+	void importCombinedKeyPressEvents();
+	void importGestures();
+	void saveConfigurationinFile();
+	void byeApplication();
 };
 
 #endif // MAINWINDOW_H

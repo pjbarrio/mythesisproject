@@ -23,17 +23,17 @@
 #include "../CommonProject/Threads/Thread_Worker.h"
 #include "../DynamicGestureRecognition/Initializer/InitDynamicGestureRecognition.h"
 #include "InitVisualizer.h"
-#include "InitTracker.h"
-#include "../CommonProject/Threads/Thread_Tracker.h"
 
 class ThesisStart: public QThread {
 public:
-	ThesisStart(ThesisProject*, StateViewer*);
+	ThesisStart(ThesisProject*, StateViewer*, SystemInfo*,CoordsSaver*);
 	virtual ~ThesisStart();
 	void run();
 private:
 	ThesisProject* tp;
 	StateViewer* sv;
+	SystemInfo* si;
+	CoordsSaver* cs;
 };
 
 #endif /* THESISSTART_H_ */

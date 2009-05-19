@@ -60,7 +60,7 @@ bool CamHandler::initCamDevice()
      cvSetCaptureProperty( capture, CV_CAP_PROP_FRAME_HEIGHT, h);
 
      //Parece que no funciona
-     cvSetCaptureProperty( capture, CV_CAP_PROP_POS_FRAMES, 25);
+//     cvSetCaptureProperty( capture, CV_CAP_PROP_POS_FRAMES, 25);
 
 
      logger->addEntry(componentName,"Camera started succefully");
@@ -77,9 +77,7 @@ bool CamHandler::initCamDevice()
 bool CamHandler::stillTracking()
 {
 
-	//TODO CAMBIAR EL MÉT ODO DE STOP
-
-	 if( (cvWaitKey(10) & 255) == 27 )
+	if( (cvWaitKey(10) & 255) == 27 )
 		 return false;
 
 	 return true;

@@ -11,6 +11,18 @@ StateViewer::StateViewer(QWidget *parent)
 {
 	ui.setupUi(this);
 	createArrays();
+
+}
+
+/*
+ * This method set the Circular buffers (coords X,Y) used to draw
+ * hand movement
+ */
+
+void StateViewer::setBufferXY(CircularBuffer* cbx,CircularBuffer* cby){
+	this->cbx = cbx;
+	this->cby = cby;
+	ui.widget_4->setData(this->cbx,this->cby);
 }
 
 /*
@@ -69,6 +81,13 @@ void StateViewer::setHandPicture(QPixmap *handPixMap)
 	ui.handState->setPixmap(*handPixMap);
 }
 
+/*
+ * This method shows the filtered Image
+ */
+
+void StateViewer::setFilteredImage(QPixmap* filtered){
+	ui.processedImage->setPixmap(*filtered);
+}
 /*
  * This method creates the acceleration Equalizer
  * internal representation.

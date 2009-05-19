@@ -5,7 +5,7 @@
 #include "Utils/SystemInfo.h"
 #include <cv.h>
 #include <highgui.h>
-#include "Init/ThesisStart.h"
+
 #include <tchar.h>
 #include <string.h>
 #include "DynamicGestureRecognition/Events/PressCharEvent.h"
@@ -18,6 +18,8 @@
 #include "DynamicGestureRecognition/src/GestureEventMapper.h"
 #include "GUI/Utils/Container.h"
 #include <QMessageBox>
+#include "Init/ThesisStart.h"
+
 
 /*
  * This Method initiates the main Application. Receives the Dialog boxes that will appear during the execution.
@@ -37,7 +39,100 @@ ThesisProject::ThesisProject(AddGesture* addGesture,AddEvent* addEvent,AddAsocia
 
 	createCompleteTrayIcon();
 
+	createToolbar();
 
+}
+
+/*
+ * This method associates the toolbar actions
+ * with their slots.
+ */
+
+void ThesisProject::createToolbar(){
+	connect(ui.actionSalir,SIGNAL(triggered()),this,SLOT(close()));
+	connect(ui.actionAbrir_Configuraci_n,SIGNAL(triggered()),this,SLOT(openConfiguration()));
+	connect(ui.actionGestos,SIGNAL(triggered()),this,SLOT(importGestures()));
+	connect(ui.actionAbrir_Archivo,SIGNAL(triggered()),this,SLOT(importOpenFileEvents()));
+	connect(ui.actionAcerca_de,SIGNAL(triggered()),this,SLOT(openAbout()));
+	connect(ui.actionEjecuci_n_Aplicaci_n,SIGNAL(triggered()),this,SLOT(importExecutionApplicationEvents()));
+	connect(ui.actionImportar_Todos,SIGNAL(triggered()),this,SLOT(importAllEvents()));
+	connect(ui.actionSimulaci_n_Tecla,SIGNAL(triggered()),this,SLOT(importPressKeyEvents()));
+	connect(ui.actionCombinaci_n_Teclas,SIGNAL(triggered()),this,SLOT(importCombinedKeyPressEvents()));
+	connect(ui.actionSalvar_Configuraci_n,SIGNAL(triggered()),this,SLOT(saveConfigurationinFile()));
+	connect(ui.action_Detener_Captura, SIGNAL(triggered()), this, SLOT(stopCapture()));
+
+}
+
+/*
+ * This method opens the about window.
+ */
+
+void ThesisProject::openAbout(){
+	//TODO open About.
+}
+
+/*
+ * This methods opens a configuration from an xml file.
+ */
+
+void ThesisProject::openConfiguration(){
+	//TODO open configuration
+}
+
+/*
+ * This method imports all events from an xml file.
+ */
+void ThesisProject::importAllEvents(){
+	//TODO all events
+}
+
+/*
+ * This method imports OpenFile events from an xml file.
+ */
+
+void ThesisProject::importOpenFileEvents(){
+	//TODO OpenFile
+}
+
+/*
+ * This method imports ExecutionApplication events from an xml file.
+ */
+
+void ThesisProject::importExecutionApplicationEvents(){
+	//TODO Execution
+}
+
+/*
+ * This method imports PressKeyEvents events from an xml file.
+ */
+
+void ThesisProject::importPressKeyEvents(){
+	//TODO press
+}
+
+/*
+ * This method imports CombinedKeyPress events from an xml file.
+ */
+
+void ThesisProject::importCombinedKeyPressEvents(){
+	//TODO combined press
+}
+
+/*
+ * This method imports gestures from an xml file.
+ */
+
+void ThesisProject::importGestures(){
+	//TODO Import gestures
+}
+
+/*
+ * This method saves the actual configuration in an
+ * XML File.
+ */
+
+void ThesisProject::saveConfigurationinFile(){
+	//TODO Save Configuration
 }
 
 /*
@@ -110,25 +205,36 @@ void ThesisProject::createCompleteTrayIcon(){
 
 	trayIconMenu->addSeparator();
 
-	quitAction = new QAction(tr("&Quit"), this);
+	quitAction = new QAction(tr("&Salir"), this);
+
+	quitAction->setShortcut(tr("Ctrl+Shift+S"));
 
 	connect(quitAction, SIGNAL(triggered()), qApp, SLOT(quit()));
 
-
 	trayIconMenu->addAction(quitAction);
-
 
 	trayIcon->setContextMenu(trayIconMenu);
 
 	trayIcon->show();
 }
+/*
+ * This method verifies if capturing is running. If so, stops
+ * it and then quit the application.
+ */
 
+void ThesisProject::byeApplication(){
+	if (initiatedCamera){
+		stopCapture();
+		Container::getInstance()->finishCamViewer();
+	}
+	qApp->quit();
+}
 /*
  * This method stops the capture process.
  */
 
 void ThesisProject::stopCapture(){
-	//TODO Stop Capture.
+	finishTrack();
 }
 
 /*
@@ -136,7 +242,7 @@ void ThesisProject::stopCapture(){
  */
 
 void ThesisProject::ViewCaptureState(){
-	//TODO View State tenog que hacer el show del stateviewer
+	stateViewer->show();
 }
 
 /*
@@ -146,7 +252,7 @@ void ThesisProject::ViewCaptureState(){
 void ThesisProject::initVariables(){
 	rotatex = false;
 	rotatey = false;
-
+	initiatedCamera = false;
 	UP_STR = QString("Up");
 	DOWN_STR = QString("Down");
     RIGHT_STR = QString("Right");
@@ -169,7 +275,8 @@ void ThesisProject::initVariables(){
     combinedKeyEventModel = 0;
     AppEventModel = 0;
     fileEventModel = 0;
-
+    sysInfo = 0;
+    coordSaver = 0;
 }
 
 /*
@@ -425,13 +532,26 @@ void ThesisProject::startApplication(){
 
 	Container::getInstance()->finishCamViewer();
 
-	ThesisStart* ts = new ThesisStart(this,this->stateViewer);
+	SystemInfo* si = getSystemInfo();
+
+	CoordsSaver* cs = getCoordSaver();
+
+	CamHandler* ch = new CamHandler(Container::getInstance()->getLog());
+
+	ThesisStart* ts = new ThesisStart(this,this->stateViewer,si,cs);
+
+	Container::getInstance()->setThesisStart(ts);
+
+	this->initTrack(cs,si,ch);
+
+    timer = new QTimer(this);
+
+    connect(timer, SIGNAL(timeout()), this, SLOT(captureNextFrame()));
+
+    timer->start(10);
 
 	ts->start();
 
-	ts->wait();
-
-	Container::getInstance()->createCamViewerInstance(ui.capturedImage);
 }
 
 /*
@@ -552,3 +672,174 @@ EventModel* ThesisProject::getOpenFileEventModel()
 	}
 	return fileEventModel;
 }
+
+/*
+ * This method initializes the tracker.
+ */
+
+int ThesisProject::initTrack(CoordsSaver* coordSaver, SystemInfo* sysInfo, Camera* camera){
+
+	if (Container::getInstance()->getStateSupport())
+		ViewState->setEnabled(true);
+
+	initiatedCamera = true;
+
+	ui.action_Detener_Captura->setEnabled(true);
+
+	StopCapturing->setEnabled(true);
+
+	ui.startButton->setEnabled(false);
+
+	this->coordSaver = coordSaver;
+	this->sysInfo = sysInfo;
+	this->cam = camera;
+
+	logger = Container::getInstance()->getLog();
+
+	config = Container::getInstance()->getConfigHandler();
+
+	net = new NeuralNet(logger);
+
+	lightStabilizer = Container::getInstance()->getLightStabilizer();
+
+	filterHandler = Container::getInstance()->getFilterHandler();
+
+	util = new ImageUtilities();
+
+	if ( !cam->initCamDevice() ){
+
+		logger->closeLogger();
+
+		return -1;
+
+	}
+
+
+	net->setnetFile(config->getTrackerNetFile());
+
+	if ( !net->startNet()){
+
+		logger->closeLogger();
+
+		return -1;
+
+	}
+
+	//TODO tal vez lightStabilizer es 0
+
+
+	filterHandler->setSkinThreshold(lightStabilizer->getSkinThreshold());
+
+	cvNamedWindow("Estado actual", CV_WINDOW_AUTOSIZE);
+	cvMoveWindow("Estado actual", 100, 100);
+
+	return 0;
+}
+
+/*
+ * This method finishes the tracker.
+ */
+void ThesisProject::finishTrack(){
+
+	StopCapturing->setEnabled(false);
+
+	ui.action_Detener_Captura->setEnabled(false);
+
+	timer->stop();
+
+	cam->stopCamDevice();
+
+	net->shutDown();
+
+	coordSaver->finishCoordSaver();
+
+	cvDestroyWindow("Estado actual");
+
+	logger->closeLogger();
+
+	Container::getInstance()->getThesisStart()->wait();
+
+	Container::getInstance()->setThesisStart(0);
+
+	coordSaver = 0;
+
+	Container::getInstance()->createCamViewerInstance(ui.capturedImage);
+
+	ui.startButton->setEnabled(true);
+
+	initiatedCamera = false;
+
+	if (Container::getInstance()->getStateSupport())
+		ViewState->setEnabled(false);
+
+}
+
+/*
+ * The next Slot captures next frame and process it.
+ */
+
+void ThesisProject::captureNextFrame(){
+
+	Container* cont = Container::getInstance();
+
+	currentFrame = cam->retrieveFrame();
+
+	if (cont->getRotateX())
+		cvFlip(currentFrame,currentFrame,1);
+
+	if (cont->getRotateY())
+		cvFlip(currentFrame,currentFrame,-1);
+
+	filteredImage = filterHandler->runPreFilters(currentFrame);
+
+	if (cont->getStateSupport())
+		cont->setFilteredImage(filteredImage);
+
+	//Hand Tracker
+
+	net->run(filteredImage);
+
+	Xcoord = net->getXcoord();
+
+	Ycoord = net->getYcoord();
+
+	filterHandler->runLowPassFilter(Xcoord,Ycoord,XcoordFIR,YcoordFIR);
+
+	util->putMarker(currentFrame,XcoordFIR*4,YcoordFIR*4);
+
+	cvShowImage("Estado actual", currentFrame );
+
+	coordSaver->saveCoords(XcoordFIR,YcoordFIR);
+
+	//Static Gesture Recognition through skin pixel count
+
+	if ( filterHandler->getSkinCount() > filterHandler->getSkinThreshold()){ // Mano Abierta: mas pixeles blancos
+		cont->setClosed(false);
+	}
+	else{
+		cont->setClosed(true);
+	}
+
+	cvReleaseImage( &filteredImage );
+}
+
+/*
+ * This method returns the systemInfo instance.
+ */
+
+SystemInfo* ThesisProject::getSystemInfo(){
+	if (sysInfo==0)
+		sysInfo = new SystemInfo(80,60);
+	return sysInfo;
+}
+
+/*
+ * This method returns a new coordSaver instance.
+ */
+
+CoordsSaver* ThesisProject::getCoordSaver(){
+	if (coordSaver==0)
+		coordSaver = new CoordsSaver();
+	return coordSaver;
+}
+

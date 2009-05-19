@@ -1,0 +1,28 @@
+log created on 05/19/09 19:24:54
+
+
+
+--- Configurator ---
+- Config File: config.data loaded
+
+
+--- FilterHandler ---
+- Skin Mask loaded succesfully
+
+- Hue Value 11
+
+- Sat Value 106
+
+- Hue Value 42
+
+
+--- CamHandler ---
+- Camera started succefully
+
+
+--- NetHandler ---
+- The Network was succesfully created from NetDesktopSkin.net
+
+- Average time per Frame: 1.04615
+
+log close on 05/19/09 19:25:19

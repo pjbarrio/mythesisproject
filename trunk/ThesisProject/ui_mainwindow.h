@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading ui file 'mainwindow.ui'
 **
-** Created: Mon 11. May 18:36:00 2009
+** Created: Tue 19. May 16:18:18 2009
 **      by: Qt User Interface Compiler version 4.5.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling ui file!
@@ -23,6 +23,7 @@
 #include <QtGui/QLabel>
 #include <QtGui/QListWidget>
 #include <QtGui/QMainWindow>
+#include <QtGui/QMenu>
 #include <QtGui/QMenuBar>
 #include <QtGui/QPushButton>
 #include <QtGui/QRadioButton>
@@ -36,6 +37,17 @@ QT_BEGIN_NAMESPACE
 class Ui_ThesisProjectClass
 {
 public:
+    QAction *actionAbrir_Configuraci_n;
+    QAction *actionGestos;
+    QAction *actionSalir;
+    QAction *actionAcerca_de;
+    QAction *actionSimulaci_n_Tecla;
+    QAction *actionEjecuci_n_Aplicaci_n;
+    QAction *actionAbrir_Archivo;
+    QAction *actionImportar_Todos;
+    QAction *actionCombinaci_n_Teclas;
+    QAction *actionSalvar_Configuraci_n;
+    QAction *action_Detener_Captura;
     QWidget *centralwidget;
     QHBoxLayout *horizontalLayout;
     QFrame *LeftFrame;
@@ -100,6 +112,11 @@ public:
     QWidget *widget_11;
     QPushButton *startButton;
     QMenuBar *menubar;
+    QMenu *menuConfiguraci_n;
+    QMenu *menuImportar;
+    QMenu *menuEventos;
+    QMenu *menuAcerca_de;
+    QMenu *menuControl;
     QStatusBar *statusbar;
 
     void setupUi(QMainWindow *ThesisProjectClass)
@@ -108,6 +125,62 @@ public:
             ThesisProjectClass->setObjectName(QString::fromUtf8("ThesisProjectClass"));
         ThesisProjectClass->setEnabled(true);
         ThesisProjectClass->resize(800, 510);
+        actionAbrir_Configuraci_n = new QAction(ThesisProjectClass);
+        actionAbrir_Configuraci_n->setObjectName(QString::fromUtf8("actionAbrir_Configuraci_n"));
+        QIcon icon;
+        icon.addPixmap(QPixmap(QString::fromUtf8(":/ToolBar/openconf.jpg")), QIcon::Normal, QIcon::Off);
+        actionAbrir_Configuraci_n->setIcon(icon);
+        actionGestos = new QAction(ThesisProjectClass);
+        actionGestos->setObjectName(QString::fromUtf8("actionGestos"));
+        QIcon icon1;
+        icon1.addPixmap(QPixmap(QString::fromUtf8(":/ToolBar/gesture.png")), QIcon::Normal, QIcon::Off);
+        actionGestos->setIcon(icon1);
+        actionSalir = new QAction(ThesisProjectClass);
+        actionSalir->setObjectName(QString::fromUtf8("actionSalir"));
+        QIcon icon2;
+        icon2.addPixmap(QPixmap(QString::fromUtf8(":/ToolBar/quit.jpg")), QIcon::Normal, QIcon::Off);
+        actionSalir->setIcon(icon2);
+        actionAcerca_de = new QAction(ThesisProjectClass);
+        actionAcerca_de->setObjectName(QString::fromUtf8("actionAcerca_de"));
+        QIcon icon3;
+        icon3.addPixmap(QPixmap(QString::fromUtf8(":/ToolBar/about.jpg")), QIcon::Normal, QIcon::Off);
+        actionAcerca_de->setIcon(icon3);
+        actionSimulaci_n_Tecla = new QAction(ThesisProjectClass);
+        actionSimulaci_n_Tecla->setObjectName(QString::fromUtf8("actionSimulaci_n_Tecla"));
+        QIcon icon4;
+        icon4.addPixmap(QPixmap(QString::fromUtf8(":/ToolBar/key.jpg")), QIcon::Normal, QIcon::Off);
+        actionSimulaci_n_Tecla->setIcon(icon4);
+        actionEjecuci_n_Aplicaci_n = new QAction(ThesisProjectClass);
+        actionEjecuci_n_Aplicaci_n->setObjectName(QString::fromUtf8("actionEjecuci_n_Aplicaci_n"));
+        QIcon icon5;
+        icon5.addPixmap(QPixmap(QString::fromUtf8(":/ToolBar/ExeApp.jpg")), QIcon::Normal, QIcon::Off);
+        actionEjecuci_n_Aplicaci_n->setIcon(icon5);
+        actionAbrir_Archivo = new QAction(ThesisProjectClass);
+        actionAbrir_Archivo->setObjectName(QString::fromUtf8("actionAbrir_Archivo"));
+        QIcon icon6;
+        icon6.addPixmap(QPixmap(QString::fromUtf8(":/ToolBar/OpenFile.jpg")), QIcon::Normal, QIcon::Off);
+        actionAbrir_Archivo->setIcon(icon6);
+        actionImportar_Todos = new QAction(ThesisProjectClass);
+        actionImportar_Todos->setObjectName(QString::fromUtf8("actionImportar_Todos"));
+        QIcon icon7;
+        icon7.addPixmap(QPixmap(QString::fromUtf8(":/ToolBar/importall.jpg")), QIcon::Normal, QIcon::Off);
+        actionImportar_Todos->setIcon(icon7);
+        actionCombinaci_n_Teclas = new QAction(ThesisProjectClass);
+        actionCombinaci_n_Teclas->setObjectName(QString::fromUtf8("actionCombinaci_n_Teclas"));
+        QIcon icon8;
+        icon8.addPixmap(QPixmap(QString::fromUtf8(":/ToolBar/combined.jpg")), QIcon::Normal, QIcon::Off);
+        actionCombinaci_n_Teclas->setIcon(icon8);
+        actionSalvar_Configuraci_n = new QAction(ThesisProjectClass);
+        actionSalvar_Configuraci_n->setObjectName(QString::fromUtf8("actionSalvar_Configuraci_n"));
+        QIcon icon9;
+        icon9.addPixmap(QPixmap(QString::fromUtf8(":/ToolBar/saveConfig.jpg")), QIcon::Normal, QIcon::Off);
+        actionSalvar_Configuraci_n->setIcon(icon9);
+        action_Detener_Captura = new QAction(ThesisProjectClass);
+        action_Detener_Captura->setObjectName(QString::fromUtf8("action_Detener_Captura"));
+        action_Detener_Captura->setEnabled(false);
+        QIcon icon10;
+        icon10.addPixmap(QPixmap(QString::fromUtf8(":/ToolBar/Stop.jpg")), QIcon::Normal, QIcon::Off);
+        action_Detener_Captura->setIcon(icon10);
         centralwidget = new QWidget(ThesisProjectClass);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         horizontalLayout = new QHBoxLayout(centralwidget);
@@ -257,18 +330,18 @@ public:
         verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
         addGesto = new QPushButton(widget_6);
         addGesto->setObjectName(QString::fromUtf8("addGesto"));
-        QIcon icon;
-        icon.addPixmap(QPixmap(QString::fromUtf8(":/buttonsImages/Add.jpg")), QIcon::Normal, QIcon::Off);
-        addGesto->setIcon(icon);
+        QIcon icon11;
+        icon11.addPixmap(QPixmap(QString::fromUtf8(":/buttonsImages/Add.jpg")), QIcon::Normal, QIcon::Off);
+        addGesto->setIcon(icon11);
         addGesto->setIconSize(QSize(36, 36));
 
         verticalLayout_4->addWidget(addGesto);
 
         RemoveGesto = new QPushButton(widget_6);
         RemoveGesto->setObjectName(QString::fromUtf8("RemoveGesto"));
-        QIcon icon1;
-        icon1.addPixmap(QPixmap(QString::fromUtf8(":/buttonsImages/Remove.jpg")), QIcon::Normal, QIcon::Off);
-        RemoveGesto->setIcon(icon1);
+        QIcon icon12;
+        icon12.addPixmap(QPixmap(QString::fromUtf8(":/buttonsImages/Remove.jpg")), QIcon::Normal, QIcon::Off);
+        RemoveGesto->setIcon(icon12);
         RemoveGesto->setIconSize(QSize(36, 36));
 
         verticalLayout_4->addWidget(RemoveGesto);
@@ -302,14 +375,14 @@ public:
         verticalLayout_5->setObjectName(QString::fromUtf8("verticalLayout_5"));
         addEvento = new QPushButton(widget_8);
         addEvento->setObjectName(QString::fromUtf8("addEvento"));
-        addEvento->setIcon(icon);
+        addEvento->setIcon(icon11);
         addEvento->setIconSize(QSize(36, 36));
 
         verticalLayout_5->addWidget(addEvento);
 
         RemoveEvento = new QPushButton(widget_8);
         RemoveEvento->setObjectName(QString::fromUtf8("RemoveEvento"));
-        RemoveEvento->setIcon(icon1);
+        RemoveEvento->setIcon(icon12);
         RemoveEvento->setIconSize(QSize(36, 36));
 
         verticalLayout_5->addWidget(RemoveEvento);
@@ -342,14 +415,14 @@ public:
         verticalLayout_6->setObjectName(QString::fromUtf8("verticalLayout_6"));
         addAsociacion = new QPushButton(widget_10);
         addAsociacion->setObjectName(QString::fromUtf8("addAsociacion"));
-        addAsociacion->setIcon(icon);
+        addAsociacion->setIcon(icon11);
         addAsociacion->setIconSize(QSize(36, 36));
 
         verticalLayout_6->addWidget(addAsociacion);
 
         RemoveAsociacion = new QPushButton(widget_10);
         RemoveAsociacion->setObjectName(QString::fromUtf8("RemoveAsociacion"));
-        RemoveAsociacion->setIcon(icon1);
+        RemoveAsociacion->setIcon(icon12);
         RemoveAsociacion->setIconSize(QSize(36, 36));
 
         verticalLayout_6->addWidget(RemoveAsociacion);
@@ -386,10 +459,46 @@ public:
         menubar = new QMenuBar(ThesisProjectClass);
         menubar->setObjectName(QString::fromUtf8("menubar"));
         menubar->setGeometry(QRect(0, 0, 800, 22));
+        menuConfiguraci_n = new QMenu(menubar);
+        menuConfiguraci_n->setObjectName(QString::fromUtf8("menuConfiguraci_n"));
+        menuImportar = new QMenu(menuConfiguraci_n);
+        menuImportar->setObjectName(QString::fromUtf8("menuImportar"));
+        QIcon icon13;
+        icon13.addPixmap(QPixmap(QString::fromUtf8(":/ToolBar/import.jpg")), QIcon::Normal, QIcon::Off);
+        menuImportar->setIcon(icon13);
+        menuEventos = new QMenu(menuImportar);
+        menuEventos->setObjectName(QString::fromUtf8("menuEventos"));
+        QIcon icon14;
+        icon14.addPixmap(QPixmap(QString::fromUtf8(":/ToolBar/Events.jpg")), QIcon::Normal, QIcon::Off);
+        menuEventos->setIcon(icon14);
+        menuAcerca_de = new QMenu(menubar);
+        menuAcerca_de->setObjectName(QString::fromUtf8("menuAcerca_de"));
+        menuControl = new QMenu(menubar);
+        menuControl->setObjectName(QString::fromUtf8("menuControl"));
         ThesisProjectClass->setMenuBar(menubar);
         statusbar = new QStatusBar(ThesisProjectClass);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
         ThesisProjectClass->setStatusBar(statusbar);
+
+        menubar->addAction(menuConfiguraci_n->menuAction());
+        menubar->addAction(menuControl->menuAction());
+        menubar->addAction(menuAcerca_de->menuAction());
+        menuConfiguraci_n->addAction(actionAbrir_Configuraci_n);
+        menuConfiguraci_n->addAction(actionSalvar_Configuraci_n);
+        menuConfiguraci_n->addSeparator();
+        menuConfiguraci_n->addAction(menuImportar->menuAction());
+        menuConfiguraci_n->addSeparator();
+        menuConfiguraci_n->addAction(actionSalir);
+        menuImportar->addAction(menuEventos->menuAction());
+        menuImportar->addAction(actionGestos);
+        menuEventos->addAction(actionSimulaci_n_Tecla);
+        menuEventos->addAction(actionEjecuci_n_Aplicaci_n);
+        menuEventos->addAction(actionAbrir_Archivo);
+        menuEventos->addAction(actionCombinaci_n_Teclas);
+        menuEventos->addSeparator();
+        menuEventos->addAction(actionImportar_Todos);
+        menuAcerca_de->addAction(actionAcerca_de);
+        menuControl->addAction(action_Detener_Captura);
 
         retranslateUi(ThesisProjectClass);
         QObject::connect(ClickSupport, SIGNAL(clicked(bool)), ClickGroupBox, SLOT(setEnabled(bool)));
@@ -404,7 +513,7 @@ public:
         QObject::connect(startButton, SIGNAL(clicked()), ThesisProjectClass, SLOT(startApplication()));
         QObject::connect(ConfigButton, SIGNAL(clicked()), ThesisProjectClass, SLOT(runHandDiagnostic()));
 
-        tabWidget->setCurrentIndex(1);
+        tabWidget->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(ThesisProjectClass);
@@ -413,6 +522,33 @@ public:
     void retranslateUi(QMainWindow *ThesisProjectClass)
     {
         ThesisProjectClass->setWindowTitle(QApplication::translate("ThesisProjectClass", "Hand Tracking: Mouse virtual multi-funcional", 0, QApplication::UnicodeUTF8));
+        actionAbrir_Configuraci_n->setText(QApplication::translate("ThesisProjectClass", "&Abrir Configuraci\303\263n", 0, QApplication::UnicodeUTF8));
+        actionAbrir_Configuraci_n->setIconText(QApplication::translate("ThesisProjectClass", "Abrir Configuraci\303\263n", 0, QApplication::UnicodeUTF8));
+        actionAbrir_Configuraci_n->setShortcut(QApplication::translate("ThesisProjectClass", "Ctrl+A", 0, QApplication::UnicodeUTF8));
+        actionGestos->setText(QApplication::translate("ThesisProjectClass", "Gestos", 0, QApplication::UnicodeUTF8));
+        actionGestos->setShortcut(QApplication::translate("ThesisProjectClass", "Ctrl+G", 0, QApplication::UnicodeUTF8));
+        actionSalir->setText(QApplication::translate("ThesisProjectClass", "&Minimizar", 0, QApplication::UnicodeUTF8));
+        actionSalir->setIconText(QApplication::translate("ThesisProjectClass", "Minimizar", 0, QApplication::UnicodeUTF8));
+        actionSalir->setShortcut(QApplication::translate("ThesisProjectClass", "Ctrl+Shift+M", 0, QApplication::UnicodeUTF8));
+        actionAcerca_de->setText(QApplication::translate("ThesisProjectClass", "Acerca de", 0, QApplication::UnicodeUTF8));
+        actionAcerca_de->setShortcut(QApplication::translate("ThesisProjectClass", "Ctrl+K", 0, QApplication::UnicodeUTF8));
+        actionSimulaci_n_Tecla->setText(QApplication::translate("ThesisProjectClass", "Simulaci\303\263n Tecla", 0, QApplication::UnicodeUTF8));
+        actionSimulaci_n_Tecla->setShortcut(QApplication::translate("ThesisProjectClass", "Ctrl+T", 0, QApplication::UnicodeUTF8));
+        actionEjecuci_n_Aplicaci_n->setText(QApplication::translate("ThesisProjectClass", "Ejecuci\303\263n Aplicaci\303\263n", 0, QApplication::UnicodeUTF8));
+        actionEjecuci_n_Aplicaci_n->setShortcut(QApplication::translate("ThesisProjectClass", "Ctrl+X", 0, QApplication::UnicodeUTF8));
+        actionAbrir_Archivo->setText(QApplication::translate("ThesisProjectClass", "Abrir Archivo", 0, QApplication::UnicodeUTF8));
+        actionAbrir_Archivo->setShortcut(QApplication::translate("ThesisProjectClass", "Ctrl+F", 0, QApplication::UnicodeUTF8));
+        actionImportar_Todos->setText(QApplication::translate("ThesisProjectClass", "Imp&ortar Todos", 0, QApplication::UnicodeUTF8));
+        actionImportar_Todos->setShortcut(QApplication::translate("ThesisProjectClass", "Ctrl+I", 0, QApplication::UnicodeUTF8));
+        actionCombinaci_n_Teclas->setText(QApplication::translate("ThesisProjectClass", "Combinaci\303\263n Teclas", 0, QApplication::UnicodeUTF8));
+        actionCombinaci_n_Teclas->setShortcut(QApplication::translate("ThesisProjectClass", "Ctrl+Shift+T", 0, QApplication::UnicodeUTF8));
+        actionSalvar_Configuraci_n->setText(QApplication::translate("ThesisProjectClass", "Salvar Configuraci\303\263n", 0, QApplication::UnicodeUTF8));
+#ifndef QT_NO_WHATSTHIS
+        actionSalvar_Configuraci_n->setWhatsThis(QString());
+#endif // QT_NO_WHATSTHIS
+        actionSalvar_Configuraci_n->setShortcut(QApplication::translate("ThesisProjectClass", "Ctrl+V", 0, QApplication::UnicodeUTF8));
+        action_Detener_Captura->setText(QApplication::translate("ThesisProjectClass", "&Detener Captura", 0, QApplication::UnicodeUTF8));
+        action_Detener_Captura->setShortcut(QApplication::translate("ThesisProjectClass", "Ctrl+D", 0, QApplication::UnicodeUTF8));
         EntryObjectBox->setTitle(QApplication::translate("ThesisProjectClass", "Entrada", 0, QApplication::UnicodeUTF8));
 #ifndef QT_NO_TOOLTIP
         capturedImage->setToolTip(QApplication::translate("ThesisProjectClass", "Configuraci\303\263n actual de c\303\241mara", 0, QApplication::UnicodeUTF8));
@@ -497,7 +633,11 @@ public:
 #endif // QT_NO_TOOLTIP
         startButton->setText(QApplication::translate("ThesisProjectClass", "Comenzar", 0, QApplication::UnicodeUTF8));
         tabWidget->setTabText(tabWidget->indexOf(tab_3), QApplication::translate("ThesisProjectClass", "Comienzo", 0, QApplication::UnicodeUTF8));
-        Q_UNUSED(ThesisProjectClass);
+        menuConfiguraci_n->setTitle(QApplication::translate("ThesisProjectClass", "&Configuraci\303\263n", 0, QApplication::UnicodeUTF8));
+        menuImportar->setTitle(QApplication::translate("ThesisProjectClass", "Importar", 0, QApplication::UnicodeUTF8));
+        menuEventos->setTitle(QApplication::translate("ThesisProjectClass", "Eventos", 0, QApplication::UnicodeUTF8));
+        menuAcerca_de->setTitle(QApplication::translate("ThesisProjectClass", "Acerca de...", 0, QApplication::UnicodeUTF8));
+        menuControl->setTitle(QApplication::translate("ThesisProjectClass", "Control", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };

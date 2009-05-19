@@ -41,22 +41,10 @@ public:
     QList<QLabel*>* getAccelerationList(){return accelerationList;};
     QLabel* getCoordXLabel(){return ui.XCoord;};
     QLabel* getCoordYLabel(){return ui.YCoord;};
-
-    /*
-     * This method set the Circular buffer (coord X) used to draw
-     * hand movement
-     */
-
-    void setBufferX(CircularBuffer* cb){this->cbx = cb;};
-
-    /*
-     * This method set the Circular buffer (coord X) used to draw
-     * hand movement
-     */
-
-    void setBufferY(CircularBuffer* cb){this->cby = cb;};
+    void setBufferXY(CircularBuffer* cbx,CircularBuffer* cb);
     void setHandPicture(QPixmap*);
     paintMovement* getPaintMovement(){return ui.widget_4;};
+    void setFilteredImage(QPixmap*);
 private:
 	Ui::StateViewerClass ui;
 	CircularBuffer* cbx;
