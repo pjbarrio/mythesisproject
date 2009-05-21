@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading ui file 'addasociation.ui'
 **
-** Created: Mon 11. May 18:36:00 2009
+** Created: Thu 21. May 16:17:38 2009
 **      by: Qt User Interface Compiler version 4.5.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling ui file!
@@ -78,6 +78,7 @@ public:
 
         addAsociacion = new QPushButton(widget);
         addAsociacion->setObjectName(QString::fromUtf8("addAsociacion"));
+        addAsociacion->setEnabled(false);
 
         gridLayout_4->addWidget(addAsociacion, 0, 1, 1, 1);
 
@@ -103,6 +104,7 @@ public:
         gridLayout_3->setObjectName(QString::fromUtf8("gridLayout_3"));
         asociacionesView = new QListWidget(groupBox_3);
         asociacionesView->setObjectName(QString::fromUtf8("asociacionesView"));
+        asociacionesView->setModelColumn(0);
 
         gridLayout_3->addWidget(asociacionesView, 0, 0, 1, 1);
 
@@ -135,6 +137,9 @@ public:
         retranslateUi(AddAsociationClass);
         QObject::connect(pushButton_2, SIGNAL(clicked()), AddAsociationClass, SLOT(reject()));
         QObject::connect(pushButton, SIGNAL(clicked()), AddAsociationClass, SLOT(accept()));
+        QObject::connect(addAsociacion, SIGNAL(clicked()), AddAsociationClass, SLOT(addSelectedItems()));
+        QObject::connect(gestosView, SIGNAL(itemClicked(QListWidgetItem*)), AddAsociationClass, SLOT(saveGestureClicked(QListWidgetItem*)));
+        QObject::connect(eventosView, SIGNAL(itemClicked(QListWidgetItem*)), AddAsociationClass, SLOT(saveEventClicked(QListWidgetItem*)));
 
         QMetaObject::connectSlotsByName(AddAsociationClass);
     } // setupUi

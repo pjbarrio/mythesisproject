@@ -71,9 +71,6 @@ int InitTracker::start()
 
 	}
 
-	//TODO tal vez lightStabilizer es 0
-
-
 	filterHandler->setSkinThreshold(lightStabilizer->getSkinThreshold());
 
 	int Xcoord,Ycoord,XcoordFIR,YcoordFIR;

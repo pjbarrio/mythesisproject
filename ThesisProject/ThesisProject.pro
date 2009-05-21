@@ -1,7 +1,8 @@
 TARGET = ThesisProject
 QT += core \
     gui
-HEADERS += QtOpenCV/qcv/qcvcg.h \
+HEADERS += DynamicGestureRecognition/src/Association.h \
+    QtOpenCV/qcv/qcvcg.h \
     QtOpenCV/qcv/qcvimage.h \
     QtOpenCV/qcv/qcvmovie.h \
     QtOpenCV/qcv/qcvpainter.h \
@@ -95,7 +96,8 @@ HEADERS += QtOpenCV/qcv/qcvcg.h \
     DynamicGestureRecognition/src/DynamicGestureRecognitionAlgorithm.h \
     DynamicGestureRecognition/src/addGesturePolicy.h \
     mainwindow.h
-SOURCES += QtOpenCV/qcv/qcvcg.cpp \
+SOURCES += DynamicGestureRecognition/src/Association.cpp \
+    QtOpenCV/qcv/qcvcg.cpp \
     QtOpenCV/qcv/qcvimage.cpp \
     QtOpenCV/qcv/qcvmovie.cpp \
     QtOpenCV/qcv/qcvpainter.cpp \

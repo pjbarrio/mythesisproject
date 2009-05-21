@@ -73,12 +73,12 @@ void StateViewer::createVelocityArray(){
 }
 
 /*
- * This method shows the Hand State pixmap.
+ * This method returns the Hand State pixmap.
  */
 
-void StateViewer::setHandPicture(QPixmap *handPixMap)
+QLabel* StateViewer::getHandPicture()
 {
-	ui.handState->setPixmap(*handPixMap);
+	return ui.handState;
 }
 
 /*

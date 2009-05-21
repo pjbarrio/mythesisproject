@@ -330,14 +330,17 @@ void ThesisProject::addGesture()
 
 		QListWidgetItem *qListItem = new QListWidgetItem(ui.GestosList);
 		qListItem->setText(*id);
-///		qListItem->setCheckState(Qt::Unchecked);
 
 		std::string* s1 = new std::string(id->toStdString());
 
 		Gesture* g = new Gesture(tx,ty,s1->c_str());
 
 		if (!getGestureModel()->addGesture(g)){
-			//TODO Informar que no se pudo cargar
+			 QMessageBox::information(this, tr("Hand-Tracking: Nuevo Gesto"),
+									  tr("En la base de Gestos ya existe un gesto "
+										 "almacenado con las características recientemente "
+										 "cargadas. Para evitar funcionamiento incorrecto, el "
+										 "gesto introducido no se guardará."));
 		}
 	}
 
@@ -357,7 +360,6 @@ void ThesisProject::addEvent()
 
 		QListWidgetItem *qListItem = new QListWidgetItem(ui.EventosList);
 		qListItem->setText(*id);
-///		qListItem->setCheckState(Qt::Unchecked);
 
 		if (addEventDialog->getIsKey()){
 			QString* key = addEventDialog->getKey();
@@ -374,7 +376,7 @@ void ThesisProject::addEvent()
 			else{
 				PressCharEvent* pce = createPressCharEvent(id,key);
 				if (pce!=0){
-					getCombinedKeyEventModel()->addEvent(pce);
+					getKeyEventModel()->addEvent(pce);
 				}
 			}
 
@@ -468,28 +470,59 @@ PressCharEvent* ThesisProject::createPressCharEvent(QString* id,QString* key){
 
 void ThesisProject::addAsociation()
 {
-	int ret = addAsociationDialog->exec();
+	int ret = addAsociationDialog->exec(getGestureModel(),getKeyEventModel(),
+			getCombinedKeyEventModel(),getApplicationEventModel(),getOpenFileEventModel());
 
 	if (ret==1){
-		QList<QString*> gestures = addAsociationDialog->getGestures();
-		QList<QString*> events = addAsociationDialog->getEvents();
+		QList<QString*>* gestures = addAsociationDialog->getGestures();
+		QList<QString*>* events = addAsociationDialog->getEvents();
 
 		GestureEventMapper* gestureEventMapper = GestureEventMapper::getInstance();
 
+		QString* gest;
+		QString* eve;
+		QString* ass;
+		Gesture* g;
+		Event* e;
 
-		for (int i = 0;i<gestures.size();i++){
+		for (int i = 0;i<gestures->size();i++){
 			QListWidgetItem *qListItem = new QListWidgetItem(ui.AsociacionList);
-			QString q(*gestures.at(i) + " - " + *events.at(i));
-			qListItem->setText(q);
+			gest = gestures->at(i);
+			eve = events->at(i);
+			ass = new QString(*gest + " - " + *eve);
+			qListItem->setText(*ass);
 			qListItem->setCheckState(Qt::Checked);
 
+			g = getGestureModel()->getGesture(new std::string(gest->toStdString()));
+			e = getEventFromModels(eve);
 
-
-			//TODO HAY QUE HACERLO CHE!!!!
+			if (g!=0 && e!=0)
+				gestureEventMapper->addAssociation(g,e,true);
 		}
-
-
 	}
+}
+
+/*
+ * This method returns the Event associated to the id passed by
+ * parameter. It looks for the Event in every EventModel.
+ */
+
+Event* ThesisProject::getEventFromModels(QString* ev){
+	std::string* s = new std::string(ev->toStdString());
+	Event* ret = 0;
+	ret = getKeyEventModel()->getEvent(s);
+	if (ret!=0)
+		return ret;
+	ret = getApplicationEventModel()->getEvent(s);
+	if (ret!=0)
+		return ret;
+	ret = getOpenFileEventModel()->getEvent(s);
+	if (ret!=0)
+		return ret;
+	ret = getCombinedKeyEventModel()->getEvent(s);
+	if (ret!=0)
+		return ret;
+	return ret;
 }
 
 /*
@@ -499,6 +532,8 @@ void ThesisProject::addAsociation()
 void ThesisProject::removeGesture(){
 	QList<QListWidgetItem*> q = ui.GestosList->selectedItems();
 	if (q.size()==1){
+		QString id = q.first()->text();
+		getGestureModel()->removeGesture(new std::string(id.toStdString()));
 		delete(q.first());
 	}
 
@@ -511,7 +546,42 @@ void ThesisProject::removeGesture(){
 void ThesisProject::removeEvent(){
 	QList<QListWidgetItem*> q = ui.EventosList->selectedItems();
 	if (q.size()==1){
+		QString id = q.first()->text();
+		removeEventfromModel(id);
 		delete(q.first());
+	}
+}
+
+/*
+ * This method removes the event from the model
+ */
+
+void ThesisProject::removeEventfromModel(QString ide){
+	Event* e;
+	std::string* id = new std::string(ide.toStdString());
+
+	e = getKeyEventModel()->getEvent(id);
+	if (e!=0){
+		getKeyEventModel()->removeEvent(id);
+		return;
+	}
+
+	e = getCombinedKeyEventModel()->getEvent(id);
+	if (e!=0){
+		getCombinedKeyEventModel()->removeEvent(id);
+		return;
+	}
+
+	e = getApplicationEventModel()->getEvent(id);
+	if (e!=0){
+		getApplicationEventModel()->removeEvent(id);
+		return;
+	}
+
+	e = getOpenFileEventModel()->getEvent(id);
+	if (e!=0){
+		getOpenFileEventModel()->removeEvent(id);
+		return;
 	}
 }
 
@@ -522,6 +592,7 @@ void ThesisProject::removeEvent(){
 void ThesisProject::removeAsociation(){
 	QList<QListWidgetItem*> q = ui.AsociacionList->selectedItems();
 	if (q.size()==1){
+		//TODO remove from event mapper.
 		delete(q.first());
 	}
 }
@@ -551,6 +622,18 @@ void ThesisProject::rotateY(bool val){
 void ThesisProject::startApplication(){
 
 	saveConfiguration();
+
+	if (Container::getInstance()->getClickSupport() || Container::getInstance()->getStateSupport()){
+		if (!Container::getInstance()->getDiagnosticExecuted()){
+			int oknok = QMessageBox::question(this, tr("Hand-Tracking: Falta de Configuración"),
+												  tr("No se ha ejecutado el Diagnóstico de estados "
+													 "de mano abierta/cerrada. Los resultados obtenidos podrán ser erróneos "
+													 "¿Desea continuar?"),QMessageBox::Yes,QMessageBox::No);
+			if (oknok==QMessageBox::No)
+				return;
+		}
+
+	}
 
 	Container::getInstance()->finishCamViewer();
 
@@ -758,9 +841,6 @@ int ThesisProject::initTrack(CoordsSaver* coordSaver, SystemInfo* sysInfo, Camer
 
 	}
 
-	//TODO tal vez lightStabilizer es 0
-
-
 	filterHandler->setSkinThreshold(lightStabilizer->getSkinThreshold());
 
 	captureCrossState = 0; //Created, not showed.
@@ -812,7 +892,8 @@ void ThesisProject::finishTrack(){
 
 	if (Container::getInstance()->getStateSupport()){
 		ViewState->setEnabled(false);
-		stateViewer->close();
+		if (stateViewer->isVisible())
+			stateViewer->close();
 	}
 	showCaptureCross->setChecked(false);
 	showCaptureCross->setEnabled(false);

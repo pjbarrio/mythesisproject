@@ -116,6 +116,19 @@ Gesture* GestureModel::getGesture(std::string* id){
 	return 0;
 }
 
+/*
+ * this method removes the gesture from the model.
+ */
+
+void GestureModel::removeGesture(std::string *id)
+{
+	Gesture* g = this->getGesture(id);
+	if (g!=0)
+		getGestures()->erase(getGesturesIterator());
+}
+
+
+
 
 
 

@@ -257,7 +257,7 @@ void InitVisualizer::drawHand(bool closed){
  */
 
 void InitVisualizer::drawOpen(){
-	QMetaObject::invokeMethod(sv,"setHandPicture",Q_ARG(QPixmap*,open_Hand));
+	QMetaObject::invokeMethod(sv->getHandPicture(),"setPixmap",Q_ARG(QPixmap,*open_Hand));
 }
 
 /*
@@ -265,5 +265,5 @@ void InitVisualizer::drawOpen(){
  */
 
 void InitVisualizer::drawClosed(){
-	QMetaObject::invokeMethod(sv,"setHandPicture",Q_ARG(QPixmap*,close_Hand));
+	QMetaObject::invokeMethod(sv->getHandPicture(),"setPixmap",Q_ARG(QPixmap,*close_Hand));
 }

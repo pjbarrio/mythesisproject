@@ -8,6 +8,8 @@
 #include "EventModel.h"
 #include "string.h"
 
+
+
 /*
  * This method creates a vector which will store the event objects.
  */
@@ -103,4 +105,15 @@ Event* EventModel::getEvent(std::string* id){
 		this->next();
 	}
 	return 0;
+}
+
+/*
+ * This method removes the Event from the model.
+ */
+
+void EventModel::removeEvent(std::string *id)
+{
+	Event* e = this->getEvent(id);
+	if (e!=0)
+		getEvents()->erase(getEventsIterator());
 }

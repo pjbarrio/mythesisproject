@@ -31,6 +31,7 @@ Container::Container() {
  configHandler = 0;
  rotateX = false;
  rotateY = false;
+ handDiagnosticExecuted = false;
 }
 
 /*
@@ -49,6 +50,7 @@ Container::~Container() {
 	 configHandler = 0;
 	 rotateX = false;
 	 rotateY = false;
+	 handDiagnosticExecuted = false;
 }
 
 /*

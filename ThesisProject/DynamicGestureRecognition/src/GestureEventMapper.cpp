@@ -25,7 +25,7 @@ GestureEventMapper* GestureEventMapper::instance = 0;
 
 GestureEventMapper::GestureEventMapper() {
 	cout << "Hello Gesture Event Mapper\n";
-	associationTable = new map<Gesture*,Event*>();
+	associationTable = new map<Gesture*,Association*>();
 }
 
 /*
@@ -49,7 +49,7 @@ GestureEventMapper *GestureEventMapper::getInstance()
 		instance = new GestureEventMapper();
 		Event *e = new DoNothingEvent();
 		Gesture *g = GestureModelHandler::getNoGestureDetectedInstance();
-		instance->addAssociation(g,e);
+		instance->addAssociation(g,e,true);
 	}
 	return instance;
 }
@@ -74,19 +74,47 @@ void GestureEventMapper::deleteInstance()
 
 Event *GestureEventMapper::getEvent(Gesture *gesture)
 {
-	map<Gesture*,Event*>::iterator it = getAssociationTable()->find(gesture);
+	map<Gesture*,Association*>::iterator it = getAssociationTable()->find(gesture);
 
 	if (it == getAssociationTable()->end())
 		return 0;
 
-	return getAssociationTable()->find(gesture)->second;
+	Association* ass = getAssociationTable()->find(gesture)->second;
+
+	if (ass->getActivated())
+		return ass->getEvent();
+
+	return 0;
+
 }
+
+/*
+ * This method returns the association object associated to
+ * a gesture.
+ */
+
+Association* GestureEventMapper::getAssociation(Gesture* gesture){
+	map<Gesture*,Association*>::iterator it = getAssociationTable()->find(gesture);
+
+	if (it == getAssociationTable()->end())
+		return 0;
+
+	Association* ass = getAssociationTable()->find(gesture)->second;
+
+	return ass;
+}
+
 
 /*
  * This Method adds a new association with a Gesture and an Event
  */
 
-void GestureEventMapper::addAssociation(Gesture *gesture, Event *event)
+void GestureEventMapper::addAssociation(Gesture *gesture, Event *event, bool activated)
 {
-	(*getAssociationTable())[gesture] = event;
+	Association* ass = new Association();
+	ass->setGesture(gesture);
+	ass->setEvent(event);
+	ass->setActivated(activated);
+
+	(*getAssociationTable())[gesture] = ass;
 }

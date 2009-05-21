@@ -41,6 +41,8 @@ public:
 	DTWAlgorithm *getDtwAlgorithm() const {return dtwAlgorithm;}
 	Gesture* getGesture(std::string*);
 
+	void removeGesture(std::string*);
+
 private:
 	DTWAlgorithm *dtwAlgorithm;
 	vector<Gesture*> *gestures;
