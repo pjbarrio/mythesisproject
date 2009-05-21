@@ -11,21 +11,23 @@
 #ifndef GESTUREEVENTMAPPER_H_
 #define GESTUREEVENTMAPPER_H_
 
-#include "Event.h"
+
 #include "Gesture.h"
 #include "map.h"
+#include "Association.h"
 
 class GestureEventMapper {
 
 public:
-	void addAssociation(Gesture*,Event*);
-	Event *getEvent(Gesture *);
+	void addAssociation(Gesture*,Event*,bool);
+	Event* getEvent(Gesture *);
+	Association* getAssociation(Gesture*);
 	static GestureEventMapper *getInstance();
 	static void deleteInstance();
 private:
 	static GestureEventMapper *instance;
-	map<Gesture*,Event*> *associationTable;
-    map<Gesture*,Event*> *getAssociationTable() const {return associationTable;}
+	map<Gesture*,Association*> *associationTable;
+    map<Gesture*,Association*> *getAssociationTable() const {return associationTable;}
     GestureEventMapper();
     ~GestureEventMapper();
 };

@@ -54,12 +54,14 @@ void LightStabilizer::runAmbientDiagnostic(CamHandler *cam,FilterHandler*filterH
 
 	if (ret == 0){
 
-		//TODO Informar que no se concretó el handDiagnostic.
+		Container::getInstance()->setDiagnosticExecuted(false);
 
 		Container::getInstance()->finishCamViewer();
 
 		return;
 	}
+
+	Container::getInstance()->setDiagnosticExecuted(true);
 
 	//Primera parte...
 

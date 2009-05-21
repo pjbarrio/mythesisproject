@@ -42,7 +42,7 @@ public:
     QLabel* getCoordXLabel(){return ui.XCoord;};
     QLabel* getCoordYLabel(){return ui.YCoord;};
     void setBufferXY(CircularBuffer* cbx,CircularBuffer* cb);
-    void setHandPicture(QPixmap*);
+    QLabel* getHandPicture();
     paintMovement* getPaintMovement(){return ui.widget_4;};
     QLabel* getFilteredImage();
 private:

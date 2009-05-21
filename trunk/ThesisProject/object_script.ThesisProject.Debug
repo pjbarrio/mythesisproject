@@ -1,4 +1,5 @@
 INPUT(
+./debug\Association.o
 ./debug\qcvcg.o
 ./debug\qcvimage.o
 ./debug\qcvmovie.o

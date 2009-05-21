@@ -26,6 +26,7 @@ public:
 	bool hasNext();
 	void next();
 	bool addEvent(Event*);
+	void removeEvent(std::string*);
 	Event* getEvent(std::string*);
 
 private:

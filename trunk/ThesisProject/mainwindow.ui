@@ -126,7 +126,7 @@
        <item>
         <widget class="QTabWidget" name="tabWidget">
          <property name="currentIndex">
-          <number>2</number>
+          <number>1</number>
          </property>
          <widget class="QWidget" name="tab">
           <attribute name="title">
@@ -249,7 +249,7 @@ p, li { white-space: pre-wrap; }
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset resource="Resources/resources.qrc">
+                    <iconset>
                      <normaloff>:/buttonsImages/Add.jpg</normaloff>:/buttonsImages/Add.jpg</iconset>
                    </property>
                    <property name="iconSize">
@@ -269,7 +269,7 @@ p, li { white-space: pre-wrap; }
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset resource="Resources/resources.qrc">
+                    <iconset>
                      <normaloff>:/buttonsImages/Remove.jpg</normaloff>:/buttonsImages/Remove.jpg</iconset>
                    </property>
                    <property name="iconSize">
@@ -328,7 +328,7 @@ p, li { white-space: pre-wrap; }
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset resource="Resources/resources.qrc">
+                    <iconset>
                      <normaloff>:/buttonsImages/Add.jpg</normaloff>:/buttonsImages/Add.jpg</iconset>
                    </property>
                    <property name="iconSize">
@@ -348,7 +348,7 @@ p, li { white-space: pre-wrap; }
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset resource="Resources/resources.qrc">
+                    <iconset>
                      <normaloff>:/buttonsImages/Remove.jpg</normaloff>:/buttonsImages/Remove.jpg</iconset>
                    </property>
                    <property name="iconSize">
@@ -400,7 +400,7 @@ p, li { white-space: pre-wrap; }
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset resource="Resources/resources.qrc">
+                    <iconset>
                      <normaloff>:/buttonsImages/Add.jpg</normaloff>:/buttonsImages/Add.jpg</iconset>
                    </property>
                    <property name="iconSize">
@@ -420,7 +420,7 @@ p, li { white-space: pre-wrap; }
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset resource="Resources/resources.qrc">
+                    <iconset>
                      <normaloff>:/buttonsImages/Remove.jpg</normaloff>:/buttonsImages/Remove.jpg</iconset>
                    </property>
                    <property name="iconSize">
@@ -484,7 +484,7 @@ p, li { white-space: pre-wrap; }
       <string>Importar</string>
      </property>
      <property name="icon">
-      <iconset resource="Resources/resources.qrc">
+      <iconset>
        <normaloff>:/ToolBar/import.jpg</normaloff>:/ToolBar/import.jpg</iconset>
      </property>
      <widget class="QMenu" name="menuEventos">
@@ -492,7 +492,7 @@ p, li { white-space: pre-wrap; }
        <string>Eventos</string>
       </property>
       <property name="icon">
-       <iconset resource="Resources/resources.qrc">
+       <iconset>
         <normaloff>:/ToolBar/Events.jpg</normaloff>:/ToolBar/Events.jpg</iconset>
       </property>
       <addaction name="actionSimulaci_n_Tecla"/>
@@ -531,7 +531,7 @@ p, li { white-space: pre-wrap; }
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionAbrir_Configuraci_n">
    <property name="icon">
-    <iconset resource="Resources/resources.qrc">
+    <iconset>
      <normaloff>:/ToolBar/openconf.jpg</normaloff>:/ToolBar/openconf.jpg</iconset>
    </property>
    <property name="text">
@@ -546,7 +546,7 @@ p, li { white-space: pre-wrap; }
   </action>
   <action name="actionGestos">
    <property name="icon">
-    <iconset resource="Resources/resources.qrc">
+    <iconset>
      <normaloff>:/ToolBar/gesture.png</normaloff>:/ToolBar/gesture.png</iconset>
    </property>
    <property name="text">
@@ -558,7 +558,7 @@ p, li { white-space: pre-wrap; }
   </action>
   <action name="actionSalir">
    <property name="icon">
-    <iconset resource="Resources/resources.qrc">
+    <iconset>
      <normaloff>:/ToolBar/quit.jpg</normaloff>:/ToolBar/quit.jpg</iconset>
    </property>
    <property name="text">
@@ -573,7 +573,7 @@ p, li { white-space: pre-wrap; }
   </action>
   <action name="actionAcerca_de">
    <property name="icon">
-    <iconset resource="Resources/resources.qrc">
+    <iconset>
      <normaloff>:/ToolBar/about.jpg</normaloff>:/ToolBar/about.jpg</iconset>
    </property>
    <property name="text">
@@ -585,7 +585,7 @@ p, li { white-space: pre-wrap; }
   </action>
   <action name="actionSimulaci_n_Tecla">
    <property name="icon">
-    <iconset resource="Resources/resources.qrc">
+    <iconset>
      <normaloff>:/ToolBar/key.jpg</normaloff>:/ToolBar/key.jpg</iconset>
    </property>
    <property name="text">
@@ -597,7 +597,7 @@ p, li { white-space: pre-wrap; }
   </action>
   <action name="actionEjecuci_n_Aplicaci_n">
    <property name="icon">
-    <iconset resource="Resources/resources.qrc">
+    <iconset>
      <normaloff>:/ToolBar/ExeApp.jpg</normaloff>:/ToolBar/ExeApp.jpg</iconset>
    </property>
    <property name="text">
@@ -609,7 +609,7 @@ p, li { white-space: pre-wrap; }
   </action>
   <action name="actionAbrir_Archivo">
    <property name="icon">
-    <iconset resource="Resources/resources.qrc">
+    <iconset>
      <normaloff>:/ToolBar/OpenFile.jpg</normaloff>:/ToolBar/OpenFile.jpg</iconset>
    </property>
    <property name="text">
@@ -621,7 +621,7 @@ p, li { white-space: pre-wrap; }
   </action>
   <action name="actionImportar_Todos">
    <property name="icon">
-    <iconset resource="Resources/resources.qrc">
+    <iconset>
      <normaloff>:/ToolBar/importall.jpg</normaloff>:/ToolBar/importall.jpg</iconset>
    </property>
    <property name="text">
@@ -633,7 +633,7 @@ p, li { white-space: pre-wrap; }
   </action>
   <action name="actionCombinaci_n_Teclas">
    <property name="icon">
-    <iconset resource="Resources/resources.qrc">
+    <iconset>
      <normaloff>:/ToolBar/combined.jpg</normaloff>:/ToolBar/combined.jpg</iconset>
    </property>
    <property name="text">
@@ -645,7 +645,7 @@ p, li { white-space: pre-wrap; }
   </action>
   <action name="actionSalvar_Configuraci_n">
    <property name="icon">
-    <iconset resource="Resources/resources.qrc">
+    <iconset>
      <normaloff>:/ToolBar/saveConfig.jpg</normaloff>:/ToolBar/saveConfig.jpg</iconset>
    </property>
    <property name="text">
@@ -663,7 +663,7 @@ p, li { white-space: pre-wrap; }
     <bool>false</bool>
    </property>
    <property name="icon">
-    <iconset resource="Resources/resources.qrc">
+    <iconset>
      <normaloff>:/ToolBar/Stop.jpg</normaloff>:/ToolBar/Stop.jpg</iconset>
    </property>
    <property name="text">

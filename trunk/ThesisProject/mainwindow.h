@@ -107,7 +107,8 @@ private:
     EventModel *getCombinedKeyEventModel();
     EventModel *getApplicationEventModel();
     EventModel *getOpenFileEventModel();
-
+    Event* getEventFromModels(QString*);
+    void removeEventfromModel(QString);
     void initVariables();
     PressCharEvent *createPressCharEvent(QString*, QString*);
     void saveConfiguration();
