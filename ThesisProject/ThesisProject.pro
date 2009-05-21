@@ -1,7 +1,14 @@
 TARGET = ThesisProject
 QT += core \
     gui
-HEADERS += XML/XMLStreamWriter.h \
+HEADERS += QtOpenCV/qcv/qcvcg.h \
+    QtOpenCV/qcv/qcvimage.h \
+    QtOpenCV/qcv/qcvmovie.h \
+    QtOpenCV/qcv/qcvpainter.h \
+    QtOpenCV/qcv/qcvtypes.h \
+    QtOpenCV/qcv/qcvwidget.h \
+    QtOpenCV/qcv/qtopencv.h \
+    XML/XMLStreamWriter.h \
     XML/XmlStreamReader.h \
     DynamicGestureRecognition/Initializer/InitTrainer.h \
     Camera/CameraVideo.h \
@@ -88,7 +95,14 @@ HEADERS += XML/XMLStreamWriter.h \
     DynamicGestureRecognition/src/DynamicGestureRecognitionAlgorithm.h \
     DynamicGestureRecognition/src/addGesturePolicy.h \
     mainwindow.h
-SOURCES += XML/XMLStreamWriter.cpp \
+SOURCES += QtOpenCV/qcv/qcvcg.cpp \
+    QtOpenCV/qcv/qcvimage.cpp \
+    QtOpenCV/qcv/qcvmovie.cpp \
+    QtOpenCV/qcv/qcvpainter.cpp \
+    QtOpenCV/qcv/qcvtypes.cpp \
+    QtOpenCV/qcv/qcvwidget.cpp \
+    QtOpenCV/qcv/qtopencv.cpp \
+    XML/XMLStreamWriter.cpp \
     XML/XmlStreamReader.cpp \
     DynamicGestureRecognition/Initializer/InitTrainer.cpp \
     Camera/CameraVideo.cpp \

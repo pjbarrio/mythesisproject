@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading ui file 'stateviewer.ui'
 **
-** Created: Mon 11. May 18:36:00 2009
+** Created: Wed 20. May 17:20:33 2009
 **      by: Qt User Interface Compiler version 4.5.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling ui file!
@@ -111,6 +111,7 @@ public:
         gridLayout_4->setObjectName(QString::fromUtf8("gridLayout_4"));
         processedImage = new QLabel(groupBox);
         processedImage->setObjectName(QString::fromUtf8("processedImage"));
+        processedImage->setAlignment(Qt::AlignCenter);
 
         gridLayout_4->addWidget(processedImage, 0, 0, 1, 1);
 

@@ -13,6 +13,8 @@ paintMovement::paintMovement(QWidget *parent)
 	ui.setupUi(this);
 	q1 = new QColor("#000000");
 	p1 = new QPen(*q1, 12, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin);
+	this->xvalues = 0;
+	this->yvalues = 0;
 }
 
 /*
@@ -31,7 +33,13 @@ paintMovement::~paintMovement()
 
 void paintMovement::paintEvent(QPaintEvent *event)
 {
-/*
+	if (xvalues == 0 || yvalues == 0)
+		return;
+
+	circsize = xvalues->size();
+	if (circsize == 0)
+		return;
+
     QPainter painter(this);
 
     painter.setRenderHint(QPainter::Antialiasing, true);
@@ -77,8 +85,7 @@ void paintMovement::paintEvent(QPaintEvent *event)
     	index++;
 
     }
-*/
- }
+}
 
 /*
  * This method set the Circular Buffers to draw the gesture movement.
@@ -89,7 +96,6 @@ void paintMovement::paintEvent(QPaintEvent *event)
 void paintMovement::setData(CircularBuffer* xs,CircularBuffer* ys){
 	xvalues = xs;
 	yvalues = ys;
-	circsize = xvalues->size();
 }
 
 /*
