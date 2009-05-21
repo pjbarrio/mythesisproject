@@ -6,6 +6,7 @@
  */
 
 #include "Container.h"
+#include "../../QtOpenCV/qcv/qcvimage.h"
 
 /*
  * This line initializes the Container instance.
@@ -73,11 +74,49 @@ void Container::setFilteredImage(IplImage *img)
 {
 	filteredImageAccess.lock();
 
-	image = new QImage((const uchar *)img->imageData,img->width, img->height,img->widthStep, QImage::Format_RGB888);
+	IplImage* clone = cvCreateImage(cvSize(240,180), IPL_DEPTH_8U, 1);
+	cvResize(img,clone,1);
 
-	fi = new QPixmap(QPixmap::fromImage(image->rgbSwapped()));
+	if (fi!=0)
+		delete (fi);
+	fi = new QPixmap(qcvQPixmap(clone));
+
+	cvReleaseImage(&clone);
+
+	fiset = true;
 
 	filteredImageAccess.unlock();
+
+	fiWaitCondition.wakeAll();
+}
+
+/*
+ * This method returns the filtered Image
+ */
+QPixmap* Container::getFilteredImage()
+{
+	QPixmap* ret;
+	filteredImageAccess.lock();
+
+	while (!fiset)
+		fiWaitCondition.wait(&filteredImageAccess);
+
+	fiset = false;
+
+	ret = fi;
+
+	filteredImageAccess.unlock();
+
+	return ret;
+}
+
+/*
+ * This method wakes up the waiting threads to
+ * finish the application
+ */
+
+void Container::wakeAll(){
+	fiWaitCondition.wakeAll();
 }
 
 /*

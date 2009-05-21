@@ -60,7 +60,10 @@ private:
 	QAction* StopCapturing;
 	QAction* ViewState;
 	QAction* Restore;
-
+	QAction* showCaptureCross;
+	int captureCrossState;
+	QAction* showFiltered;
+	int filteredstate;
 	AddGesture *addGestureDialog;
     AddEvent *addEventDialog;
     AddAsociation *addAsociationDialog;
@@ -112,6 +115,9 @@ private:
 
     int initTrack(CoordsSaver*, SystemInfo* , Camera*);
     void finishTrack();
+
+    void updateShowCapture();
+    void updateShowFiletered();
 
     CoordsSaver* coordSaver;
 	SystemInfo* sysInfo;

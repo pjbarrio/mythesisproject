@@ -56,12 +56,7 @@ public:
     ;
     void createCamViewerInstance(QLabel*);
     static Container *getInstance();
-    QPixmap *getFilteredImage()
-    {
-        return fi;
-    }
-
-    ;
+    QPixmap* getFilteredImage();
     void setFilteredImage(IplImage *filteredImage);
     FilterHandler *getFilterHandler();
     ConfigHandler *getConfigHandler();
@@ -169,6 +164,9 @@ public:
     void addFrame(IplImage*);
     QList<IplImage*> *getVideo();
     void deleteVideo();
+
+    void wakeAll();
+
     ThesisStart *getThesisStart() const {return thesisStart;}
 
     void setThesisStart(ThesisStart *thesisStart){this->thesisStart = thesisStart;}
@@ -178,6 +176,8 @@ private:
 	QList<Initializer*>* initializerList;
 	QList<Thread_Worker*>* threadworkerList;
 	QMutex filteredImageAccess;
+	QWaitCondition fiWaitCondition;
+	bool fiset;
 	QMutex logAccess;
 	QMutex configHandlerAccess;
 	QMutex lightStabilizerAccess;

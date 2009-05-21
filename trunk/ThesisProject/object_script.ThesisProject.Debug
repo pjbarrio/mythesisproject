@@ -1,4 +1,11 @@
 INPUT(
+./debug\qcvcg.o
+./debug\qcvimage.o
+./debug\qcvmovie.o
+./debug\qcvpainter.o
+./debug\qcvtypes.o
+./debug\qcvwidget.o
+./debug\qtopencv.o
 ./debug\XMLStreamWriter.o
 ./debug\XmlStreamReader.o
 ./debug\InitTrainer.o
@@ -75,6 +82,7 @@ INPUT(
 ./debug\addGesturePolicy.o
 ./debug\main.o
 ./debug\mainwindow.o
+./debug\moc_qcvwidget.o
 ./debug\moc_handdiagnostic.o
 ./debug\moc_paintmovement.o
 ./debug\moc_newgesture.o

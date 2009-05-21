@@ -1,4 +1,11 @@
 INPUT(
+./release\qcvcg.o
+./release\qcvimage.o
+./release\qcvmovie.o
+./release\qcvpainter.o
+./release\qcvtypes.o
+./release\qcvwidget.o
+./release\qtopencv.o
 ./release\XMLStreamWriter.o
 ./release\XmlStreamReader.o
 ./release\InitTrainer.o
@@ -75,6 +82,7 @@ INPUT(
 ./release\addGesturePolicy.o
 ./release\main.o
 ./release\mainwindow.o
+./release\moc_qcvwidget.o
 ./release\moc_handdiagnostic.o
 ./release\moc_paintmovement.o
 ./release\moc_newgesture.o

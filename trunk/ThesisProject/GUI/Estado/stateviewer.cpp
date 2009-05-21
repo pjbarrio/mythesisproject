@@ -82,11 +82,12 @@ void StateViewer::setHandPicture(QPixmap *handPixMap)
 }
 
 /*
- * This method shows the filtered Image
+ * This method sets the label which will
+ * show the filtered Image
  */
 
-void StateViewer::setFilteredImage(QPixmap* filtered){
-	ui.processedImage->setPixmap(*filtered);
+QLabel* StateViewer::getFilteredImage(){
+	return ui.processedImage;
 }
 /*
  * This method creates the acceleration Equalizer

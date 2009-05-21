@@ -5,7 +5,6 @@
 #include "Utils/SystemInfo.h"
 #include <cv.h>
 #include <highgui.h>
-
 #include <tchar.h>
 #include <string.h>
 #include "DynamicGestureRecognition/Events/PressCharEvent.h"
@@ -60,7 +59,9 @@ void ThesisProject::createToolbar(){
 	connect(ui.actionCombinaci_n_Teclas,SIGNAL(triggered()),this,SLOT(importCombinedKeyPressEvents()));
 	connect(ui.actionSalvar_Configuraci_n,SIGNAL(triggered()),this,SLOT(saveConfigurationinFile()));
 	connect(ui.action_Detener_Captura, SIGNAL(triggered()), this, SLOT(stopCapture()));
-
+	ui.menuControl->addAction(ViewState);
+	ViewState->setShortcut(QApplication::translate("ThesisProjectClass", "Ctrl+S", 0, QApplication::UnicodeUTF8));
+	ui.menuConfiguraci_n->addAction(quitAction);
 }
 
 /*
@@ -185,6 +186,8 @@ void ThesisProject::createCompleteTrayIcon(){
 
 	connect(StopCapturing, SIGNAL(triggered()), this, SLOT(stopCapture()));
 
+	trayIconMenu->addSeparator();
+
 	ViewState = new QAction(tr("Ver estado"), this);
 
 	ViewState->setEnabled(false);
@@ -192,6 +195,22 @@ void ThesisProject::createCompleteTrayIcon(){
 	trayIconMenu->addAction(ViewState);
 
 	connect(ViewState, SIGNAL(triggered()), this, SLOT(ViewCaptureState()));
+
+	showCaptureCross = new QAction(tr("Mostrar Captura"),this);
+
+	showCaptureCross->setEnabled(false);
+
+	showCaptureCross->setCheckable(true);
+
+	trayIconMenu->addAction(showCaptureCross);
+
+	showFiltered = new QAction(tr("Mostrar imagen Filtrada"),this);
+
+	showFiltered->setEnabled(false);
+
+	showFiltered->setCheckable(true);
+
+	trayIconMenu->addAction(showFiltered);
 
 	trayIconMenu->addSeparator();
 
@@ -207,9 +226,11 @@ void ThesisProject::createCompleteTrayIcon(){
 
 	quitAction = new QAction(tr("&Salir"), this);
 
-	quitAction->setShortcut(tr("Ctrl+Shift+S"));
+	quitAction->setShortcut(QApplication::translate("ThesisProjectClass", "Ctrl+Shift+S", 0, QApplication::UnicodeUTF8));
 
-	connect(quitAction, SIGNAL(triggered()), qApp, SLOT(quit()));
+///	connect(quitAction, SIGNAL(triggered()), qApp, SLOT(quit()));
+
+	connect(quitAction, SIGNAL(triggered()), this, SLOT(byeApplication()));
 
 	trayIconMenu->addAction(quitAction);
 
@@ -242,7 +263,8 @@ void ThesisProject::stopCapture(){
  */
 
 void ThesisProject::ViewCaptureState(){
-	stateViewer->show();
+	QMetaObject::invokeMethod(stateViewer,"show");
+//	stateViewer->show();
 }
 
 /*
@@ -548,7 +570,7 @@ void ThesisProject::startApplication(){
 
     connect(timer, SIGNAL(timeout()), this, SLOT(captureNextFrame()));
 
-    timer->start(10);
+    timer->start(15);
 
 	ts->start();
 
@@ -679,8 +701,19 @@ EventModel* ThesisProject::getOpenFileEventModel()
 
 int ThesisProject::initTrack(CoordsSaver* coordSaver, SystemInfo* sysInfo, Camera* camera){
 
-	if (Container::getInstance()->getStateSupport())
+	if (Container::getInstance()->getStateSupport()){
+
 		ViewState->setEnabled(true);
+
+	}
+
+	showCaptureCross->setEnabled(true);
+
+	showCaptureCross->setChecked(true);
+
+	showFiltered->setEnabled(true);
+
+	showFiltered->setChecked(false);
 
 	initiatedCamera = true;
 
@@ -730,8 +763,9 @@ int ThesisProject::initTrack(CoordsSaver* coordSaver, SystemInfo* sysInfo, Camer
 
 	filterHandler->setSkinThreshold(lightStabilizer->getSkinThreshold());
 
-	cvNamedWindow("Estado actual", CV_WINDOW_AUTOSIZE);
-	cvMoveWindow("Estado actual", 100, 100);
+	captureCrossState = 0; //Created, not showed.
+
+	filteredstate = 0; //Created, not showed.
 
 	return 0;
 }
@@ -753,9 +787,16 @@ void ThesisProject::finishTrack(){
 
 	coordSaver->finishCoordSaver();
 
-	cvDestroyWindow("Estado actual");
+	if (captureCrossState == 1 || captureCrossState == 0) //Created & Showed || !Showed.
+		cvDestroyWindow("Estado actual");
+
+	if (filteredstate == 1 || filteredstate == 0) //Created & Showed || !Showed.
+		cvDestroyWindow("Filtrada");
+
 
 	logger->closeLogger();
+
+	Container::getInstance()->wakeAll();
 
 	Container::getInstance()->getThesisStart()->wait();
 
@@ -769,8 +810,14 @@ void ThesisProject::finishTrack(){
 
 	initiatedCamera = false;
 
-	if (Container::getInstance()->getStateSupport())
+	if (Container::getInstance()->getStateSupport()){
 		ViewState->setEnabled(false);
+		stateViewer->close();
+	}
+	showCaptureCross->setChecked(false);
+	showCaptureCross->setEnabled(false);
+	showFiltered->setChecked(false);
+	showFiltered->setEnabled(false);
 
 }
 
@@ -807,7 +854,10 @@ void ThesisProject::captureNextFrame(){
 
 	util->putMarker(currentFrame,XcoordFIR*4,YcoordFIR*4);
 
-	cvShowImage("Estado actual", currentFrame );
+	updateShowCapture();
+
+	updateShowFiletered();
+
 
 	coordSaver->saveCoords(XcoordFIR,YcoordFIR);
 
@@ -823,6 +873,54 @@ void ThesisProject::captureNextFrame(){
 	cvReleaseImage( &filteredImage );
 }
 
+/*
+ * This method shows or not the window which will show
+ * the capturedImage with cross.
+ */
+
+void ThesisProject::updateShowCapture(){
+
+	if (showCaptureCross->isChecked()){
+		if (captureCrossState == 0){ //!Created & !Showed
+			cvNamedWindow("Estado actual", CV_WINDOW_AUTOSIZE);
+			cvShowImage("Estado actual", currentFrame );
+			captureCrossState = 1;
+		}
+		else if (captureCrossState == 1){ //Created & Showed
+			cvShowImage("Estado actual", currentFrame );
+		}
+	}
+	else {
+		cvDestroyWindow("Estado actual");
+		captureCrossState = 0; //!Created & !Showed
+	}
+
+}
+
+/*
+ * This method updates the window which will show
+ * the filtered image.
+ */
+
+void ThesisProject::updateShowFiletered(){
+
+	if (showFiltered->isChecked()){
+
+		if (filteredstate == 0){ //!Created & !Showed
+			cvNamedWindow("Filtrada", CV_WINDOW_AUTOSIZE);
+			cvShowImage("Filtrada", filteredImage );
+			filteredstate = 1;
+		}
+		else if (filteredstate == 1){ //Created & Showed
+			cvShowImage("Filtrada", filteredImage );
+		}
+	}
+	else {
+		cvDestroyWindow("Filtrada");
+		filteredstate = 0; //!Created & !Showed
+	}
+
+}
 /*
  * This method returns the systemInfo instance.
  */

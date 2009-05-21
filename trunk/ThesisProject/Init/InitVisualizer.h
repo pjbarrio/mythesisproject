@@ -33,6 +33,8 @@ private:
 
 	QPixmap* open_Hand;
 	QPixmap* close_Hand;
+	QPixmap* image;
+	QPixmap* auximg;
 	bool firstXY;
 	double lastX;
 	double lastY;
@@ -52,9 +54,9 @@ private:
 	void drawFilteredImage(QPixmap*);
 	static const double NO_VELOCITY_DETECTED = -1.0;
 	static const double NO_ACCELERATION_DETECTED = -0.1;
-	static const double MAX_VELOCITY = 10000.0;
-	static const double MAX_ACCELERATION = 10000.0;
-	static const int DRAW_SIZE = 15;
+	static const double MAX_VELOCITY = 110.0;
+	static const double MAX_ACCELERATION = 3400.0;
+	static const int DRAW_SIZE = 30;
 	DistanceCalculator* distanceCalculator;
 	void writeCoords(double,double);
 	void drawHand(bool);

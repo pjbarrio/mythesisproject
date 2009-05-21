@@ -9,6 +9,7 @@
 #include "string.h"
 #include <iostream>
 #include <sstream>
+#include <QMetaObject>
 #include "../GUI/Utils/Container.h"
 
 /*
@@ -44,11 +45,12 @@ InitVisualizer::~InitVisualizer() {
 void InitVisualizer::init()
 {
 	distanceCalculator = new EuclideanDistance();
-	open_Hand = new QPixmap("hand_open.jpg");
-	close_Hand = new QPixmap("hand_close.jpg");
+	open_Hand = new QPixmap(":/HandState/hand_open.jpg");
+	close_Hand = new QPixmap(":/HandState/hand_close.jpg");
 	cb1 = new CircularBuffer(DRAW_SIZE);
 	cb2 = new CircularBuffer(DRAW_SIZE);
 	sv->setBufferXY(cb1,cb2);
+	image = 0;
 }
 
 /*
@@ -58,38 +60,49 @@ void InitVisualizer::init()
 
 void InitVisualizer::setNewInput(double x, double y, double t)
 {
-//	QPixmap* image = getFilteredImage();
 
-//	bool closed = getIsClosed();
+	bool closed = getIsClosed();
 
-//	double velocity = getVelocity(x,y,t);
+	double velocity = getVelocity(x,y,t);
 
-//	double acc = getAcceleration(velocity,t);
+	double acc = getAcceleration(velocity,t);
 
-//	updateVelocityDrawer(velocity);
+	updateVelocityDrawer(velocity);
 
-//	updateAccelerationDrawer(acc);
+	updateAccelerationDrawer(acc);
 
-//	drawPoints(x,y);
+	drawPoints(x,y);
 
 	writeCoords(x,y);
 
-//	drawHand(closed);
+	drawHand(closed);
 
-//	drawFilteredImage(image);
+	if (image!=0)
+		delete (image);
+
+	auximg = getFilteredImage();
+
+	if (auximg!=0){
+		image = new QPixmap(*auximg);
+		drawFilteredImage(image);
+	}
 
 	lastX = x;
 	lastY = y;
 	lastT = t;
-//	lastVelocity = velocity;
+	lastVelocity = velocity;
 
+	QMetaObject::invokeMethod(sv,"update");
 }
 
 /*
  * This method paints the filtered image on the window
  */
 void InitVisualizer::drawFilteredImage(QPixmap* image){
-	sv->setFilteredImage(image);
+
+	QMetaObject::invokeMethod(sv->getFilteredImage(),"setPixmap",Q_ARG(QPixmap,*image));
+
+
 }
 
 /*
@@ -143,7 +156,6 @@ double InitVisualizer::getAcceleration(double velocity,double t){
 			firstVelocity = false;
 		}
 	}
-
 	return acc;
 }
 
@@ -154,7 +166,7 @@ double InitVisualizer::getAcceleration(double velocity,double t){
 void InitVisualizer::drawPoints(double x,double y){
 	cb1->addValue(x);
 	cb2->addValue(y);
-	sv->getPaintMovement()->paintEvent(0);
+	QMetaObject::invokeMethod(sv->getPaintMovement(),"update");
 }
 
 /*
@@ -166,10 +178,10 @@ void InitVisualizer::updateVelocityDrawer(double velocity){
 		double limite = (velocity * 18.0) / MAX_VELOCITY;
 		int i = 0;
 		for (i = 0; i < 18 && i < limite;i++){
-			sv->getVelocityList()->at(i)->setEnabled(true);
+			QMetaObject::invokeMethod(sv->getVelocityList()->at(i),"setEnabled",Q_ARG(bool,true));
 		}
 		for (; i < 18 ; i++){
-			sv->getVelocityList()->at(i)->setEnabled(false);
+			QMetaObject::invokeMethod(sv->getVelocityList()->at(i),"setEnabled",Q_ARG(bool,false));
 		}
 	}
 
@@ -180,14 +192,17 @@ void InitVisualizer::updateVelocityDrawer(double velocity){
  */
 
 void InitVisualizer::updateAccelerationDrawer(double acceleration){
+	if (acceleration<0){
+		acceleration*=-1.0;
+	}
 	if (acceleration != NO_ACCELERATION_DETECTED){
 		double limite = (acceleration * 18.0) / MAX_ACCELERATION;
 		int i = 0;
 		for (i = 0; i < 18 && i < limite;i++){
-			sv->getAccelerationList()->at(i)->setEnabled(true);
+			QMetaObject::invokeMethod(sv->getAccelerationList()->at(i),"setEnabled",Q_ARG(bool,true));
 		}
 		for (; i < 18 ; i++){
-			sv->getAccelerationList()->at(i)->setEnabled(false);
+			QMetaObject::invokeMethod(sv->getAccelerationList()->at(i),"setEnabled",Q_ARG(bool,false));
 		}
 	}
 }
@@ -215,11 +230,14 @@ void InitVisualizer::writeCoords(double x,double y){
 		ss << y;
 		sy = ss.str();
 	}
+	QString xc(sx.c_str());
 
+	QString yc(sy.c_str());
 
-	sv->getCoordXLabel()->setText(QString(sx.c_str()));
-
-	sv->getCoordYLabel()->setText(QString(sy.c_str()));
+	QMetaObject::invokeMethod(sv->getCoordXLabel(),"setText",Q_ARG(QString,xc));
+//	sv->getCoordXLabel()->setText(QString(sx.c_str()));
+	QMetaObject::invokeMethod(sv->getCoordYLabel(),"setText",Q_ARG(QString,yc));
+//	sv->getCoordYLabel()->setText(QString(sy.c_str()));
 }
 
 /*
@@ -239,7 +257,7 @@ void InitVisualizer::drawHand(bool closed){
  */
 
 void InitVisualizer::drawOpen(){
-	sv->setHandPicture(open_Hand);
+	QMetaObject::invokeMethod(sv,"setHandPicture",Q_ARG(QPixmap*,open_Hand));
 }
 
 /*
@@ -247,5 +265,5 @@ void InitVisualizer::drawOpen(){
  */
 
 void InitVisualizer::drawClosed(){
-	sv->setHandPicture(close_Hand);
+	QMetaObject::invokeMethod(sv,"setHandPicture",Q_ARG(QPixmap*,close_Hand));
 }

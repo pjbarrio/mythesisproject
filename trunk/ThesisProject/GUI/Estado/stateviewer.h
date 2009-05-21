@@ -44,7 +44,7 @@ public:
     void setBufferXY(CircularBuffer* cbx,CircularBuffer* cb);
     void setHandPicture(QPixmap*);
     paintMovement* getPaintMovement(){return ui.widget_4;};
-    void setFilteredImage(QPixmap*);
+    QLabel* getFilteredImage();
 private:
 	Ui::StateViewerClass ui;
 	CircularBuffer* cbx;
