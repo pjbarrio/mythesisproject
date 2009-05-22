@@ -1,5 +1,6 @@
 #include "addgesture.h"
 #include "iostream.h"
+#include <QMessageBox>
 #include "../Utils/Container.h"
 
 /*
@@ -13,6 +14,8 @@ AddGesture::AddGesture(NewGesture* newGesture, QWidget *parent)
 	ui.setupUi(this);
 
 	this->newGest = newGesture;
+	this->tx = 0;
+	this->ty = 0;
 }
 
 /*
@@ -22,6 +25,7 @@ AddGesture::AddGesture(NewGesture* newGesture, QWidget *parent)
 AddGesture::~AddGesture()
 {
 	newGest = 0;
+
 }
 
 /*
@@ -63,6 +67,18 @@ int AddGesture::exec()
 
 void AddGesture::accept(){
 	setId(new QString(ui.idGestureEdit->text()));
+
+	if (getTx()==0 && getTy()==0){
+		QMessageBox::information(this, tr("No se ha cargado un gesto"),
+		tr("Deberá cargar un gesto para finalizar."));
+		return;
+	}
+	if (QString::compare(*getId(),tr(""))==0){
+		QMessageBox::information(this, tr("No se ha identificado el gesto"),
+		tr("Deberá introducir un nombre de gesto para continuar."));
+		return;
+	}
+
 	QDialog::accept();
 }
 

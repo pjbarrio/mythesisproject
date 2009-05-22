@@ -1,5 +1,6 @@
 #include "addevent.h"
 #include <QFileDialog>
+#include <QMessageBox>
 #include "iostream.h"
 
 /*
@@ -107,6 +108,25 @@ void AddEvent::accept(){
     setHasArgs(ui.argCheck->isChecked());
 
     setArgs(new QString(ui.argsEdit->text()));
+
+    if (QString::compare(*getId(),tr(""))==0){
+    	QMessageBox::information(this, tr("Faltan setear datos"),
+		  tr("No se ha introducido un nombre de evento. "
+			 "Para continuar, introduzca un nombre al evento."));
+    	return;
+    }
+    if (!getIsKey() && !getIsApp()){
+    	QMessageBox::information(this, tr("Faltan setear datos"),
+		  tr("No se ha seleccionado tipo de evento. "
+			 "Para continuar, elija un tipo de evento desde las opciones."));
+    	return;
+    }
+    if (getIsApp() && QString::compare(*getApp(),tr(""))==0){
+    	QMessageBox::information(this, tr("Faltan setear datos"),
+		  tr("No se ha introducido nombre de aplicación. "
+			 "Para continuar, introduzca/seleccione la aplicación a ejecutar."));
+		return;
+    }
 
     QDialog::accept();
 }

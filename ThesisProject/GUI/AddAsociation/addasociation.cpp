@@ -115,6 +115,12 @@ void AddAsociation::saveGestureClicked(QListWidgetItem* item){
 void AddAsociation::addSelectedItems(){
 
 	QString* toshow = new QString(*gstring + " <-> " + *estring);
+
+	QList<QListWidgetItem *> list = ui.asociacionesView->findItems(*toshow,Qt::MatchExactly);
+
+	if (list.size()>0)
+		return;
+
 	events->append(estring);
 	gestures->append(gstring);
 
