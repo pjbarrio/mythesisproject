@@ -73,11 +73,28 @@ void ThesisProject::openAbout(){
 }
 
 /*
+ * This methods updates the list views with the models.
+ */
+
+void ThesisProject::updateListViews(){
+
+}
+
+/*
  * This methods opens a configuration from an xml file.
  */
 
 void ThesisProject::openConfiguration(){
 	//TODO open configuration
+	QString* filter = new QString();
+	ConfigurationFileName = QFileDialog::getOpenFileName(this,
+		     "Abrir archivo xml de configuración", "C:/", tr("Archivos Configuración (*.xml)"),filter);
+	if (QString::compare(*filter,tr("Archivos Configuración (*.xml)")) == 0){
+		XmlStreamReader* xml = new XmlStreamReader(getGestureModel(),getKeyEventModel(),getCombinedKeyEventModel(),
+				getApplicationEventModel(),getOpenFileEventModel());
+		xml->readFile(ConfigurationFileName);
+		updateListViews();
+	}
 }
 
 /*
@@ -133,7 +150,15 @@ void ThesisProject::importGestures(){
  */
 
 void ThesisProject::saveConfigurationinFile(){
-	//TODO Save Configuration
+	QString fileName;
+	if (ConfigurationFileName!=0){
+
+		//TODO falta algo...
+		XMLStreamWriter* xmlwriter = new XMLStreamWriter();
+		xmlwriter->writeXML(fileName,getGestureModel(),getKeyEventModel(),
+				getCombinedKeyEventModel(),getApplicationEventModel(),getOpenFileEventModel());
+
+	}
 }
 
 /*
@@ -299,6 +324,8 @@ void ThesisProject::initVariables(){
     fileEventModel = 0;
     sysInfo = 0;
     coordSaver = 0;
+
+    ConfigurationFileName = 0;
 }
 
 /*
@@ -592,7 +619,7 @@ void ThesisProject::removeEventfromModel(QString ide){
 void ThesisProject::removeAsociation(){
 	QList<QListWidgetItem*> q = ui.AsociacionList->selectedItems();
 	if (q.size()==1){
-		//TODO remove from event mapper.
+		//TODO implementar remove Association
 		delete(q.first());
 	}
 }

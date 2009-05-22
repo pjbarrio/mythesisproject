@@ -43,7 +43,8 @@ private:
 	void readFileEventElement(QString);
 	void readAssociationsElement();
 	void readAssociationElement(QString);
-
+	void createAssociation(QString idGest, QString idEvent, QString isActive);
+	Event* getEventFromModels(QString);
 	QXmlStreamReader reader;
 
 	GestureModel* gestureModel;

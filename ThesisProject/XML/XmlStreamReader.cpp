@@ -10,6 +10,7 @@
 #include "string.h"
 #include "../DynamicGestureRecognition/Events/OpenFileEvent.h"
 #include "../DynamicGestureRecognition/Events/ExecuteApplication.h"
+#include "../DynamicGestureRecognition/src/GestureEventMapper.h"
 
 /*
  * This method creates the XmlStreamReader object and fill the models passed by parameter. Besides, initializes the variables
@@ -568,7 +569,7 @@ void XmlStreamReader::readAssociationElement(QString isActive){
 			} else if (reader.name() == "Event") {
 				idEvent = reader.readElementText();
 				reader.readNext();
-				//Crear asociación con idGest e idEvent
+				createAssociation(idGest,idEvent,isActive);
 			}
 		} else {
 			reader.readNext();
@@ -576,3 +577,39 @@ void XmlStreamReader::readAssociationElement(QString isActive){
 	}
 }
 
+
+/*
+ * This method adds the association to the GestureEventMapper instance.
+ */
+void XmlStreamReader::createAssociation(QString idGest, QString idEvent, QString isActive){
+	Event* e = getEventFromModels(idEvent);
+	std::string* id = new std::string(idGest.toStdString());
+	Gesture* g = gestureModel->getGesture(id);
+	bool active = false;
+	if (QString::compare(isActive,QString("true")) == 0)
+		active = true;
+	GestureEventMapper::getInstance()->addAssociation(g,e,active);
+}
+
+/*
+ * This method returns the Event instance associated with the string in
+ * the parameter list.
+ */
+
+Event* XmlStreamReader::getEventFromModels(QString ide){
+	std::string* id = new std::string(ide.toStdString());
+	Event* e;
+	e = keyEventModel->getEvent(id);
+	if (e!=0)
+		return e;
+	e = combinedKeyEventModel->getEvent(id);
+	if (e!=0)
+		return e;
+	e = appEventModel->getEvent(id);
+	if (e!=0)
+		return e;
+	e = fileEventModel->getEvent(id);
+	if (e!=0)
+		return e;
+	return 0;
+}

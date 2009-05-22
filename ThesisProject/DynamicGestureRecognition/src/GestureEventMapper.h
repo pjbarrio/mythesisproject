@@ -15,21 +15,32 @@
 #include "Gesture.h"
 #include "map.h"
 #include "Association.h"
-
+#include "vector.h"
 class GestureEventMapper {
 
 public:
-	void addAssociation(Gesture*,Event*,bool);
+	bool addAssociation(Gesture*,Event*,bool);
+	void removeAssociation(Gesture*,Event*);
 	Event* getEvent(Gesture *);
-	Association* getAssociation(Gesture*);
+	Association* getAssociation(Gesture*,Event*);
 	static GestureEventMapper *getInstance();
 	static void deleteInstance();
+	void begin();
+	bool hasNext();
+	void next();
+	Association* getActualAssociation();
 private:
+	map<Gesture*,vector<Association*>* >::iterator mapIterator;
+	vector<Association*>::iterator vectorIterator;
 	static GestureEventMapper *instance;
-	map<Gesture*,Association*> *associationTable;
-    map<Gesture*,Association*> *getAssociationTable() const {return associationTable;}
+	map<Gesture*,vector<Association*>* > *associationTable;
+    map<Gesture*,vector<Association*>* > *getAssociationTable() const {return associationTable;}
     GestureEventMapper();
     ~GestureEventMapper();
+    Association* getActiveAssociationFromVector(vector<Association*>*);
+    Association* getAssociationFromVector(Event*,vector<Association*>*);
+    bool addAssociationToVector(Association*,vector<Association*>*);
+    void removeAssociationFromVector(Event*,vector<Association*>*);
 };
 
 #endif /* GESTUREEVENTMAPPER_H_ */
