@@ -15,13 +15,14 @@
 #include "../DynamicGestureRecognition/src/EventModel.h"
 #include <QString>
 #include <QXmlStreamWriter>
+#include "../DynamicGestureRecognition/src/GestureEventMapper.h"
 
 class XMLStreamWriter {
 public:
 	XMLStreamWriter();
 	virtual ~XMLStreamWriter();
 	bool writeXML(const QString &fileName,GestureModel*,
-			EventModel*,EventModel*, EventModel*, EventModel*);
+			EventModel*,EventModel*, EventModel*, EventModel*, GestureEventMapper*);
 private:
 	void writeGestures(GestureModel*);
 	void writeGesture(Gesture*);
@@ -34,9 +35,9 @@ private:
 	void writeApplicationEvent(Event*);
 	void writeOpenFileEvents(EventModel* eventModel);
 	void writeOpenFileEvent(Event*);
-	void writeAssociations();
+	void writeAssociations(GestureEventMapper*);
 	void writeAssociation(Gesture*,Event*,bool);
-	QXmlStreamWriter xmlWriter;
+	QXmlStreamWriter* xmlWriter;
 };
 
 #endif /* XMLSTREAMWRITER_H_ */

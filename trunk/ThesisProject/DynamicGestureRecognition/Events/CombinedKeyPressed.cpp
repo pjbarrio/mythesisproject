@@ -12,7 +12,7 @@
  * This constructor method saves the PressCharEvent object. This object represent the secondKey to be pressed.
  */
 
-CombinedKeyPressed::CombinedKeyPressed(char* id,BYTE keyPressCode,PressCharEvent* secondPressChar,std::string key):PressCharEvent(id,keyPressCode,key) {
+CombinedKeyPressed::CombinedKeyPressed(const char* id,BYTE keyPressCode,PressCharEvent* secondPressChar,std::string key):PressCharEvent(id,keyPressCode,key) {
 
 	this->SecondKeyPressed = secondPressChar;
 
@@ -49,7 +49,7 @@ bool CombinedKeyPressed::writeXML(QXmlStreamWriter*  xmlWriter){
 
 	xmlWriter->writeStartElement("Event");
 
-	xmlWriter->writeAttribute("id",QString(this->getId()));
+	xmlWriter->writeAttribute("id",QString(this->getId().c_str()));
 
 	this->writeXML(xmlWriter);
 

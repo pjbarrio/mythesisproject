@@ -12,7 +12,7 @@
  * This metod saves the message passed by parameter.
  */
 
-PrintCharEvent::PrintCharEvent(char* id,char* s):Event(id) {
+PrintCharEvent::PrintCharEvent(const char* id,char* s):Event(id) {
 	cout << "Hello Print Char Event\n";
 	this->message = s;
 }

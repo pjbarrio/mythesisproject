@@ -12,7 +12,7 @@
  * This method stores the id of the event passed by parameter.
  */
 
-Event::Event(char* id) {
+Event::Event(const char* id) {
 	cout << "Hello Event\n";
 	this->id = id;
 }
@@ -23,5 +23,5 @@ Event::Event(char* id) {
 
 Event::~Event() {
 	cout << "Bye Event\n";
-	id = 0;
+	id.clear();
 }

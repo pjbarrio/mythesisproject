@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'addasociation.h'
 **
-** Created: Thu 21. May 16:22:47 2009
+** Created: Fri 22. May 14:40:14 2009
 **      by: The Qt Meta Object Compiler version 61 (Qt 4.5.0)
 **
 ** WARNING! All changes made in this file will be lost!

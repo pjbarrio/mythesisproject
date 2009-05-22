@@ -14,7 +14,7 @@
  * This method saves the application file and the arguments written by the user.
  */
 
-ExecuteApplication::ExecuteApplication(char* id,std::string* appName, std::string* appArgs):Event(id) {
+ExecuteApplication::ExecuteApplication(const char* id,std::string* appName, std::string* appArgs):Event(id) {
 	this->appName = appName;
 
 	this->args = appArgs;
@@ -51,7 +51,7 @@ bool ExecuteApplication::writeXML(QXmlStreamWriter* xmlWriter){
 
 	xmlWriter->writeStartElement("Event");
 
-	xmlWriter->writeAttribute("id",QString(this->getId()));
+	xmlWriter->writeAttribute("id",QString(this->getId().c_str()));
 
 	xmlWriter->writeTextElement("App",QString(this->appName->c_str()));
 

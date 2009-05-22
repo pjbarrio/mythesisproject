@@ -16,7 +16,7 @@
 
 class CombinedKeyPressed: public PressCharEvent {
 public:
-	CombinedKeyPressed(char*,BYTE,PressCharEvent*,std::string);
+	CombinedKeyPressed(const char*,BYTE,PressCharEvent*,std::string);
 	virtual ~CombinedKeyPressed();
 	int execute();
 	bool writeXML(QXmlStreamWriter*);

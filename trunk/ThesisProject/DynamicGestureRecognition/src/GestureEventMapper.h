@@ -19,7 +19,7 @@
 class GestureEventMapper {
 
 public:
-	bool addAssociation(Gesture*,Event*,bool);
+	bool addAssociation(Gesture*,Event*,bool,bool&);
 	void removeAssociation(Gesture*,Event*);
 	Event* getEvent(Gesture *);
 	Association* getAssociation(Gesture*,Event*);
@@ -39,7 +39,7 @@ private:
     ~GestureEventMapper();
     Association* getActiveAssociationFromVector(vector<Association*>*);
     Association* getAssociationFromVector(Event*,vector<Association*>*);
-    bool addAssociationToVector(Association*,vector<Association*>*);
+    bool addAssociationToVector(Association*,vector<Association*>*,bool&);
     void removeAssociationFromVector(Event*,vector<Association*>*);
 };
 

@@ -25,6 +25,7 @@
 #include "Filters/FilterHandler.h"
 #include "Utils/ImageUtilities.h"
 #include <QTimer>
+#include "DynamicGestureRecognition/src/GestureEventMapper.h"
 
 
 
@@ -138,10 +139,17 @@ private:
 	CoordsSaver* getCoordSaver();
 	SystemInfo* getSystemInfo();
 	QTimer *timer;
-	QString ConfigurationFileName;
+	QString* ConfigurationFileName;
 	bool initiatedCamera;
 	void createToolbar();
+	void ThesisProject::fillModels(QString fileName,GestureModel*,EventModel*,
+			EventModel*,EventModel*,EventModel*,GestureEventMapper*);
+	QString* selectXmlFile();
 	void updateListViews();
+	void updateAssociationsView();
+	void updateGesturesView();
+	void updateEventsView();
+	void updateEventView(EventModel*);
 private slots:
 	void showNormal();
 	void addGesture();

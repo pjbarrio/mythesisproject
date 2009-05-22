@@ -18,12 +18,13 @@
  */
 
 XmlStreamReader::XmlStreamReader(GestureModel* gm, EventModel* k, EventModel* ck,
-		EventModel* a, EventModel* f) {
+		EventModel* a, EventModel* f, GestureEventMapper* gem) {
 	gestureModel = gm;
 	keyEventModel = k;
 	combinedKeyEventModel = ck;
 	appEventModel = a;
 	fileEventModel = f;
+	this->gem = gem;
 	UP_STR = QString("Up");
 	DOWN_STR = QString("Down");
 	RIGHT_STR = QString("Right");
@@ -169,7 +170,8 @@ void XmlStreamReader::readGestureElement(QString idGesture){
 		}
 	}
 	Gesture* gest = new Gesture(dtwTX,dtwTY,idGesture.toStdString().c_str());
-	gestureModel->addGesture(gest);
+	if (gestureModel!=0)
+		gestureModel->addGesture(gest);
 }
 
 /*
@@ -292,7 +294,8 @@ void XmlStreamReader::readKeyEventElement(QString idEvent){
 				char* ident = new char[idEvent.size()];
 				strcpy(ident,idEvent.toStdString().c_str());
 				PressCharEvent* pc = new PressCharEvent(ident,ky,key.toStdString());
-				keyEventModel->addEvent(pc);
+				if (keyEventModel!=0)
+					keyEventModel->addEvent(pc);
 				if (reader.isEndElement())
 					reader.readNext(); //Skip </Key>
 			}
@@ -369,7 +372,8 @@ void XmlStreamReader::readCombinedKeyEventElement(QString idEvent){
 		if (reader.isEndElement()) {
 			reader.readNext();
 			CombinedKeyPressed* ck = createCombinedKeyPressed(idEvent,keyList);
-			combinedKeyEventModel->addEvent(ck);
+			if (combinedKeyEventModel!=0)
+				combinedKeyEventModel->addEvent(ck);
 			break;
 		}
 
@@ -448,7 +452,8 @@ void XmlStreamReader::readApplicationEventElement(QString idEvent){
 			char* ident = new char[idEvent.size()];
 			strcpy(ident,idEvent.toStdString().c_str());
 			ExecuteApplication* ea = new ExecuteApplication(ident,app,arg);
-			appEventModel->addEvent(ea);
+			if (appEventModel!=0)
+				appEventModel->addEvent(ea);
 			break;
 		}
 
@@ -509,7 +514,8 @@ void XmlStreamReader::readFileEventElement(QString idEvent){
 			char* ident = new char[idEvent.size()];
 			strcpy(ident,idEvent.toStdString().c_str());
 			OpenFileEvent* ofe = new OpenFileEvent(ident,file);
-			fileEventModel->addEvent(ofe);
+			if (fileEventModel!=0)
+				fileEventModel->addEvent(ofe);
 			break;
 		}
 
@@ -548,7 +554,7 @@ void XmlStreamReader::readAssociationsElement(){
 }
 
 /*
- * this methods stores in the GestureEventMapper the asociation among
+ * this method stores in the GestureEventMapper the asociation among
  * the Gesture read and the event read.
  */
 
@@ -586,9 +592,11 @@ void XmlStreamReader::createAssociation(QString idGest, QString idEvent, QString
 	std::string* id = new std::string(idGest.toStdString());
 	Gesture* g = gestureModel->getGesture(id);
 	bool active = false;
+	bool added;
 	if (QString::compare(isActive,QString("true")) == 0)
 		active = true;
-	GestureEventMapper::getInstance()->addAssociation(g,e,active);
+	if (gem!=0);
+		gem->addAssociation(g,e,active,added);
 }
 
 /*

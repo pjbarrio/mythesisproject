@@ -49,7 +49,8 @@ GestureEventMapper *GestureEventMapper::getInstance()
 		instance = new GestureEventMapper();
 		Event *e = new DoNothingEvent();
 		Gesture *g = GestureModelHandler::getNoGestureDetectedInstance();
-		instance->addAssociation(g,e,true);
+		bool added;
+		instance->addAssociation(g,e,true,added);
 	}
 	return instance;
 }
@@ -114,7 +115,7 @@ Association* GestureEventMapper::getAssociation(Gesture* gesture, Event* event){
  * the value was added withow activated modifications.
  */
 
-bool GestureEventMapper::addAssociation(Gesture *gesture, Event *event, bool activated)
+bool GestureEventMapper::addAssociation(Gesture *gesture, Event *event, bool activated, bool &added)
 {
 	map<Gesture*,vector<Association*>*>::iterator it = getAssociationTable()->find(gesture);
 	vector<Association*>* vec;
@@ -128,7 +129,7 @@ bool GestureEventMapper::addAssociation(Gesture *gesture, Event *event, bool act
 	ass->setEvent(event);
 	ass->setActivated(activated);
 
-	bool ret = addAssociationToVector(ass,vec);
+	bool ret = addAssociationToVector(ass,vec,added);
 
 	(*getAssociationTable())[gesture] = vec;
 
@@ -177,7 +178,7 @@ Association* GestureEventMapper::getAssociationFromVector(Event* event,vector<As
 	Association* aux;
 	while (it != associations->end()){
 		aux = *it;
-		if (strcmp(aux->getEvent()->getId(),event->getId()) ==0)
+		if (strcmp(aux->getEvent()->getId().c_str(),event->getId().c_str()) ==0)
 			return aux;
 		it++;
 	}
@@ -190,9 +191,9 @@ Association* GestureEventMapper::getAssociationFromVector(Event* event,vector<As
  * associaton is stored in inactive form.
  */
 
-bool GestureEventMapper::addAssociationToVector(Association* ass,vector<Association*>* associations){
+bool GestureEventMapper::addAssociationToVector(Association* ass,vector<Association*>* associations,bool& added){
 	bool ret = false;
-
+	added = true;
 	if (ass->getActivated()){
 
 		//Verify active association
@@ -213,6 +214,7 @@ bool GestureEventMapper::addAssociationToVector(Association* ass,vector<Associat
 			//Activates the existing Gesture-Event Association
 			EventAssociation->setActivated(true);
 		}
+		added = false;
 	}
 
 	return ret;
@@ -245,7 +247,7 @@ void GestureEventMapper::removeAssociationFromVector(Event* event,vector<Associa
  */
 
 void GestureEventMapper::begin(){
-	mapIterator = associationTable->begin();
+	mapIterator = getAssociationTable()->begin();
 	if (mapIterator!=getAssociationTable()->end())
 		vectorIterator = mapIterator->second->begin();
 }
@@ -256,13 +258,8 @@ void GestureEventMapper::begin(){
  */
 
 bool GestureEventMapper::hasNext(){
-	if (vectorIterator != mapIterator->second->end())
-		//more in actual gesture.
+	if (mapIterator != getAssociationTable()->end() && vectorIterator != mapIterator->second->end() )
 		return true;
-	else {
-		if (mapIterator != getAssociationTable()->end())
-			return true;
-	}
 	return false;
 }
 

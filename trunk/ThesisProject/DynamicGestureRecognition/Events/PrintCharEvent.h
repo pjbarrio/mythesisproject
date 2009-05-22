@@ -14,7 +14,7 @@
 
 class PrintCharEvent: public Event {
 public:
-	PrintCharEvent(char*,char*);
+	PrintCharEvent(const char*,char*);
 	virtual ~PrintCharEvent();
 	int execute();
 	bool writeXML(QXmlStreamWriter*);
