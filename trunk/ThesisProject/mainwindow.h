@@ -138,8 +138,10 @@ private:
 	CoordsSaver* getCoordSaver();
 	SystemInfo* getSystemInfo();
 	QTimer *timer;
+	QString ConfigurationFileName;
 	bool initiatedCamera;
 	void createToolbar();
+	void updateListViews();
 private slots:
 	void showNormal();
 	void addGesture();

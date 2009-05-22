@@ -32,7 +32,7 @@ InitDynamicGestureRecognition::~InitDynamicGestureRecognition() {
 
 void InitDynamicGestureRecognition::init()
 {
-	//TODO IMPLEMENTAR
+	//TODO IMPLEMENTAR init gesture
 }
 
 /*

@@ -114,7 +114,6 @@ void NewGesture::startCapturing(){
 	startCamera();
 	startProgressBar();
 	startCapture();
-	//TODO Implementar
 }
 
 /*

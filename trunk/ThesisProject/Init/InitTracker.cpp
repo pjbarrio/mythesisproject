@@ -70,7 +70,6 @@ int InitTracker::start()
 		return -1;
 
 	}
-
 	filterHandler->setSkinThreshold(lightStabilizer->getSkinThreshold());
 
 	int Xcoord,Ycoord,XcoordFIR,YcoordFIR;

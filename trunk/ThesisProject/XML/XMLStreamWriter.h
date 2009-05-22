@@ -35,7 +35,7 @@ private:
 	void writeOpenFileEvents(EventModel* eventModel);
 	void writeOpenFileEvent(Event*);
 	void writeAssociations();
-	void writeAssociation(Gesture*,Event*);
+	void writeAssociation(Gesture*,Event*,bool);
 	QXmlStreamWriter xmlWriter;
 };
 
