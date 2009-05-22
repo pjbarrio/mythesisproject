@@ -129,16 +129,6 @@ void NewGesture::finishCapturing(){
 
 	QList<IplImage*>* video = Container::getInstance()->getVideo();
 
-	/*	CameraVideo* cv = new CameraVideo(Container::getInstance()->getLog(),video);
-	cv->initCamDevice();
-	cvNamedWindow("mainWin", CV_WINDOW_AUTOSIZE);
-	cvMoveWindow("mainWin", 100, 100);
-	while (cv->stillTracking()){
-		IplImage* ff = cv->retrieveFrame();
-		cvShowImage("mainWindow",ff);
-		cvWaitKey(20);
-	}
-	cvDestroyWindow("mainWin");*/
 	saveMovement(video);
 
 

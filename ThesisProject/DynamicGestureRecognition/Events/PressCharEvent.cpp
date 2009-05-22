@@ -12,7 +12,7 @@
  * This method saves the keyCode and the string asociated to this keyCode.
  */
 
-PressCharEvent::PressCharEvent(char* id,BYTE keyPressCode,std::string key):Event(id) {
+PressCharEvent::PressCharEvent(const char* id,BYTE keyPressCode,std::string key):Event(id) {
 	this->keyPressCode = keyPressCode;
 	this->key = key;
 }
@@ -51,9 +51,9 @@ int PressCharEvent::execute()
 bool PressCharEvent::writeXML(QXmlStreamWriter* xmlWriter){
 	xmlWriter->writeStartElement("Event");
 
-	xmlWriter->writeAttribute("id",QString(this->getId()));
+	xmlWriter->writeAttribute("id",QString(this->getId().c_str()));
 
-	this->writeXML(xmlWriter);
+	this->writeKeyXML(xmlWriter);
 
 	xmlWriter->writeEndElement();
 

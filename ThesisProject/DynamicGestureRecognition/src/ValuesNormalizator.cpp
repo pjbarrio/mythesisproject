@@ -56,9 +56,9 @@ DTWData *ValuesNormalizator::normalizeSignal(DTWData *signal)
 
 		sum+=coord;
 
-		signal->next();
-
 		maxTime = signal->getX();
+
+		signal->next();
 	}
 
 	avg = sum / (double)signal->getXYPairCount();

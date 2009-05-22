@@ -14,7 +14,7 @@
  * This method saves the name of the file which will be opened later.
  */
 
-OpenFileEvent::OpenFileEvent(char* id,std::string* file):Event(id) {
+OpenFileEvent::OpenFileEvent(const char* id,std::string* file):Event(id) {
 	this->file = file;
 }
 
@@ -44,7 +44,7 @@ int OpenFileEvent::execute(){
 bool OpenFileEvent::writeXML(QXmlStreamWriter* xmlWriter){
 	xmlWriter->writeStartElement("Event");
 
-	xmlWriter->writeAttribute("id",QString(this->getId()));
+	xmlWriter->writeAttribute("id",QString(this->getId().c_str()));
 
 	xmlWriter->writeTextElement("File",QString(this->file->c_str()));
 

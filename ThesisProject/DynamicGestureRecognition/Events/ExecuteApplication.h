@@ -17,7 +17,7 @@
 
 class ExecuteApplication: public Event {
 public:
-	ExecuteApplication(char*,std::string*,std::string*);
+	ExecuteApplication(const char*,std::string*,std::string*);
 	virtual ~ExecuteApplication();
 	int execute();
 	bool writeXML(QXmlStreamWriter*);

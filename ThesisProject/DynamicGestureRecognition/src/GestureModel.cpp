@@ -91,6 +91,7 @@ bool GestureModel::addGesture(Gesture *gesture)
 
 	if (agp->canBeAdded(gesture,this)){
 		getGestures()->push_back(gesture);
+		return true;
 	}
 	return false;
 }

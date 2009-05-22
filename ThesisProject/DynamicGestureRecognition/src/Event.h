@@ -13,10 +13,13 @@
 #define EVENT_H_
 
 #include <QXmlStreamWriter>
+#include "string.h"
+
+using namespace std;
 
 class Event {
 public:
-	Event(char*);
+	Event(const char*);
 	virtual ~Event();
 
 	/*
@@ -31,9 +34,9 @@ public:
 	 */
 
 	virtual bool writeXML(QXmlStreamWriter*) = 0;
-	char* getId(){return id;};
+	string getId(){return id;};
 private:
-	char* id;
+	string id;
 };
 
 #endif /* EVENT_H_ */

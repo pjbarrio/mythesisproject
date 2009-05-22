@@ -16,11 +16,12 @@
 #include <QXmlStreamReader>
 #include "windows.h"
 #include "../DynamicGestureRecognition/Events/CombinedKeyPressed.h"
+#include "../DynamicGestureRecognition/src/GestureEventMapper.h"
 
 class XmlStreamReader {
 public:
 	XmlStreamReader(GestureModel* , EventModel* , EventModel* ,
-			EventModel* , EventModel* );
+			EventModel* , EventModel* , GestureEventMapper*);
 	virtual ~XmlStreamReader();
 	bool readFile(const QString &fileName);
 
@@ -52,7 +53,7 @@ private:
 	EventModel* combinedKeyEventModel;
 	EventModel* appEventModel;
 	EventModel* fileEventModel;
-
+	GestureEventMapper* gem;
     QString UP_STR;
     QString DOWN_STR;
     QString RIGHT_STR;

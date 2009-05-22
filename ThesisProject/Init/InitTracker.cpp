@@ -17,6 +17,7 @@
 InitTracker::InitTracker(CoordsSaver* coordSaver, SystemInfo* sysInfo, Camera* camera):InitializerCreator() {
 	this->coordSaver = coordSaver;
 	this->sysInfo = sysInfo;
+	this->sysInfo->getSystemWorkResolution(ww,wh);
 	this->cam = camera;
 }
 
@@ -78,18 +79,15 @@ int InitTracker::start()
 
 	IplImage* filteredImage;
 
+	bool rotx = Container::getInstance()->getRotateX();
 
-	cvNamedWindow("Estado actual", CV_WINDOW_AUTOSIZE);
-	cvMoveWindow("Estado actual", 100, 100);
-
+	bool roty = Container::getInstance()->getRotateY();
 
 	while ( cam->stillTracking() ){
 
 		currentFrame = cam->retrieveFrame();
 
 		filteredImage = filterHandler->runPreFilters(currentFrame);
-
-		Container::getInstance()->setFilteredImage(filteredImage);
 
 		//Hand Tracker
 
@@ -99,39 +97,15 @@ int InitTracker::start()
 
 		Ycoord = net->getYcoord();
 
+		if (rotx)
+			Xcoord = ww - Xcoord;
+		if (roty)
+			Ycoord = wh - Ycoord;
+
+
 		filterHandler->runLowPassFilter(Xcoord,Ycoord,XcoordFIR,YcoordFIR);
 
-		util->putMarker(currentFrame,XcoordFIR*4,YcoordFIR*4);
-
-
-
-		cvShowImage("Estado actual", currentFrame );
-
-
 		coordSaver->saveCoords(XcoordFIR,YcoordFIR);
-
-
-		//Static Gesture Recognition through skin pixel count
-
-		if ( filterHandler->getSkinCount() > filterHandler->getSkinThreshold()){ // Mano Abierta: mas pixeles blancos
-
-/// EL IF ANTERIOR ES EL DE MANO ABIERTA O CERRADA
-///			cam->showFrame(cam->getSecondWindow(),Open);
-
-			Container::getInstance()->setClosed(false);
-			//mouse_event(MOUSEEVENTF_LEFTUP, XcoordFIR * x_val, cy - YcoordFIR * y_val, 0, 0);
-
-		}
-
-		else{
-
-			//mouse_event(MOUSEEVENTF_LEFTDOWN, XcoordFIR * x_val, cy - YcoordFIR * y_val, 0, 0);
-/// EL ELSE PARA MANO CERRADA
-///			cam->showFrame(cam->getSecondWindow(),Close);
-			Container::getInstance()->setClosed(true);
-
-		}
-
 
 		cvReleaseImage( &filteredImage );
 
@@ -142,8 +116,6 @@ int InitTracker::start()
 	net->shutDown();
 
 	coordSaver->finishCoordSaver();
-
-	cvDestroyWindow("Estado actual");
 
 	logger->closeLogger();
 

@@ -17,7 +17,7 @@
 
 class OpenFileEvent: public Event {
 public:
-	OpenFileEvent(char*,std::string*);
+	OpenFileEvent(const char*,std::string*);
 	virtual ~OpenFileEvent();
 	int execute();
 	bool writeXML(QXmlStreamWriter*);

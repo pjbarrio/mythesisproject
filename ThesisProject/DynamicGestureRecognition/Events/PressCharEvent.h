@@ -15,7 +15,7 @@
 
 class PressCharEvent: public Event {
 public:
-	PressCharEvent(char*,BYTE,std::string);
+	PressCharEvent(const char*,BYTE,std::string);
 	virtual ~PressCharEvent();
 	int execute();
 	bool writeXML(QXmlStreamWriter*);

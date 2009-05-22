@@ -49,6 +49,7 @@ private:
 	CoordsSaver* coordSaver;
 	SystemInfo* sysInfo;
 	Camera* cam;
+	int ww,wh;
 };
 
 #endif /* INITTRACKER_H_ */

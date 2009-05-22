@@ -32,7 +32,7 @@ XMLStreamWriter::~XMLStreamWriter() {
  */
 
 bool XMLStreamWriter::writeXML(const QString & fileName,GestureModel* gestureModel,
-		EventModel* key,EventModel* ckey, EventModel* app, EventModel* fi)
+		EventModel* key,EventModel* ckey, EventModel* app, EventModel* fi, GestureEventMapper* gem)
 {
 	QFile file(fileName);
 	if (!file.open(QFile::WriteOnly | QFile::Text)) {
@@ -42,17 +42,17 @@ bool XMLStreamWriter::writeXML(const QString & fileName,GestureModel* gestureMod
 		return false;
 	}
 
-	QXmlStreamWriter xmlWriter(&file);
-	xmlWriter.setAutoFormatting(true);
-	xmlWriter.writeStartDocument();
-	xmlWriter.writeStartElement("Configuration");
+	xmlWriter = new QXmlStreamWriter(&file);
+	xmlWriter->setAutoFormatting(true);
+	xmlWriter->writeStartDocument();
+	xmlWriter->writeStartElement("Configuration");
 
 	writeGestures(gestureModel);
 	writeEvents(key,ckey,app,fi);
-	writeAssociations();
+	writeAssociations(gem);
 
-	xmlWriter.writeEndElement();
-	xmlWriter.writeEndDocument();
+	xmlWriter->writeEndElement();
+	xmlWriter->writeEndDocument();
 	file.close();
 	if (file.error()) {
 		std::cerr << "Error: No se puede escribir en el archivo "
@@ -70,7 +70,7 @@ bool XMLStreamWriter::writeXML(const QString & fileName,GestureModel* gestureMod
  */
 
 void XMLStreamWriter::writeGestures(GestureModel* gestureModel){
-	xmlWriter.writeStartElement("Gestures");
+	xmlWriter->writeStartElement("Gestures");
 
 	gestureModel->begin();
 	while (gestureModel->hasNext()){
@@ -79,7 +79,7 @@ void XMLStreamWriter::writeGestures(GestureModel* gestureModel){
 		gestureModel->next();
 	}
 
-	xmlWriter.writeEndElement();
+	xmlWriter->writeEndElement();
 }
 
 /*
@@ -87,8 +87,8 @@ void XMLStreamWriter::writeGestures(GestureModel* gestureModel){
  */
 
 void XMLStreamWriter::writeGesture(Gesture* gesture){
-	xmlWriter.writeStartElement("Gesture");
-	xmlWriter.writeAttribute("id",QString(gesture->getId().c_str()));
+	xmlWriter->writeStartElement("Gesture");
+	xmlWriter->writeAttribute("id",QString(gesture->getId().c_str()));
 
 	DTWData* tx = gesture->getTx();
 	DTWData* ty = gesture->getTy();
@@ -101,22 +101,23 @@ void XMLStreamWriter::writeGesture(Gesture* gesture){
 	double t;
 
 	while(tx->hasNext()){
+		t = tx->getX();
 		x = tx->getY();
 		y = ty->getY();
 
-		xmlWriter.writeStartElement("Pair");
+		xmlWriter->writeStartElement("Pair");
 
-		xmlWriter.writeTextElement("X",QString::number(x));
-		xmlWriter.writeTextElement("Y",QString::number(y));
-		xmlWriter.writeTextElement("T",QString::number(t));
+		xmlWriter->writeTextElement("X",QString::number(x));
+		xmlWriter->writeTextElement("Y",QString::number(y));
+		xmlWriter->writeTextElement("T",QString::number(t));
 
-		xmlWriter.writeEndElement();
+		xmlWriter->writeEndElement();
 
 		tx->next();
 		ty->next();
 	}
 
-	xmlWriter.writeEndElement();
+	xmlWriter->writeEndElement();
 }
 
 /*
@@ -124,12 +125,12 @@ void XMLStreamWriter::writeGesture(Gesture* gesture){
  */
 
 void XMLStreamWriter::writeEvents(EventModel* K,EventModel*C,EventModel*A,EventModel*O){
-	xmlWriter.writeStartElement("Events");
+	xmlWriter->writeStartElement("Events");
 	writeKeyEvents(K);
 	writeCombinedKeyEvents(C);
 	writeApplicationEvents(A);
 	writeOpenFileEvents(O);
-	xmlWriter.writeEndElement();
+	xmlWriter->writeEndElement();
 }
 
 /*
@@ -137,14 +138,14 @@ void XMLStreamWriter::writeEvents(EventModel* K,EventModel*C,EventModel*A,EventM
  */
 
 void XMLStreamWriter::writeKeyEvents(EventModel* eventModel){
-	xmlWriter.writeStartElement("KeyEvents");
+	xmlWriter->writeStartElement("KeyEvents");
 	eventModel->begin();
 	while (eventModel->hasNext()){
 		Event* event = eventModel->getNextEvent();
 		writeKeyEvent(event);
 		eventModel->next();
 	}
-	xmlWriter.writeEndElement();
+	xmlWriter->writeEndElement();
 }
 
 /*
@@ -152,7 +153,7 @@ void XMLStreamWriter::writeKeyEvents(EventModel* eventModel){
  */
 
 void XMLStreamWriter::writeKeyEvent(Event* event){
-	event->writeXML(&xmlWriter);
+	event->writeXML(xmlWriter);
 }
 
 /*
@@ -160,14 +161,14 @@ void XMLStreamWriter::writeKeyEvent(Event* event){
  */
 
 void XMLStreamWriter::writeCombinedKeyEvents(EventModel* eventModel){
-	xmlWriter.writeStartElement("CombinedKeyEvents");
+	xmlWriter->writeStartElement("CombinedKeyEvents");
 	eventModel->begin();
 	while (eventModel->hasNext()){
 		Event* event = eventModel->getNextEvent();
 		writeCombinedKeyEvent(event);
 		eventModel->next();
 	}
-	xmlWriter.writeEndElement();
+	xmlWriter->writeEndElement();
 }
 
 /*
@@ -175,7 +176,8 @@ void XMLStreamWriter::writeCombinedKeyEvents(EventModel* eventModel){
  */
 
 void XMLStreamWriter::writeCombinedKeyEvent(Event* event){
-	event->writeXML(&xmlWriter);
+	cout << "Evento: " << event->getId() << "\n";
+	event->writeXML(xmlWriter);
 }
 
 /*
@@ -183,14 +185,14 @@ void XMLStreamWriter::writeCombinedKeyEvent(Event* event){
  */
 
 void XMLStreamWriter::writeApplicationEvents(EventModel* eventModel){
-	xmlWriter.writeStartElement("AppEvents");
+	xmlWriter->writeStartElement("AppEvents");
 	eventModel->begin();
 	while (eventModel->hasNext()){
 		Event* event = eventModel->getNextEvent();
 		writeApplicationEvent(event);
 		eventModel->next();
 	}
-	xmlWriter.writeEndElement();
+	xmlWriter->writeEndElement();
 }
 
 /*
@@ -198,7 +200,7 @@ void XMLStreamWriter::writeApplicationEvents(EventModel* eventModel){
  */
 
 void XMLStreamWriter::writeApplicationEvent(Event* event){
-	event->writeXML(&xmlWriter);
+	event->writeXML(xmlWriter);
 }
 
 /*
@@ -206,14 +208,14 @@ void XMLStreamWriter::writeApplicationEvent(Event* event){
  */
 
 void XMLStreamWriter::writeOpenFileEvents(EventModel* eventModel){
-	xmlWriter.writeStartElement("FileEvents");
+	xmlWriter->writeStartElement("FileEvents");
 	eventModel->begin();
 	while (eventModel->hasNext()){
 		Event* event = eventModel->getNextEvent();
 		writeOpenFileEvent(event);
 		eventModel->next();
 	}
-	xmlWriter.writeEndElement();
+	xmlWriter->writeEndElement();
 }
 
 /*
@@ -221,23 +223,22 @@ void XMLStreamWriter::writeOpenFileEvents(EventModel* eventModel){
  */
 
 void XMLStreamWriter::writeOpenFileEvent(Event* event){
-	event->writeXML(&xmlWriter);
+	event->writeXML(xmlWriter);
 }
 
 /*
  * This Method writes the Associations tag using the GestureEventMapper filled by the application.
  */
 
-void XMLStreamWriter::writeAssociations(){
-	xmlWriter.writeStartElement("Associations");
-	GestureEventMapper* gem = GestureEventMapper::getInstance();
+void XMLStreamWriter::writeAssociations(GestureEventMapper* gem){
+	xmlWriter->writeStartElement("Associations");
 	gem->begin();
 	while (gem->hasNext()){
 		Association* ass = gem->getActualAssociation();
 		writeAssociation(ass->getGesture(),ass->getEvent(),ass->getActivated());
 		gem->next();
 	}
-	xmlWriter.writeEndElement();
+	xmlWriter->writeEndElement();
 }
 
 /*
@@ -245,17 +246,18 @@ void XMLStreamWriter::writeAssociations(){
  */
 
 void XMLStreamWriter::writeAssociation(Gesture* gesture, Event* event, bool isActive){
-	xmlWriter.writeStartElement("Association");
+	xmlWriter->writeStartElement("Association");
 	QString active;
 	if (isActive)
 		active = "true";
 	else
 		active = "false";
-	xmlWriter.writeAttribute("active",active);
+	xmlWriter->writeAttribute("active",active);
 	QString gest(gesture->getId().c_str());
-	QString eve(event->getId());
-	xmlWriter.writeTextElement("Gesture",gest);
-	xmlWriter.writeTextElement("Event",eve);
-	xmlWriter.writeEndElement();
+	QString eve(event->getId().c_str());
+
+	xmlWriter->writeTextElement("Gesture",gest);
+	xmlWriter->writeTextElement("Event",eve);
+	xmlWriter->writeEndElement();
 }
 

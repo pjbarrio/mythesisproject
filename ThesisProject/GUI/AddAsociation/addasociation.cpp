@@ -22,9 +22,16 @@ AddAsociation::~AddAsociation()
 
 int AddAsociation::exec(GestureModel* gest, EventModel* key, EventModel* comb, EventModel* app, EventModel* open){
 
+	ui.asociacionesView->clear();
+
 	initVariables();
 
+	ui.gestosView->clear();
+
 	fillGestureList(gest);
+
+	ui.eventosView->clear();
+
 	fillEventList(key);
 	fillEventList(comb);
 	fillEventList(app);
@@ -72,7 +79,7 @@ void AddAsociation::fillEventList(EventModel* em){
 	Event* e;
 	while (em->hasNext()){
 		e = em->getNextEvent();
-		QString* id = new QString(e->getId());
+		QString* id = new QString(e->getId().c_str());
 		QListWidgetItem *qListItem = new QListWidgetItem(ui.eventosView);
 		qListItem->setText(*id);
 		delete (id);
@@ -107,12 +114,12 @@ void AddAsociation::saveGestureClicked(QListWidgetItem* item){
 
 void AddAsociation::addSelectedItems(){
 
-	QString* toshow = new QString(*estring + " <-> " + *gstring);
+	QString* toshow = new QString(*gstring + " <-> " + *estring);
 	events->append(estring);
 	gestures->append(gstring);
 
-	QListWidgetItem *qListItem = new QListWidgetItem(ui.eventosView);
-
+	QListWidgetItem *qListItem = new QListWidgetItem(ui.asociacionesView);
+	qListItem->setText(*toshow);
 	gstring = 0;
 	estring = 0;
 	ui.addAsociacion->setEnabled(false);

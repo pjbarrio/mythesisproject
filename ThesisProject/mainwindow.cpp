@@ -17,7 +17,10 @@
 #include "DynamicGestureRecognition/src/GestureEventMapper.h"
 #include "GUI/Utils/Container.h"
 #include <QMessageBox>
+#include <QFileDialog>
 #include "Init/ThesisStart.h"
+#include "XML/XmlStreamReader.h"
+#include "XML/XMLStreamWriter.h"
 
 
 /*
@@ -77,7 +80,88 @@ void ThesisProject::openAbout(){
  */
 
 void ThesisProject::updateListViews(){
+	updateAssociationsView();
+	updateGesturesView();
+	updateEventsView();
+}
 
+/*
+ * This method updates the association List View with
+ * the gesture Event Mapper instance
+ */
+void ThesisProject::updateAssociationsView(){
+	ui.AsociacionList->clear();
+
+	GestureEventMapper* gem = GestureEventMapper::getInstance();
+	gem->begin();
+	QString NoDet = QString("NoGestureDetected");
+	Association* association;
+	QString* ass;
+	bool activated;
+	while (gem->hasNext()){
+		association = gem->getActualAssociation();
+		QString gid(association->getGesture()->getId().c_str());
+		if (QString::compare(NoDet,gid)==0)
+		{
+			QListWidgetItem *qListItem = new QListWidgetItem(ui.AsociacionList);
+			QString eid(association->getEvent()->getId().c_str());
+			ass = new QString(gid + " <-> " + eid);
+			qListItem->setText(*ass);
+			activated = association->getActivated();
+			if (activated)
+				qListItem->setCheckState(Qt::Checked);
+			else
+				qListItem->setCheckState(Qt::Unchecked);
+		}
+		gem->next();
+	}
+}
+
+/*
+ * This method updates the Gestures List View with the
+ * Gesture Model
+ */
+void ThesisProject::updateGesturesView(){
+	ui.GestosList->clear();
+
+	GestureModel* gm = getGestureModel();
+	gm->begin();
+	Gesture* g;
+	while (gm->hasNext()){
+		g = gm->getNextGesture();
+		QListWidgetItem *qListItem = new QListWidgetItem(ui.GestosList);
+		qListItem->setText(QString(g->getId().c_str()));
+		gm->next();
+	}
+}
+
+/*
+ * This method updates the Events Lists View with the
+ * Events models.
+ */
+
+void ThesisProject::updateEventsView(){
+	ui.EventosList->clear();
+	updateEventView(getKeyEventModel());
+	updateEventView(getCombinedKeyEventModel());
+	updateEventView(getApplicationEventModel());
+	updateEventView(getOpenFileEventModel());
+}
+
+/*
+ * This method updates the Event view with the model in the parameter
+ * list.
+ */
+
+void ThesisProject::updateEventView(EventModel* e){
+	e->begin();
+	Event* ev;
+	while (e->hasNext()){
+		ev = e->getNextEvent();
+		QListWidgetItem *qListItem = new QListWidgetItem(ui.EventosList);
+		qListItem->setText(QString(ev->getId().c_str()));
+		e->next();
+	}
 }
 
 /*
@@ -85,23 +169,50 @@ void ThesisProject::updateListViews(){
  */
 
 void ThesisProject::openConfiguration(){
-	//TODO open configuration
-	QString* filter = new QString();
-	ConfigurationFileName = QFileDialog::getOpenFileName(this,
-		     "Abrir archivo xml de configuración", "C:/", tr("Archivos Configuración (*.xml)"),filter);
-	if (QString::compare(*filter,tr("Archivos Configuración (*.xml)")) == 0){
-		XmlStreamReader* xml = new XmlStreamReader(getGestureModel(),getKeyEventModel(),getCombinedKeyEventModel(),
-				getApplicationEventModel(),getOpenFileEventModel());
-		xml->readFile(ConfigurationFileName);
+	QString* fileName = selectXmlFile();
+	if (fileName != 0){
+		ConfigurationFileName = fileName;
+		fillModels(*fileName,getGestureModel(),getKeyEventModel(),getCombinedKeyEventModel(),
+				getApplicationEventModel(),getOpenFileEventModel(),GestureEventMapper::getInstance());
 		updateListViews();
 	}
+}
+
+/*
+ * This method returns the selected xml file.
+ */
+
+QString* ThesisProject::selectXmlFile(){
+	QString* filter = new QString();
+	QString fileName = QFileDialog::getOpenFileName(this,
+			 "Seleccionar xml de configuración", "Configuration/", tr("Archivos Configuración (*.xml)"),filter);
+	if (QString::compare(*filter,tr("Archivos Configuración (*.xml)")) == 0){
+		return new QString(fileName);
+	}
+	return 0;
+}
+
+/*
+ * This method fills the models with the xml content
+ */
+
+void ThesisProject::fillModels(QString fileName,GestureModel* gm, EventModel* k,
+		EventModel* ck,EventModel* a,EventModel* o,GestureEventMapper* gem){
+	XmlStreamReader* xml = new XmlStreamReader(gm,k,ck,a,o,gem);
+	xml->readFile(fileName);
 }
 
 /*
  * This method imports all events from an xml file.
  */
 void ThesisProject::importAllEvents(){
-	//TODO all events
+	QString* fileName = selectXmlFile();
+	if (fileName != 0){
+		fillModels(*fileName,
+				0,getKeyEventModel(),getCombinedKeyEventModel(),
+				getApplicationEventModel(),getOpenFileEventModel(),0);
+		updateListViews();
+	}
 }
 
 /*
@@ -109,7 +220,12 @@ void ThesisProject::importAllEvents(){
  */
 
 void ThesisProject::importOpenFileEvents(){
-	//TODO OpenFile
+	QString* fileName = selectXmlFile();
+	if (fileName != 0){
+		fillModels(*fileName,
+				0,0,0,0,getOpenFileEventModel(),0);
+		updateListViews();
+	}
 }
 
 /*
@@ -117,7 +233,11 @@ void ThesisProject::importOpenFileEvents(){
  */
 
 void ThesisProject::importExecutionApplicationEvents(){
-	//TODO Execution
+	QString* fileName = selectXmlFile();
+	if (fileName != 0){
+		fillModels(*fileName,0,0,0,getApplicationEventModel(),0,0);
+		updateListViews();
+	}
 }
 
 /*
@@ -125,7 +245,11 @@ void ThesisProject::importExecutionApplicationEvents(){
  */
 
 void ThesisProject::importPressKeyEvents(){
-	//TODO press
+	QString* fileName = selectXmlFile();
+	if (fileName != 0){
+		fillModels(*fileName,0,getKeyEventModel(),0,0,0,0);
+		updateListViews();
+	}
 }
 
 /*
@@ -133,7 +257,11 @@ void ThesisProject::importPressKeyEvents(){
  */
 
 void ThesisProject::importCombinedKeyPressEvents(){
-	//TODO combined press
+	QString* fileName = selectXmlFile();
+	if (fileName != 0){
+		fillModels(*fileName,0,0,getCombinedKeyEventModel(),0,0,0);
+		updateListViews();
+	}
 }
 
 /*
@@ -141,7 +269,11 @@ void ThesisProject::importCombinedKeyPressEvents(){
  */
 
 void ThesisProject::importGestures(){
-	//TODO Import gestures
+	QString* fileName = selectXmlFile();
+	if (fileName != 0){
+		fillModels(*fileName,getGestureModel(),0,0,0,0,0);
+		updateListViews();
+	}
 }
 
 /*
@@ -151,12 +283,22 @@ void ThesisProject::importGestures(){
 
 void ThesisProject::saveConfigurationinFile(){
 	QString fileName;
+	QString Dir;
+	QString* filter = new QString();
 	if (ConfigurationFileName!=0){
+		Dir = *ConfigurationFileName;
+	}
+	else {
+		Dir = "Configuration/";
+	}
 
-		//TODO falta algo...
+	fileName = QFileDialog::getSaveFileName(this,"Salvar Configuración actual",Dir,tr("Archivos Configuración (*.xml)"),filter);
+
+	if (QString::compare(*filter,tr("Archivos Configuración (*.xml)")) == 0){
 		XMLStreamWriter* xmlwriter = new XMLStreamWriter();
 		xmlwriter->writeXML(fileName,getGestureModel(),getKeyEventModel(),
-				getCombinedKeyEventModel(),getApplicationEventModel(),getOpenFileEventModel());
+				getCombinedKeyEventModel(),getApplicationEventModel(),getOpenFileEventModel(),
+				GestureEventMapper::getInstance());
 
 	}
 }
@@ -289,7 +431,6 @@ void ThesisProject::stopCapture(){
 
 void ThesisProject::ViewCaptureState(){
 	QMetaObject::invokeMethod(stateViewer,"show");
-//	stateViewer->show();
 }
 
 /*
@@ -355,8 +496,7 @@ void ThesisProject::addGesture()
 		DTWData* tx = addGestureDialog->getTx();
 		DTWData* ty = addGestureDialog->getTy();
 
-		QListWidgetItem *qListItem = new QListWidgetItem(ui.GestosList);
-		qListItem->setText(*id);
+
 
 		std::string* s1 = new std::string(id->toStdString());
 
@@ -369,6 +509,11 @@ void ThesisProject::addGesture()
 										 "cargadas. Para evitar funcionamiento incorrecto, el "
 										 "gesto introducido no se guardará."));
 		}
+		else{
+			QListWidgetItem *qListItem = new QListWidgetItem(ui.GestosList);
+			qListItem->setText(*id);
+		}
+
 	}
 
 	Container::getInstance()->createCamViewerInstance(this->getCapturedImage());
@@ -513,18 +658,30 @@ void ThesisProject::addAsociation()
 		Event* e;
 
 		for (int i = 0;i<gestures->size();i++){
-			QListWidgetItem *qListItem = new QListWidgetItem(ui.AsociacionList);
+
 			gest = gestures->at(i);
 			eve = events->at(i);
-			ass = new QString(*gest + " - " + *eve);
-			qListItem->setText(*ass);
-			qListItem->setCheckState(Qt::Checked);
-
 			g = getGestureModel()->getGesture(new std::string(gest->toStdString()));
 			e = getEventFromModels(eve);
 
-			if (g!=0 && e!=0)
-				gestureEventMapper->addAssociation(g,e,true);
+			if (g!=0 && e!=0){
+				bool added;
+				bool changed = gestureEventMapper->addAssociation(g,e,true,added);
+				if (added){
+					QListWidgetItem *qListItem = new QListWidgetItem(ui.AsociacionList);
+
+					ass = new QString(*gest + " <-> " + *eve);
+					qListItem->setText(*ass);
+
+					if (!changed)
+						qListItem->setCheckState(Qt::Checked);
+					else
+						qListItem->setCheckState(Qt::Unchecked);
+				}
+				else{
+					updateAssociationsView();
+				}
+			}
 		}
 	}
 }
@@ -619,7 +776,15 @@ void ThesisProject::removeEventfromModel(QString ide){
 void ThesisProject::removeAsociation(){
 	QList<QListWidgetItem*> q = ui.AsociacionList->selectedItems();
 	if (q.size()==1){
-		//TODO implementar remove Association
+		QString text = q.first()->text();
+		QStringList l = text.split(tr(" <-> "));
+		QString gid = l.first();
+		QString eid = l.last();
+		cout << "GEST: " << gid.toStdString() << "\n";
+		cout << "EVE: " << eid.toStdString() << "\n";
+		Gesture* g = getGestureModel()->getGesture(new std::string(gid.toStdString()));
+		Event* e = getEventFromModels(&eid);
+		GestureEventMapper::getInstance()->removeAssociation(g,e);
 		delete(q.first());
 	}
 }
@@ -749,7 +914,7 @@ GestureModel* ThesisProject::getGestureModel()
 	if (gestureModel == 0){
 		distanceCalculator = new EuclideanDistance();
 		//TODO VER CUAL ES EL RATE!!
-		dtwAlgorithm = new ItakuraDTWAlgorithm(3,distanceCalculator);
+		dtwAlgorithm = new ItakuraDTWAlgorithm(0.3,distanceCalculator);
 		gestureModel = new GestureModel(dtwAlgorithm);
 	}
 
