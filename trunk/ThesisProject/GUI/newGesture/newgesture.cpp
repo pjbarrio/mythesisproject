@@ -9,6 +9,7 @@
 #include "../../Init/InitTracker.h"
 #include "../../CommonProject/Threads/Thread_Tracker.h"
 #include <QFileDialog>
+#include <QMessageBox>
 #include "list.h"
 #include "../../DynamicGestureRecognition/src/ValuesNormalizator.h"
 
@@ -96,8 +97,13 @@ void NewGesture::keyPressEvent(QKeyEvent *event)
  */
 
 void NewGesture::accept(){
-
-	QDialog::accept();
+	if (getTx()==0 && getTy()==0){
+		QMessageBox::information(this, tr("No se ha cargado un gesto"),
+		  tr("Deberá cargar un gesto si quiere finalizar correctamente, la acción se cancelará. "));
+		QDialog::reject();
+	}
+	else
+		QDialog::accept();
 }
 
 /*

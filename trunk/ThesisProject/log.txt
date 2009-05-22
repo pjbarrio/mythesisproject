@@ -1,4 +1,4 @@
-log created on 05/22/09 18:57:51
+log created on 05/22/09 19:30:22
 
 
 
@@ -25,4 +25,4 @@ log created on 05/22/09 18:57:51
 
 - Average time per Frame: 1.2
 
-log close on 05/22/09 18:57:52
+log close on 05/22/09 19:30:24

@@ -101,7 +101,7 @@ void ThesisProject::updateAssociationsView(){
 	while (gem->hasNext()){
 		association = gem->getActualAssociation();
 		QString gid(association->getGesture()->getId().c_str());
-		if (QString::compare(NoDet,gid)==0)
+		if (QString::compare(NoDet,gid)!=0)
 		{
 			QListWidgetItem *qListItem = new QListWidgetItem(ui.AsociacionList);
 			QString eid(association->getEvent()->getId().c_str());
@@ -211,7 +211,7 @@ void ThesisProject::importAllEvents(){
 		fillModels(*fileName,
 				0,getKeyEventModel(),getCombinedKeyEventModel(),
 				getApplicationEventModel(),getOpenFileEventModel(),0);
-		updateListViews();
+		updateEventsView();
 	}
 }
 
@@ -224,7 +224,7 @@ void ThesisProject::importOpenFileEvents(){
 	if (fileName != 0){
 		fillModels(*fileName,
 				0,0,0,0,getOpenFileEventModel(),0);
-		updateListViews();
+		updateEventView(getOpenFileEventModel());
 	}
 }
 
@@ -236,7 +236,7 @@ void ThesisProject::importExecutionApplicationEvents(){
 	QString* fileName = selectXmlFile();
 	if (fileName != 0){
 		fillModels(*fileName,0,0,0,getApplicationEventModel(),0,0);
-		updateListViews();
+		updateEventView(getApplicationEventModel());
 	}
 }
 
@@ -248,7 +248,7 @@ void ThesisProject::importPressKeyEvents(){
 	QString* fileName = selectXmlFile();
 	if (fileName != 0){
 		fillModels(*fileName,0,getKeyEventModel(),0,0,0,0);
-		updateListViews();
+		updateEventView(getKeyEventModel());
 	}
 }
 
@@ -260,7 +260,7 @@ void ThesisProject::importCombinedKeyPressEvents(){
 	QString* fileName = selectXmlFile();
 	if (fileName != 0){
 		fillModels(*fileName,0,0,getCombinedKeyEventModel(),0,0,0);
-		updateListViews();
+		updateEventView(getCombinedKeyEventModel());
 	}
 }
 
@@ -272,7 +272,7 @@ void ThesisProject::importGestures(){
 	QString* fileName = selectXmlFile();
 	if (fileName != 0){
 		fillModels(*fileName,getGestureModel(),0,0,0,0,0);
-		updateListViews();
+		updateGesturesView();
 	}
 }
 
