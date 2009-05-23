@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading ui file 'mainwindow.ui'
 **
-** Created: Thu 21. May 16:17:38 2009
+** Created: Fri 22. May 20:51:51 2009
 **      by: Qt User Interface Compiler version 4.5.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling ui file!
@@ -512,6 +512,7 @@ public:
         QObject::connect(XRotationBox, SIGNAL(clicked(bool)), ThesisProjectClass, SLOT(rotateX(bool)));
         QObject::connect(startButton, SIGNAL(clicked()), ThesisProjectClass, SLOT(startApplication()));
         QObject::connect(ConfigButton, SIGNAL(clicked()), ThesisProjectClass, SLOT(runHandDiagnostic()));
+        QObject::connect(AsociacionList, SIGNAL(itemChanged(QListWidgetItem*)), ThesisProjectClass, SLOT(analizeChange(QListWidgetItem*)));
 
         tabWidget->setCurrentIndex(1);
 

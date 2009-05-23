@@ -175,6 +175,7 @@ private slots:
 	void importGestures();
 	void saveConfigurationinFile();
 	void byeApplication();
+	void analizeChange(QListWidgetItem*);
 };
 
 #endif // MAINWINDOW_H

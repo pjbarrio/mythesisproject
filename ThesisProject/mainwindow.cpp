@@ -780,8 +780,6 @@ void ThesisProject::removeAsociation(){
 		QStringList l = text.split(tr(" <-> "));
 		QString gid = l.first();
 		QString eid = l.last();
-		cout << "GEST: " << gid.toStdString() << "\n";
-		cout << "EVE: " << eid.toStdString() << "\n";
 		Gesture* g = getGestureModel()->getGesture(new std::string(gid.toStdString()));
 		Event* e = getEventFromModels(&eid);
 		GestureEventMapper::getInstance()->removeAssociation(g,e);
@@ -1214,3 +1212,42 @@ CoordsSaver* ThesisProject::getCoordSaver(){
 	return coordSaver;
 }
 
+/*
+ * This method analize if the changed item in asociation List
+ * is valid or not.
+ */
+
+void ThesisProject::analizeChange(QListWidgetItem* item){
+	QString text = item->text();
+	QStringList l = text.split(tr(" <-> "));
+	QString gid = l.first();
+	QString eid = l.last();
+	Gesture* g = getGestureModel()->getGesture(new std::string(gid.toStdString()));
+	Event* eb = getEventFromModels(&eid);
+
+	if (item->checkState() == Qt::Unchecked){
+		Association* ass = GestureEventMapper::getInstance()->getAssociation(g,eb);
+		ass->setActivated(false);
+		return;
+	}
+
+
+	Event* e = GestureEventMapper::getInstance()->getEvent(g);
+
+	if (e==0){
+		Association* ass = GestureEventMapper::getInstance()->getAssociation(g,eb);
+		ass->setActivated(true);
+		return;
+	}
+
+	QString ev = QString(e->getId().c_str());
+	QString ef = QString("El gesto que se desea activar, ya posee un Evento activo. El evento activo es: ");
+	QString ez = ef + ev + QString(". Para continuar, desactive la asociación mencionada.");
+
+
+	if (QString::compare(eid,ev)!=0){
+    	QMessageBox::information(this, tr("Existe evento asociado al gesto"),ez);
+    	item->setCheckState(Qt::Unchecked);
+    	return;
+	}
+}
