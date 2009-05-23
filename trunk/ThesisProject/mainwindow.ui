@@ -249,7 +249,7 @@ p, li { white-space: pre-wrap; }
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset>
+                    <iconset resource="Resources/resources.qrc">
                      <normaloff>:/buttonsImages/Add.jpg</normaloff>:/buttonsImages/Add.jpg</iconset>
                    </property>
                    <property name="iconSize">
@@ -269,7 +269,7 @@ p, li { white-space: pre-wrap; }
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset>
+                    <iconset resource="Resources/resources.qrc">
                      <normaloff>:/buttonsImages/Remove.jpg</normaloff>:/buttonsImages/Remove.jpg</iconset>
                    </property>
                    <property name="iconSize">
@@ -328,7 +328,7 @@ p, li { white-space: pre-wrap; }
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset>
+                    <iconset resource="Resources/resources.qrc">
                      <normaloff>:/buttonsImages/Add.jpg</normaloff>:/buttonsImages/Add.jpg</iconset>
                    </property>
                    <property name="iconSize">
@@ -348,7 +348,7 @@ p, li { white-space: pre-wrap; }
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset>
+                    <iconset resource="Resources/resources.qrc">
                      <normaloff>:/buttonsImages/Remove.jpg</normaloff>:/buttonsImages/Remove.jpg</iconset>
                    </property>
                    <property name="iconSize">
@@ -400,7 +400,7 @@ p, li { white-space: pre-wrap; }
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset>
+                    <iconset resource="Resources/resources.qrc">
                      <normaloff>:/buttonsImages/Add.jpg</normaloff>:/buttonsImages/Add.jpg</iconset>
                    </property>
                    <property name="iconSize">
@@ -420,7 +420,7 @@ p, li { white-space: pre-wrap; }
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset>
+                    <iconset resource="Resources/resources.qrc">
                      <normaloff>:/buttonsImages/Remove.jpg</normaloff>:/buttonsImages/Remove.jpg</iconset>
                    </property>
                    <property name="iconSize">
@@ -484,7 +484,7 @@ p, li { white-space: pre-wrap; }
       <string>Importar</string>
      </property>
      <property name="icon">
-      <iconset>
+      <iconset resource="Resources/resources.qrc">
        <normaloff>:/ToolBar/import.jpg</normaloff>:/ToolBar/import.jpg</iconset>
      </property>
      <widget class="QMenu" name="menuEventos">
@@ -492,7 +492,7 @@ p, li { white-space: pre-wrap; }
        <string>Eventos</string>
       </property>
       <property name="icon">
-       <iconset>
+       <iconset resource="Resources/resources.qrc">
         <normaloff>:/ToolBar/Events.jpg</normaloff>:/ToolBar/Events.jpg</iconset>
       </property>
       <addaction name="actionSimulaci_n_Tecla"/>
@@ -531,7 +531,7 @@ p, li { white-space: pre-wrap; }
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionAbrir_Configuraci_n">
    <property name="icon">
-    <iconset>
+    <iconset resource="Resources/resources.qrc">
      <normaloff>:/ToolBar/openconf.jpg</normaloff>:/ToolBar/openconf.jpg</iconset>
    </property>
    <property name="text">
@@ -546,7 +546,7 @@ p, li { white-space: pre-wrap; }
   </action>
   <action name="actionGestos">
    <property name="icon">
-    <iconset>
+    <iconset resource="Resources/resources.qrc">
      <normaloff>:/ToolBar/gesture.png</normaloff>:/ToolBar/gesture.png</iconset>
    </property>
    <property name="text">
@@ -558,7 +558,7 @@ p, li { white-space: pre-wrap; }
   </action>
   <action name="actionSalir">
    <property name="icon">
-    <iconset>
+    <iconset resource="Resources/resources.qrc">
      <normaloff>:/ToolBar/quit.jpg</normaloff>:/ToolBar/quit.jpg</iconset>
    </property>
    <property name="text">
@@ -573,7 +573,7 @@ p, li { white-space: pre-wrap; }
   </action>
   <action name="actionAcerca_de">
    <property name="icon">
-    <iconset>
+    <iconset resource="Resources/resources.qrc">
      <normaloff>:/ToolBar/about.jpg</normaloff>:/ToolBar/about.jpg</iconset>
    </property>
    <property name="text">
@@ -585,7 +585,7 @@ p, li { white-space: pre-wrap; }
   </action>
   <action name="actionSimulaci_n_Tecla">
    <property name="icon">
-    <iconset>
+    <iconset resource="Resources/resources.qrc">
      <normaloff>:/ToolBar/key.jpg</normaloff>:/ToolBar/key.jpg</iconset>
    </property>
    <property name="text">
@@ -597,7 +597,7 @@ p, li { white-space: pre-wrap; }
   </action>
   <action name="actionEjecuci_n_Aplicaci_n">
    <property name="icon">
-    <iconset>
+    <iconset resource="Resources/resources.qrc">
      <normaloff>:/ToolBar/ExeApp.jpg</normaloff>:/ToolBar/ExeApp.jpg</iconset>
    </property>
    <property name="text">
@@ -609,7 +609,7 @@ p, li { white-space: pre-wrap; }
   </action>
   <action name="actionAbrir_Archivo">
    <property name="icon">
-    <iconset>
+    <iconset resource="Resources/resources.qrc">
      <normaloff>:/ToolBar/OpenFile.jpg</normaloff>:/ToolBar/OpenFile.jpg</iconset>
    </property>
    <property name="text">
@@ -621,7 +621,7 @@ p, li { white-space: pre-wrap; }
   </action>
   <action name="actionImportar_Todos">
    <property name="icon">
-    <iconset>
+    <iconset resource="Resources/resources.qrc">
      <normaloff>:/ToolBar/importall.jpg</normaloff>:/ToolBar/importall.jpg</iconset>
    </property>
    <property name="text">
@@ -633,7 +633,7 @@ p, li { white-space: pre-wrap; }
   </action>
   <action name="actionCombinaci_n_Teclas">
    <property name="icon">
-    <iconset>
+    <iconset resource="Resources/resources.qrc">
      <normaloff>:/ToolBar/combined.jpg</normaloff>:/ToolBar/combined.jpg</iconset>
    </property>
    <property name="text">
@@ -645,7 +645,7 @@ p, li { white-space: pre-wrap; }
   </action>
   <action name="actionSalvar_Configuraci_n">
    <property name="icon">
-    <iconset>
+    <iconset resource="Resources/resources.qrc">
      <normaloff>:/ToolBar/saveConfig.jpg</normaloff>:/ToolBar/saveConfig.jpg</iconset>
    </property>
    <property name="text">
@@ -663,7 +663,7 @@ p, li { white-space: pre-wrap; }
     <bool>false</bool>
    </property>
    <property name="icon">
-    <iconset>
+    <iconset resource="Resources/resources.qrc">
      <normaloff>:/ToolBar/Stop.jpg</normaloff>:/ToolBar/Stop.jpg</iconset>
    </property>
    <property name="text">
@@ -685,12 +685,12 @@ p, li { white-space: pre-wrap; }
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1182</x>
-     <y>264</y>
+     <x>1517</x>
+     <y>333</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1182</x>
-     <y>288</y>
+     <x>1517</x>
+     <y>357</y>
     </hint>
    </hints>
   </connection>
@@ -829,8 +829,8 @@ p, li { white-space: pre-wrap; }
    <slot>startApplication()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>768</x>
-     <y>457</y>
+     <x>1182</x>
+     <y>627</y>
     </hint>
     <hint type="destinationlabel">
      <x>596</x>
@@ -845,12 +845,28 @@ p, li { white-space: pre-wrap; }
    <slot>runHandDiagnostic()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>622</x>
-     <y>317</y>
+     <x>691</x>
+     <y>380</y>
     </hint>
     <hint type="destinationlabel">
      <x>608</x>
      <y>484</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>AsociacionList</sender>
+   <signal>itemChanged(QListWidgetItem*)</signal>
+   <receiver>ThesisProjectClass</receiver>
+   <slot>analizeChange(QListWidgetItem*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>588</x>
+     <y>415</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>625</x>
+     <y>480</y>
     </hint>
    </hints>
   </connection>
@@ -866,5 +882,6 @@ p, li { white-space: pre-wrap; }
   <slot>rotateY(bool)</slot>
   <slot>startApplication()</slot>
   <slot>runHandDiagnostic()</slot>
+  <slot>analizeChange(QListWidgetItem*)</slot>
  </slots>
 </ui>
