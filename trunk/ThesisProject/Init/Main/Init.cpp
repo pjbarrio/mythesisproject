@@ -48,7 +48,9 @@ int Init::start(int argc, char *argv[]){
 
 	HandDiagnostic* handDiagnostic = new HandDiagnostic();
 
-	ThesisProject w(addGesture,addEvent,addAsociation,stateViewer,handDiagnostic, 0);
+	About* about = new About();
+
+	ThesisProject w(addGesture,addEvent,addAsociation,stateViewer,handDiagnostic,about, 0);
 
 	Container::getInstance()->createCamViewerInstance(w.getCapturedImage());
 

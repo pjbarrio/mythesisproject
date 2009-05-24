@@ -27,7 +27,7 @@
  * This Method initiates the main Application. Receives the Dialog boxes that will appear during the execution.
  */
 
-ThesisProject::ThesisProject(AddGesture* addGesture,AddEvent* addEvent,AddAsociation* addAsociation,StateViewer* stateViewer,HandDiagnostic* handDiagnostic,QWidget *parent)
+ThesisProject::ThesisProject(AddGesture* addGesture,AddEvent* addEvent,AddAsociation* addAsociation,StateViewer* stateViewer,HandDiagnostic* handDiagnostic,About* about,QWidget *parent)
     : QMainWindow(parent)
 {
 	ui.setupUi(this);
@@ -37,6 +37,7 @@ ThesisProject::ThesisProject(AddGesture* addGesture,AddEvent* addEvent,AddAsocia
 	this->addAsociationDialog = addAsociation;
 	this->stateViewer = stateViewer;
 	this->handDiagnostic = handDiagnostic;
+	this->about = about;
 	initVariables();
 
 	createCompleteTrayIcon();
@@ -72,7 +73,7 @@ void ThesisProject::createToolbar(){
  */
 
 void ThesisProject::openAbout(){
-	//TODO open About.
+	about->exec();
 }
 
 /*
@@ -347,6 +348,10 @@ void ThesisProject::createCompleteTrayIcon(){
 
 	StopCapturing = new QAction(tr("Detener Captura"), this);
 
+	StopCapturing->setIcon(QIcon(QPixmap(":/ToolBar/Stop.jpg")));
+
+	StopCapturing->setShortcut(tr("Ctrl+D"));
+
 	StopCapturing->setEnabled(false);
 
 	trayIconMenu->addAction(StopCapturing);
@@ -358,6 +363,8 @@ void ThesisProject::createCompleteTrayIcon(){
 	ViewState = new QAction(tr("Ver estado"), this);
 
 	ViewState->setEnabled(false);
+
+	ViewState->setIcon(QIcon(QPixmap(":/ToolBar/ViewState.jpg")));
 
 	trayIconMenu->addAction(ViewState);
 
@@ -385,6 +392,8 @@ void ThesisProject::createCompleteTrayIcon(){
 
 	Restore->setEnabled(false);
 
+	Restore->setIcon(QIcon(QPixmap(":/ToolBar/Restore.png")));
+
 	trayIconMenu->addAction(Restore);
 
 	connect(Restore, SIGNAL(triggered()), this, SLOT(showNormal()));
@@ -394,6 +403,8 @@ void ThesisProject::createCompleteTrayIcon(){
 	quitAction = new QAction(tr("&Salir"), this);
 
 	quitAction->setShortcut(QApplication::translate("ThesisProjectClass", "Ctrl+Shift+S", 0, QApplication::UnicodeUTF8));
+
+	quitAction->setIcon(QIcon(QPixmap(":/ToolBar/quit.jpg")));
 
 ///	connect(quitAction, SIGNAL(triggered()), qApp, SLOT(quit()));
 
@@ -1082,8 +1093,7 @@ void ThesisProject::finishTrack(){
 
 	if (Container::getInstance()->getStateSupport()){
 		ViewState->setEnabled(false);
-		if (stateViewer->isVisible())
-			stateViewer->close();
+		QMetaObject::invokeMethod(stateViewer,"close");
 	}
 	showCaptureCross->setChecked(false);
 	showCaptureCross->setEnabled(false);

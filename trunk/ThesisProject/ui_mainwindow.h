@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading ui file 'mainwindow.ui'
 **
-** Created: Fri 22. May 20:51:51 2009
+** Created: Sun 24. May 12:28:10 2009
 **      by: Qt User Interface Compiler version 4.5.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling ui file!
@@ -138,7 +138,7 @@ public:
         actionSalir = new QAction(ThesisProjectClass);
         actionSalir->setObjectName(QString::fromUtf8("actionSalir"));
         QIcon icon2;
-        icon2.addPixmap(QPixmap(QString::fromUtf8(":/ToolBar/quit.jpg")), QIcon::Normal, QIcon::Off);
+        icon2.addPixmap(QPixmap(QString::fromUtf8(":/ToolBar/minimize.png")), QIcon::Normal, QIcon::Off);
         actionSalir->setIcon(icon2);
         actionAcerca_de = new QAction(ThesisProjectClass);
         actionAcerca_de->setObjectName(QString::fromUtf8("actionAcerca_de"));

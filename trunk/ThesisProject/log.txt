@@ -1,4 +1,4 @@
-log created on 05/22/09 19:30:22
+log created on 05/24/09 12:39:28
 
 
 
@@ -16,13 +16,13 @@ log created on 05/22/09 19:30:22
 - Hue Value 42
 
 
---- Camera_Video ---
-- created Successfully
+--- CamHandler ---
+- Camera started succefully
 
 
 --- NetHandler ---
 - The Network was succesfully created from NetDesktopSkin.net
 
-- Average time per Frame: 1.2
+- Average time per Frame: 1.10559
 
-log close on 05/22/09 19:30:24
+log close on 05/24/09 12:40:01

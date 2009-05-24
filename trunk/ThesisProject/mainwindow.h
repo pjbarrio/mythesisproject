@@ -26,6 +26,7 @@
 #include "Utils/ImageUtilities.h"
 #include <QTimer>
 #include "DynamicGestureRecognition/src/GestureEventMapper.h"
+#include "GUI/About/about.h"
 
 
 
@@ -39,7 +40,7 @@ class ThesisProject : public QMainWindow
     Q_OBJECT
 
 public:
-    ThesisProject(AddGesture*,AddEvent*,AddAsociation*,StateViewer*,HandDiagnostic*,QWidget *parent = 0);
+    ThesisProject(AddGesture*,AddEvent*,AddAsociation*,StateViewer*,HandDiagnostic*,About*,QWidget *parent = 0);
     ~ThesisProject();
     GestureModel *getGestureModel();
 
@@ -70,6 +71,7 @@ private:
     AddAsociation *addAsociationDialog;
     StateViewer *stateViewer;
     HandDiagnostic* handDiagnostic;
+    About* about;
     bool rotatex;
     bool rotatey;
     QString UP_STR;

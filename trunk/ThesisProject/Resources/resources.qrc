@@ -8,6 +8,9 @@
     <file>YellowLight.jpg</file>
   </qresource>
   <qresource prefix="ToolBar" >
+    <file>ViewState.jpg</file>
+    <file>Restore.png</file>
+    <file>minimize.png</file>
     <file>Stop.jpg</file>
     <file>Events.jpg</file>
     <file>import.jpg</file>
