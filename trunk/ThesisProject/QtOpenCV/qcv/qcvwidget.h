@@ -17,14 +17,7 @@ public slots:
 
 	void showImage(const IplImage *img);
 
-	// …Ë÷√ÕºœÒ
 
-	//void setImage(const IplImage *image);
-
-	//  ”∆µ
-
-	//void setMovie();
-	
 protected:
 
 	void paintEvent(QPaintEvent *event);

@@ -9,7 +9,6 @@ QCVPainter::QCVPainter(){}
 QCVPainter::QCVPainter(QPaintDevice *dev):QPainter(dev){}
 QCVPainter::~QCVPainter(){}
 
-// IplImage转换需要加速
 
 void QCVPainter::drawImage(const QPoint &p, const IplImage *image)
 {
@@ -26,7 +25,7 @@ void QCVPainter::drawImage(const CvPoint &p, const IplImage *image)
 	}
 }
 
-//
+
 
 void QCVPainter::drawImage(const QRect &r, const IplImage *image)
 {
@@ -43,7 +42,7 @@ void QCVPainter::drawImage(const CvRect &r, const IplImage *image)
 	}
 }
 
-//
+
 
 void QCVPainter::drawImage(const QPoint &p, const IplImage *image, const QRect &sr,
                    Qt::ImageConversionFlags flags /* = Qt::AutoColor */)
@@ -62,7 +61,7 @@ void QCVPainter::drawImage(const CvPoint &p, const IplImage *image, const CvRect
 	}
 }
 
-//
+
 
 void QCVPainter::drawImage(const QRect &targetRect, const IplImage *image, const QRect &sourceRect,
                    Qt::ImageConversionFlags flags /* = Qt::AutoColor */)
@@ -81,7 +80,7 @@ void QCVPainter::drawImage(const CvRect &targetRect, const IplImage *image, cons
 	}
 }
 
-//
+
 
 void QCVPainter::drawImage(int x, int y, const IplImage *image,
 			   int sx /* = 0 */, int sy /* = 0 */,
@@ -94,7 +93,7 @@ void QCVPainter::drawImage(int x, int y, const IplImage *image,
 	}
 }
 
-//
+
 
 void QCVPainter::drawImageFast(const IplImage *image)
 {
@@ -110,17 +109,12 @@ void QCVPainter::drawImageFast(const IplImage *image)
 
 	// swap RB channel
 	// origin IPL_ORIGIN_BL
-	// 是否需要上下反转
+
 
 	cvConvertImage(image, (CvArr*)image, CV_CVTIMG_SWAP_RB);
 
 	QImage img(data, w, h, step, QImage::Format_RGB888);
 
-	// draw
-
-
-
-	//
 
 	cvConvertImage(image, (CvArr*)image, CV_CVTIMG_SWAP_RB);
 
