@@ -31,7 +31,7 @@ IplImage *qcvIplImage(const QPixmap &image)
 	return qcvIplImage(image.toImage());
 }
 
-//
+
 
 QImage qcvQImage (const IplImage *image)
 {
@@ -44,7 +44,7 @@ QPixmap qcvQPixmap(const IplImage *image)
 	return QPixmap::fromImage(qcvQImage(image));
 }
 
-//
+
 
 bool qcvSaveImage(const char *filename, const IplImage *img)
 {
@@ -55,7 +55,7 @@ bool qcvSaveImage(const QString &filename, const IplImage *img)
 	return cvSaveImage(filename.toAscii().constData(), img);
 }
 
-// 和QDataStream集成
+
 
 QDataStream& operator>>(QDataStream &in, IplImage *image)
 {
@@ -67,7 +67,7 @@ QDataStream& operator>>(QDataStream &in, IplImage *image)
 	if(image->imageSize == head->imageSize)
 	{
 		// 图像内存大小一致
-	
+
 		char *data = image->imageData;
 		in.readRawData(data, image->imageSize);
 		memcpy(image, head, sizeof(head));
@@ -75,10 +75,9 @@ QDataStream& operator>>(QDataStream &in, IplImage *image)
 	}
 	else
 	{
-		// 分配内存
+		;
 	}
 
-	// cvReleaseImage 是否能正确释放 ???
 
 	return in;
 }
@@ -95,39 +94,39 @@ static IplImage *cvxCopyQImage(const QImage &qImage, IplImage **ppIplImage)
 {
 	if(qImage.isNull()) return NULL;
 
-	// 图像大小
-	
+
+
 	int w = qImage.width();
 	int h = qImage.height();
 
-	// 创建IplImage
+
 
 	IplImage *pIplImage = (!ppIplImage || !CV_IS_IMAGE(*ppIplImage))?
 		cvCreateImage(cvSize(w,h), IPL_DEPTH_8U, 3): (*ppIplImage);
 	if(!CV_IS_IMAGE(pIplImage)) return NULL;
 
-	// 调整大小
+
 
 	if(pIplImage->width != w || pIplImage->height != h)
 	{
-		// 需要修改pIplImage指针
+
 
 		cvReleaseImage(&pIplImage);
 		pIplImage = cvCreateImage(cvSize(w,h), IPL_DEPTH_8U, 3);
 
-		if(!CV_IS_IMAGE(pIplImage)) 
+		if(!CV_IS_IMAGE(pIplImage))
 		{
 			if(!ppIplImage) (*ppIplImage) = pIplImage;
 			return NULL;
 		}
 	}
 
-	// 设置左上角起点
+
 
 	pIplImage->origin = IPL_ORIGIN_TL;
 
-	// 复制像素
-	
+
+
 	int x, y;
 	for(x = 0; x < pIplImage->width; ++x)
 	{
@@ -135,7 +134,6 @@ static IplImage *cvxCopyQImage(const QImage &qImage, IplImage **ppIplImage)
 		{
 			QRgb rgb = qImage.pixel(x, y);
 
-			// 灰度/彩色
 
 			if(pIplImage->nChannels == 1)
 			{
@@ -148,7 +146,7 @@ static IplImage *cvxCopyQImage(const QImage &qImage, IplImage **ppIplImage)
 		}
 	}
 
-	// 更新(*ppIplImage)
+
 
 	if(!ppIplImage) (*ppIplImage) = NULL;
 	return pIplImage;
@@ -158,20 +156,19 @@ static QImage& cvxCopyIplImage(const IplImage *pIplImage, QImage &qImage)
 {
 	if(!CV_IS_IMAGE(pIplImage)) return qImage;
 
-	// 图像大小
+
 
 	int w = pIplImage->width;
 	int h = pIplImage->height;
 
-	// 调整qImage的大小
 
 	if(qImage.width() != w || qImage.height() != h)
 	{
 		qImage = QImage(w, h, QImage::Format_RGB32);
 	}
 
-	// 复制像素
-	
+
+
 	int x, y;
 	for(x = 0; x < pIplImage->width; ++x)
 	{
@@ -179,12 +176,12 @@ static QImage& cvxCopyIplImage(const IplImage *pIplImage, QImage &qImage)
 		{
 			CvScalar color = cvGet2D(pIplImage, y, x);
 
-			// 灰度/彩色
+
 
 			if(pIplImage->nChannels == 1)
 			{
 				int v = color.val[0];
-				
+
 				qImage.setPixel(x, y, qRgb(v,v,v));
 			}
 			else
@@ -192,13 +189,13 @@ static QImage& cvxCopyIplImage(const IplImage *pIplImage, QImage &qImage)
 				int r = color.val[2];
 				int g = color.val[1];
 				int b = color.val[0];
-				
+
 				qImage.setPixel(x, y, qRgb(r,g,b));
 			}
 		}
 	}
 
-	// 上下翻转
+
 
 	if(pIplImage->origin != IPL_ORIGIN_TL)
 	{
@@ -208,4 +205,4 @@ static QImage& cvxCopyIplImage(const IplImage *pIplImage, QImage &qImage)
 	return qImage;
 }
 
-//
+

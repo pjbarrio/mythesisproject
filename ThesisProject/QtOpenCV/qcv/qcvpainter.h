@@ -15,7 +15,7 @@ public:
     explicit QCVPainter(QPaintDevice *);
     ~QCVPainter();
 
-	//
+
 
     void drawImage(const QPoint  &p, const IplImage *image);
     void drawImage(const CvPoint &p, const IplImage *image);
@@ -33,11 +33,11 @@ public:
 				   int sx = 0, int sy = 0, int sw = -1, int sh = -1,
 				   Qt::ImageConversionFlags flags = Qt::AutoColor);
 
-	//
+
 
 private:
 
-	// 针对特殊格式进行优化
+
 
 	void drawImageFast(const IplImage *image);
 

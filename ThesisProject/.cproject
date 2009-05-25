@@ -56,6 +56,9 @@
 <pathentry base-path="C:/Qt/4.5.0/include" include="QtXml" kind="inc" path="" system="true"/>
 <pathentry base-path="C:/Qt/4.5.0/include" include="QtXmlPatterns" kind="inc" path="" system="true"/>
 </storageModule>
+<storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
+<storageModule moduleId="scannerConfiguration"/>
+<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
 </cconfiguration>
 </storageModule>
 </cproject>

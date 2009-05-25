@@ -2,7 +2,7 @@
 #include "qcvwidget.h"
 #include "qcvpainter.h"
 
-//
+
 
 QCVWidget::QCVWidget(QWidget *parent): QWidget(parent)
 {
@@ -19,5 +19,3 @@ void QCVWidget::paintEvent(QPaintEvent *event)
 	QCVPainter painter(this);
 	painter.drawImage(rect(), m_image);
 }
-// QMovie
-// Q_D

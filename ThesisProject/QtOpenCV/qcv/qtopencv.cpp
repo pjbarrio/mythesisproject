@@ -1,11 +1,11 @@
 
 #include "qtopencv.h"
 
-//
+
 
 void qcvRegisterMetaTypeStreamOperators2()
 {
-	// 以下函数可否静态初始化 ???
+
 
 	qRegisterMetaTypeStreamOperators<CvPoint>("CvPoint");
 	qRegisterMetaTypeStreamOperators<CvPoint2D32f>("CvPoint2D32f");
@@ -27,4 +27,4 @@ IplImage* qcvGrabWidget(QWidget *widget)
 	return qcvIplImage(pixmap);
 }
 
-//
+
