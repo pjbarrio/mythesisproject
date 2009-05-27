@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'newgesture.h'
 **
-** Created: Sat 16. May 20:09:13 2009
+** Created: Tue 26. May 20:23:05 2009
 **      by: The Qt Meta Object Compiler version 61 (Qt 4.5.0)
 **
 ** WARNING! All changes made in this file will be lost!

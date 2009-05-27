@@ -1,9 +1,13 @@
-log created on 05/24/09 12:39:28
+log created on 05/26/09 22:38:15
 
 
 
 --- Configurator ---
 - Config File: config.data loaded
+
+
+--- CamHandler ---
+- Camera started succefully
 
 
 --- FilterHandler ---
@@ -16,13 +20,13 @@ log created on 05/24/09 12:39:28
 - Hue Value 42
 
 
---- CamHandler ---
-- Camera started succefully
+--- Camera_Video ---
+- created Successfully
 
 
 --- NetHandler ---
 - The Network was succesfully created from NetDesktopSkin.net
 
-- Average time per Frame: 1.10559
+- Average time per Frame: 1.04082
 
-log close on 05/24/09 12:40:01
+log close on 05/26/09 22:55:48

@@ -406,8 +406,6 @@ void ThesisProject::createCompleteTrayIcon(){
 
 	quitAction->setIcon(QIcon(QPixmap(":/ToolBar/quit.jpg")));
 
-///	connect(quitAction, SIGNAL(triggered()), qApp, SLOT(quit()));
-
 	connect(quitAction, SIGNAL(triggered()), this, SLOT(byeApplication()));
 
 	trayIconMenu->addAction(quitAction);
@@ -854,7 +852,7 @@ void ThesisProject::startApplication(){
 
     connect(timer, SIGNAL(timeout()), this, SLOT(captureNextFrame()));
 
-    timer->start(15);
+    timer->start(13);
 
 	ts->start();
 
