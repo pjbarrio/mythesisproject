@@ -12,7 +12,7 @@
  */
 
 InitializerCreator::InitializerCreator() {
-	// TODO Constructor
+	;
 
 }
 
@@ -22,5 +22,5 @@ InitializerCreator::InitializerCreator() {
  */
 
 InitializerCreator::~InitializerCreator() {
-	// TODO Destructor
+	;
 }

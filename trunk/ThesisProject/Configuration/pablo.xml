@@ -239,7 +239,7 @@
             <Gesture>NoGestureDetected</Gesture>
             <Event>DoNothingEvent</Event>
         </Association>
-        <Association active="true">
+        <Association active="false">
             <Gesture>Gesture Test 1</Gesture>
             <Event>Evento Test 1</Event>
         </Association>

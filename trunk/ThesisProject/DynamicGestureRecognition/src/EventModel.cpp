@@ -95,7 +95,6 @@ Event* EventModel::getEvent(std::string* id){
 	this->begin();
 	Event* ret;
 	const char* strid = id->c_str();
-
 	while (this->hasNext()){
 		ret = this->getNextEvent();
 		if (strcmp(strid,ret->getId().c_str()) == 0)

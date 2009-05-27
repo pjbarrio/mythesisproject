@@ -50,6 +50,7 @@ XmlStreamReader::~XmlStreamReader() {
 	combinedKeyEventModel = 0;
 	appEventModel = 0;
 	fileEventModel = 0;
+	gem = 0;
 }
 
 /*
@@ -241,9 +242,9 @@ void XmlStreamReader::readEventsElement(){
 				readApplicationEventsElements();
 			} else if (reader.name() == "FileEvents") {
 				readFileEventsElements();
-			} else {
-				reader.readNext();
 			}
+		}else {
+			reader.readNext();
 		}
 	}
 }
@@ -334,6 +335,7 @@ BYTE XmlStreamReader::getKeyCode(QString key){
 		return VK_NEXT;
 	if (QString::compare(key,ALT_STR) == 0)
 		return VK_MENU;
+	return 0;
 }
 
 /*
@@ -588,13 +590,19 @@ void XmlStreamReader::readAssociationElement(QString isActive){
  * This method adds the association to the GestureEventMapper instance.
  */
 void XmlStreamReader::createAssociation(QString idGest, QString idEvent, QString isActive){
+	if (QString::compare(idEvent,QString("DoNothingEvent")) == 0)
+		return;
+
 	Event* e = getEventFromModels(idEvent);
 	std::string* id = new std::string(idGest.toStdString());
+	if (gestureModel==0)
+		return;
 	Gesture* g = gestureModel->getGesture(id);
 	bool active = false;
 	bool added;
 	if (QString::compare(isActive,QString("true")) == 0)
 		active = true;
+
 	if (gem!=0);
 		gem->addAssociation(g,e,active,added);
 }
@@ -607,17 +615,25 @@ void XmlStreamReader::createAssociation(QString idGest, QString idEvent, QString
 Event* XmlStreamReader::getEventFromModels(QString ide){
 	std::string* id = new std::string(ide.toStdString());
 	Event* e;
-	e = keyEventModel->getEvent(id);
-	if (e!=0)
-		return e;
-	e = combinedKeyEventModel->getEvent(id);
-	if (e!=0)
-		return e;
-	e = appEventModel->getEvent(id);
-	if (e!=0)
-		return e;
-	e = fileEventModel->getEvent(id);
-	if (e!=0)
-		return e;
+	if (keyEventModel != 0){
+		e = keyEventModel->getEvent(id);
+		if (e!=0)
+			return e;
+	}
+	if (combinedKeyEventModel!=0){
+		e = combinedKeyEventModel->getEvent(id);
+		if (e!=0)
+			return e;
+	}
+	if (appEventModel!=0){
+		e = appEventModel->getEvent(id);
+		if (e!=0)
+			return e;
+	}
+	if (fileEventModel!=0){
+		e = fileEventModel->getEvent(id);
+		if (e!=0)
+			return e;
+	}
 	return 0;
 }

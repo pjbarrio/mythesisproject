@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading ui file 'mainwindow.ui'
 **
-** Created: Sun 24. May 12:28:10 2009
+** Created: Tue 26. May 22:36:01 2009
 **      by: Qt User Interface Compiler version 4.5.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling ui file!
@@ -514,7 +514,7 @@ public:
         QObject::connect(ConfigButton, SIGNAL(clicked()), ThesisProjectClass, SLOT(runHandDiagnostic()));
         QObject::connect(AsociacionList, SIGNAL(itemChanged(QListWidgetItem*)), ThesisProjectClass, SLOT(analizeChange(QListWidgetItem*)));
 
-        tabWidget->setCurrentIndex(1);
+        tabWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(ThesisProjectClass);
