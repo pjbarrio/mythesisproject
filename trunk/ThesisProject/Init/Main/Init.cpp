@@ -11,6 +11,7 @@
 #include "../../GUI/CamViewer.h"
 
 
+
 Init::Init() {
 }
 
@@ -50,7 +51,9 @@ int Init::start(int argc, char *argv[]){
 
 	About* about = new About();
 
-	ThesisProject w(addGesture,addEvent,addAsociation,stateViewer,handDiagnostic,about, 0);
+	GestureParameter* gp = new GestureParameter();
+
+	ThesisProject w(addGesture,addEvent,addAsociation,stateViewer,handDiagnostic,about,gp, 0);
 
 	Container::getInstance()->createCamViewerInstance(w.getCapturedImage());
 

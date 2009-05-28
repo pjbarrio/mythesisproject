@@ -14,7 +14,9 @@
  * in the movement of the hand.
  */
 
-AccelerationActivation::AccelerationActivation(int size,int pixelsToTrajectory,double distanceThreshold,double NonVaryingAccelerationRate,int MinNumberOfPoints,int i_threshold,double acc_threshold,double maxTimeGesture,DistanceCalculator* distanceCalculator){
+AccelerationActivation::AccelerationActivation(int size,int pixelsToTrajectory,double distanceThreshold,
+		double NonVaryingAccelerationRate,int MinNumberOfPoints,int i_threshold,double acc_threshold,double maxTimeGesture,
+		DistanceCalculator* distanceCalculator){
 	cout << "Hello Acceleration Activation\n";
 
 	this->xValues = new CircularBuffer(size);

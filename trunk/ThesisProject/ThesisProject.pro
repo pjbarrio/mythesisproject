@@ -1,7 +1,8 @@
 TARGET = ThesisProject
 QT += core \
     gui
-HEADERS += GUI/About/about.h \
+HEADERS += GUI/GestureParameters/gestureparameter.h \
+    GUI/About/about.h \
     DynamicGestureRecognition/src/Association.h \
     QtOpenCV/qcv/qcvcg.h \
     QtOpenCV/qcv/qcvimage.h \
@@ -97,7 +98,8 @@ HEADERS += GUI/About/about.h \
     DynamicGestureRecognition/src/DynamicGestureRecognitionAlgorithm.h \
     DynamicGestureRecognition/src/addGesturePolicy.h \
     mainwindow.h
-SOURCES += GUI/About/about.cpp \
+SOURCES += GUI/GestureParameters/gestureparameter.cpp \
+    GUI/About/about.cpp \
     DynamicGestureRecognition/src/Association.cpp \
     QtOpenCV/qcv/qcvcg.cpp \
     QtOpenCV/qcv/qcvimage.cpp \
@@ -182,7 +184,8 @@ SOURCES += GUI/About/about.cpp \
     DynamicGestureRecognition/src/addGesturePolicy.cpp \
     main.cpp \
     mainwindow.cpp
-FORMS += GUI/About/about.ui \
+FORMS += GUI/GestureParameters/gestureparameter.ui \
+    GUI/About/about.ui \
     GUI/HandDiagnostic/handdiagnostic.ui \
     GUI/MovementGraph/paintmovement.ui \
     GUI/newGesture/newgesture.ui \

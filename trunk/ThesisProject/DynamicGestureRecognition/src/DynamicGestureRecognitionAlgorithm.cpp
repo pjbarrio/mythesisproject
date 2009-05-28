@@ -16,10 +16,12 @@
  * store the variables passed by parameter.
  */
 
-DynamicGestureRecognitionAlgorithm::DynamicGestureRecognitionAlgorithm(GestureModel* gestureModel,ActivationGestureMethod* agm, double relaxedRatio,DTWAlgorithm* dtwalgorithm,SignalRefactor* signalRefactor) {
+DynamicGestureRecognitionAlgorithm::DynamicGestureRecognitionAlgorithm(GestureModel* gestureModel,
+		ActivationGestureMethod* agm, double relaxedRatio,DTWAlgorithm* dtwalgorithm,
+		ValuesNormalizator* valuesNormalizator) {
 	cout << "Hello Dynamic Gesture Recognition\n";
 
-	this->signalRefactor = signalRefactor;
+	this->valuesNormalizator = valuesNormalizator;
 
 	this->agm = agm;
 
@@ -249,7 +251,7 @@ void DynamicGestureRecognitionAlgorithm::RecognizeMotionDetected()
 	}
 
 
-	Gesture *gesture = getGr()->getRecognizedGesture(signalRefactor->refactorSignal(getTx()),signalRefactor->refactorSignal(getTy()));
+	Gesture *gesture = getGr()->getRecognizedGesture(valuesNormalizator->normalizeSignal(getTx()),valuesNormalizator->normalizeSignal(getTy()));
 
 	Event *event = getGestureEventMapper()->getEvent(gesture);
 

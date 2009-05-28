@@ -27,6 +27,7 @@
 #include <QTimer>
 #include "DynamicGestureRecognition/src/GestureEventMapper.h"
 #include "GUI/About/about.h"
+#include "GUI/GestureParameters/gestureparameter.h"
 
 
 
@@ -40,7 +41,7 @@ class ThesisProject : public QMainWindow
     Q_OBJECT
 
 public:
-    ThesisProject(AddGesture*,AddEvent*,AddAsociation*,StateViewer*,HandDiagnostic*,About*,QWidget *parent = 0);
+    ThesisProject(AddGesture*,AddEvent*,AddAsociation*,StateViewer*,HandDiagnostic*,About*,GestureParameter*,QWidget *parent = 0);
     ~ThesisProject();
     GestureModel *getGestureModel();
 
@@ -72,6 +73,8 @@ private:
     StateViewer *stateViewer;
     HandDiagnostic* handDiagnostic;
     About* about;
+    GestureParameter* gestureParameter;
+    bool rightGestureParameters;
     bool rotatex;
     bool rotatey;
     QString UP_STR;
@@ -178,6 +181,7 @@ private slots:
 	void saveConfigurationinFile();
 	void byeApplication();
 	void analizeChange(QListWidgetItem*);
+	void configureGestureParameters();
 };
 
 #endif // MAINWINDOW_H

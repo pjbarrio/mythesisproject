@@ -20,7 +20,7 @@
 #include "../../GUI/Estado/stateviewer.h"
 #include "../../mainwindow.h"
 #include "../../GUI/CamViewer.h"
-
+#include "../../GUI/GestureParameters/gestureparameter.h"
 class Init {
 public:
 	Init();
