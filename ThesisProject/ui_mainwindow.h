@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading ui file 'mainwindow.ui'
 **
-** Created: Tue 26. May 22:36:01 2009
+** Created: Thu 28. May 14:14:39 2009
 **      by: Qt User Interface Compiler version 4.5.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling ui file!
@@ -69,6 +69,9 @@ public:
     QWidget *tab;
     QVBoxLayout *verticalLayout_2;
     QCheckBox *GestureSupport;
+    QGroupBox *groupBox;
+    QGridLayout *gridLayout_8;
+    QPushButton *GestureConfiguration;
     QCheckBox *StateSupport;
     QCheckBox *viewPointer;
     QCheckBox *ClickSupport;
@@ -77,7 +80,6 @@ public:
     QRadioButton *OpenHandRadio;
     QRadioButton *CloseHandRadio;
     QPushButton *ConfigButton;
-    QWidget *HandPicture;
     QWidget *tab_2;
     QVBoxLayout *verticalLayout_3;
     QGroupBox *GestosGroupBox;
@@ -258,6 +260,19 @@ public:
 
         verticalLayout_2->addWidget(GestureSupport);
 
+        groupBox = new QGroupBox(tab);
+        groupBox->setObjectName(QString::fromUtf8("groupBox"));
+        groupBox->setEnabled(false);
+        gridLayout_8 = new QGridLayout(groupBox);
+        gridLayout_8->setObjectName(QString::fromUtf8("gridLayout_8"));
+        GestureConfiguration = new QPushButton(groupBox);
+        GestureConfiguration->setObjectName(QString::fromUtf8("GestureConfiguration"));
+
+        gridLayout_8->addWidget(GestureConfiguration, 0, 0, 1, 1);
+
+
+        verticalLayout_2->addWidget(groupBox);
+
         StateSupport = new QCheckBox(tab);
         StateSupport->setObjectName(QString::fromUtf8("StateSupport"));
 
@@ -293,12 +308,7 @@ public:
         ConfigButton = new QPushButton(ClickGroupBox);
         ConfigButton->setObjectName(QString::fromUtf8("ConfigButton"));
 
-        gridLayout_3->addWidget(ConfigButton, 2, 0, 1, 2);
-
-        HandPicture = new QWidget(ClickGroupBox);
-        HandPicture->setObjectName(QString::fromUtf8("HandPicture"));
-
-        gridLayout_3->addWidget(HandPicture, 1, 0, 1, 2);
+        gridLayout_3->addWidget(ConfigButton, 1, 0, 1, 2);
 
 
         verticalLayout_2->addWidget(ClickGroupBox);
@@ -513,6 +523,8 @@ public:
         QObject::connect(startButton, SIGNAL(clicked()), ThesisProjectClass, SLOT(startApplication()));
         QObject::connect(ConfigButton, SIGNAL(clicked()), ThesisProjectClass, SLOT(runHandDiagnostic()));
         QObject::connect(AsociacionList, SIGNAL(itemChanged(QListWidgetItem*)), ThesisProjectClass, SLOT(analizeChange(QListWidgetItem*)));
+        QObject::connect(GestureSupport, SIGNAL(toggled(bool)), groupBox, SLOT(setEnabled(bool)));
+        QObject::connect(GestureConfiguration, SIGNAL(clicked()), ThesisProjectClass, SLOT(configureGestureParameters()));
 
         tabWidget->setCurrentIndex(0);
 
@@ -565,16 +577,15 @@ public:
 #endif // QT_NO_TOOLTIP
         YRotationBox->setText(QApplication::translate("ThesisProjectClass", "Rotar Y", 0, QApplication::UnicodeUTF8));
         GestureSupport->setText(QApplication::translate("ThesisProjectClass", "Habilitar soporte de gestos", 0, QApplication::UnicodeUTF8));
+        groupBox->setTitle(QApplication::translate("ThesisProjectClass", "Par\303\241metros del Reconocimiento de gestos", 0, QApplication::UnicodeUTF8));
+        GestureConfiguration->setText(QApplication::translate("ThesisProjectClass", "Configurar", 0, QApplication::UnicodeUTF8));
         StateSupport->setText(QApplication::translate("ThesisProjectClass", "Habilitar visualizador de estado", 0, QApplication::UnicodeUTF8));
         viewPointer->setText(QApplication::translate("ThesisProjectClass", "Visualizar puntero del Mouse", 0, QApplication::UnicodeUTF8));
         ClickSupport->setText(QApplication::translate("ThesisProjectClass", "Habilitar Click", 0, QApplication::UnicodeUTF8));
-        ClickGroupBox->setTitle(QApplication::translate("ThesisProjectClass", "GroupBox", 0, QApplication::UnicodeUTF8));
+        ClickGroupBox->setTitle(QApplication::translate("ThesisProjectClass", "Estado Click", 0, QApplication::UnicodeUTF8));
         OpenHandRadio->setText(QApplication::translate("ThesisProjectClass", "Mano Abierta", 0, QApplication::UnicodeUTF8));
         CloseHandRadio->setText(QApplication::translate("ThesisProjectClass", "Mano Cerrada", 0, QApplication::UnicodeUTF8));
         ConfigButton->setText(QApplication::translate("ThesisProjectClass", "Configurar", 0, QApplication::UnicodeUTF8));
-#ifndef QT_NO_TOOLTIP
-        HandPicture->setToolTip(QApplication::translate("ThesisProjectClass", "Imagen que debe ser imitada para realizar click", 0, QApplication::UnicodeUTF8));
-#endif // QT_NO_TOOLTIP
         tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("ThesisProjectClass", "Configuraci\303\263n", 0, QApplication::UnicodeUTF8));
         GestosGroupBox->setTitle(QApplication::translate("ThesisProjectClass", "Gestos", 0, QApplication::UnicodeUTF8));
 #ifndef QT_NO_TOOLTIP

@@ -19,12 +19,14 @@
 #include "GestureRecognizer.h"
 #include "DTWData.h"
 #include "list.h"
-#include "SignalRefactor.h"
+#include "ValuesNormalizator.h"
+
 
 
 class DynamicGestureRecognitionAlgorithm {
 public:
-	DynamicGestureRecognitionAlgorithm(GestureModel*, ActivationGestureMethod*, double, DTWAlgorithm*,SignalRefactor*);
+	DynamicGestureRecognitionAlgorithm(GestureModel*, ActivationGestureMethod*,
+			double, DTWAlgorithm*,ValuesNormalizator*);
 	virtual ~DynamicGestureRecognitionAlgorithm();
 	void addNewInput(double x, double y, double t);
 
@@ -38,7 +40,7 @@ private:
 	void setActualInput(double,double,double);
 	void storeInput();
 	void cleanBuffers();
-	SignalRefactor* signalRefactor;
+	ValuesNormalizator* valuesNormalizator;
 	ActivationGestureMethod *agm;
 	DTWAlgorithm *dtwalgorithm;
 	GestureRecognizer *gr;

@@ -6,6 +6,9 @@
  */
 
 #include "InitDynamicGestureRecognition.h"
+#include "../../GUI/Utils/Container.h"
+#include "../src/ActivationGestureMethod.h"
+#include "../ActivationGestureMethods/AccelerationActivation.h"
 
 /*
  * This method saves the SystemInfo object.
@@ -32,7 +35,32 @@ InitDynamicGestureRecognition::~InitDynamicGestureRecognition() {
 
 void InitDynamicGestureRecognition::init()
 {
-	//TODO IMPLEMENTAR init gesture
+	Container* cont = Container::getInstance();
+
+	int bufferSize = cont->getBufferSize();//8; //size of the buffer
+	int walkedPixels = cont->getWalkedPixels();//100; //number of pixels to detect a trajectory
+	double distanceThreshold = cont->getDistanceThreshold();//0.8; //minimun acceptance rate of the walked pixels
+	double nonVaryingAccelerationRate = cont->getNonVaryingAccelerationRate();//7000; //acceleration rate allowed
+	int minimumPointsCount = cont->getMinimumPointsCount();//15; //to inform that a gesture is valid.
+	int relaxedCount = cont->getRelaxedCount();//5; //Values that are relaxed to detect the gesture
+	double accelerationThreshold = cont->getAccelerationThreshold();//20300;
+	double maxGestureTime = cont->getMaxGestureTime();//2.0;
+	DistanceCalculator* distanceCalculatorAGM = cont->getDistanceCalculatorAGM();//new EuclideanDistance();
+
+	ActivationGestureMethod *agm = new AccelerationActivation(bufferSize,walkedPixels,distanceThreshold,
+			nonVaryingAccelerationRate,minimumPointsCount,relaxedCount,accelerationThreshold,maxGestureTime,
+			distanceCalculatorAGM);
+
+	DTWAlgorithm *dTWAlgorithm = cont->getDTWAlgorithm();//new ItakuraDTWAlgorithm(3.0,dcDTW);
+
+	GestureModel *gestureModel = new GestureModel(dTWAlgorithm);
+
+	double relaxedRatio = cont->getRelaxedRatio();//=3.0;
+
+	ValuesNormalizator* valuesNormalizator = cont->getValuesNormalizator();
+
+	DynamicGestureRecognitionAlgorithm *dgra = new DynamicGestureRecognitionAlgorithm(gestureModel,agm,relaxedRatio,dTWAlgorithm,valuesNormalizator);
+
 }
 
 /*
@@ -41,7 +69,7 @@ void InitDynamicGestureRecognition::init()
 
 void InitDynamicGestureRecognition::setNewInput(double x, double y, double t)
 {
-	//dgra->addNewInput(x,y,t);
+	dgra->addNewInput(x,y,t);
 }
 
 

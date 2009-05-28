@@ -27,7 +27,7 @@
  * This Method initiates the main Application. Receives the Dialog boxes that will appear during the execution.
  */
 
-ThesisProject::ThesisProject(AddGesture* addGesture,AddEvent* addEvent,AddAsociation* addAsociation,StateViewer* stateViewer,HandDiagnostic* handDiagnostic,About* about,QWidget *parent)
+ThesisProject::ThesisProject(AddGesture* addGesture,AddEvent* addEvent,AddAsociation* addAsociation,StateViewer* stateViewer,HandDiagnostic* handDiagnostic,About* about,GestureParameter* gp,QWidget *parent)
     : QMainWindow(parent)
 {
 	ui.setupUi(this);
@@ -38,6 +38,7 @@ ThesisProject::ThesisProject(AddGesture* addGesture,AddEvent* addEvent,AddAsocia
 	this->stateViewer = stateViewer;
 	this->handDiagnostic = handDiagnostic;
 	this->about = about;
+	this->gestureParameter = gp;
 	initVariables();
 
 	createCompleteTrayIcon();
@@ -476,6 +477,7 @@ void ThesisProject::initVariables(){
     coordSaver = 0;
 
     ConfigurationFileName = 0;
+    rightGestureParameters = false;
 }
 
 /*
@@ -1258,4 +1260,13 @@ void ThesisProject::analizeChange(QListWidgetItem* item){
     	item->setCheckState(Qt::Unchecked);
     	return;
 	}
+}
+
+void ThesisProject::configureGestureParameters(){
+	int ret = gestureParameter->exec();
+	if (ret == 1){
+		rightGestureParameters = true;
+	}
+	else
+		rightGestureParameters = false;
 }

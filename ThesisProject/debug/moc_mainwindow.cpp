@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'mainwindow.h'
 **
-** Created: Tue 26. May 22:36:52 2009
+** Created: Thu 28. May 15:07:02 2009
 **      by: The Qt Meta Object Compiler version 61 (Qt 4.5.0)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_ThesisProject[] = {
        2,       // revision
        0,       // classname
        0,    0, // classinfo
-      25,   12, // methods
+      26,   12, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -54,6 +54,7 @@ static const uint qt_meta_data_ThesisProject[] = {
      415,   14,   14,   14, 0x08,
      441,   14,   14,   14, 0x08,
      458,   14,   14,   14, 0x08,
+     490,   14,   14,   14, 0x08,
 
        0        // eod
 };
@@ -73,6 +74,7 @@ static const char qt_meta_stringdata_ThesisProject[] = {
     "importCombinedKeyPressEvents()\0"
     "importGestures()\0saveConfigurationinFile()\0"
     "byeApplication()\0analizeChange(QListWidgetItem*)\0"
+    "configureGestureParameters()\0"
 };
 
 const QMetaObject ThesisProject::staticMetaObject = {
@@ -125,9 +127,10 @@ int ThesisProject::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         case 22: saveConfigurationinFile(); break;
         case 23: byeApplication(); break;
         case 24: analizeChange((*reinterpret_cast< QListWidgetItem*(*)>(_a[1]))); break;
+        case 25: configureGestureParameters(); break;
         default: ;
         }
-        _id -= 25;
+        _id -= 26;
     }
     return _id;
 }

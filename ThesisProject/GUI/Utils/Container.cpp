@@ -274,3 +274,23 @@ void Container::deleteVideo(){
 	delete video;
 }
 
+/*
+ * This method initializes the Gesture Parameters to start a new
+ * configuration.
+ */
+
+void Container::initGestureParameters(){
+	bufferSize = 0;
+	walkedPixels = 0;
+	distanceThreshold = 0;
+	nonVaryingAccelerationRate = 0;
+	minimumPointsCount = 0;
+	relaxedCount = 0;
+	accelerationThreshold = 0;
+	maxGestureTime = 0;
+	relaxedRatio = 0;
+	distanceCalculatorAGM = 0;
+	distanceCalculatorDTW = 0;
+	dTWAlgorithm = 0;
+	valuesNormalizator = 0;
+}

@@ -1,4 +1,5 @@
 INPUT(
+./debug\gestureparameter.o
 ./debug\about.o
 ./debug\Association.o
 ./debug\qcvcg.o
@@ -84,6 +85,7 @@ INPUT(
 ./debug\addGesturePolicy.o
 ./debug\main.o
 ./debug\mainwindow.o
+./debug\moc_gestureparameter.o
 ./debug\moc_about.o
 ./debug\moc_qcvwidget.o
 ./debug\moc_handdiagnostic.o
