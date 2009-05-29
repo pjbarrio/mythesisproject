@@ -51,7 +51,7 @@ int InitTracker::start()
 
 	FilterHandler     *filterHandler = Container::getInstance()->getFilterHandler();
 
-	ImageUtilities             *util = new ImageUtilities();
+//	ImageUtilities             *util = new ImageUtilities();
 
 	if ( !cam->initCamDevice() ){
 

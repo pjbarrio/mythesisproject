@@ -1263,7 +1263,7 @@ void ThesisProject::analizeChange(QListWidgetItem* item){
 }
 
 void ThesisProject::configureGestureParameters(){
-	int ret = gestureParameter->exec();
+	int ret = gestureParameter->exec(getSystemInfo());
 	if (ret == 1){
 		rightGestureParameters = true;
 	}
