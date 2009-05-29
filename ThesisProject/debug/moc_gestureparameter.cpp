@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'gestureparameter.h'
 **
-** Created: Thu 28. May 15:06:58 2009
+** Created: Fri 29. May 02:24:27 2009
 **      by: The Qt Meta Object Compiler version 61 (Qt 4.5.0)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_GestureParameter[] = {
        2,       // revision
        0,       // classname
        0,    0, // classinfo
-       2,   12, // methods
+      17,   12, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -31,13 +31,42 @@ static const uint qt_meta_data_GestureParameter[] = {
  // slots: signature, parameters, type, tag, flags
       18,   17,   17,   17, 0x08,
       40,   17,   17,   17, 0x08,
+      64,   17,   17,   17, 0x08,
+      73,   17,   17,   17, 0x08,
+      97,   17,   17,   17, 0x08,
+     123,   17,   17,   17, 0x08,
+     162,   17,   17,   17, 0x08,
+     206,   17,   17,   17, 0x08,
+     245,   17,   17,   17, 0x08,
+     271,   17,   17,   17, 0x08,
+     302,   17,   17,   17, 0x08,
+     336,   17,   17,   17, 0x08,
+     367,   17,   17,   17, 0x08,
+     403,   17,   17,   17, 0x08,
+     429,   17,   17,   17, 0x08,
+     468,   17,   17,   17, 0x08,
+     498,   17,   17,   17, 0x08,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_GestureParameter[] = {
     "GestureParameter\0\0setDetectedCount(int)\0"
-    "setMaxRelatedRatio(int)\0"
+    "setMaxRelatedRatio(int)\0accept()\0"
+    "bufferSizeModified(int)\0"
+    "relaxedCountModified(int)\0"
+    "distanceCalculatorAGMModified(QString)\0"
+    "nonVaryingAccelerationRateModified(QString)\0"
+    "accelerationThresholdModified(QString)\0"
+    "walkedPixelsModified(int)\0"
+    "minimumPointCountModified(int)\0"
+    "distanceThresholdModified(double)\0"
+    "maxGestureTimeModified(double)\0"
+    "valuesNormalizatorModified(QString)\0"
+    "relaxedRatioModified(int)\0"
+    "distanceCalculatorDTWModified(QString)\0"
+    "dtwAlgorithmModified(QString)\0"
+    "rateModified(double)\0"
 };
 
 const QMetaObject GestureParameter::staticMetaObject = {
@@ -67,9 +96,24 @@ int GestureParameter::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         switch (_id) {
         case 0: setDetectedCount((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 1: setMaxRelatedRatio((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 2: accept(); break;
+        case 3: bufferSizeModified((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 4: relaxedCountModified((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 5: distanceCalculatorAGMModified((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 6: nonVaryingAccelerationRateModified((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 7: accelerationThresholdModified((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 8: walkedPixelsModified((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 9: minimumPointCountModified((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 10: distanceThresholdModified((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 11: maxGestureTimeModified((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 12: valuesNormalizatorModified((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 13: relaxedRatioModified((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 14: distanceCalculatorDTWModified((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 15: dtwAlgorithmModified((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 16: rateModified((*reinterpret_cast< double(*)>(_a[1]))); break;
         default: ;
         }
-        _id -= 2;
+        _id -= 17;
     }
     return _id;
 }

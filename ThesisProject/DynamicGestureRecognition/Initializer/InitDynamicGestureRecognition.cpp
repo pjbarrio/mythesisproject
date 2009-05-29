@@ -59,7 +59,7 @@ void InitDynamicGestureRecognition::init()
 
 	ValuesNormalizator* valuesNormalizator = cont->getValuesNormalizator();
 
-	DynamicGestureRecognitionAlgorithm *dgra = new DynamicGestureRecognitionAlgorithm(gestureModel,agm,relaxedRatio,dTWAlgorithm,valuesNormalizator);
+	dgra = new DynamicGestureRecognitionAlgorithm(gestureModel,agm,relaxedRatio,dTWAlgorithm,valuesNormalizator);
 
 }
 
