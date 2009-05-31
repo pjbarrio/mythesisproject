@@ -78,6 +78,7 @@ public:
     int getMinimumPointsCount() const {return minimumPointsCount;}
     int getRelaxedCount() const {return relaxedCount;}
     double getAccelerationThreshold() const {return accelerationThreshold;}
+    double getDesaccelerationThreshold() const {return desaccelerationThreshold;}
     double getMaxGestureTime() const {return maxGestureTime;}
     DistanceCalculator *getDistanceCalculatorAGM() const {return distanceCalculatorAGM;}
     DistanceCalculator *getDistanceCalculatorDTW() const {return distanceCalculatorDTW;}
@@ -94,6 +95,7 @@ public:
     void setMinimumPointsCount(int minimumPointsCount) {this->minimumPointsCount = minimumPointsCount;}
     void setRelaxedCount(int relaxedCount){this->relaxedCount = relaxedCount;}
     void setAccelerationThreshold(double accelerationThreshold) {this->accelerationThreshold = accelerationThreshold;}
+    void setDesaccelerationThreshold(double desaccelerationThreshold) {this->desaccelerationThreshold = desaccelerationThreshold;}
     void setMaxGestureTime(double maxGestureTime) {this->maxGestureTime = maxGestureTime;}
     void setDistanceCalculatorAGM(DistanceCalculator *distanceCalculatorAGM) {this->distanceCalculatorAGM = distanceCalculatorAGM;}
     void setDistanceCalculatorDTW(DistanceCalculator *distanceCalculatorDTW) {this->distanceCalculatorDTW = distanceCalculatorDTW;}
@@ -142,6 +144,7 @@ private:
 	int minimumPointsCount;
 	int relaxedCount;
 	double accelerationThreshold;
+	double desaccelerationThreshold;
 	double maxGestureTime;
 	DistanceCalculator* distanceCalculatorAGM;
 	DistanceCalculator* distanceCalculatorDTW;

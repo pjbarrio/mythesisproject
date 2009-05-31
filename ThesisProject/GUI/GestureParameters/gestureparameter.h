@@ -23,9 +23,9 @@ class GestureParameter : public QDialog
     Q_OBJECT
 
 public:
-    GestureParameter(QWidget *parent = 0);
+    GestureParameter(SystemInfo*, QWidget *parent = 0);
     ~GestureParameter();
-    int exec(SystemInfo*);
+    int exec();
 private:
     Ui::GestureParameterClass ui;
     SystemInfo* si;
@@ -37,6 +37,7 @@ private:
 	int minimumPointsCount;
 	int relaxedCount;
 	double accelerationThreshold;
+	double desaccelerationThreshold;
 	double maxGestureTime;
 	DistanceCalculator* distanceCalculatorAGM;
 	DistanceCalculator* distanceCalculatorDTW;
@@ -51,6 +52,7 @@ private:
 	bool dirtyminimumPointsCount;
 	bool dirtyrelaxedCount;
 	bool dirtyaccelerationThreshold;
+	bool dirtydesaccelerationThreshold;
 	bool dirtymaxGestureTime;
 	bool dirtydistanceCalculatorAGM;
 	bool dirtydistanceCalculatorDTW;
@@ -72,6 +74,7 @@ private slots:
 	void distanceCalculatorAGMModified(QString);
 	void nonVaryingAccelerationRateModified(QString);
 	void accelerationThresholdModified(QString);
+	void desaccelerationThresholdModified(QString);
 	void walkedPixelsModified(int);
 	void minimumPointCountModified(int);
 	void distanceThresholdModified(double);

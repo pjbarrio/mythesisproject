@@ -41,7 +41,8 @@ class ThesisProject : public QMainWindow
     Q_OBJECT
 
 public:
-    ThesisProject(AddGesture*,AddEvent*,AddAsociation*,StateViewer*,HandDiagnostic*,About*,GestureParameter*,QWidget *parent = 0);
+    ThesisProject(AddGesture*,AddEvent*,AddAsociation*,StateViewer*,HandDiagnostic*,
+    		About*,GestureParameter*,SystemInfo*,QWidget *parent = 0);
     ~ThesisProject();
     GestureModel *getGestureModel();
 

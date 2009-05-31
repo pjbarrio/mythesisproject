@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading ui file 'gestureparameter.ui'
 **
-** Created: Fri 29. May 02:23:35 2009
+** Created: Sun 31. May 14:29:29 2009
 **      by: Qt User Interface Compiler version 4.5.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling ui file!
@@ -36,22 +36,28 @@ class Ui_GestureParameterClass
 public:
     QVBoxLayout *verticalLayout;
     QGroupBox *detectionGroup;
-    QGridLayout *gridLayout;
+    QVBoxLayout *verticalLayout_2;
+    QWidget *widget_2;
+    QHBoxLayout *horizontalLayout_2;
     QLabel *label;
     QSpinBox *bufferSize;
-    QSpacerItem *horizontalSpacer;
+    QSpacerItem *horizontalSpacer_2;
     QLabel *label_2;
     QSpinBox *relaxedCount;
-    QSpacerItem *horizontalSpacer_2;
+    QSpacerItem *horizontalSpacer;
     QLabel *label_3;
     QComboBox *distanceCalculatorAGM;
-    QSpacerItem *horizontalSpacer_5;
+    QWidget *widget_3;
+    QHBoxLayout *horizontalLayout_3;
     QLabel *label_4;
     QLineEdit *nonVaryingAccelerationRate;
     QSpacerItem *horizontalSpacer_4;
     QLabel *label_5;
     QLineEdit *accelerationThreshold;
     QSpacerItem *horizontalSpacer_3;
+    QLabel *label_15;
+    QLineEdit *desaccelerationThreshold;
+    QSpacerItem *horizontalSpacer_5;
     QGroupBox *gestureDescriptionGroup;
     QGridLayout *gridLayout_2;
     QSpacerItem *horizontalSpacer_8;
@@ -96,90 +102,118 @@ public:
     {
         if (GestureParameterClass->objectName().isEmpty())
             GestureParameterClass->setObjectName(QString::fromUtf8("GestureParameterClass"));
-        GestureParameterClass->resize(659, 348);
+        GestureParameterClass->resize(627, 384);
         verticalLayout = new QVBoxLayout(GestureParameterClass);
         verticalLayout->setSpacing(6);
         verticalLayout->setMargin(11);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         detectionGroup = new QGroupBox(GestureParameterClass);
         detectionGroup->setObjectName(QString::fromUtf8("detectionGroup"));
-        gridLayout = new QGridLayout(detectionGroup);
-        gridLayout->setSpacing(6);
-        gridLayout->setMargin(11);
-        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
-        label = new QLabel(detectionGroup);
+        verticalLayout_2 = new QVBoxLayout(detectionGroup);
+        verticalLayout_2->setSpacing(6);
+        verticalLayout_2->setMargin(11);
+        verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
+        widget_2 = new QWidget(detectionGroup);
+        widget_2->setObjectName(QString::fromUtf8("widget_2"));
+        horizontalLayout_2 = new QHBoxLayout(widget_2);
+        horizontalLayout_2->setSpacing(6);
+        horizontalLayout_2->setMargin(11);
+        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        label = new QLabel(widget_2);
         label->setObjectName(QString::fromUtf8("label"));
 
-        gridLayout->addWidget(label, 0, 0, 1, 2);
+        horizontalLayout_2->addWidget(label);
 
-        bufferSize = new QSpinBox(detectionGroup);
+        bufferSize = new QSpinBox(widget_2);
         bufferSize->setObjectName(QString::fromUtf8("bufferSize"));
         bufferSize->setMinimum(1);
         bufferSize->setMaximum(20);
-        bufferSize->setValue(8);
+        bufferSize->setValue(6);
 
-        gridLayout->addWidget(bufferSize, 0, 2, 1, 1);
+        horizontalLayout_2->addWidget(bufferSize);
 
-        horizontalSpacer = new QSpacerItem(82, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        horizontalSpacer_2 = new QSpacerItem(28, 13, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        gridLayout->addItem(horizontalSpacer, 0, 3, 1, 1);
+        horizontalLayout_2->addItem(horizontalSpacer_2);
 
-        label_2 = new QLabel(detectionGroup);
+        label_2 = new QLabel(widget_2);
         label_2->setObjectName(QString::fromUtf8("label_2"));
 
-        gridLayout->addWidget(label_2, 0, 4, 1, 1);
+        horizontalLayout_2->addWidget(label_2);
 
-        relaxedCount = new QSpinBox(detectionGroup);
+        relaxedCount = new QSpinBox(widget_2);
         relaxedCount->setObjectName(QString::fromUtf8("relaxedCount"));
-        relaxedCount->setValue(5);
+        relaxedCount->setValue(3);
 
-        gridLayout->addWidget(relaxedCount, 0, 5, 1, 1);
+        horizontalLayout_2->addWidget(relaxedCount);
 
-        horizontalSpacer_2 = new QSpacerItem(78, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        horizontalSpacer = new QSpacerItem(28, 13, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        gridLayout->addItem(horizontalSpacer_2, 0, 6, 1, 1);
+        horizontalLayout_2->addItem(horizontalSpacer);
 
-        label_3 = new QLabel(detectionGroup);
+        label_3 = new QLabel(widget_2);
         label_3->setObjectName(QString::fromUtf8("label_3"));
 
-        gridLayout->addWidget(label_3, 0, 7, 1, 1);
+        horizontalLayout_2->addWidget(label_3);
 
-        distanceCalculatorAGM = new QComboBox(detectionGroup);
+        distanceCalculatorAGM = new QComboBox(widget_2);
         distanceCalculatorAGM->setObjectName(QString::fromUtf8("distanceCalculatorAGM"));
 
-        gridLayout->addWidget(distanceCalculatorAGM, 0, 8, 1, 1);
+        horizontalLayout_2->addWidget(distanceCalculatorAGM);
 
-        horizontalSpacer_5 = new QSpacerItem(55, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        gridLayout->addItem(horizontalSpacer_5, 1, 0, 1, 1);
+        verticalLayout_2->addWidget(widget_2);
 
-        label_4 = new QLabel(detectionGroup);
+        widget_3 = new QWidget(detectionGroup);
+        widget_3->setObjectName(QString::fromUtf8("widget_3"));
+        horizontalLayout_3 = new QHBoxLayout(widget_3);
+        horizontalLayout_3->setSpacing(6);
+        horizontalLayout_3->setMargin(11);
+        horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
+        label_4 = new QLabel(widget_3);
         label_4->setObjectName(QString::fromUtf8("label_4"));
 
-        gridLayout->addWidget(label_4, 1, 1, 1, 1);
+        horizontalLayout_3->addWidget(label_4);
 
-        nonVaryingAccelerationRate = new QLineEdit(detectionGroup);
+        nonVaryingAccelerationRate = new QLineEdit(widget_3);
         nonVaryingAccelerationRate->setObjectName(QString::fromUtf8("nonVaryingAccelerationRate"));
 
-        gridLayout->addWidget(nonVaryingAccelerationRate, 1, 2, 1, 2);
+        horizontalLayout_3->addWidget(nonVaryingAccelerationRate);
 
-        horizontalSpacer_4 = new QSpacerItem(54, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        horizontalSpacer_4 = new QSpacerItem(17, 18, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        gridLayout->addItem(horizontalSpacer_4, 1, 4, 1, 1);
+        horizontalLayout_3->addItem(horizontalSpacer_4);
 
-        label_5 = new QLabel(detectionGroup);
+        label_5 = new QLabel(widget_3);
         label_5->setObjectName(QString::fromUtf8("label_5"));
 
-        gridLayout->addWidget(label_5, 1, 5, 1, 1);
+        horizontalLayout_3->addWidget(label_5);
 
-        accelerationThreshold = new QLineEdit(detectionGroup);
+        accelerationThreshold = new QLineEdit(widget_3);
         accelerationThreshold->setObjectName(QString::fromUtf8("accelerationThreshold"));
 
-        gridLayout->addWidget(accelerationThreshold, 1, 6, 1, 2);
+        horizontalLayout_3->addWidget(accelerationThreshold);
 
-        horizontalSpacer_3 = new QSpacerItem(109, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        horizontalSpacer_3 = new QSpacerItem(13, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        gridLayout->addItem(horizontalSpacer_3, 1, 8, 1, 1);
+        horizontalLayout_3->addItem(horizontalSpacer_3);
+
+        label_15 = new QLabel(widget_3);
+        label_15->setObjectName(QString::fromUtf8("label_15"));
+
+        horizontalLayout_3->addWidget(label_15);
+
+        desaccelerationThreshold = new QLineEdit(widget_3);
+        desaccelerationThreshold->setObjectName(QString::fromUtf8("desaccelerationThreshold"));
+
+        horizontalLayout_3->addWidget(desaccelerationThreshold);
+
+        horizontalSpacer_5 = new QSpacerItem(18, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_3->addItem(horizontalSpacer_5);
+
+
+        verticalLayout_2->addWidget(widget_3);
 
 
         verticalLayout->addWidget(detectionGroup);
@@ -218,9 +252,9 @@ public:
 
         minimunPointCount = new QSpinBox(gestureDescriptionGroup);
         minimunPointCount->setObjectName(QString::fromUtf8("minimunPointCount"));
-        minimunPointCount->setMinimum(10);
+        minimunPointCount->setMinimum(6);
         minimunPointCount->setMaximum(80);
-        minimunPointCount->setValue(15);
+        minimunPointCount->setValue(6);
 
         gridLayout_2->addWidget(minimunPointCount, 0, 6, 1, 1);
 
@@ -302,6 +336,7 @@ public:
         relaxedRatio = new QSpinBox(dtwGroup);
         relaxedRatio->setObjectName(QString::fromUtf8("relaxedRatio"));
         relaxedRatio->setMinimum(1);
+        relaxedRatio->setMaximum(3);
         relaxedRatio->setValue(2);
 
         gridLayout_3->addWidget(relaxedRatio, 0, 5, 1, 1);
@@ -383,8 +418,7 @@ public:
         verticalLayout->addWidget(widget);
 
         QWidget::setTabOrder(bufferSize, relaxedCount);
-        QWidget::setTabOrder(relaxedCount, distanceCalculatorAGM);
-        QWidget::setTabOrder(distanceCalculatorAGM, nonVaryingAccelerationRate);
+        QWidget::setTabOrder(relaxedCount, nonVaryingAccelerationRate);
         QWidget::setTabOrder(nonVaryingAccelerationRate, accelerationThreshold);
         QWidget::setTabOrder(accelerationThreshold, walkedPixels);
         QWidget::setTabOrder(walkedPixels, minimunPointCount);
@@ -417,6 +451,7 @@ public:
         QObject::connect(distanceCalculatorDTW, SIGNAL(currentIndexChanged(QString)), GestureParameterClass, SLOT(distanceCalculatorDTWModified(QString)));
         QObject::connect(dtwAlgorithm, SIGNAL(currentIndexChanged(QString)), GestureParameterClass, SLOT(dtwAlgorithmModified(QString)));
         QObject::connect(rate, SIGNAL(valueChanged(double)), GestureParameterClass, SLOT(rateModified(double)));
+        QObject::connect(desaccelerationThreshold, SIGNAL(textChanged(QString)), GestureParameterClass, SLOT(desaccelerationThresholdModified(QString)));
 
         QMetaObject::connectSlotsByName(GestureParameterClass);
     } // setupUi
@@ -434,10 +469,13 @@ public:
         );
         label_4->setText(QApplication::translate("GestureParameterClass", "Tolerancia aceleraci\303\263n", 0, QApplication::UnicodeUTF8));
         nonVaryingAccelerationRate->setInputMask(QApplication::translate("GestureParameterClass", "0000; ", 0, QApplication::UnicodeUTF8));
-        nonVaryingAccelerationRate->setText(QApplication::translate("GestureParameterClass", "700", 0, QApplication::UnicodeUTF8));
+        nonVaryingAccelerationRate->setText(QApplication::translate("GestureParameterClass", "450", 0, QApplication::UnicodeUTF8));
         label_5->setText(QApplication::translate("GestureParameterClass", "Valor de activaci\303\263n", 0, QApplication::UnicodeUTF8));
         accelerationThreshold->setInputMask(QApplication::translate("GestureParameterClass", "00000; ", 0, QApplication::UnicodeUTF8));
-        accelerationThreshold->setText(QApplication::translate("GestureParameterClass", "2000", 0, QApplication::UnicodeUTF8));
+        accelerationThreshold->setText(QApplication::translate("GestureParameterClass", "600", 0, QApplication::UnicodeUTF8));
+        label_15->setText(QApplication::translate("GestureParameterClass", "Valor de desactivaci\303\263n", 0, QApplication::UnicodeUTF8));
+        desaccelerationThreshold->setInputMask(QApplication::translate("GestureParameterClass", "00000; ", 0, QApplication::UnicodeUTF8));
+        desaccelerationThreshold->setText(QApplication::translate("GestureParameterClass", "400", 0, QApplication::UnicodeUTF8));
         gestureDescriptionGroup->setTitle(QApplication::translate("GestureParameterClass", "Par\303\241metros del gesto", 0, QApplication::UnicodeUTF8));
         label_6->setText(QApplication::translate("GestureParameterClass", "Espacio recorrido (en pixels)", 0, QApplication::UnicodeUTF8));
         label_7->setText(QApplication::translate("GestureParameterClass", "Cantidad de puntos m\303\255nima", 0, QApplication::UnicodeUTF8));

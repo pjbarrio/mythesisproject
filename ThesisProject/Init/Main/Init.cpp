@@ -51,9 +51,11 @@ int Init::start(int argc, char *argv[]){
 
 	About* about = new About();
 
-	GestureParameter* gp = new GestureParameter();
+	SystemInfo* si = new SystemInfo(80,60);
 
-	ThesisProject w(addGesture,addEvent,addAsociation,stateViewer,handDiagnostic,about,gp, 0);
+	GestureParameter* gp = new GestureParameter(si);
+
+	ThesisProject w(addGesture,addEvent,addAsociation,stateViewer,handDiagnostic,about,gp,si, 0);
 
 	Container::getInstance()->createCamViewerInstance(w.getCapturedImage());
 

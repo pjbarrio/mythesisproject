@@ -18,7 +18,7 @@
 
 class AccelerationActivation: public ActivationGestureMethod {
 public:
-	AccelerationActivation(int,int,double,double,int,int,double,double,DistanceCalculator*);
+	AccelerationActivation(int,int,double,double,int,int,double,double,double,DistanceCalculator*);
 	~AccelerationActivation();
 	void setNewInput(double, double, double);
 	bool DetectedGestureActivation();
@@ -35,6 +35,7 @@ private:
 	int number_of_points;
 	int pixelsToTrajectory;
 	double acc_threshold;
+	double desacc_threshold;
 	double firstTime;
 	double maxTimeGesture;
     CircularBuffer *getXValues() const {return xValues;}

@@ -15,7 +15,7 @@
  */
 
 AccelerationActivation::AccelerationActivation(int size,int pixelsToTrajectory,double distanceThreshold,
-		double NonVaryingAccelerationRate,int MinNumberOfPoints,int i_threshold,double acc_threshold,double maxTimeGesture,
+		double NonVaryingAccelerationRate,int MinNumberOfPoints,int i_threshold,double acc_threshold,double desacc_threshold,double maxTimeGesture,
 		DistanceCalculator* distanceCalculator){
 	cout << "Hello Acceleration Activation\n";
 
@@ -34,6 +34,7 @@ AccelerationActivation::AccelerationActivation(int size,int pixelsToTrajectory,d
 	this->maxTimeGesture = maxTimeGesture;
 	this->distanceCalculator = distanceCalculator;
 	this->acc_threshold = acc_threshold; //pixels / sec2 acceleration that have to accept.
+	this->desacc_threshold = desacc_threshold;
 }
 
 /*
@@ -60,6 +61,7 @@ AccelerationActivation::~AccelerationActivation()
 	maxTimeGesture = 0;
 	distanceCalculator = 0;
 	acc_threshold = 0;
+	desacc_threshold = 0;
 
 }
 
@@ -225,7 +227,7 @@ bool AccelerationActivation::SlowDownDetected()
 						return false;
 				}
 
-				if (relaxedPoints == -1 && actualAcc < (-1.0)*(acc_threshold))
+				if (relaxedPoints == -1 && actualAcc < (-1.0)*(desacc_threshold))
 					relaxedPoints = i_threshold;
 
 				if (relaxedPoints==0){
