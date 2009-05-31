@@ -44,21 +44,17 @@ void InitDynamicGestureRecognition::init()
 	int minimumPointsCount = cont->getMinimumPointsCount();//15; //to inform that a gesture is valid.
 	int relaxedCount = cont->getRelaxedCount();//5; //Values that are relaxed to detect the gesture
 	double accelerationThreshold = cont->getAccelerationThreshold();//20300;
+	double desaccelerationThreshold = cont->getDesaccelerationThreshold();
 	double maxGestureTime = cont->getMaxGestureTime();//2.0;
 	DistanceCalculator* distanceCalculatorAGM = cont->getDistanceCalculatorAGM();//new EuclideanDistance();
-
-	ActivationGestureMethod *agm = new AccelerationActivation(bufferSize,walkedPixels,distanceThreshold,
-			nonVaryingAccelerationRate,minimumPointsCount,relaxedCount,accelerationThreshold,maxGestureTime,
-			distanceCalculatorAGM);
+	ActivationGestureMethod *agm = new AccelerationActivation(bufferSize, walkedPixels, distanceThreshold,
+			nonVaryingAccelerationRate, minimumPointsCount, relaxedCount, accelerationThreshold, desaccelerationThreshold,
+			maxGestureTime, distanceCalculatorAGM);
 
 	DTWAlgorithm *dTWAlgorithm = cont->getDTWAlgorithm();//new ItakuraDTWAlgorithm(3.0,dcDTW);
-
 	GestureModel *gestureModel = new GestureModel(dTWAlgorithm);
-
 	double relaxedRatio = cont->getRelaxedRatio();//=3.0;
-
 	ValuesNormalizator* valuesNormalizator = cont->getValuesNormalizator();
-
 	dgra = new DynamicGestureRecognitionAlgorithm(gestureModel,agm,relaxedRatio,dTWAlgorithm,valuesNormalizator);
 
 }
@@ -69,6 +65,7 @@ void InitDynamicGestureRecognition::init()
 
 void InitDynamicGestureRecognition::setNewInput(double x, double y, double t)
 {
+	cout << x << " - " << y << " - " << t << "\n";
 	dgra->addNewInput(x,y,t);
 }
 

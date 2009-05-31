@@ -8,15 +8,17 @@
  * This method sets up the gesture Parameter GUI
  */
 
-GestureParameter::GestureParameter(QWidget *parent)
+GestureParameter::GestureParameter(SystemInfo* si, QWidget *parent)
     : QDialog(parent)
 {
 	ui.setupUi(this);
+	this->si = si;
+	initVariables();
 }
 
 GestureParameter::~GestureParameter()
 {
-
+	this->si = 0;
 }
 
 /*
@@ -41,23 +43,37 @@ void GestureParameter::setMaxRelatedRatio(int maxValue){
  * This method initializes the variables.
  */
 void GestureParameter::initVariables(){
-	bufferSize = 8;
-	relaxedCount = 5;
+	Container* cont = Container::getInstance();
+	bufferSize = 6;
+	cont->setBufferSize(bufferSize);
+	relaxedCount = 3;
+	cont->setRelaxedCount(relaxedCount);
 	distanceCalculatorAGM = new EuclideanDistance();
-	nonVaryingAccelerationRate = 700.0;
-	accelerationThreshold = 2000.0;
-
+	cont->setDistanceCalculatorAGM(distanceCalculatorAGM);
+	nonVaryingAccelerationRate = 450.0;
+	cont->setNonVaryingAccelerationRate(nonVaryingAccelerationRate);
+	accelerationThreshold = 600.0;
+	cont->setAccelerationThreshold(accelerationThreshold);
+	desaccelerationThreshold = 400.0;
+	cont->setDesaccelerationThreshold(desaccelerationThreshold);
 	walkedPixels = 30;
-	minimumPointsCount = 15;
+	cont->setWalkedPixels(walkedPixels);
+	minimumPointsCount = 6;
+	cont->setMinimumPointsCount(minimumPointsCount);
 	distanceThreshold = 0.75;
+	cont->setDistanceThreshold(distanceThreshold);
 	maxGestureTime = 2.0;
-
+	cont->setMaxGestureTime(maxGestureTime);
 	valuesNormalizator = new ValuesNormalizator(si);
+	cont->setValuesNormalizator(valuesNormalizator);
 	relaxedRatio = 2.0;
+	cont->setRelaxedRatio(relaxedRatio);
 	distanceCalculatorDTW = new EuclideanDistance();
+	cont->setDistanceCalculatorDTW(distanceCalculatorDTW);
 	rate = 0.3;
-	dTWAlgorithm = new ItakuraDTWAlgorithm(rate,distanceCalculatorDTW);
 
+	dTWAlgorithm = new ItakuraDTWAlgorithm(rate,distanceCalculatorDTW);
+	cont->setDTWAlgorithm(dTWAlgorithm);
 
 }
 
@@ -66,8 +82,8 @@ void GestureParameter::initVariables(){
  * which needs some parameters from model.
  */
 
-int GestureParameter::exec(SystemInfo* si){
-	this->si = si;
+int GestureParameter::exec(){
+
 	dirtybufferSize = false;
 	dirtywalkedPixels = false;
 	dirtydistanceThreshold = false;
@@ -75,12 +91,14 @@ int GestureParameter::exec(SystemInfo* si){
 	dirtyminimumPointsCount = false;
 	dirtyrelaxedCount = false;
 	dirtyaccelerationThreshold = false;
+	dirtydesaccelerationThreshold = false;
 	dirtymaxGestureTime = false;
 	dirtydistanceCalculatorAGM = false;
 	dirtydistanceCalculatorDTW = false;
 	dirtyrate = false;
 	dirtydTWAlgorithm = false;
 	dirtyrelaxedRatio = false;
+
 	return QDialog::exec();
 }
 
@@ -104,6 +122,8 @@ void GestureParameter::accept(){
 		cont->setNonVaryingAccelerationRate(nonVaryingAccelerationRate);
 	if (dirtyaccelerationThreshold)
 		cont->setAccelerationThreshold(accelerationThreshold);
+	if (dirtydesaccelerationThreshold)
+		cont->setDesaccelerationThreshold(desaccelerationThreshold);
 	if (dirtyvaluesNormalizator)
 		cont->setValuesNormalizator(valuesNormalizator);
 
@@ -190,6 +210,16 @@ void GestureParameter::accelerationThresholdModified(QString val){
 	bool fun;
 	accelerationThreshold = val.toDouble(&fun);
 }
+
+/*
+ * This method stores the new desacceleration threshold value
+ */
+void GestureParameter::desaccelerationThresholdModified(QString val){
+	dirtydesaccelerationThreshold = true;
+	bool fun;
+	desaccelerationThreshold = val.toDouble(&fun);
+}
+
 /*
  * This method stores the new walked pixels value
  */

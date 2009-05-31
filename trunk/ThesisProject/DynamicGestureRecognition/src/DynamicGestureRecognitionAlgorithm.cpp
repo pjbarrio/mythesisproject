@@ -143,8 +143,6 @@ void DynamicGestureRecognitionAlgorithm::DeactivationDetected()
 
 void DynamicGestureRecognitionAlgorithm::NoChangeDetected()
 {
-	cout << "NoChDetected \n ";
-
 	storeInput();
 }
 
