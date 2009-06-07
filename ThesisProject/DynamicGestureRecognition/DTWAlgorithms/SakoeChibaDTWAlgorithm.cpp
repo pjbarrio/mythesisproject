@@ -59,21 +59,21 @@ int SakoeChibaDTWAlgorithm::getInfValue(int pos, int n1, int n2)
 
 	double doublepos = (double)pos;
 	int l1 = (int)floor(getRate()*dn1);
-	int l2 = (int)floor((1-getRate())*dn1);
+	int l2 = (int)floor((1.0-getRate())*dn1);
 
 	if (l1 < pos && pos <= l2){
-		setInfValue(max((int)floor(angle*doublepos - disp),1));
-		setSupValue(min((int)floor(angle*doublepos + disp),n2-1));
+		setInfValue(max(min(n2-2,(int)floor(angle*doublepos - disp)),1));
+		setSupValue(min((int)floor(angle*doublepos + disp)+1,n2-2));
 		return DTWAlgorithm::getInfValue();
 	}
 	if (pos <= l1){
 		setInfValue(1);
-		setSupValue(min((int)floor(angle*pos + disp),n2-1));
+		setSupValue(min((int)floor(angle*pos + disp)+1,n2-2));
 		return DTWAlgorithm::getInfValue();
 	}
 	if (l2 < pos){
-		setInfValue(max((int)floor(angle*doublepos - disp),1));
-		setSupValue(n2-1);
+		setInfValue(max(min(n2-2,(int)floor(angle*doublepos - disp)),1));
+		setSupValue(n2-2);
 		return DTWAlgorithm::getInfValue();
 	}
 	return -1;

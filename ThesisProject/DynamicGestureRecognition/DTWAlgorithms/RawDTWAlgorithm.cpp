@@ -45,8 +45,9 @@ int RawDTWAlgorithm::getInfValue(int pos, int n1, int n2)
 
 int RawDTWAlgorithm::getSupValue(int pos, int n1, int n2)
 {
-	return n2-1;
+	return n2-2;
 }
+
 
 
 
