@@ -26,6 +26,7 @@ public:
 private:
 	SystemInfo* sysInfo;
 	DynamicGestureRecognitionAlgorithm *dgra;
+
 };
 
 #endif /* INITDYNAMICGESTURERECOGNITION_H_ */

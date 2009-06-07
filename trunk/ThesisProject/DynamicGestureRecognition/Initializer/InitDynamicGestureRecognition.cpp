@@ -65,7 +65,6 @@ void InitDynamicGestureRecognition::init()
 
 void InitDynamicGestureRecognition::setNewInput(double x, double y, double t)
 {
-	cout << x << " - " << y << " - " << t << "\n";
 	dgra->addNewInput(x,y,t);
 }
 

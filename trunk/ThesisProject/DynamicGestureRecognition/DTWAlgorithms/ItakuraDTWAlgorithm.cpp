@@ -60,18 +60,18 @@ int ItakuraDTWAlgorithm::getInfValue(int pos, int n1, int n2)
 	int l2 = (int)floor(dn1/(2.0-getRate()));
 
 	if (pos <= l1){
-			setInfValue(max((int)floor(((1.0-getRate())*dn2/dn1)*doublepos),1));
-			setSupValue(min((int)floor((dn2/((1.0-getRate())*dn1)*doublepos)),n2-1));
+			setInfValue(max(min(n2-2,(int)floor(((1.0-getRate())*dn2/dn1)*doublepos)),1));
+			setSupValue(min((int)floor((dn2/((1.0-getRate())*dn1)*doublepos))+1,n2-2));
 			return DTWAlgorithm::getInfValue();
 		}
 	if (l1 < pos && pos <= l2){
-		setInfValue(max((int)floor(((1.0-getRate())*dn2/dn1)*doublepos),1));
-		setSupValue(min((int)floor(((1.0-getRate())*dn2/dn1)*doublepos + getRate()*dn2),n2-1));
+		setInfValue(max(min(n2-2,(int)floor(((1.0-getRate())*dn2/dn1)*doublepos)),1));
+		setSupValue(min((int)floor(((1.0-getRate())*dn2/dn1)*doublepos + getRate()*dn2)+1,n2-2));
 		return DTWAlgorithm::getInfValue();
 	}
 	if (l2 < pos){
-		setInfValue(max((int)floor((dn2/((1.0-getRate())*dn1))*doublepos - (getRate()*dn2/(1.0-getRate()))),1));
-		setSupValue(min((int)floor(((1.0-getRate())*dn2/dn1)*doublepos + getRate()*dn2),n2-1));
+		setInfValue(max(min(n2-2,(int)floor((dn2/((1.0-getRate())*dn1))*doublepos - (getRate()*dn2/(1.0-getRate())))),1));
+		setSupValue(min((int)floor(((1.0-getRate())*dn2/dn1)*doublepos + getRate()*dn2)+1,n2-2));
 		return DTWAlgorithm::getInfValue();
 	}
 
