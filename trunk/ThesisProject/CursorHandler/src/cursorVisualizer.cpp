@@ -24,6 +24,7 @@ cursorVisualizer::cursorVisualizer(SystemInfo* sysInfo) {
 	GetCursorPos(&p);
 	lastx = p.x;
 	lasty = p.y;
+	clickperformed = false;
 }
 
 /*
@@ -53,6 +54,29 @@ void cursorVisualizer::setCursorPos(int x, int y)
 
 	lastx = valx;
 	lasty = valy;
+}
+
+/*
+ * This method performs a left button click on the last pos registered by
+ * the tracker
+ */
+
+void cursorVisualizer::click(){
+	if (!clickperformed){
+		mouse_event(MOUSEEVENTF_LEFTDOWN, lastx, lasty, 0, 0);
+		clickperformed = true;
+	}
+}
+
+/*
+ * This method releases de click on the last pos registered by the tracker.
+ */
+
+void cursorVisualizer::releaseClick(){
+	if (clickperformed){
+		mouse_event(MOUSEEVENTF_LEFTUP, lastx, lasty, 0, 0);
+		clickperformed = false;
+	}
 }
 
 /*

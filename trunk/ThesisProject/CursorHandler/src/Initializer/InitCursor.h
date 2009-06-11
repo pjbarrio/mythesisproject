@@ -20,7 +20,7 @@
 
 class InitCursor:public Initializer{
 public:
-	InitCursor(CoordsGetter*,SystemInfo*);
+	InitCursor(CoordsGetter*,SystemInfo*,bool, bool, bool);
 	virtual ~InitCursor();
 	void setNewInput(double,double,double);
 	void init();
@@ -29,6 +29,9 @@ private:
 	cursorVisualizer *cv;
 	int lasty;
 	int lastx;
+	bool click;
+	bool closeclick;
+	bool openclick;
 };
 
 #endif /* INITCURSOR_H_ */

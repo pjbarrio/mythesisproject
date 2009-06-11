@@ -21,6 +21,8 @@ public:
 	cursorVisualizer(SystemInfo*);
 	virtual ~cursorVisualizer();
 	void setCursorPos(int,int);
+	void click();
+	void releaseClick();
 
 private:
 	int horizontal,vertical;
@@ -35,6 +37,7 @@ private:
 	double pend;
 	double desp;
 	double x1,x2,y1,y2;
+	bool clickperformed;
 };
 
 #endif /* CURSORVISUALIZER_H_ */
