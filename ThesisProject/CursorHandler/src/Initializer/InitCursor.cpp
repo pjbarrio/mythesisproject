@@ -8,17 +8,21 @@
 #include "InitCursor.h"
 #include "iostream.h"
 #include "math.h"
+#include "../../../GUI/Utils/Container.h"
 
 /*
  * This method set the position of the mouse.
  */
 
-InitCursor::InitCursor(CoordsGetter* coordGetter,SystemInfo* sysInfo):Initializer(coordGetter) {
+InitCursor::InitCursor(CoordsGetter* coordGetter,SystemInfo* sysInfo,bool click, bool closeclick, bool openclick):Initializer(coordGetter) {
 
 	this->sysInfo = sysInfo;
 
 	lastx = 0;
 	lasty = 0;
+	this->click = click;
+	this->closeclick = click;
+	this->openclick = openclick;
 }
 
 /*
@@ -37,6 +41,7 @@ InitCursor::~InitCursor() {
 void InitCursor::init()
 {
 	cv = new cursorVisualizer(sysInfo);
+
 }
 
 /*
@@ -46,12 +51,30 @@ void InitCursor::init()
 
 void InitCursor::setNewInput(double x, double y, double t)
 {
+	bool close = Container::getInstance()->isClosed();
+	double first = x-lastx;
+	if (first<0)
+		first*=(-1);
+	double second = y-lasty;
+	if (second<0)
+		second*=(-1);
 
-	if (abs(x-lastx)<=2 && abs(y-lasty)<=2){
+	if (first<=3 && second<=3){
 		x = lastx;
 		y = lasty;
 	}
-	cv->setCursorPos((int)x,(int)y);
+	else
+		cv->setCursorPos((int)x,(int)y);
+	if (click){
+		if (close && closeclick){
+			cv->click();
+		} else if (!close && openclick){
+			cv->click();
+		}
+		else {
+			cv->releaseClick();
+		}
+	}
 
 	lastx = x;
 	lasty = y;

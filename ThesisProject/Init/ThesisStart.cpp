@@ -61,7 +61,13 @@ void ThesisStart::run() {
 
 		CoordsGetter* cg1 = new CoordsGetter(buf1);
 
-		InitCursor* ic = new InitCursor(cg1,si);
+		bool click = cont->getClickSupport();
+
+		bool closeclick = cont->getCloseClick();
+
+		bool openclick = cont->getOpenClick();
+
+		InitCursor* ic = new InitCursor(cg1,si,click,closeclick,openclick);
 
 		tw1 = new Thread_Worker(ic);
 
