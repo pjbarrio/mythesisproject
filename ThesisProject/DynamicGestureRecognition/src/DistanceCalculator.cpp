@@ -1,8 +1,8 @@
-/*
+/**
  * DistanceCalculator.cpp
  *
  *  Created on: 05/02/2009
- *      Author: Pablo
+ *      \author  Pablo
  */
 
 #include "DistanceCalculator.h"

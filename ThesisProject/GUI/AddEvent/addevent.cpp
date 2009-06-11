@@ -3,7 +3,7 @@
 #include <QMessageBox>
 #include "iostream.h"
 
-/*
+/**
  * This method sets up the GUI of Add Event Dialog window.
  */
 
@@ -18,7 +18,7 @@ AddEvent::~AddEvent()
 ;
 }
 
-/*
+/**
  * This method opens a FileDialog event and saves the file
  * selected by the user.
  */
@@ -41,7 +41,7 @@ void AddEvent::openExecutableFile(){
 	ui.appEdit->setText(file);
 }
 
-/*
+/**
  * This method intercepts the execution event and initializes
  * variables and Widgets.
  */
@@ -55,7 +55,7 @@ int AddEvent::exec(){
 	return QDialog::exec();
 }
 
-/*
+/**
  * This method initializes the widgets used to add a new event.
  */
 
@@ -71,7 +71,7 @@ void AddEvent::initWidgets(){
 	ui.argsEdit->setText("");
 }
 
-/*
+/**
  * This method initializes the variables which will store
  * the widget values.
  */
@@ -89,7 +89,7 @@ void AddEvent::initVariables(){
 	setIsOther(false);
 }
 
-/*
+/**
  * This method saves the widget values and returns successfully.
  */
 

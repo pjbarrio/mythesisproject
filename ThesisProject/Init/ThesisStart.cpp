@@ -1,15 +1,15 @@
-/*
+/**
  * ThesisStart.cpp
  *
  *  Created on: 02/05/2009
- *      Author: Pablo
+ *      \author  Pablo
  */
 
 #include "ThesisStart.h"
 #include "../GUI/Utils/Container.h"
 #include <QMessageBox>
 
-/*
+/**
  * This method saves the references to Main Window and
  * State Visualizer.
  */
@@ -21,7 +21,7 @@ ThesisStart::ThesisStart(ThesisProject* tp, StateViewer* sv,SystemInfo*si,Coords
 	this->si = si;
 }
 
-/*
+/**
  * This method dereferences the variables saved in the
  * constructor method.
  */
@@ -31,7 +31,7 @@ ThesisStart::~ThesisStart() {
 	this->sv = 0;
 }
 
-/*
+/**
  * This method executes the tracker and all the consumer process
  * selected by the user.
  */
@@ -110,7 +110,7 @@ void ThesisStart::run() {
 
 
 
-/*	InitTracker* it = new InitTracker(cs,si,ch);
+/**	InitTracker* it = new InitTracker(cs,si,ch);
 
 	Thread_Tracker* tt = new Thread_Tracker(it);
 

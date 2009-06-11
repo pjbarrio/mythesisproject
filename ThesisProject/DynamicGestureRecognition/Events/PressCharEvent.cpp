@@ -1,14 +1,14 @@
-/*
+/**
  * PressCharEvent.cpp
  *
  *  Created on: 04/05/2009
- *      Author: Pablo
+ *      \author  Pablo
  */
 
 #include "PressCharEvent.h"
 #include "iostream.h"
 
-/*
+/**
  * This method saves the keyCode and the string asociated to this keyCode.
  */
 
@@ -17,7 +17,7 @@ PressCharEvent::PressCharEvent(const char* id,BYTE keyPressCode,std::string key)
 	this->key = key;
 }
 
-/*
+/**
  * This method dereferences the keyCode used and its string representation.
  */
 
@@ -26,7 +26,7 @@ PressCharEvent::~PressCharEvent() {
 	key.clear();
 }
 
-/*
+/**
  * This method simulates the keyboard event.
  */
 
@@ -43,7 +43,7 @@ int PressCharEvent::execute()
 	return EXIT_SUCCESS;
 }
 
-/*
+/**
  * This method writes the Event using an "Event" tag using the xmlWriter
  * passed by parameter.
  */
@@ -60,7 +60,7 @@ bool PressCharEvent::writeXML(QXmlStreamWriter* xmlWriter){
 	return true;
 }
 
-/*
+/**
  * This method writes the key in the xml File associated to
  * xmlWriter using the tag "Key".
  */

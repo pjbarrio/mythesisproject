@@ -1,8 +1,8 @@
-/*
+/**
  * EuclideanDistance.cpp
  *
  *  Created on: 05/02/2009
- *      Author: Pablo
+ *      \author  Pablo
  */
 
 #include "EuclideanDistance.h"
@@ -20,7 +20,7 @@ EuclideanDistance::~EuclideanDistance()
 
 }
 
-/*
+/**
  * This method returns the calculated Euclidean distances beetween the points
  * (x1,y1) and (x2,y2)
  */

@@ -1,14 +1,14 @@
-/*
+/**
  * InitTracker.cpp
  *
  *  Created on: 29/03/2009
- *      Author: Pablo
+ *      \author  Pablo
  */
 
 #include "InitTracker.h"
 #include "../GUI/Utils/Container.h"
 
-/*
+/**
  * This method creates an InitTracker object with the information
  * passed by parameter.
  */
@@ -21,7 +21,7 @@ InitTracker::InitTracker(CoordsSaver* coordSaver, SystemInfo* sysInfo, Camera* c
 	this->cam = camera;
 }
 
-/*
+/**
  * This destructor method dereferences all the objects initialized in the constructor method.
  */
 
@@ -31,7 +31,7 @@ InitTracker::~InitTracker() {
 	this->cam = 0;
 }
 
-/*
+/**
  * This method start a loop which will be looping until the camera device
  * stops retrieving frames. This method obtain the real captured frame and
  * apply the filters it need to get into the ANN.

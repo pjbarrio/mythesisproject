@@ -1,8 +1,8 @@
-/*
+/**
  * GestureModelHandler.cpp
  *
  *  Created on: 06/02/2009
- *      Author: Pablo
+ *      \author  Pablo
  */
 
 #include "GestureModelHandler.h"
@@ -12,13 +12,13 @@
 
 using namespace std;
 
-/*
+/**
  * This line creates a NoGestureDetected instance.
  */
 
 NoGestureDetected* GestureModelHandler::noGestureDetected = new NoGestureDetected();
 
-/*
+/**
  * This method creates an ifstream to read the GestureModel from the
  * file passed by parameter
  */
@@ -30,7 +30,7 @@ GestureModelHandler::GestureModelHandler(char *fileName)
 	gestureFile->open(fileName);
 }
 
-/*
+/**
  * This method deletes the ifstream object.
  */
 
@@ -41,7 +41,7 @@ GestureModelHandler::~GestureModelHandler()
 	delete (gestureFile);
 }
 
-/*
+/**
  * This method fills the model from the file in the constructor method
  */
 
@@ -85,7 +85,7 @@ bool GestureModelHandler::fillModel(GestureModel *gestureModel)
 	return true;
 }
 
-/*
+/**
  * This Method save the model in the parameter list on the File "fileName"
  */
 

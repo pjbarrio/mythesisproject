@@ -1,6 +1,6 @@
 #include "Init/Main/Init.h"
 
-/*
+/**
  * This Method represents the main method which will be invoked when the execution starts.
  */
 

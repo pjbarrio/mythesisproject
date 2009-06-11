@@ -1,8 +1,8 @@
-/*
+/**
  * OpenFileEvent.cpp
  *
  *  Created on: 04/05/2009
- *      Author: Pablo
+ *      \author  Pablo
  */
 
 #include "OpenFileEvent.h"
@@ -10,7 +10,7 @@
 #include "windows.h"
 #include <tchar.h>
 
-/*
+/**
  * This method saves the name of the file which will be opened later.
  */
 
@@ -18,7 +18,7 @@ OpenFileEvent::OpenFileEvent(const char* id,std::string* file):Event(id) {
 	this->file = file;
 }
 
-/*
+/**
  * This method dereferences the file variable.
  */
 
@@ -26,7 +26,7 @@ OpenFileEvent::~OpenFileEvent() {
 	this->file = 0;
 }
 
-/*
+/**
  * This method open the file with its predetermined program setted by the
  * Operative System.
  */
@@ -36,7 +36,7 @@ int OpenFileEvent::execute(){
 	return EXIT_SUCCESS;
 }
 
-/*
+/**
  * This method writes the OpenFile Event using the xmlWriter in a
  * XML file using the tag "Event".
  */

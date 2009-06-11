@@ -1,8 +1,8 @@
-/*
+/**
  * EventModel.cpp
  *
  *  Created on: 03/05/2009
- *      Author: Pablo
+ *      \author  Pablo
  */
 
 #include "EventModel.h"
@@ -10,7 +10,7 @@
 
 
 
-/*
+/**
  * This method creates a vector which will store the event objects.
  */
 
@@ -20,7 +20,7 @@ EventModel::EventModel() {
 	doNothingEventInstance = 0;
 }
 
-/*
+/**
  * This method deletes the vector created in the constructor method.
  */
 
@@ -30,7 +30,7 @@ EventModel::~EventModel() {
 	doNothingEventInstance = 0;
 }
 
-/*
+/**
  * This method returns how many events it has got.
  */
 
@@ -39,7 +39,7 @@ int EventModel::getEventModelSize()
 	return getEvents()->size();
 }
 
-/*
+/**
  * This method returns the Event in the actual position
  */
 
@@ -48,7 +48,7 @@ Event *EventModel::getNextEvent()
 	return *getEventsIterator();
 }
 
-/*
+/**
  * This Method initializes the iterator
  */
 
@@ -57,7 +57,7 @@ void EventModel::begin()
 	eventsIterator = getEvents()->begin();
 }
 
-/*
+/**
  * This Method notifies if it exists elements in the iterator.
  */
 
@@ -66,7 +66,7 @@ bool EventModel::hasNext()
 	return (getEventsIterator() != getEvents()->end());
 }
 
-/*
+/**
  * This Method advance in the iterator to the next element.
  */
 
@@ -76,7 +76,7 @@ void EventModel::next()
 }
 
 
-/*
+/**
  * This method adds an Event in the model if it can be put in
  */
 bool EventModel::addEvent(Event *event)
@@ -86,7 +86,7 @@ bool EventModel::addEvent(Event *event)
 	return true;
 }
 
-/*
+/**
  * This method returns the Event corresponding to the id in the parameter
  * list.
  */
@@ -104,7 +104,7 @@ Event* EventModel::getEvent(std::string* id){
 	return 0;
 }
 
-/*
+/**
  * This method removes the Event from the model.
  */
 

@@ -1,8 +1,8 @@
-/*
+/**
  * cursorVisualizer.cpp
  *
  *  Created on: 25/03/2009
- *      Author: Pablo
+ *      \author  Pablo
  */
 #include "cursorVisualizer.h"
 #include <windows.h>
@@ -10,7 +10,7 @@
 #include "iostream.h"
 #include "math.h"
 
-/*
+/**
  * This method initializes the variables used to work. These are: resolution,
  * work space and current mouse position.
  */
@@ -27,7 +27,7 @@ cursorVisualizer::cursorVisualizer(SystemInfo* sysInfo) {
 	clickperformed = false;
 }
 
-/*
+/**
  * This method desinstantiate all the variables used during
  * running time.
  */
@@ -41,7 +41,7 @@ cursorVisualizer::~cursorVisualizer() {
 	lasty = 0;
 }
 
-/*
+/**
  * This Method shows the cursor pointer on the screen.
  */
 
@@ -56,7 +56,7 @@ void cursorVisualizer::setCursorPos(int x, int y)
 	lasty = valy;
 }
 
-/*
+/**
  * This method performs a left button click on the last pos registered by
  * the tracker
  */
@@ -68,7 +68,7 @@ void cursorVisualizer::click(){
 	}
 }
 
-/*
+/**
  * This method releases de click on the last pos registered by the tracker.
  */
 
@@ -79,7 +79,7 @@ void cursorVisualizer::releaseClick(){
 	}
 }
 
-/*
+/**
  * This method adapt the point toward the screen
  */
 
@@ -95,7 +95,7 @@ int cursorVisualizer::adapt(int pos, int max,int fact)
 
 }
 
-/*
+/**
  * This method simulates the movement of the mouse pointer
  * through the segment determined by (ix1,iy1) and (ix2,iy2).
  */

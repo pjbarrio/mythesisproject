@@ -1,13 +1,13 @@
-/*
+/**
  * ConfigHandler.cpp
  *
  *  Created on: 05-feb-2009
- *      Author: Timpa
+ *      \author  Timpa
  */
 
 #include "ConfigHandler.h"
 
-/*
+/**
  * This constructor method stores the LogHandler object to inform the events
  * that will happen inside of this reference.
  */
@@ -20,7 +20,7 @@ ConfigHandler::ConfigHandler(LogHandler* logger) {
 
 }
 
-/*
+/**
  * This method dereferences the logger object.
  */
 
@@ -28,7 +28,7 @@ ConfigHandler::~ConfigHandler() {
 	this->logger = 0;
 }
 
-/*
+/**
  * This method returns the name of the file which has the
  * ANN complex configuration to detect position.
  */
@@ -42,7 +42,7 @@ std::string ConfigHandler::getTrackerNetFile()
 
 }
 
-/*
+/**
  * This method returns the name of the file which has
  * the ANN configuration to detect hand states (Opened / Closed)
  */
@@ -55,7 +55,7 @@ std::string ConfigHandler::getGestureNetFile()
 
 }
 
-/*
+/**
  * This method opens the configuration from the configFile
  * passed by parameter.
  */
@@ -71,7 +71,7 @@ bool ConfigHandler::openConfigFile(std::string configFile)
 
 }
 
-/*
+/**
  * This method returns the threshold used to differentiate
  * both hand states (Open/Close).
  */
@@ -82,7 +82,7 @@ float ConfigHandler::getGestureThreshold()
 
 }
 
-/*
+/**
  * This method returns the count of frame which will be
  * retrieved from the camera source.
  */
@@ -94,7 +94,7 @@ int ConfigHandler::getMax_frames_to_analize()
 
 }
 
-/*
+/**
  * This method return the name of the file which stores
  * the image used to represent the skin Mask.
  */
@@ -106,7 +106,7 @@ std::string ConfigHandler::getSkinMaskFile()
 
 }
 
-/*
+/**
  * This method returns the threshold used to differentiate
  * the hand state during the diagnostic execution.
  */
@@ -117,7 +117,7 @@ float ConfigHandler::getLightStabilizerThresholdDelta()
 
 }
 
-/*
+/**
  * This method returns the delta value used to represent
  * skin.
  */

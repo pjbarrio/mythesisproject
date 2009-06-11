@@ -1,8 +1,8 @@
-/*
+/**
  * InitCursor.cpp
  *
  *  Created on: 29/03/2009
- *      Author: Pablo
+ *      \author  Pablo
  */
 
 #include "InitCursor.h"
@@ -10,7 +10,7 @@
 #include "math.h"
 #include "../../../GUI/Utils/Container.h"
 
-/*
+/**
  * This method set the position of the mouse.
  */
 
@@ -25,7 +25,7 @@ InitCursor::InitCursor(CoordsGetter* coordGetter,SystemInfo* sysInfo,bool click,
 	this->openclick = openclick;
 }
 
-/*
+/**
  * This method initializes the variables used to simulate the movent of the mouse
  */
 
@@ -33,7 +33,7 @@ InitCursor::~InitCursor() {
 	this->sysInfo = 0;
 }
 
-/*
+/**
  * This method creates a cursorVisualizer object with the systemInfo object
  * passed by parameter in the constructor method.
  */
@@ -44,7 +44,7 @@ void InitCursor::init()
 
 }
 
-/*
+/**
  * this method detects if the input is valid and call the
  * cursorVisualizator object to draw the mouse pointer position.
  */

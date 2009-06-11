@@ -1,14 +1,14 @@
-/*
+/**
  * CamHandler.cpp
  *
  *  Created on: 04-feb-2009
- *      Author: Timpa
+ *      \author  Timpa
  */
 
 #include "CamHandler.h"
 #include "iostream.h"
 
-/*
+/**
  * This method initializes the existing variables of the CamHandler object.
  */
 
@@ -19,7 +19,7 @@ CamHandler::CamHandler(LogHandler* logger):Camera(logger) {
 
 }
 
-/*
+/**
  * This method stops the cam device from OpenCV Library.
  */
 
@@ -29,7 +29,7 @@ CamHandler::~CamHandler() {
 
 }
 
-/*
+/**
  * This method initializes the capture from the source camera using
  * OpenCV Library
  */
@@ -69,7 +69,7 @@ bool CamHandler::initCamDevice()
 	 return true;
 }
 
-/*
+/**
  * This method returns true if the camera is still
  * tracking or false if it doesn't.
  */
@@ -85,7 +85,7 @@ bool CamHandler::stillTracking()
 
 }
 
-/*
+/**
  * This method release the capture object to stop the
  * capturing process.
  */
@@ -97,7 +97,7 @@ void CamHandler::stopCamDevice()
 
 }
 
-/*
+/**
  * This method shows the frame in the parameter list on the
  * window which have the "window" name.
  */
@@ -108,7 +108,7 @@ void CamHandler::showFrame(std::string window,IplImage *frame)
 	 cvShowImage( window.c_str(), frame );
 }
 
-/*
+/**
  * This method returns the last frame captured. It's stored
  * internally.
  */

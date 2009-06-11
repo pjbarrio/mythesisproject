@@ -1,15 +1,15 @@
-/*
+/**
  * GestureModel.cpp
  *
  *  Created on: 24/01/2009
- *      Author: Pablo
+ *      \author  Pablo
  */
 
 #include "GestureModel.h"
 #include "addGesturePolicy.h"
 #include "string.h"
 
-/*
+/**
  * This method creates a new vector which will store the Gestures.
  * Besides, it store the DTWAlgorithm object.
  */
@@ -21,7 +21,7 @@ GestureModel::GestureModel(DTWAlgorithm *dtwAlgorithm) {
 	this->dtwAlgorithm = dtwAlgorithm;
 }
 
-/*
+/**
  * This method deletes the vector used internally and dereferences the
  * DTWAlgorithm object.
  */
@@ -36,7 +36,7 @@ GestureModel::~GestureModel() {
 
 
 
-/*
+/**
  * This method returns how many series it has got.
  */
 
@@ -45,7 +45,7 @@ int GestureModel::getGestureModelSize()
 	return getGestures()->size();
 }
 
-/*
+/**
  * This method returns the Gesture in the actual position
  */
 
@@ -54,7 +54,7 @@ Gesture *GestureModel::getNextGesture()
 	return *getGesturesIterator();
 }
 
-/*
+/**
  * This Method initializes the iterator
  */
 
@@ -63,7 +63,7 @@ void GestureModel::begin()
 	gesturesIterator = getGestures()->begin();
 }
 
-/*
+/**
  * This Method notifies if it exists elements in the iterator.
  */
 
@@ -72,7 +72,7 @@ bool GestureModel::hasNext()
 	return (getGesturesIterator() != getGestures()->end());
 }
 
-/*
+/**
  * This Method advance in the iterator to the next element.
  */
 
@@ -82,7 +82,7 @@ void GestureModel::next()
 }
 
 
-/*
+/**
  * This method adds a Gesture in the model if it can be put in
  */
 bool GestureModel::addGesture(Gesture *gesture)
@@ -96,7 +96,7 @@ bool GestureModel::addGesture(Gesture *gesture)
 	return false;
 }
 
-/*
+/**
  * This method returns the Gesture corresponding to the id in the parameter
  * list.
  */
@@ -117,7 +117,7 @@ Gesture* GestureModel::getGesture(std::string* id){
 	return 0;
 }
 
-/*
+/**
  * this method removes the gesture from the model.
  */
 

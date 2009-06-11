@@ -1,8 +1,8 @@
-/*
+/**
  * XmlStreamReader.cpp
  *
  *  Created on: 10/05/2009
- *      Author: Pablo
+ *      \author  Pablo
  */
 
 #include "XmlStreamReader.h"
@@ -12,7 +12,7 @@
 #include "../DynamicGestureRecognition/Events/ExecuteApplication.h"
 #include "../DynamicGestureRecognition/src/GestureEventMapper.h"
 
-/*
+/**
  * This method creates the XmlStreamReader object and fill the models passed by parameter. Besides, initializes the variables
  * which represent the keys used by Press Key Events.
  */
@@ -40,7 +40,7 @@ XmlStreamReader::XmlStreamReader(GestureModel* gm, EventModel* k, EventModel* ck
 	ALT_STR = QString("Alt");
 }
 
-/*
+/**
  * This method represent the destructor of the XmlStreamReader object.
  */
 
@@ -53,7 +53,7 @@ XmlStreamReader::~XmlStreamReader() {
 	gem = 0;
 }
 
-/*
+/**
  * This method read the file passed by parameter.
  */
 
@@ -98,7 +98,7 @@ bool XmlStreamReader::readFile(const QString & fileName)
 
 }
 
-/*
+/**
  * This method reads the configuration element.
  */
 
@@ -125,7 +125,7 @@ void XmlStreamReader::readConfigurationElement(){
 
 }
 
-/*
+/**
  * This method reads the gestures element.
  */
 
@@ -148,7 +148,7 @@ void XmlStreamReader::readGesturesElement(){
 
 }
 
-/*
+/**
  * This method reads the gesture element from the configuration file and store it in the gesture Model
  */
 
@@ -175,7 +175,7 @@ void XmlStreamReader::readGestureElement(QString idGesture){
 		gestureModel->addGesture(gest);
 }
 
-/*
+/**
  * This method reads the next x,y,t tupla and stores it in the DTWData's passed by parameter.
  */
 
@@ -221,7 +221,7 @@ void XmlStreamReader::readPairElement(DTWData* tx, DTWData* ty){
 	}
 }
 
-/*
+/**
  * This method reads the events element from the configuration file and store it in the corresponding event Model
  */
 
@@ -250,7 +250,7 @@ void XmlStreamReader::readEventsElement(){
 }
 
 
-/*
+/**
  * This method reads the events element from the configuration
  * file and store it in the keyPress event Model
  */
@@ -275,7 +275,7 @@ void XmlStreamReader::readKeyEventsElements(){
 	}
 }
 
-/*
+/**
  * This method reads the event element from the configuration file and
  * store it in the Key event Model using the idEvent passed by parameter.
  */
@@ -306,7 +306,7 @@ void XmlStreamReader::readKeyEventElement(QString idEvent){
 	}
 }
 
-/*
+/**
  * This methods returns the key Code corresponding to the key passed by parameter.
  */
 
@@ -338,7 +338,7 @@ BYTE XmlStreamReader::getKeyCode(QString key){
 	return 0;
 }
 
-/*
+/**
  * This method reads the events element from the configuration
  * file and store it in the Combined Key Press event Model
  */
@@ -362,7 +362,7 @@ void XmlStreamReader::readCombinedKeyEventsElements(){
 	}
 }
 
-/*
+/**
  * This method reads the event element from the configuration file and
  * store it in the Combined Key event Model using the idEvent passed by parameter.
  */
@@ -393,7 +393,7 @@ void XmlStreamReader::readCombinedKeyEventElement(QString idEvent){
 	}
 }
 
-/*
+/**
  * This methods creates an instance of CombinedKeyPressed Event using the idEvent as its id attribute
  * and keyList as its key combination.
  */
@@ -412,7 +412,7 @@ CombinedKeyPressed* XmlStreamReader::createCombinedKeyPressed(QString idEvent,QL
 	return ke;
 }
 
-/*
+/**
  * This method reads the events element from the configuration
  * file and store it in the Application Execution event Model
  */
@@ -436,7 +436,7 @@ void XmlStreamReader::readApplicationEventsElements(){
 	}
 }
 
-/*
+/**
  * This method reads the event element from the configuration file and
  * store it in the Application Execution event Model using the idEvent
  * passed by parameter.
@@ -476,7 +476,7 @@ void XmlStreamReader::readApplicationEventElement(QString idEvent){
 	}
 }
 
-/*
+/**
  * This method reads the events element from the configuration
  * file and store it in the Open File event Model
  */
@@ -500,7 +500,7 @@ void XmlStreamReader::readFileEventsElements(){
 	}
 }
 
-/*
+/**
  * This method reads the event element from the configuration file and
  * store it in the Open File event Model using the idEvent
  * passed by parameter.
@@ -532,7 +532,7 @@ void XmlStreamReader::readFileEventElement(QString idEvent){
 	}
 }
 
-/*
+/**
  * This method reads the Assiciations element and stores them in the GestureEventMapper instance.
  */
 
@@ -555,7 +555,7 @@ void XmlStreamReader::readAssociationsElement(){
 	}
 }
 
-/*
+/**
  * this method stores in the GestureEventMapper the asociation among
  * the Gesture read and the event read.
  */
@@ -586,7 +586,7 @@ void XmlStreamReader::readAssociationElement(QString isActive){
 }
 
 
-/*
+/**
  * This method adds the association to the GestureEventMapper instance.
  */
 void XmlStreamReader::createAssociation(QString idGest, QString idEvent, QString isActive){
@@ -607,7 +607,7 @@ void XmlStreamReader::createAssociation(QString idGest, QString idEvent, QString
 		gem->addAssociation(g,e,active,added);
 }
 
-/*
+/**
  * This method returns the Event instance associated with the string in
  * the parameter list.
  */

@@ -1,13 +1,13 @@
-/*
+/**
  * CircularBuffer.cpp
  *
  *  Created on: 10/02/2009
- *      Author: Pablo
+ *      \author  Pablo
  */
 
 #include "CircularBuffer.h"
 
-/*
+/**
  * This constructor method resizes the vector to the variable
  * capacity passed by parameter and instantiate all internal variables.
  */
@@ -21,7 +21,7 @@ CircularBuffer::CircularBuffer(int capacity) {
 	this->hasCompleted = false;
 }
 
-/*
+/**
  * this method clears the vector which contain the values and dereferences
  * the variables used during its use.
  */
@@ -35,7 +35,7 @@ CircularBuffer::~CircularBuffer() {
 	hasCompleted = false;
 }
 
-/*
+/**
  * This method adds a new value in the buffer
  */
 
@@ -50,7 +50,7 @@ void CircularBuffer::addValue(double value)
 
 }
 
-/*
+/**
  * This method returns the number of values in the buffer.
  */
 
@@ -62,7 +62,7 @@ int CircularBuffer::size()
 	return whereToAdd;
 }
 
-/*
+/**
  * This method cleans the buffer
  */
 void CircularBuffer::clear()
@@ -72,7 +72,7 @@ void CircularBuffer::clear()
 	this->hasCompleted = false;
 }
 
-/*
+/**
  * This method returns the value at "pos" position
  */
 double CircularBuffer::at(int pos)
@@ -87,7 +87,7 @@ double CircularBuffer::at(int pos)
 	return this->values[aux];
 }
 
-/*
+/**
  * This method increase the value of the parameter "value" to represent the next position
  * in the buffer
  */

@@ -1,8 +1,8 @@
-/*
+/**
  * SystemInfo.cpp
  *
  *  Created on: 08-feb-2009
- *      Author: Timpa
+ *      \author  Timpa
  */
 
 #include "SystemInfo.h"
@@ -11,7 +11,7 @@
 #include <fstream>
 #include <iomanip>
 
-/*
+/**
  * This constructor method initializes the variables used to work
  */
 
@@ -31,7 +31,7 @@ SystemInfo::~SystemInfo() {
 	;
 }
 
-/*
+/**
  * This method instantiates the variables passed by parameter
  * with the values which represent the screen resolution.
  */
@@ -46,7 +46,7 @@ void SystemInfo::getSystemResolution(int & x, int & y)
 
 }
 
-/*
+/**
  * This method instantiates the variables passed by parameter
  * with the values which represent the resolution used to work.
  * by default this is 80 x 60.
@@ -59,7 +59,7 @@ void SystemInfo::getSystemWorkResolution(int & ww, int & wh)
 	wh = workh;
 }
 
-/*
+/**
  * This method return the ratio beetween the screen resolution
  * and work resolution.
  */

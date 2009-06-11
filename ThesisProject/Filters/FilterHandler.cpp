@@ -1,8 +1,8 @@
-/*
+/**
  * FilterHandler.cpp
  *
  *  Created on: 05-feb-2009
- *      Author: Timpa
+ *      \author  Timpa
  */
 
 #include "FilterHandler.h"
@@ -14,7 +14,7 @@
 #include <fstream>
 #include <iomanip>
 
-/*
+/**
  * This method saves the LogHandler reference to log every event
  * that occur in this class.
  */
@@ -27,7 +27,7 @@ FilterHandler::FilterHandler(LogHandler* logger) {
 
 }
 
-/*
+/**
  * This method dereferences the logger instance.
  */
 
@@ -35,7 +35,7 @@ FilterHandler::~FilterHandler() {
 	this->logger = 0;
 }
 
-/*
+/**
  * This method initializes the variables and instances used
  * during the pipe&filter process.
  */
@@ -107,7 +107,7 @@ void FilterHandler::init(){
 
 }
 
-/*
+/**
  * This method applies the skin filter and the DownSampling filter
  * to the image in the paramter list.
  */
@@ -125,7 +125,7 @@ IplImage *FilterHandler::runPreFilters(IplImage *scr)
 
 
 
-	/*
+	/**
 	filteredImages[0] = *scr;
 
 	for ( int i = 0 ; i < filters_count; i ++){
@@ -144,7 +144,7 @@ IplImage *FilterHandler::runPreFilters(IplImage *scr)
 
 }
 
-/*
+/**
  * This method applies the low pass filter to the input Xin,Yin and stores
  * their values in Xout,Yout respectivelly.
  */
@@ -156,7 +156,7 @@ void FilterHandler::runLowPassFilter(int Xin, int Yin, int &Xout, int &Yout)
 
 }
 
-/*
+/**
  * This method applies the Average Smoothin filter to the input Xin,Yin and stores
  * their values in Xout,Yout respectivelly.
  */
@@ -168,7 +168,7 @@ void FilterHandler::runAverageSmoothing(int Xin, int Yin, int & Xout, int & Yout
 
 }
 
-/*
+/**
  * This method applies the Skin filter to the image passed by parameter.
  */
 

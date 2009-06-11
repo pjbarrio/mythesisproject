@@ -3,7 +3,7 @@
 #include <QMessageBox>
 #include "../Utils/Container.h"
 
-/*
+/**
  * This method sets up the GUI of the addgesture window
  * and saves the instance of NewGesture pointer.
  */
@@ -18,7 +18,7 @@ AddGesture::AddGesture(NewGesture* newGesture, QWidget *parent)
 	this->ty = 0;
 }
 
-/*
+/**
  * This method dereferences the NewGesture's instance.
  */
 
@@ -28,7 +28,7 @@ AddGesture::~AddGesture()
 
 }
 
-/*
+/**
  * This method show NewGesture window and work with
  * the results unless the user has cancelled the
  * NewGesture's operation.
@@ -48,7 +48,7 @@ void AddGesture::newGesture(){
 
 }
 
-/*
+/**
  * This method instercepts the execution event and init variables and
  * widgets.
  */
@@ -60,7 +60,7 @@ int AddGesture::exec()
 	return QDialog::exec();
 }
 
-/*
+/**
  * This method saves the id written by the user and
  * calls the accept method.
  */
@@ -82,7 +82,7 @@ void AddGesture::accept(){
 	QDialog::accept();
 }
 
-/*
+/**
  * This method initializes the Id and coords values.
  */
 
@@ -92,7 +92,7 @@ void AddGesture::initVariables(){
 	setTy(0);
 }
 
-/*
+/**
  * This method clear the edit text which represent the
  * id value..
  */

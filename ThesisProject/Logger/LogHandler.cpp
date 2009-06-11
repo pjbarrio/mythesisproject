@@ -1,8 +1,8 @@
-/*
+/**
  * LogHandler.cpp
  *
  *  Created on: 05-feb-2009
- *      Author: Timpa
+ *      \author  Timpa
  */
 
 #include "LogHandler.h"
@@ -17,7 +17,7 @@ LogHandler::~LogHandler() {
 	;
 }
 
-/*
+/**
  * This method initializes the log file.
  */
 
@@ -35,7 +35,7 @@ void LogHandler::initLogger()
 
 }
 
-/*
+/**
  * This method adds an entry to the log file. The entry has the following format:
  * "COMPONENT"
  * "Component's message"
@@ -57,7 +57,7 @@ void LogHandler::addEntry(std::string component, std::string newEntry)
 	log << "\n";
 }
 
-/*
+/**
  * This method closes the file and writes it on hardDisk.
  */
 

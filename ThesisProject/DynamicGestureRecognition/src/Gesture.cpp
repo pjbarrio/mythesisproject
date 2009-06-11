@@ -1,14 +1,14 @@
-/*
+/**
  * Gesture.cpp
  *
  *  Created on: 01/02/2009
- *      Author: Pablo
+ *      \author  Pablo
  *
  */
 
 #include "Gesture.h"
 
-/*
+/**
  * This method stores the variables passed by parameter. This
  * variables represent the gesture.
  */
@@ -21,7 +21,7 @@ Gesture::Gesture(DTWData *tx, DTWData *ty, const char *id)
 	this->id = id;
 }
 
-/*
+/**
  * This method dereferences the variables instantiated in the constructor
  * method and clear the id string object.
  */

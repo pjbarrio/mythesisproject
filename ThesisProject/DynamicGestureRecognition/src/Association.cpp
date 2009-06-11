@@ -1,13 +1,13 @@
-/*
+/**
  * Association.cpp
  *
  *  Created on: 21/05/2009
- *      Author: Pablo
+ *      \author  Pablo
  */
 
 #include "Association.h"
 
-/*
+/**
  * This method initializes the instance objects.
  */
 
@@ -18,7 +18,7 @@ Association::Association() {
 
 }
 
-/*
+/**
  * this method dereferences the instance objects
  */
 

@@ -45,7 +45,7 @@ void QCVPainter::drawImage(const CvRect &r, const IplImage *image)
 
 
 void QCVPainter::drawImage(const QPoint &p, const IplImage *image, const QRect &sr,
-                   Qt::ImageConversionFlags flags /* = Qt::AutoColor */)
+                   Qt::ImageConversionFlags flags /** = Qt::AutoColor */)
 {
 	if(qcvIsImage(image))
 	{
@@ -53,7 +53,7 @@ void QCVPainter::drawImage(const QPoint &p, const IplImage *image, const QRect &
 	}
 }
 void QCVPainter::drawImage(const CvPoint &p, const IplImage *image, const CvRect &sr,
-                   Qt::ImageConversionFlags flags /* = Qt::AutoColor */)
+                   Qt::ImageConversionFlags flags /** = Qt::AutoColor */)
 {
 	if(qcvIsImage(image))
 	{
@@ -64,7 +64,7 @@ void QCVPainter::drawImage(const CvPoint &p, const IplImage *image, const CvRect
 
 
 void QCVPainter::drawImage(const QRect &targetRect, const IplImage *image, const QRect &sourceRect,
-                   Qt::ImageConversionFlags flags /* = Qt::AutoColor */)
+                   Qt::ImageConversionFlags flags /** = Qt::AutoColor */)
 {
 	if(qcvIsImage(image))
 	{
@@ -72,7 +72,7 @@ void QCVPainter::drawImage(const QRect &targetRect, const IplImage *image, const
 	}
 }
 void QCVPainter::drawImage(const CvRect &targetRect, const IplImage *image, const CvRect &sourceRect,
-                   Qt::ImageConversionFlags flags /* = Qt::AutoColor */)
+                   Qt::ImageConversionFlags flags /** = Qt::AutoColor */)
 {
 	if(qcvIsImage(image))
 	{
@@ -83,9 +83,9 @@ void QCVPainter::drawImage(const CvRect &targetRect, const IplImage *image, cons
 
 
 void QCVPainter::drawImage(int x, int y, const IplImage *image,
-			   int sx /* = 0 */, int sy /* = 0 */,
-               int sw /* = -1 */, int sh /* = -1 */,
-			   Qt::ImageConversionFlags flags /* = Qt::AutoColor */)
+			   int sx /** = 0 */, int sy /** = 0 */,
+               int sw /** = -1 */, int sh /** = -1 */,
+			   Qt::ImageConversionFlags flags /** = Qt::AutoColor */)
 {
 	if(qcvIsImage(image))
 	{

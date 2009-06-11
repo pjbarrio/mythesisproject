@@ -1,6 +1,6 @@
 #include "addasociation.h"
 
-/*
+/**
  * This method sets up the GUI to add <Gesture,Event>
  * association.
  */
@@ -16,7 +16,7 @@ AddAsociation::~AddAsociation()
 ;
 }
 
-/*
+/**
  * This method fills the list and starts the event Loop.
  */
 
@@ -40,7 +40,7 @@ int AddAsociation::exec(GestureModel* gest, EventModel* key, EventModel* comb, E
 	return QDialog::exec();
 }
 
-/*
+/**
  * This method initializes the variables which will store the
  * user's selection.
  */
@@ -52,7 +52,7 @@ void AddAsociation::initVariables(){
 	gestures = new QList<QString*>();
 }
 
-/*
+/**
  * This method fills the EventList with the events in
  * the model
  */
@@ -69,7 +69,7 @@ void AddAsociation::fillGestureList(GestureModel* gm){
 	}
 }
 
-/*
+/**
  * This method fills the GestureList with the gestures in
  * the model
  */
@@ -87,7 +87,7 @@ void AddAsociation::fillEventList(EventModel* em){
 	}
 }
 
-/*
+/**
  * This method saves the item clicked in the Event View.
  */
 
@@ -97,7 +97,7 @@ void AddAsociation::saveEventClicked(QListWidgetItem* item){
 		ui.addAsociacion->setEnabled(true);
 }
 
-/*
+/**
  * This method saves the item clicked in the Gesture View
  */
 
@@ -107,7 +107,7 @@ void AddAsociation::saveGestureClicked(QListWidgetItem* item){
 		ui.addAsociacion->setEnabled(true);
 }
 
-/*
+/**
  * This method adds the association to the internal structure
  * and shows them on the association view
  */

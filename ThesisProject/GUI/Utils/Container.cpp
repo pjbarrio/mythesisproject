@@ -1,21 +1,21 @@
-/*
+/**
  * Container.cpp
  *
  *  Created on: 05/05/2009
- *      Author: Pablo
+ *      \author  Pablo
  */
 
 #include "Container.h"
 #include "../../QtOpenCV/qcv/qcvimage.h"
 
-/*
+/**
  * This line initializes the Container instance.
  */
 
 Container* Container::instance = 0;
 
 
-/*
+/**
  * This method initializes the model variables.
  */
 
@@ -34,7 +34,7 @@ Container::Container() {
  handDiagnosticExecuted = false;
 }
 
-/*
+/**
  * This method removes the variables model's values.
  */
 
@@ -53,7 +53,7 @@ Container::~Container() {
 	 handDiagnosticExecuted = false;
 }
 
-/*
+/**
  * This method creates a new instance of CamViewer associated
  * with the QLabel passed by parameter.
  */
@@ -67,7 +67,7 @@ void Container::createCamViewerInstance(QLabel *label)
 	getCamViewer()->start();
 }
 
-/*
+/**
  * This method tranforms the filtered image in
  * a PixMap ready to be showed by a label.
  */
@@ -92,7 +92,7 @@ void Container::setFilteredImage(IplImage *img)
 	fiWaitCondition.wakeAll();
 }
 
-/*
+/**
  * This method returns the filtered Image
  */
 QPixmap* Container::getFilteredImage()
@@ -112,7 +112,7 @@ QPixmap* Container::getFilteredImage()
 	return ret;
 }
 
-/*
+/**
  * This method wakes up the waiting threads to
  * finish the application
  */
@@ -121,7 +121,7 @@ void Container::wakeAll(){
 	fiWaitCondition.wakeAll();
 }
 
-/*
+/**
  * This method sets the values: Rotate Horizontally, Rotate Vertically, Suppor Gestures, Support
  * State Visualizator, Cursor support, Open Hand Click activation, Close Hand Click activation.
  */
@@ -138,7 +138,7 @@ void Container::setModel(bool rx, bool ry, bool gs, bool ss, bool vp, bool cs, b
 	openClick = oc;
 }
 
-/*
+/**
  * This method returns the Container instance.
  */
 
@@ -151,7 +151,7 @@ Container *Container::getInstance()
 	return instance;
 }
 
-/*
+/**
  * This method finishes the current instance of CamViewer.
  */
 
@@ -163,7 +163,7 @@ void Container::finishCamViewer(){
 
 }
 
-/*
+/**
  * This method returns the active LoggerHandler instance.
  */
 
@@ -181,7 +181,7 @@ LogHandler* Container::getLog(){
 	return log;
 }
 
-/*
+/**
  * This method returns the active ConfigHandler instance.
  */
 
@@ -205,7 +205,7 @@ ConfigHandler* Container::getConfigHandler(){
 	return configHandler;
 }
 
-/*
+/**
  * This method returns the LightStabilizer instance.
  */
 
@@ -222,7 +222,7 @@ LightStabilizer* Container::getLightStabilizer(){
 	return ls;
 }
 
-/*
+/**
  * This method returns the FilterHandler instance.
  */
 
@@ -242,7 +242,7 @@ FilterHandler* Container::getFilterHandler(){
 	return filterHandler;
 }
 
-/*
+/**
  * This method creates a new video instance.
  */
 
@@ -250,7 +250,7 @@ void Container::createVideo(){
 	video = new QList<IplImage*>();
 }
 
-/*
+/**
  * This methods append a frame to the active video instance.
  */
 
@@ -258,7 +258,7 @@ void Container::addFrame(IplImage* img){
 	video->append(img);
 }
 
-/*
+/**
  * This method returns the created video.
  */
 
@@ -266,7 +266,7 @@ QList<IplImage*>* Container::getVideo(){
 	return video;
 }
 
-/*
+/**
  * This method deletes the last video instance.
  */
 
@@ -274,7 +274,7 @@ void Container::deleteVideo(){
 	delete video;
 }
 
-/*
+/**
  * This method initializes the Gesture Parameters to start a new
  * configuration.
  */

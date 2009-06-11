@@ -1,8 +1,8 @@
-/*
+/**
  * GestureEventMapper.cpp
  *
  *  Created on: 01/02/2009
- *      Author: Pablo
+ *      \author  Pablo
  */
 
 #include "GestureEventMapper.h"
@@ -12,13 +12,13 @@
 #include "../Events/DoNothingEvent.h"
 #include "GestureModelHandler.h"
 
-/*
+/**
  * This line initializes the instance of the GestureEventMapper class.
  */
 
 GestureEventMapper* GestureEventMapper::instance = 0;
 
-/*
+/**
  * This method creates a new map object which will associate Gestures and
  * Events.
  */
@@ -28,7 +28,7 @@ GestureEventMapper::GestureEventMapper() {
 	associationTable = new map<Gesture*,vector<Association*>* >();
 }
 
-/*
+/**
  * This method deletes the instance and the associationTable created in
  * the constructor method.
  */
@@ -40,7 +40,7 @@ GestureEventMapper::~GestureEventMapper() {
 	delete(associationTable);
 }
 
-/*
+/**
  * This method returns the GestureEventMapper Instance
  */
 GestureEventMapper *GestureEventMapper::getInstance()
@@ -55,7 +55,7 @@ GestureEventMapper *GestureEventMapper::getInstance()
 	return instance;
 }
 
-/*
+/**
  * This method removes the instance. Next time you call getInstance you will get
  * a new instance
  */
@@ -68,7 +68,7 @@ void GestureEventMapper::deleteInstance()
 
 
 
-/*
+/**
  * This method returns the Event associated to the gesture given in the parameter
  * list. If it doesn't exists returns 0
  */
@@ -91,7 +91,7 @@ Event *GestureEventMapper::getEvent(Gesture *gesture)
 
 }
 
-/*
+/**
  * This method returns the association object associated to
  * a gesture.
  */
@@ -110,7 +110,7 @@ Association* GestureEventMapper::getAssociation(Gesture* gesture, Event* event){
 }
 
 
-/*
+/**
  * This Method adds a new association with a Gesture and an Event. Returns if
  * the value was added withow activated modifications.
  */
@@ -136,7 +136,7 @@ bool GestureEventMapper::addAssociation(Gesture *gesture, Event *event, bool act
 	return ret;
 }
 
-/*
+/**
  * This method removes an association given the gesture
  * in it.
  */
@@ -151,7 +151,7 @@ void GestureEventMapper::removeAssociation(Gesture* gesture,Event* eve){
 	}
 }
 
-/*
+/**
  * This method returns the active association from a vector.
  */
 
@@ -168,7 +168,7 @@ Association* GestureEventMapper::getActiveAssociationFromVector(vector<Associati
 	return 0;
 }
 
-/*
+/**
  * This method returns the association which has the Event instance
  * inside of it.
  */
@@ -185,7 +185,7 @@ Association* GestureEventMapper::getAssociationFromVector(Event* event,vector<As
 	return 0;
 }
 
-/*
+/**
  * This method adds an association to a vector. In case the association
  * is active and there is an association active inside of the vector, the
  * associaton is stored in inactive form.
@@ -221,7 +221,7 @@ bool GestureEventMapper::addAssociationToVector(Association* ass,vector<Associat
 
 }
 
-/*
+/**
  * This method removes the association which have the Event instance
  * inside of it.
  */
@@ -242,7 +242,7 @@ void GestureEventMapper::removeAssociationFromVector(Event* event,vector<Associa
 	}
 }
 
-/*
+/**
  * This method sets the iterator to its first position
  */
 
@@ -252,7 +252,7 @@ void GestureEventMapper::begin(){
 		vectorIterator = mapIterator->second->begin();
 }
 
-/*
+/**
  * This method returns if there are more Associations to look
  * for
  */
@@ -263,7 +263,7 @@ bool GestureEventMapper::hasNext(){
 	return false;
 }
 
-/*
+/**
  * This method advances the iterator inside the map.
  */
 void GestureEventMapper::next(){
@@ -281,7 +281,7 @@ void GestureEventMapper::next(){
 	}
 }
 
-/*
+/**
  * This method returns the selected Association
  */
 Association* GestureEventMapper::getActualAssociation(){

@@ -1,8 +1,8 @@
-/*
+/**
  * ExecuteApplication.cpp
  *
  *  Created on: 04/05/2009
- *      Author: Pablo
+ *      \author  Pablo
  */
 
 #include "ExecuteApplication.h"
@@ -10,7 +10,7 @@
 #include "windows.h"
 #include <tchar.h>
 
-/*
+/**
  * This method saves the application file and the arguments written by the user.
  */
 
@@ -21,7 +21,7 @@ ExecuteApplication::ExecuteApplication(const char* id,std::string* appName, std:
 
 }
 
-/*
+/**
  * This method dereferences the files used internally.
  */
 
@@ -30,7 +30,7 @@ ExecuteApplication::~ExecuteApplication() {
 	args = 0;
 }
 
-/*
+/**
  * This method executes the application using the args. The application is executed in
  * a maximized window.
  */
@@ -42,7 +42,7 @@ int ExecuteApplication::execute(){
 	return EXIT_SUCCESS;
 }
 
-/*
+/**
  * This method writes the Event in a file using the xmlWriter object using
  * the tag "Event".
  */

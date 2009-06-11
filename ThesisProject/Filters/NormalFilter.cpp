@@ -1,8 +1,8 @@
-/*
+/**
  * NormalFilter.cpp
  *
  *  Created on: 05-feb-2009
- *      Author: Timpa
+ *      \author  Timpa
  */
 
 #include "NormalFilter.h"
@@ -15,7 +15,7 @@ NormalFilter::~NormalFilter() {
 ;
 }
 
-/*
+/**
  * This method tranforms the image passed by parameter in an
  * input for the ANN.
  */

@@ -1,8 +1,8 @@
-/*
+/**
  * SkinFilter.cpp
  *
  *  Created on: 05-feb-2009
- *      Author: Timpa
+ *      \author  Timpa
  */
 
 #include "SkinFilter.h"
@@ -17,7 +17,7 @@ SkinFilter::~SkinFilter() {
 ;
 }
 
-/*
+/**
  * This method is used to detect the skin colored pixels
  * in the image passed by parameter. This method sets the variable skinCount
  * with the count of skin colore pixels.
@@ -79,7 +79,7 @@ IplImage *SkinFilter::applyFilter(IplImage *img,int &skinCount)
 	return ret;
 }
 
-/*
+/**
  *  This method set the value of Hue and Saturation using the skin mask file.
  */
 

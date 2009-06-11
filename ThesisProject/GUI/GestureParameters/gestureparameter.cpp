@@ -4,7 +4,7 @@
 #include "../../DynamicGestureRecognition/DTWAlgorithms/RawDTWAlgorithm.h"
 #include "../../DynamicGestureRecognition/DTWAlgorithms/SakoeChibaDTWAlgorithm.h"
 
-/*
+/**
  * This method sets up the gesture Parameter GUI
  */
 
@@ -21,7 +21,7 @@ GestureParameter::~GestureParameter()
 	this->si = 0;
 }
 
-/*
+/**
  * This method updates the maximum number of values to detect
  * a gesture.
  */
@@ -30,7 +30,7 @@ void GestureParameter::setDetectedCount(int maxValue){
 	ui.relaxedCount->setMaximum(maxValue);
 }
 
-/*
+/**
  * This method updates the maximum ratio allowed to remove when
  * a gesture es detected.
  */
@@ -39,7 +39,7 @@ void GestureParameter::setMaxRelatedRatio(int maxValue){
 	ui.relaxedRatio->setMaximum(maxValue);
 }
 
-/*
+/**
  * This method initializes the variables.
  */
 void GestureParameter::initVariables(){
@@ -77,7 +77,7 @@ void GestureParameter::initVariables(){
 
 }
 
-/*
+/**
  * This method intercepts the exec method and initializes the variables
  * which needs some parameters from model.
  */
@@ -102,7 +102,7 @@ int GestureParameter::exec(){
 	return QDialog::exec();
 }
 
-/*
+/**
  * This method stores the values set by the user in the
  * gesture recognition model's variables
  */
@@ -146,7 +146,7 @@ void GestureParameter::accept(){
 	QDialog::accept();
 }
 
-/*
+/**
  * This method creates the objects represented by the Strings set
  * by the user.
  */
@@ -173,28 +173,28 @@ void GestureParameter::convertStringToRealValues(){
 	}
 }
 
-/*
+/**
  * This method stores the new buffer size value
  */
 void GestureParameter::bufferSizeModified(int val){
 	dirtybufferSize = true;
 	bufferSize = val;
 }
-/*
+/**
  * This method stores the new Relaxed count value
  */
 void GestureParameter::relaxedCountModified(int val){
 	dirtyrelaxedCount = true;
 	relaxedCount = val;
 }
-/* This method stores the new distance calculator object
+/** This method stores the new distance calculator object
  *
  */
 void GestureParameter::distanceCalculatorAGMModified(QString val){
 	dirtydistanceCalculatorAGM = true;
 	distanceCalculatorAGMString = val;
 }
-/*
+/**
  * This method stores the new non varying acceleration rate value
  */
 void GestureParameter::nonVaryingAccelerationRateModified(QString val){
@@ -202,7 +202,7 @@ void GestureParameter::nonVaryingAccelerationRateModified(QString val){
 	bool fun;
 	nonVaryingAccelerationRate = val.toDouble(&fun);
 }
-/*
+/**
  * This method stores the new acceleration threshold value
  */
 void GestureParameter::accelerationThresholdModified(QString val){
@@ -211,7 +211,7 @@ void GestureParameter::accelerationThresholdModified(QString val){
 	accelerationThreshold = val.toDouble(&fun);
 }
 
-/*
+/**
  * This method stores the new desacceleration threshold value
  */
 void GestureParameter::desaccelerationThresholdModified(QString val){
@@ -220,49 +220,49 @@ void GestureParameter::desaccelerationThresholdModified(QString val){
 	desaccelerationThreshold = val.toDouble(&fun);
 }
 
-/*
+/**
  * This method stores the new walked pixels value
  */
 void GestureParameter::walkedPixelsModified(int val){
 	dirtywalkedPixels = true;
 	walkedPixels = val;
 }
-/*
+/**
  * This method stores the new minimum point count value
  */
 void GestureParameter::minimumPointCountModified(int val){
 	dirtyminimumPointsCount = true;
 	minimumPointsCount = val;
 }
-/*
+/**
  * This method stores the new distance threshold value
  */
 void GestureParameter::distanceThresholdModified(double val){
 	dirtydistanceThreshold = true;
 	distanceThreshold = val;
 }
-/*
+/**
  * This method stores the new max gesture time value
  */
 void GestureParameter::maxGestureTimeModified(double val){
 	dirtymaxGestureTime = true;
 	maxGestureTime = val;
 }
-/*
+/**
  * This method stores the new  values normalizator object
  */
 void GestureParameter::valuesNormalizatorModified(QString val){
 	dirtyvaluesNormalizator = true;
 	valuesNormalizatorString = val;
 }
-/*
+/**
  * This method stores the new relaxed ratio value
  */
 void GestureParameter::relaxedRatioModified(int val){
 	dirtyrelaxedRatio = true;
 	relaxedRatio = val;
 }
-/*
+/**
  * This method stores the new distance calculator for DTW Algorithm object
  */
 void GestureParameter::distanceCalculatorDTWModified(QString val){
@@ -270,14 +270,14 @@ void GestureParameter::distanceCalculatorDTWModified(QString val){
 	dirtydTWAlgorithm = true;
 	distanceCalculatorDTWString = val;
 }
-/*
+/**
  * This method stores the new dtw Algorithm
  */
 void GestureParameter::dtwAlgorithmModified(QString val){
 	dirtydTWAlgorithm = true;
 	dTWAlgorithmString = val;
 }
-/*
+/**
  * This method stores the new rate value
  */
 void GestureParameter::rateModified(double val){

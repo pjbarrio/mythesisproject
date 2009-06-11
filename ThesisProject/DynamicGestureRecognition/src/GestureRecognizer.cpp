@@ -1,14 +1,14 @@
-/*
+/**
  * GestureRecognizer.cpp
  *
  *  Created on: 01/02/2009
- *      Author: Pablo
+ *      \author  Pablo
  */
 
 #include "GestureRecognizer.h"
 #include "GestureModelHandler.h"
 
-/*
+/**
  * This constructor method saves the gestureModel passed by parameter.
  */
 
@@ -19,7 +19,7 @@ GestureRecognizer::GestureRecognizer(GestureModel* gestureModel) {
 
 }
 
-/*
+/**
  * This destructor method dereferences the variables used internally.
  */
 
@@ -30,7 +30,7 @@ GestureRecognizer::~GestureRecognizer() {
 	gestureModel = 0;
 }
 
-/*
+/**
  * This method return the most similar Gesture if it is as similar as we want or returns
  * a NonGestureDetected if no gesture in the gesture Model match whit it.
  */

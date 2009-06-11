@@ -1,13 +1,13 @@
-/*
+/**
  * FIRfilter.cpp
  *
  *  Created on: 05-feb-2009
- *      Author: Timpa
+ *      \author  Timpa
  */
 
 #include "FIRfilter.h"
 
-/*
+/**
  * This method initializes the useful variables to achieve
  * the smoothing effect in the movement detected.
  */
@@ -38,7 +38,7 @@ FIRfilter::~FIRfilter() {
 ;
 }
 
-/*
+/**
  * This method executes the low pass filter with the Xin and Yin values
  * passed by parameter.
  */
@@ -47,7 +47,7 @@ void FIRfilter::runLowPassFilter(int Xin, int Yin, int & Xout, int & Yout)
 
 {
 
-	/*/
+	/**/
 	 * tags: Low-pass filter, wikipedia
 	 *
 	 */
@@ -64,7 +64,7 @@ void FIRfilter::runLowPassFilter(int Xin, int Yin, int & Xout, int & Yout)
 
 }
 
-/*
+/**
  * This method shifts the values in the values list.
  */
 
@@ -75,7 +75,7 @@ void shiftValues(float *values,int frameWindow){
 
 }
 
-/*
+/**
  * This method executes the average smoothing algorithm using the variables
  * passed by parameter (Xin & Yin).
  */
@@ -84,7 +84,7 @@ void FIRfilter::runAverageSmoothing(int Xin, int Yin, int & Xout, int & Yout)
 {
 
 
-	/*/
+	/**/
 	 * tags: Exponential smoothing, wikipedia
 	 *
 	 */

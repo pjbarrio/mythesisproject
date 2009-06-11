@@ -1,13 +1,13 @@
-/*
+/**
  * ValuesNormalizator.cpp
  *
  *  Created on: 24/01/2009
- *      Author: Pablo
+ *      \author  Pablo
  */
 
 #include "ValuesNormalizator.h"
 
-/*
+/**
  * This method saves the SystemInfo object.
  */
 
@@ -16,7 +16,7 @@ ValuesNormalizator::ValuesNormalizator(SystemInfo* sysinfo) {
 	this->sysinfo = sysinfo;
 }
 
-/*
+/**
  * This method dereferences the SystemInfo object.
  */
 
@@ -25,7 +25,7 @@ ValuesNormalizator::~ValuesNormalizator() {
 	sysinfo = 0;
 }
 
-/*
+/**
  * This method normalize the "serie" up to a range of "range". i.e: if the range is 60.0, the
  * difference beetween the minimun value and the maximun value will be exactly 60.0.
  * if the "centerToZero" Parameter is set, the median value of the signal will be the 0.0 now.

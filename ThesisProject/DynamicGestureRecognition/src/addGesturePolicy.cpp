@@ -1,14 +1,14 @@
-/*
+/**
  * addGesturePolicy.cpp
  *
  *  Created on: 24/01/2009
- *      Author: Pablo
+ *      \author  Pablo
 
  */
 
 #include "addGesturePolicy.h"
 
-/*
+/**
  * This constructor method saves the DTWAlgorithm in an instance
  * variable.
  */
@@ -18,7 +18,7 @@ addGesturePolicy::addGesturePolicy(DTWAlgorithm* dtwAlgorithm) {
 	this->dtwAlgorithm = dtwAlgorithm;
 }
 
-/*
+/**
  * This method dereferences the variable setted in the constructor.
  */
 
@@ -28,7 +28,7 @@ addGesturePolicy::~addGesturePolicy() {
 	dtwAlgorithm = 0;
 }
 
-/*
+/**
  * This method returns true if the new Gesture can be added to the model. Otherwise it returns
  * false.
  */
@@ -54,7 +54,7 @@ bool addGesturePolicy::canBeAdded(Gesture *gesture, GestureModel *model)
 	return !conflictDetected;
 }
 
-/*
+/**
  * This method return a new instance of addGesturePolicy.
  */
 
