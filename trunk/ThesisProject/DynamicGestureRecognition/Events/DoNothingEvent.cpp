@@ -1,8 +1,8 @@
-/*
+/**
  * DoNothingEvent.cpp
  *
  *  Created on: 01/02/2009
- *      Author: Pablo
+ *      \author  Pablo
  */
 
 #include "DoNothingEvent.h"
@@ -19,7 +19,7 @@ DoNothingEvent::~DoNothingEvent() {
 
 }
 
-/*
+/**
  * this method does nothing. We need this.
  */
 
@@ -28,7 +28,7 @@ int DoNothingEvent::execute()
 	return EXIT_SUCCESS;
 }
 
-/*
+/**
  * this method does nothing. We need this.
  */
 

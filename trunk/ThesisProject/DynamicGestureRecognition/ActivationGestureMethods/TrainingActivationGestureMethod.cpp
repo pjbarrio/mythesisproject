@@ -1,13 +1,13 @@
-/*
+/**
  * TrainingActivationGestureMethod.cpp
  *
  *  Created on: 19/04/2009
- *      Author: Pablo
+ *      \author  Pablo
  */
 
 #include "TrainingActivationGestureMethod.h"
 
-/*
+/**
  * this method creates the vectors used to store different coords.
  */
 
@@ -22,7 +22,7 @@ TrainingActivationGestureMethod::TrainingActivationGestureMethod() {
 	started = false;
 }
 
-/*
+/**
  * This method clear the vectores which are containing coords.
  */
 
@@ -32,7 +32,7 @@ TrainingActivationGestureMethod::~TrainingActivationGestureMethod() {
 	tData->clear();
 }
 
-/*
+/**
  * This method stores the coords in their respectives vectors.
  */
 
@@ -62,7 +62,7 @@ void TrainingActivationGestureMethod::setNewInput(double x, double y, double t)
 
 }
 
-/*
+/**
  * This method returns if the storing process has been initiated.
  */
 
@@ -71,7 +71,7 @@ bool TrainingActivationGestureMethod::DetectedGestureActivation()
 	return started;
 }
 
-/*
+/**
  * This method returns if the storing process has finished.
  */
 
@@ -80,7 +80,7 @@ bool TrainingActivationGestureMethod::DetectedGestureDeactivation()
 	return finished;
 }
 
-/*
+/**
  * This method always returns false, because this class is used to store
  * coords and times.
  */
@@ -90,7 +90,7 @@ bool TrainingActivationGestureMethod::DetectedErroneousGestureActivation()
 	return false;
 }
 
-/*
+/**
  * This method fill the variables passed by parameter with the content of the vectors used
  * to store coords internally.
  */

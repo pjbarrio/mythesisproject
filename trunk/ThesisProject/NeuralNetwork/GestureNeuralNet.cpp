@@ -1,8 +1,8 @@
-/*
+/**
  * GestureNeuralNet.cpp
  *
  *  Created on: 05-feb-2009
- *      Author: Timpa
+ *      \author  Timpa
  */
 
 #include "GestureNeuralNet.h"
@@ -11,7 +11,7 @@ GestureNeuralNet::GestureNeuralNet() {
 	;
 }
 
-/*
+/**
  * This method destroy the neural network created.
  */
 
@@ -21,7 +21,7 @@ GestureNeuralNet::~GestureNeuralNet() {
 
 }
 
-/*
+/**
  * This method process the image passed by parameter and
  * obtain the hand state.
  */
@@ -52,7 +52,7 @@ void GestureNeuralNet::run(IplImage *scr)
 }
 
 
-/*
+/**
  * This method destroy the neural network created.
  */
 
@@ -64,7 +64,7 @@ void GestureNeuralNet::shutDown()
 
 }
 
-/*
+/**
  * This method creates the neural network from file and initializes
  * the variables used by the process.
  */
@@ -87,7 +87,7 @@ bool GestureNeuralNet::startNet()
 	return true;
 }
 
-/*
+/**
  * This method returns the hand state detected by the ANN.
  */
 

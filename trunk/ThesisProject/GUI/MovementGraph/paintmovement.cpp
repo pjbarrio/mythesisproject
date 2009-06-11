@@ -2,7 +2,7 @@
 #include <QPainter>
 #include "iostream.h"
 
-/*
+/**
  * This method sets the User interface objects
  * and creates the pen used to draw the movement.
  */
@@ -17,7 +17,7 @@ paintMovement::paintMovement(QWidget *parent)
 	this->yvalues = 0;
 }
 
-/*
+/**
  * This method deletes the variables used to draw the gesture.
  */
 
@@ -27,7 +27,7 @@ paintMovement::~paintMovement()
 	delete (p1);
 }
 
-/*
+/**
  * This method is invoked when the window need to be repainted.
  */
 
@@ -87,7 +87,7 @@ void paintMovement::paintEvent(QPaintEvent *event)
     }
 }
 
-/*
+/**
  * This method set the Circular Buffers to draw the gesture movement.
  * The first parameter represent the xCoord, while the second represent the
  * yCoord.
@@ -98,7 +98,7 @@ void paintMovement::setData(CircularBuffer* xs,CircularBuffer* ys){
 	yvalues = ys;
 }
 
-/*
+/**
  * This method readapt the pixel position to the
  * Widget size.
  */

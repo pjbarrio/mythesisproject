@@ -2,7 +2,7 @@
 #include "../Utils/Container.h"
 #include "cv.h"
 
-/*
+/**
  * This method sets up the Hand Diagnostic GUI.
  */
 
@@ -17,7 +17,7 @@ HandDiagnostic::~HandDiagnostic()
 ;
 }
 
-/*
+/**
  * This method executes the diferents steps of the
  * hand state configuration.
  */
@@ -64,7 +64,7 @@ void HandDiagnostic::proceder(){
 	paso++;
 }
 
-/*
+/**
  * This method intercepts the activation of the window
  * and initializes the variables and widgets.
  */

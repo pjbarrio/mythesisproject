@@ -1,8 +1,8 @@
-/*
+/**
  * NeuralNet.cpp
  *
  *  Created on: 05-feb-2009
- *      Author: Timpa
+ *      \author  Timpa
  */
 
 #include "NeuralNet.h"
@@ -11,7 +11,7 @@
 #include <fstream>
 #include <iomanip>
 
-/*
+/**
  * This method saves the logger instances and initializes the
  * variables used to detect the hand position.
  */
@@ -27,7 +27,7 @@ NeuralNet::NeuralNet(LogHandler* logger) {
 	totalTime = 0;
 }
 
-/*
+/**
  * This method destroy the neural network created to detect
  * hand position.
  */
@@ -38,7 +38,7 @@ NeuralNet::~NeuralNet() {
 
 }
 
-/*
+/**
  * This method processes the image passed by parameter and saves
  * the hand position coords detected by the ANN.
  */
@@ -69,7 +69,7 @@ void NeuralNet::run(IplImage *scr)
 
 }
 
-/*
+/**
  * This method returns the Y component of the hand coord.
  */
 
@@ -78,7 +78,7 @@ int NeuralNet::getYcoord()
 	return yCoord;
 }
 
-/*
+/**
  * This method returns the X component of the hand coord.
  */
 
@@ -87,7 +87,7 @@ int NeuralNet::getXcoord()
 	return xCoord;
 }
 
-/*
+/**
  * This method destroy the artificial neural network.
  */
 
@@ -105,7 +105,7 @@ void NeuralNet::shutDown()
 
 }
 
-/*
+/**
  * This method creates the neural network responsible of detect
  * hand position.
  */

@@ -1,15 +1,15 @@
-/*
+/**
  * SakoeChibaDTWAlgorithm.cpp
  *
  *  Created on: 05/02/2009
- *      Author: Pablo
+ *      \author  Pablo
  */
 
 #include "SakoeChibaDTWAlgorithm.h"
 #include "math.h"
 #include "iostream.h"
 
-/*
+/**
  * This method saves the rate value used to detect similar gestures with the SakoeChiba DTW algorithm.
  */
 
@@ -18,7 +18,7 @@ SakoeChibaDTWAlgorithm::SakoeChibaDTWAlgorithm(double rate,DistanceCalculator* d
 	this->rate = rate;
 }
 
-/*
+/**
  * This destructor method desinstantiate the variable rate used by the algorithm to work
  * correctly.
  */
@@ -29,7 +29,7 @@ SakoeChibaDTWAlgorithm::~SakoeChibaDTWAlgorithm()
 	rate = 0.0;
 }
 
-/*
+/**
  * This method returns if the algorithm accept the value passed by
  * parameter.
  */
@@ -39,7 +39,7 @@ bool SakoeChibaDTWAlgorithm::acceptDTWValue(double dtwvalue)
 	return (dtwvalue < DTWAlgorithm::maxAcceptedDTWValue);
 }
 
-/*
+/**
  * This method return the min row of the matrix to explore using
  * rate value, pos, n1 and n2.
  */
@@ -79,7 +79,7 @@ int SakoeChibaDTWAlgorithm::getInfValue(int pos, int n1, int n2)
 	return -1;
 }
 
-/*
+/**
  * This method return the max row of the matrix to explore using
  * rate value, pos, n1 and n2.
  */

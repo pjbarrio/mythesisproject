@@ -1,8 +1,8 @@
-/*
+/**
  * DTWDataHandler.cpp
  *
  *  Created on: 06/02/2009
- *      Author: Pablo
+ *      \author  Pablo
  */
 
 #include "DTWDataHandler.h"
@@ -23,7 +23,7 @@ DTWDataHandler::DTWDataHandler()
 	cout << "Bye DTWDataHandler\n";
 }
 
-/*
+/**
  * This Method Creates a DTWData structure from file in the parameter list
  * "fileName"
  */
@@ -73,7 +73,7 @@ DTWData *DTWDataHandler::createDWTDataFromFile(const char* fileName)
 	return ret;
 }
 
-/*
+/**
  * This method returns the data of the dtwData in two double[] structures
  */
 
@@ -97,7 +97,7 @@ void DTWDataHandler::DTWDataToDouble(DTWData *dtwData, double *&xdata,double *&y
 
 }
 
-/*
+/**
  * This Method splits a string in 2 and returns these.
  */
 

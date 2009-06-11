@@ -1,8 +1,8 @@
-/*
+/**
  * InitDynamicGestureRecognition.cpp
  *
  *  Created on: 29/03/2009
- *      Author: Pablo
+ *      \author  Pablo
  */
 
 #include "InitDynamicGestureRecognition.h"
@@ -10,7 +10,7 @@
 #include "../src/ActivationGestureMethod.h"
 #include "../ActivationGestureMethods/AccelerationActivation.h"
 
-/*
+/**
  * This method saves the SystemInfo object.
  */
 
@@ -20,7 +20,7 @@ InitDynamicGestureRecognition::InitDynamicGestureRecognition(CoordsGetter* coord
 
 }
 
-/*
+/**
  * This Method dereferences the sysInfo variable.
  */
 
@@ -28,7 +28,7 @@ InitDynamicGestureRecognition::~InitDynamicGestureRecognition() {
 	sysInfo = 0;
 }
 
-/*
+/**
  * This method initialize the DynamicGestureRecognitionAlgorithm
  * which will detect the gestures made by the user.
  */
@@ -59,7 +59,7 @@ void InitDynamicGestureRecognition::init()
 
 }
 
-/*
+/**
  * This method add a new Input in the DynamicGestureRecognitionAlgorithm.
  */
 

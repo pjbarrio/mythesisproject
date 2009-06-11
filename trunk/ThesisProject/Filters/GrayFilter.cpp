@@ -1,8 +1,8 @@
-/*
+/**
  * GrayFilter.cpp
  *
  *  Created on: 05-feb-2009
- *      Author: Timpa
+ *      \author  Timpa
  */
 
 #include "GrayFilter.h"
@@ -15,7 +15,7 @@ GrayFilter::~GrayFilter() {
 ;
 }
 
-/*
+/**
  * This method returns the image passed by parameter modified by
  * a gray scale transformation.
  */

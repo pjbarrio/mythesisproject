@@ -1,8 +1,8 @@
-/*
+/**
  * CamViewer.cpp
  *
  *  Created on: 28/04/2009
- *      Author: Pablo
+ *      \author  Pablo
  */
 
 #include "CamViewer.h"
@@ -12,7 +12,7 @@
 #include "windows.h"
 #include "Utils/Container.h"
 
-/*
+/**
  * This constructor method saves the label where the image
  * will be showed.
  */
@@ -22,7 +22,7 @@ CamViewer::CamViewer(QLabel* dst):QThread() {
 	saveVideo = false;
 }
 
-/*
+/**
  * This method dereferences the destiny label.
  */
 
@@ -30,7 +30,7 @@ CamViewer::~CamViewer() {
 	dst = 0;
 }
 
-/*
+/**
  * This method set the bool variable to save the current frame.
  */
 
@@ -40,7 +40,7 @@ void CamViewer::setSaveFrame(bool s){
 	mutex->unlock();
 }
 
-/*
+/**
  * This method returns the last saved frame. This frame is used
  * to run the hand Diagnostic.
  */
@@ -53,7 +53,7 @@ bool CamViewer::getSaveFrame(){
 	return ret;
 }
 
-/*
+/**
  * This method starts the loop which will be capturing and showing
  * images.
  */
@@ -78,7 +78,7 @@ void CamViewer::run()
 
 }
 
-/*
+/**
  * This method starts the configuration of the camera.
  */
 
@@ -104,7 +104,7 @@ void CamViewer::init(){
 	}
 }
 
-/*
+/**
  * This method retrieves the frame and shows it on the label
  * configured in the constructor. The image is showed using the
  * rotation values used by the user.
@@ -144,7 +144,7 @@ void CamViewer::captureFrame()
 
 }
 
-/*
+/**
  * This method return the saveVideo value. If the process
  * is saving the video, returns true. If doesn't returns false.
  */
@@ -157,7 +157,7 @@ bool CamViewer::getSaveVideo(){
 	return ret;
 }
 
-/*
+/**
  * This method sets the capturing value. This value is used to
  * run the loop.
  */
@@ -166,7 +166,7 @@ void CamViewer::setCapturing(bool capturing){
 	this->capturing = capturing;
 }
 
-/*
+/**
  * This method sets the saveVideo value. If the saveVideo is setted
  * to true, a new video is created.
  */

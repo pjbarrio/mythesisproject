@@ -1,6 +1,6 @@
 #include "stateviewer.h"
 
-/*
+/**
  * This method sets up the GUI of tracking state
  * visualization and creates the internal equalizer
  * representation.
@@ -14,7 +14,7 @@ StateViewer::StateViewer(QWidget *parent)
 
 }
 
-/*
+/**
  * This method set the Circular buffers (coords X,Y) used to draw
  * hand movement
  */
@@ -25,7 +25,7 @@ void StateViewer::setBufferXY(CircularBuffer* cbx,CircularBuffer* cby){
 	ui.widget_4->setData(this->cbx,this->cby);
 }
 
-/*
+/**
  * This method deletes the internal equalizer lists.
  */
 
@@ -35,7 +35,7 @@ StateViewer::~StateViewer()
 	delete(accelerationList);
 }
 
-/*
+/**
  * This method creates the Acceleration and Velocity
  * equalizers arrays.
  */
@@ -45,7 +45,7 @@ void StateViewer::createArrays(){
 	createAccelerationArray();
 }
 
-/*
+/**
  * This method creates the velocity Equalizer
  * internal representation.
  */
@@ -72,7 +72,7 @@ void StateViewer::createVelocityArray(){
 	velocityList->append(ui.vred1);
 }
 
-/*
+/**
  * This method returns the Hand State pixmap.
  */
 
@@ -81,7 +81,7 @@ QLabel* StateViewer::getHandPicture()
 	return ui.handState;
 }
 
-/*
+/**
  * This method sets the label which will
  * show the filtered Image
  */
@@ -89,7 +89,7 @@ QLabel* StateViewer::getHandPicture()
 QLabel* StateViewer::getFilteredImage(){
 	return ui.processedImage;
 }
-/*
+/**
  * This method creates the acceleration Equalizer
  * internal representation.
  */

@@ -1,14 +1,14 @@
-/*
+/**
  * IrakuraDTWAlgorithm.cpp
  *
  *  Created on: 05/02/2009
- *      Author: Pablo
+ *      \author  Pablo
  */
 
 #include "ItakuraDTWAlgorithm.h"
 #include "math.h"
 
-/*
+/**
  * This constructor method saves the rate value used to create
  * the structure which will be used to run the algorithm.
  */
@@ -18,7 +18,7 @@ ItakuraDTWAlgorithm::ItakuraDTWAlgorithm(double rate, DistanceCalculator* distan
 	this->rate = rate;
 }
 
-/*
+/**
  * this method desinstantiate the rate value used during the execution of
  * the algorithm.
  */
@@ -30,7 +30,7 @@ ItakuraDTWAlgorithm::~ItakuraDTWAlgorithm()
 	rate = 0.0;
 }
 
-/*
+/**
  * This method returns if the value passed by parameter is accepted by the
  * algorithm.
  */
@@ -40,7 +40,7 @@ bool ItakuraDTWAlgorithm::acceptDTWValue(double dtwvalue)
 	return (dtwvalue < DTWAlgorithm::maxAcceptedDTWValue);
 }
 
-/*
+/**
  * This method return the min row of the matrix to explore using
  * rate value, pos, n1 and n2.
  */
@@ -78,7 +78,7 @@ int ItakuraDTWAlgorithm::getInfValue(int pos, int n1, int n2)
 	return -1;
 }
 
-/*
+/**
  * This method return the max row of the matrix to explore using
  * rate value, pos, n1 and n2.
  */

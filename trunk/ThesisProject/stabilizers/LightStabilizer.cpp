@@ -1,8 +1,8 @@
-/*
+/**
  * LightStabilizer.cpp
  *
  *  Created on: 07-feb-2009
- *      Author: Timpa
+ *      \author  Timpa
  */
 
 #include "LightStabilizer.h"
@@ -12,7 +12,7 @@
 #include <iomanip>
 #include "../GUI/Utils/Container.h"
 
-/*
+/**
  * This method saves the LogHandler reference and initialize the
  * variables used to run the hand diagnostic.
  */
@@ -26,7 +26,7 @@ LightStabilizer::LightStabilizer(LogHandler* logger) {
 	threshold_delta = 0.20;
 }
 
-/*
+/**
  * This method dereferences de Log Handler object.
  */
 
@@ -37,7 +37,7 @@ LightStabilizer::~LightStabilizer() {
 	threshold_delta = 0;
 }
 
-/*
+/**
  * This method capture a serie of frames and obtain the similar skin pixel count.
  */
 
@@ -45,7 +45,7 @@ void LightStabilizer::runAmbientDiagnostic(CamHandler *cam,FilterHandler*filterH
 {
 
 	Container::getInstance()->createCamViewerInstance(handDiagnostic->getCaptureLabel());
-	/*/
+	/**/
 	 * Capturamos una serie de frames y sacamos datos como la cantidad de pixeles
 	 * similares al color de la piel y demas
 	 */
@@ -122,7 +122,7 @@ void LightStabilizer::runAmbientDiagnostic(CamHandler *cam,FilterHandler*filterH
 
 }
 
-/*
+/**
  * This method returns the skinThreshold value calculated in the
  * hand Diagnostic method.
  */

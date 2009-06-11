@@ -1,8 +1,8 @@
-/*
+/**
  * InitVisualizer.cpp
  *
  *  Created on: 02/05/2009
- *      Author: Pablo
+ *      \author  Pablo
  */
 
 #include "InitVisualizer.h"
@@ -12,7 +12,7 @@
 #include <QMetaObject>
 #include "../GUI/Utils/Container.h"
 
-/*
+/**
  * This method sets the values used by the state
  * visualizator.
  */
@@ -25,7 +25,7 @@ InitVisualizer::InitVisualizer(CoordsGetter* cg, SystemInfo* si,ThesisProject* t
 	firstVelocity = true;
 }
 
-/*
+/**
  * This method dereferences the variables set in the constructor method.
  */
 
@@ -37,7 +37,7 @@ InitVisualizer::~InitVisualizer() {
 	firstVelocity = false;
 }
 
-/*
+/**
  * This method initializes the variables used to draw the
  * tracking state.
  */
@@ -53,7 +53,7 @@ void InitVisualizer::init()
 	image = 0;
 }
 
-/*
+/**
  * This method updates the widgets state to show the movement of the
  * user's hand.
  */
@@ -95,7 +95,7 @@ void InitVisualizer::setNewInput(double x, double y, double t)
 	QMetaObject::invokeMethod(sv,"update");
 }
 
-/*
+/**
  * This method paints the filtered image on the window
  */
 void InitVisualizer::drawFilteredImage(QPixmap* image){
@@ -105,7 +105,7 @@ void InitVisualizer::drawFilteredImage(QPixmap* image){
 
 }
 
-/*
+/**
  * This method returns the filtered image saved by the tracking process.
  */
 
@@ -113,7 +113,7 @@ QPixmap* InitVisualizer::getFilteredImage(){
 	return Container::getInstance()->getFilteredImage();
 }
 
-/*
+/**
  * This method returns if the hand is closed.
  */
 
@@ -121,7 +121,7 @@ bool InitVisualizer::getIsClosed(){
 	return Container::getInstance()->isClosed();
 }
 
-/*
+/**
  * This method returns the velocity detected knowing the last values
  * and the new ones in the parameter list.
  */
@@ -138,7 +138,7 @@ double InitVisualizer::getVelocity(double x,double y,double t){
 	return vel;
 }
 
-/*
+/**
  * This method returns the acceleration detected knowing the last values
  * and the new ones in the parameter list.
  */
@@ -159,7 +159,7 @@ double InitVisualizer::getAcceleration(double velocity,double t){
 	return acc;
 }
 
-/*
+/**
  * This method add the new <X,Y> to the movement graph.
  */
 
@@ -169,7 +169,7 @@ void InitVisualizer::drawPoints(double x,double y){
 	QMetaObject::invokeMethod(sv->getPaintMovement(),"update");
 }
 
-/*
+/**
  * This method updates the velocity equalizer widget.
  */
 
@@ -187,7 +187,7 @@ void InitVisualizer::updateVelocityDrawer(double velocity){
 
 }
 
-/*
+/**
  * This method updates the acceleration equalizer widget.
  */
 
@@ -207,7 +207,7 @@ void InitVisualizer::updateAccelerationDrawer(double acceleration){
 	}
 }
 
-/*
+/**
  * This method show the coords detected.
  */
 
@@ -240,7 +240,7 @@ void InitVisualizer::writeCoords(double x,double y){
 //	sv->getCoordYLabel()->setText(QString(sy.c_str()));
 }
 
-/*
+/**
  * This method verify if the hand is closed or opened and
  * show the right picture (open or close hand).
  */
@@ -252,7 +252,7 @@ void InitVisualizer::drawHand(bool closed){
 		drawOpen();
 }
 
-/*
+/**
  * This method shows a picture corresponding to an open hand.
  */
 
@@ -260,7 +260,7 @@ void InitVisualizer::drawOpen(){
 	QMetaObject::invokeMethod(sv->getHandPicture(),"setPixmap",Q_ARG(QPixmap,*open_Hand));
 }
 
-/*
+/**
  * This method shows a picture corresponding to a closed hand.
  */
 

@@ -23,7 +23,7 @@
 #include "XML/XMLStreamWriter.h"
 
 
-/*
+/**
  * This Method initiates the main Application. Receives the Dialog boxes that will appear during the execution.
  */
 
@@ -50,7 +50,7 @@ ThesisProject::ThesisProject(AddGesture* addGesture,AddEvent* addEvent,AddAsocia
 
 }
 
-/*
+/**
  * This method associates the toolbar actions
  * with their slots.
  */
@@ -72,7 +72,7 @@ void ThesisProject::createToolbar(){
 	ui.menuConfiguraci_n->addAction(quitAction);
 }
 
-/*
+/**
  * This method opens the about window.
  */
 
@@ -80,7 +80,7 @@ void ThesisProject::openAbout(){
 	about->exec();
 }
 
-/*
+/**
  * This methods updates the list views with the models.
  */
 
@@ -90,7 +90,7 @@ void ThesisProject::updateListViews(){
 	updateEventsView();
 }
 
-/*
+/**
  * This method updates the association List View with
  * the gesture Event Mapper instance
  */
@@ -122,7 +122,7 @@ void ThesisProject::updateAssociationsView(){
 	}
 }
 
-/*
+/**
  * This method updates the Gestures List View with the
  * Gesture Model
  */
@@ -140,7 +140,7 @@ void ThesisProject::updateGesturesView(){
 	}
 }
 
-/*
+/**
  * This method updates the Events Lists View with the
  * Events models.
  */
@@ -153,7 +153,7 @@ void ThesisProject::updateEventsView(){
 	updateEventView(getOpenFileEventModel());
 }
 
-/*
+/**
  * This method updates the Event view with the model in the parameter
  * list.
  */
@@ -169,7 +169,7 @@ void ThesisProject::updateEventView(EventModel* e){
 	}
 }
 
-/*
+/**
  * This methods opens a configuration from an xml file.
  */
 
@@ -183,7 +183,7 @@ void ThesisProject::openConfiguration(){
 	}
 }
 
-/*
+/**
  * This method returns the selected xml file.
  */
 
@@ -197,7 +197,7 @@ QString* ThesisProject::selectXmlFile(){
 	return 0;
 }
 
-/*
+/**
  * This method fills the models with the xml content
  */
 
@@ -207,7 +207,7 @@ void ThesisProject::fillModels(QString fileName,GestureModel* gm, EventModel* k,
 	xml->readFile(fileName);
 }
 
-/*
+/**
  * This method imports all events from an xml file.
  */
 void ThesisProject::importAllEvents(){
@@ -220,7 +220,7 @@ void ThesisProject::importAllEvents(){
 	}
 }
 
-/*
+/**
  * This method imports OpenFile events from an xml file.
  */
 
@@ -233,7 +233,7 @@ void ThesisProject::importOpenFileEvents(){
 	}
 }
 
-/*
+/**
  * This method imports ExecutionApplication events from an xml file.
  */
 
@@ -245,7 +245,7 @@ void ThesisProject::importExecutionApplicationEvents(){
 	}
 }
 
-/*
+/**
  * This method imports PressKeyEvents events from an xml file.
  */
 
@@ -257,7 +257,7 @@ void ThesisProject::importPressKeyEvents(){
 	}
 }
 
-/*
+/**
  * This method imports CombinedKeyPress events from an xml file.
  */
 
@@ -269,7 +269,7 @@ void ThesisProject::importCombinedKeyPressEvents(){
 	}
 }
 
-/*
+/**
  * This method imports gestures from an xml file.
  */
 
@@ -281,7 +281,7 @@ void ThesisProject::importGestures(){
 	}
 }
 
-/*
+/**
  * This method saves the actual configuration in an
  * XML File.
  */
@@ -308,7 +308,7 @@ void ThesisProject::saveConfigurationinFile(){
 	}
 }
 
-/*
+/**
  * This method intercept the close event. The purpose is minimize the application to Systray.
  */
 
@@ -327,7 +327,7 @@ void ThesisProject::closeEvent(QCloseEvent *event)
  }
 }
 
-/*
+/**
  * This method show the main window in its normal size.
  */
 
@@ -337,7 +337,7 @@ void ThesisProject::showNormal(){
 	QMainWindow::showNormal();
 }
 
-/*
+/**
  * This method create the menu that will appear in the system tray.
  */
 
@@ -418,7 +418,7 @@ void ThesisProject::createCompleteTrayIcon(){
 
 	trayIcon->show();
 }
-/*
+/**
  * This method verifies if capturing is running. If so, stops
  * it and then quit the application.
  */
@@ -430,7 +430,7 @@ void ThesisProject::byeApplication(){
 	}
 	qApp->quit();
 }
-/*
+/**
  * This method stops the capture process.
  */
 
@@ -438,7 +438,7 @@ void ThesisProject::stopCapture(){
 	finishTrack();
 }
 
-/*
+/**
  * This method shows the state window.
  */
 
@@ -446,7 +446,7 @@ void ThesisProject::ViewCaptureState(){
 	QMetaObject::invokeMethod(stateViewer,"show");
 }
 
-/*
+/**
  * This method initiates the variables which will be used during the application.
  */
 
@@ -483,7 +483,7 @@ void ThesisProject::initVariables(){
     rightGestureParameters = false;
 }
 
-/*
+/**
  * this method removes the variables used during the execution.
  */
 
@@ -496,7 +496,7 @@ ThesisProject::~ThesisProject()
 	handDiagnostic = 0;
 }
 
-/*
+/**
  * This method shows the AddGesture window and updates the listwidgets showed by the Configuration tab.
  */
 
@@ -533,7 +533,7 @@ void ThesisProject::addGesture()
 	Container::getInstance()->createCamViewerInstance(this->getCapturedImage());
 }
 
-/*
+/**
  * This method shows the AddEvent window and updates the listwidgets showed by the Configuration tab.
  */
 
@@ -615,7 +615,7 @@ void ThesisProject::addEvent()
 	}
 }
 
-/*
+/**
  * This method creates a PressCharEvent using the values in the parameter list.
  */
 
@@ -650,7 +650,7 @@ PressCharEvent* ThesisProject::createPressCharEvent(QString* id,QString* key){
 	return 0;
 }
 
-/*
+/**
  * This method shows the AddAssociation window and updates the listwidgets showed int the Configuration tab.
  */
 
@@ -700,7 +700,7 @@ void ThesisProject::addAsociation()
 	}
 }
 
-/*
+/**
  * This method returns the Event associated to the id passed by
  * parameter. It looks for the Event in every EventModel.
  */
@@ -723,7 +723,7 @@ Event* ThesisProject::getEventFromModels(QString* ev){
 	return ret;
 }
 
-/*
+/**
  * This method removes the selected gesture.
  */
 
@@ -737,7 +737,7 @@ void ThesisProject::removeGesture(){
 
 }
 
-/*
+/**
  * This method removes the selected Event.
  */
 
@@ -750,7 +750,7 @@ void ThesisProject::removeEvent(){
 	}
 }
 
-/*
+/**
  * This method removes the event from the model
  */
 
@@ -783,7 +783,7 @@ void ThesisProject::removeEventfromModel(QString ide){
 	}
 }
 
-/*
+/**
  * This method removes the selected Asociation.
  */
 
@@ -801,7 +801,7 @@ void ThesisProject::removeAsociation(){
 	}
 }
 
-/*
+/**
  * This method set the horizontal rotation of the captured image.
  */
 
@@ -810,7 +810,7 @@ void ThesisProject::rotateX(bool val){
 	Container::getInstance()->setRotateX(val);
 }
 
-/*
+/**
  * This method set the vertical rotation of the captured image.
  */
 
@@ -819,7 +819,7 @@ void ThesisProject::rotateY(bool val){
 	Container::getInstance()->setRotateY(val);
 }
 
-/*
+/**
  * This method starts the hand tracking process using the configuration applied by the user.
  */
 
@@ -863,7 +863,7 @@ void ThesisProject::startApplication(){
 
 }
 
-/*
+/**
  * This method saves the configuration provided by the user. It represents the GUI part of the model.
  */
 
@@ -881,7 +881,7 @@ void ThesisProject::saveConfiguration(){
 	Container::getInstance()->setModel(rx,ry,gs,ss,vp,cs,oh,ch);
 }
 
-/*
+/**
  * This method executes the diagnostic to determine the hand Open/Close state.
  */
 
@@ -917,7 +917,7 @@ void ThesisProject::runHandDiagnostic(){
 
 }
 
-/*
+/**
  * This method returns the GestureModel used by the application.
  */
 
@@ -934,7 +934,7 @@ GestureModel* ThesisProject::getGestureModel()
 
 }
 
-/*
+/**
  * This method returns the Event Model used to store internally the Key Press Events
  */
 
@@ -946,7 +946,7 @@ EventModel* ThesisProject::getKeyEventModel()
 	return keyEventModel;
 }
 
-/*
+/**
  * This method returns the Event Model used to store internally the Combined Key Events
  */
 
@@ -958,7 +958,7 @@ EventModel* ThesisProject::getCombinedKeyEventModel()
 	return combinedKeyEventModel;
 }
 
-/*
+/**
  * This method returns the Event Model used to store internally the Application Execution Events
  */
 
@@ -970,7 +970,7 @@ EventModel* ThesisProject::getApplicationEventModel()
 	return AppEventModel;
 }
 
-/*
+/**
  * This method returns the Event Model used to store internally the Open File Events
  */
 
@@ -982,7 +982,7 @@ EventModel* ThesisProject::getOpenFileEventModel()
 	return fileEventModel;
 }
 
-/*
+/**
  * This method initializes the tracker.
  */
 
@@ -1054,7 +1054,7 @@ int ThesisProject::initTrack(CoordsSaver* coordSaver, SystemInfo* sysInfo, Camer
 	return 0;
 }
 
-/*
+/**
  * This method finishes the tracker.
  */
 void ThesisProject::finishTrack(){
@@ -1105,7 +1105,7 @@ void ThesisProject::finishTrack(){
 
 }
 
-/*
+/**
  * The next Slot captures next frame and process it.
  */
 
@@ -1157,7 +1157,7 @@ void ThesisProject::captureNextFrame(){
 	cvReleaseImage( &filteredImage );
 }
 
-/*
+/**
  * This method shows or not the window which will show
  * the capturedImage with cross.
  */
@@ -1181,7 +1181,7 @@ void ThesisProject::updateShowCapture(){
 
 }
 
-/*
+/**
  * This method updates the window which will show
  * the filtered image.
  */
@@ -1205,7 +1205,7 @@ void ThesisProject::updateShowFiletered(){
 	}
 
 }
-/*
+/**
  * This method returns the systemInfo instance.
  */
 
@@ -1215,7 +1215,7 @@ SystemInfo* ThesisProject::getSystemInfo(){
 	return sysInfo;
 }
 
-/*
+/**
  * This method returns a new coordSaver instance.
  */
 
@@ -1225,7 +1225,7 @@ CoordsSaver* ThesisProject::getCoordSaver(){
 	return coordSaver;
 }
 
-/*
+/**
  * This method analize if the changed item in asociation List
  * is valid or not.
  */

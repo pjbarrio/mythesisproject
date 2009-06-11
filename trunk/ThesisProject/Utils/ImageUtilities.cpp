@@ -1,8 +1,8 @@
-/*
+/**
  * ImageUtilities.cpp
  *
  *  Created on: 05-feb-2009
- *      Author: Timpa
+ *      \author  Timpa
  */
 
 #include "ImageUtilities.h"
@@ -15,7 +15,7 @@ ImageUtilities::~ImageUtilities() {
 
 }
 
-/*
+/**
  * This method draws a cross indicating the hand position on the
  * frame being processed.
  */
@@ -28,7 +28,7 @@ IplImage *ImageUtilities::putMarker(IplImage *scr, int x, int y)
 
 }
 
-/*
+/**
  * This method draws a box starting in x,y and 20*20 size.
  */
 

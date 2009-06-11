@@ -1,13 +1,13 @@
-/*
+/**
  * CameraVideo.cpp
  *
  *  Created on: 08/05/2009
- *      Author: Pablo
+ *      \author  Pablo
  */
 
 #include "CameraVideo.h"
 
-/*
+/**
  * This constructor method receive an empty Image List.
  */
 
@@ -20,7 +20,7 @@ CameraVideo::~CameraVideo() {
 	video = 0;
 }
 
-/*
+/**
  * This method initiates the current index of the video.
  */
 
@@ -30,7 +30,7 @@ bool CameraVideo::initCamDevice(){
 	return true;
 }
 
-/*
+/**
  * This method returns if exists more pictures to retrieve.
  */
 
@@ -42,7 +42,7 @@ void CameraVideo::stopCamDevice(){
 	;
 }
 
-/*
+/**
  * This method returns the next picture in the video.
  */
 

@@ -1,13 +1,13 @@
-/*
+/**
  * NoGestureDetected.cpp
  *
  *  Created on: 01/02/2009
- *      Author: Pablo
+ *      \author  Pablo
  */
 
 #include "NoGestureDetected.h"
 
-/*
+/**
  * This method set its id to "NoGestureDetected".
  */
 

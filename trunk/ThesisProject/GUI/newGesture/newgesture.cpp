@@ -13,7 +13,7 @@
 #include "list.h"
 #include "../../DynamicGestureRecognition/src/ValuesNormalizator.h"
 
-/*
+/**
  * This method sets the User interface.
  */
 
@@ -23,7 +23,7 @@ NewGesture::NewGesture(QWidget *parent)
 	ui.setupUi(this);
 }
 
-/*
+/**
  * This method dereferences the components of the detected
  * gesture.
  */
@@ -34,7 +34,7 @@ NewGesture::~NewGesture()
 	ty = 0;
 }
 
-/*
+/**
  * This is an override method. Is called when the window is
  * opened.
  */
@@ -50,7 +50,7 @@ int NewGesture::exec(){
 	return QDialog::exec();
 }
 
-/*
+/**
  * This method inits the variables used while the window
  * is active.
  */
@@ -61,7 +61,7 @@ void NewGesture::initVariables(){
 	hasStarted = false;
 }
 
-/*
+/**
  * This method sets the window's widget to their first
  * state. (The window has been opened for the first time).
  */
@@ -73,7 +73,7 @@ void NewGesture::initWidgets(){
 	ui.visualWidget->setVisible(false);
 }
 
-/*
+/**
  * This method intercepts the KeyEvents and detects if
  * Space bar has been pressed.
  */
@@ -91,7 +91,7 @@ void NewGesture::keyPressEvent(QKeyEvent *event)
     }
 }
 
-/*
+/**
  * This method execute the accept event in the
  * QDialog window.
  */
@@ -106,7 +106,7 @@ void NewGesture::accept(){
 		QDialog::accept();
 }
 
-/*
+/**
  * This method starts the gesture capturing process.
  * It is called after the first space bar pressed event.
  */
@@ -122,7 +122,7 @@ void NewGesture::startCapturing(){
 	startCapture();
 }
 
-/*
+/**
  * This method finished the gesture capturing process.
  * It is called after the second space bar pressed event.
  */
@@ -151,7 +151,7 @@ void NewGesture::finishCapturing(){
 
 }
 
-/*
+/**
  * This method saves the video and detects the movement of the hand.
  * At the end the gesture is normalized.
  */
@@ -191,7 +191,7 @@ void NewGesture::saveMovement(QList<IplImage*>* video){
 
 }
 
-/*
+/**
  * This method generates the CircularBuffers used to draw the movement
  * in the ImageWidget.
  */
@@ -210,7 +210,7 @@ void NewGesture::generateCircularBuffer(DTWData* tx, DTWData* ty){
 	}
 }
 
-/*
+/**
  * This method draws the gesture detected and show the
  * corresponding widget.
  */
@@ -220,7 +220,7 @@ void NewGesture::viewGesture(){
 	ui.visualWidget->setVisible(true);
 }
 
-/*
+/**
  * This method starts the capture process and show the
  * captured images on the corresponding label.
  */
@@ -230,7 +230,7 @@ void NewGesture::startCamera(){
 }
 
 
-/*
+/**
  * This method show the progress bar working during 5 seconds.
  */
 
@@ -245,7 +245,7 @@ void NewGesture::startProgressBar(){
 
 }
 
-/*
+/**
  * This method informs to the camViewer that the gesture will
  * be saved.
  */

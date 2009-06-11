@@ -1,8 +1,8 @@
-/*
+/**
  * DWTAlgorithm.cpp
  *
  *  Created on: 24/01/2009
- *      Author: Pablo
+ *      \author  Pablo
  */
 
 #include "DTWAlgorithm.h"
@@ -12,7 +12,7 @@
 
 #define INF 9999999.9;
 
-/*
+/**
  * This method saves the DistanceCalculator instance.
  */
 
@@ -22,7 +22,7 @@ DTWAlgorithm::DTWAlgorithm(DistanceCalculator *distanceCalculator)
 	this->distanceCalculator = distanceCalculator;
 }
 
-/*
+/**
  * This method dereferences the distance calculator object.
  */
 
@@ -32,7 +32,7 @@ DTWAlgorithm::~DTWAlgorithm()
 
 	distanceCalculator = 0;
 }
-/*
+/**
  * This mehod returns de DTW value that has been computed from the parameter data.
  */
 
@@ -80,14 +80,14 @@ double DTWAlgorithm::computeDTWValue(DTWData *fstSerie, DTWData *scdSerie)
 
 
 
-/*
+/**
  * This method generates the distance matrix used to calculate dtwValue.
  * The first row and the first column have INF value
  */
 
 void DTWAlgorithm::calculateMatrix(DTWData *fstSerie, DTWData *scdSerie,vector<vector<double> > &ret)
 {
-	/*
+	/**
 	 * matriz = new TIPO* [fil];
 	 * for (i = 0; i < fil; ++i)
 	 * matriz[i] = new TIPO [col];
@@ -96,7 +96,7 @@ void DTWAlgorithm::calculateMatrix(DTWData *fstSerie, DTWData *scdSerie,vector<v
 	int n1 = fstSerie->getXYPairCount()+1;
 	int n2 = scdSerie->getXYPairCount()+1;
 
-	/*double **ret = new double*[n1];
+	/**double **ret = new double*[n1];
 	for (int var = 0; var < n1; ++var) {
 		ret[n1] = new double[n2];
 	}*/
@@ -144,7 +144,7 @@ void DTWAlgorithm::calculateMatrix(DTWData *fstSerie, DTWData *scdSerie,vector<v
 }
 
 
-/*
+/**
  * This method returns the distance calculated by DistanceCalculator given
  * in the constructor method
  */

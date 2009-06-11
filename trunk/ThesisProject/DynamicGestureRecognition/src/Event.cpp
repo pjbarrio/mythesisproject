@@ -1,14 +1,14 @@
-/*
+/**
  * Event.cpp
  *
  *  Created on: 01/02/2009
- *      Author: Pablo
+ *      \author  Pablo
  */
 
 #include "Event.h"
 #include "iostream.h"
 
-/*
+/**
  * This method stores the id of the event passed by parameter.
  */
 
@@ -17,7 +17,7 @@ Event::Event(const char* id) {
 	this->id = id;
 }
 
-/*
+/**
  * This method dereferences the id variable.
  */
 

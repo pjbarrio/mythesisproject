@@ -1,8 +1,8 @@
-/*
+/**
  * ImageFilter.cpp
  *
  *  Created on: 05-feb-2009
- *      Author: Timpa
+ *      \author  Timpa
  */
 
 #include "ImageFilter.h"
@@ -15,7 +15,7 @@ ImageFilter::~ImageFilter() {
 
 }
 
-/*
+/**
  * This method returns the image withow affecting it. It is used
  * to generate a Pipe&Filter taking part in different configurations.
  */

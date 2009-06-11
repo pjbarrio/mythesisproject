@@ -1,14 +1,14 @@
-/*
+/**
  * PrintCharEvent.cpp
  *
  *  Created on: 01/02/2009
- *      Author: Pablo
+ *      \author  Pablo
  */
 
 #include "PrintCharEvent.h"
 #include "iostream.h"
 
-/*
+/**
  * This metod saves the message passed by parameter.
  */
 
@@ -17,7 +17,7 @@ PrintCharEvent::PrintCharEvent(const char* id,char* s):Event(id) {
 	this->message = s;
 }
 
-/*
+/**
  * This method dereferences the message variable.
  */
 
@@ -27,7 +27,7 @@ PrintCharEvent::~PrintCharEvent() {
 	message = 0;
 }
 
-/*
+/**
  * This method writes the message in the standard out and return EXIT_SUCCESS.
  */
 
@@ -37,7 +37,7 @@ int PrintCharEvent::execute()
 	return EXIT_SUCCESS;
 }
 
-/*
+/**
  * This method does nothing. We need this.
  */
 

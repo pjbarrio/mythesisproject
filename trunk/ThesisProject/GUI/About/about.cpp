@@ -1,6 +1,6 @@
 #include "about.h"
 
-/*
+/**
  * This method sets up the About GUI
  */
 

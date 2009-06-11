@@ -1,8 +1,8 @@
-/*
+/**
  * Init.cpp
  *
  *  Created on: 05/05/2009
- *      Author: Pablo
+ *      \author  Pablo
  */
 
 #include "Init.h"
@@ -19,7 +19,7 @@ Init::~Init() {
 
 }
 
-/*
+/**
  * This method is invoked when the application starts. It will
  * create the different windows and will show the main window.
  */

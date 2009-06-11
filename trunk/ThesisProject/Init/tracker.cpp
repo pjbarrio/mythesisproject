@@ -1,8 +1,8 @@
-/*
+/**
  * tracker.cpp
  *
  *  Created on: 04-feb-2009
- *      Author: Timpa
+ *      \author  Timpa
 
 //HaSTA ACA
 
@@ -75,7 +75,7 @@ int main0() {
 	logger->initLogger();
 
 
-	/*
+	/**
 	 * INIT
 	 //HASTA ACÁ
 
@@ -105,7 +105,7 @@ int main0() {
 	//sysInfo->init();
 
 
-	/*
+	/**
 	 * this parameter is set in case we want to run a diagose in order to get
 	 * light conditions, skin pixels, etc.
 
@@ -211,7 +211,7 @@ int main0() {
 
 		cvReleaseImage( &filteredImage );
 
-		/*
+		/**
 		 * The currentFrame can not be released, because it is in the
 		 * capture buffer, and we can not release the entire buffer.
 		 * Only the capture can be release, when the program ends.
@@ -235,7 +235,7 @@ void start(){
 
 }
 
-/*
+/**
  * This method saves on secs the difference beetween this time and the first time saved
  //HASTA ACA
 

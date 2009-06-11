@@ -1,8 +1,8 @@
-/*
+/**
  * DownSamplingFilter.cpp
  *
  *  Created on: 05-feb-2009
- *      Author: Timpa
+ *      \author  Timpa
  */
 
 #include "DownSamplingFilter.h"
@@ -15,7 +15,7 @@ DownSamplingFilter::~DownSamplingFilter() {
 ;
 }
 
-/*
+/**
  * This method applies the Down Sampling filter to the image
  * passed by parameter and return the resulted image.
  */

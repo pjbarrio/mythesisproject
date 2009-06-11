@@ -1,14 +1,14 @@
-/*
+/**
  * CombinedKeyPressed.cpp
  *
  *  Created on: 04/05/2009
- *      Author: Pablo
+ *      \author  Pablo
  */
 
 #include "CombinedKeyPressed.h"
 #include "iostream.h"
 
-/*
+/**
  * This constructor method saves the PressCharEvent object. This object represent the secondKey to be pressed.
  */
 
@@ -18,7 +18,7 @@ CombinedKeyPressed::CombinedKeyPressed(const char* id,BYTE keyPressCode,PressCha
 
 }
 
-/*
+/**
  * This method dereferences the second PressCharEvent.
  */
 
@@ -26,7 +26,7 @@ CombinedKeyPressed::~CombinedKeyPressed() {
 	this->SecondKeyPressed = 0;
 }
 
-/*
+/**
  * This method implements the key press event and executes it functionality.
  * It press the first key and the second key (which could be another combination) and release both.
  */
@@ -41,7 +41,7 @@ int CombinedKeyPressed::execute(){
 	return EXIT_SUCCESS;
 }
 
-/*
+/**
  * This method writes the Event in a xml file using the tag "Event"
  */
 
@@ -59,7 +59,7 @@ bool CombinedKeyPressed::writeXML(QXmlStreamWriter*  xmlWriter){
 
 }
 
-/*
+/**
  * This method writes the key in XML using the xmlWriter passed by
  * parameter.
  */

@@ -1,15 +1,15 @@
-/*
+/**
  * AccelerationActivation.cpp
  *
  *  Created on: 05/02/2009
- *      Author: Pablo
+ *      \author  Pablo
  */
 
 #include "AccelerationActivation.h"
 #include "../DistanceCalculators/EuclideanDistance.h"
 #include <vector.h>
 
-/*
+/**
  * This constructor method initializes all the variables used to detect acceleration
  * in the movement of the hand.
  */
@@ -37,7 +37,7 @@ AccelerationActivation::AccelerationActivation(int size,int pixelsToTrajectory,d
 	this->desacc_threshold = desacc_threshold;
 }
 
-/*
+/**
  * This destructor method deletes the variables and desintantiates the other
  * values setted in the constructor or during the execution.
  */
@@ -65,7 +65,7 @@ AccelerationActivation::~AccelerationActivation()
 
 }
 
-/*
+/**
  * This method sets a new input value and update all the variables used to detect
  * acceleration.
  */
@@ -102,7 +102,7 @@ void AccelerationActivation::setNewInput(double x, double y, double t)
 	setNumber_of_points(getNumber_of_points()+1);
 }
 
-/*
+/**
  * This method is invoked to detect if an acceleration has been produced
  * by the hand movement.
  */
@@ -117,7 +117,7 @@ bool AccelerationActivation::DetectedGestureActivation()
 }
 
 
-/*
+/**
  * This method is invoked to detect if the hand has produced a deactivation
  * movement.
  */
@@ -132,7 +132,7 @@ bool AccelerationActivation::DetectedGestureDeactivation()
 	return  sd && min_p;
 }
 
-/*
+/**
  * This method detects if the user is following a valid trajectory to provoke a gesture
  */
 
@@ -154,7 +154,7 @@ bool AccelerationActivation::trajectoryDetected()
 	return possibleTrajectory;
 }
 
-/*
+/**
  * This method returns if an erroneous gesture activation has been detected.
  * An erroneous activation may occur if the number of points used is less than minimud setted,
  * or the gesture is longer than max time of a standard gesture.
@@ -171,7 +171,7 @@ bool AccelerationActivation::DetectedErroneousGestureActivation()
 	return ((sd && min_p) || ftexc);
 }
 
-/*
+/**
  * This method detects the acceleration from the user motion.
  * based on the past movements.
  */
@@ -206,7 +206,7 @@ bool AccelerationActivation::AccelerationDetected()
 
 }
 
-/*
+/**
  * This method detects a SlowDown from the user motion. It is based on the past movements
  */
 bool AccelerationActivation::SlowDownDetected()
@@ -239,7 +239,7 @@ bool AccelerationActivation::SlowDownDetected()
 		return false;
 }
 
-/*
+/**
  * This method returns the values that have induced to the change acceleration detection
  */
 void AccelerationActivation::GetData(vector<double>& x,vector<double>& y,vector<double>& t){
@@ -254,7 +254,7 @@ void AccelerationActivation::GetData(vector<double>& x,vector<double>& y,vector<
 		}
 }
 
-/*
+/**
  * This method returns the distance between two points of the motion
  */
 double AccelerationActivation::getDistance(double x1, double y1, double x2, double y2)
@@ -264,7 +264,7 @@ double AccelerationActivation::getDistance(double x1, double y1, double x2, doub
 
 }
 
-/*
+/**
  * This method returns if the motion of the user has done a regular movement.
  */
 bool AccelerationActivation::PossibleTrajectoryDetected(double distance, int initPos, int finalPos)
@@ -280,7 +280,7 @@ bool AccelerationActivation::PossibleTrajectoryDetected(double distance, int ini
 	return false;
 }
 
-/*
+/**
  * This method returns the count of coords used to recognize an acceleration
  * movement.
  */

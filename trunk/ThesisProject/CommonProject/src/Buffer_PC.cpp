@@ -1,14 +1,14 @@
-/*
+/**
  * Buffer_PC.cpp
  *
  *  Created on: 30/03/2009
- *      Author: Pablo
+ *      \author  Pablo
  */
 
 #include "Buffer_PC.h"
 #include <iostream.h>
 
-/*
+/**
  * This method calls the initialize method.
  */
 
@@ -17,7 +17,7 @@ Buffer_PC::Buffer_PC() {
 	initialize();
 }
 
-/*
+/**
  * This method creates the lists which will store
  * the coords obtained by the associated producer.
  */
@@ -32,7 +32,7 @@ void Buffer_PC::initialize()
 
 }
 
-/*
+/**
  * This method deletes the lists created to store the
  * coords.
  */
@@ -44,7 +44,7 @@ Buffer_PC::~Buffer_PC() {
 	delete (tValues);
 }
 
-/*
+/**
  * This method saves the coordenates and the time they have arrived
  */
 
@@ -68,7 +68,7 @@ void Buffer_PC::putCoords(double x, double y)
 
 }
 
-/*
+/**
  * This method returns the coordenates and the time they have arrived
  */
 
@@ -96,7 +96,7 @@ void Buffer_PC::getCoords(double & x, double & y, double & t)
 	mutex.unlock();
 }
 
-/*
+/**
  * This Method initiates the clock
  */
 
@@ -109,7 +109,7 @@ void Buffer_PC::start(){
 
 
 
-/*
+/**
  * This method saves on secs the difference beetween this time and the first time saved
  */
 

@@ -1,8 +1,8 @@
-/*
+/**
  * DynamicGestureRecognitionAlgorithm.cpp
  *
  *  Created on: 30/01/2009
- *      Author: Pablo
+ *      \author  Pablo
  */
 
 #include "DynamicGestureRecognitionAlgorithm.h"
@@ -11,7 +11,7 @@
 #include "../DTWAlgorithms/ItakuraDTWAlgorithm.h"
 #include "../DistanceCalculators/EuclideanDistance.h"
 
-/*
+/**
  * This method instantiates the variables used to detect gestures and
  * store the variables passed by parameter.
  */
@@ -48,7 +48,7 @@ DynamicGestureRecognitionAlgorithm::DynamicGestureRecognitionAlgorithm(GestureMo
 	inGesture = false;
 }
 
-/*
+/**
  * This method deletes the variables creater by the constructor method.
  */
 
@@ -72,7 +72,7 @@ DynamicGestureRecognitionAlgorithm::~DynamicGestureRecognitionAlgorithm() {
 
 }
 
-/*
+/**
  * This is the main method of the recognition process.
  */
 
@@ -119,7 +119,7 @@ void DynamicGestureRecognitionAlgorithm::addNewInput(double x, double y, double 
 
 }
 
-/*
+/**
  * This method is invoked when the AccelerationChangeDetector considers that
  * the gesture has Finished.
  */
@@ -137,7 +137,7 @@ void DynamicGestureRecognitionAlgorithm::DeactivationDetected()
 	cleanBuffers();
 }
 
-/*
+/**
  * This method call to save the data detected in their respectives buffers.
  */
 
@@ -146,7 +146,7 @@ void DynamicGestureRecognitionAlgorithm::NoChangeDetected()
 	storeInput();
 }
 
-/*
+/**
  * This method Starts when the AccelerationChangeDetector has detected an acceleration
  * in the user movement
  */
@@ -164,7 +164,7 @@ void DynamicGestureRecognitionAlgorithm::ActivationDetected()
 	storeDatafromActivationGestureMethod();
 }
 
-/*
+/**
  * This method performs the cleanning of the buffers.
  */
 void DynamicGestureRecognitionAlgorithm::ErroneusGestureActivation()
@@ -192,7 +192,7 @@ void DynamicGestureRecognitionAlgorithm::ErroneusGestureActivation()
 	setInGesture(false);
 }
 
-/*
+/**
  * This method reinitialize all the variables used to find a Gesture.
  */
 
@@ -205,7 +205,7 @@ void DynamicGestureRecognitionAlgorithm::nothingImportantHappenning()
 
 }
 
-/*
+/**
  * This method save the values being used by the object in this iteration.
  */
 
@@ -216,7 +216,7 @@ void DynamicGestureRecognitionAlgorithm::setActualInput(double x, double y, doub
 	setActualT(t);
 }
 
-/*
+/**
  * This method clean all buffers used by the class to detect the gesture.
  */
 void DynamicGestureRecognitionAlgorithm::cleanBuffers()
@@ -225,7 +225,7 @@ void DynamicGestureRecognitionAlgorithm::cleanBuffers()
 	getTy()->clean();
 }
 
-/*
+/**
  * This method store the X,Y,T values in the buffers.
  */
 void DynamicGestureRecognitionAlgorithm::storeInput()
@@ -234,7 +234,7 @@ void DynamicGestureRecognitionAlgorithm::storeInput()
 	getTy()->addNewXYPair(getActualT(),getActualY());
 }
 
-/*
+/**
  * This method recognize the Gesture that the user has made. If the user movement
  * does not respect any gesture motion, this method does nothing and return.
  */
@@ -256,7 +256,7 @@ void DynamicGestureRecognitionAlgorithm::RecognizeMotionDetected()
 	event->execute();
 }
 
-/*
+/**
  * This method store the Data that has induced to detect the Gesture
  */
 

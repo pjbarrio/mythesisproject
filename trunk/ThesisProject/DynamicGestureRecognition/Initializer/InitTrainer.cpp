@@ -1,13 +1,13 @@
-/*
+/**
  * InitTrainer.cpp
  *
  *  Created on: 08/05/2009
- *      Author: Pablo
+ *      \author  Pablo
  */
 
 #include "InitTrainer.h"
 
-/*
+/**
  * This method saves the DTWData objects passed by parameter. They will store
  * the coords.
  */
@@ -17,7 +17,7 @@ InitTrainer::InitTrainer(CoordsGetter* cg, DTWData* tx, DTWData* ty):Initializer
 	this->dtwDataTY = ty;
 }
 
-/*
+/**
  * This method dereferences the dtwData objects.
  */
 
@@ -26,7 +26,7 @@ InitTrainer::~InitTrainer() {
 	this->dtwDataTY = 0;
 }
 
-/*
+/**
  * This method adds coords to the DTWData objects.
  */
 
@@ -35,7 +35,7 @@ void InitTrainer::setNewInput(double x, double y, double t){
 	dtwDataTY->addNewXYPair(t,y);
 }
 
-/*
+/**
  * This method do nothing, because the variables used
  * are instantiated in the constructor method.
  */
