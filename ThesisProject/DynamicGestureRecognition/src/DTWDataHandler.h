@@ -1,10 +1,10 @@
 
 using namespace std;
-/*
+/**
  * DTWDataHandler.h
  *
  *  Created on: 06/02/2009
- *      Author: Pablo
+ *      \author  Pablo
  *
  * This class was created with the purpose of isolate the DTWData from the
  * structure in memory
@@ -28,4 +28,4 @@ private:
 	static void splitString(string,string,string*,string*);
 };
 
-#endif /* DTWDATAHANDLER_H_ */
+#endif /** DTWDATAHANDLER_H_ */

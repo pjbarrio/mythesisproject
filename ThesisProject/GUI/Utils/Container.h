@@ -1,8 +1,8 @@
-/*
+/**
  * Container.h
  *
  *  Created on: 05/05/2009
- *      Author: Pablo
+ *      \author  Pablo
  *
  * This class represent the model application camera model.
  * Every variable that could change the image interpretation
@@ -153,4 +153,4 @@ private:
 	ValuesNormalizator* valuesNormalizator;
 };
 
-#endif /* CONTAINER_H_ */
+#endif /** CONTAINER_H_ */

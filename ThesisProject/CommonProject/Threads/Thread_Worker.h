@@ -1,8 +1,8 @@
-/*
+/**
  * Thread_Worker.h
  *
  *  Created on: 29/03/2009
- *      Author: Pablo
+ *      \author  Pablo
  *
  * This class extends from QThread and represents the interfae which
  * Consumers will implement.
@@ -22,4 +22,4 @@ private:
 	Initializer* worker;
 };
 
-#endif /* THREAD_WORKER_H_ */
+#endif /** THREAD_WORKER_H_ */

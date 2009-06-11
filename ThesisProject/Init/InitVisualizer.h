@@ -1,8 +1,8 @@
-/*
+/**
  * InitVisualizer.h
  *
  *  Created on: 02/05/2009
- *      Author: Pablo
+ *      \author  Pablo
  *
  * This class has the responsability of produces the interaction
  * beetween the tracker and the state visualizator.
@@ -64,5 +64,5 @@ private:
 	void drawClosed();
 };
 
-#endif /* INITVISUALIZER_H_ */
+#endif /** INITVISUALIZER_H_ */
 

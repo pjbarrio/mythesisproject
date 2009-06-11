@@ -1,8 +1,8 @@
-/*
+/**
  * EuclideanDistance.h
  *
  *  Created on: 05/02/2009
- *      Author: Pablo
+ *      \author  Pablo
  *
  * This class represent a specification of DistanceCalculator.
  * It represent the more common distance calculator, called Euclidean Distance.
@@ -20,4 +20,4 @@ public:
 	double calculateDistance(double,double,double,double);
 };
 
-#endif /* EUCLIDEANDISTANCE_H_ */
+#endif /** EUCLIDEANDISTANCE_H_ */

@@ -1,8 +1,8 @@
-/*
+/**
  * InitializerCreator.h
  *
  *  Created on: 31/03/2009
- *      Author: Pablo
+ *      \author  Pablo
  *
  * This interface class is used to initialize the producer objects.
  * The main producer class is InitTracker
@@ -16,7 +16,7 @@ public:
 	InitializerCreator();
 	virtual ~InitializerCreator();
 
-	/*
+	/**
 	 * This method is invoked by the current thread to start the capturing
 	 * process.
 	 */
@@ -24,4 +24,4 @@ public:
 	virtual int start() = 0;
 };
 
-#endif /* INITIALIZERCREATOR_H_ */
+#endif /** INITIALIZERCREATOR_H_ */

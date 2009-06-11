@@ -1,8 +1,8 @@
-/*
+/**
  * ThesisStart.h
  *
  *  Created on: 02/05/2009
- *      Author: Pablo
+ *      \author  Pablo
  *
  * This threaded class creates the tracker and the consumers
  * configured by the user.
@@ -36,4 +36,4 @@ private:
 	CoordsSaver* cs;
 };
 
-#endif /* THESISSTART_H_ */
+#endif /** THESISSTART_H_ */

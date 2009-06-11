@@ -1,8 +1,8 @@
-/*
+/**
  * CombinedKeyPressed.h
  *
  *  Created on: 04/05/2009
- *      Author: Pablo
+ *      \author  Pablo
  *
  *  This class is an special kind of PressCharEvent. It
  *  represents the combination of keys. One example is Alt+Tab.
@@ -25,4 +25,4 @@ private:
 	PressCharEvent* SecondKeyPressed;
 };
 
-#endif /* COMBINEDKEYPRESSED_H_ */
+#endif /** COMBINEDKEYPRESSED_H_ */

@@ -110,7 +110,7 @@ void ThesisStart::run() {
 
 
 
-/**	InitTracker* it = new InitTracker(cs,si,ch);
+/*	InitTracker* it = new InitTracker(cs,si,ch);
 
 	Thread_Tracker* tt = new Thread_Tracker(it);
 

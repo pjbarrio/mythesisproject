@@ -2,11 +2,11 @@
 
 
 
-/*
+/**
  * cursorVisualizer.h
  *
  *  Created on: 25/03/2009
- *      Author: Pablo
+ *      \author  Pablo
  *
  *  This Class Shows the mouse Cursor on the screen
  */
@@ -40,4 +40,4 @@ private:
 	bool clickperformed;
 };
 
-#endif /* CURSORVISUALIZER_H_ */
+#endif /** CURSORVISUALIZER_H_ */

@@ -1,8 +1,8 @@
-/*
+/**
  * Buffer_PC.h
  *
  *  Created on: 30/03/2009
- *      Author: Pablo
+ *      \author  Pablo
  *
  * This class represents the buffer that is used to
  * synchronize the producer object and the consumer one.
@@ -43,4 +43,4 @@ private:
 	int size;
 };
 
-#endif /* BUFFER_PC_H_ */
+#endif /** BUFFER_PC_H_ */

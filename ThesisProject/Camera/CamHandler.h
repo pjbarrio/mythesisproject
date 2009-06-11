@@ -1,8 +1,8 @@
-/*
+/**
  * CamHandler.h
  *
  *  Created on: 04-feb-2009
- *      Author: Timpa
+ *      \author  Timpa
  *
  *  This class is the interface provided by the application to
  *  work with a webcam standard, isolating the application from
@@ -71,4 +71,4 @@ private:
 
 };
 
-#endif /* CAMHANDLER_H_ */
+#endif /** CAMHANDLER_H_ */

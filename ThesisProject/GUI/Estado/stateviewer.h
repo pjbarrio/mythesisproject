@@ -1,8 +1,8 @@
-/*
+/**
  * stateviewer.h
  *
  *  Created on: 05/05/2009
- *      Author: Pablo
+ *      \author  Pablo
  *
  * This GUI Class shows the state of the capturing process.
  * It shows the movement, the filtered image, hand State and
@@ -26,14 +26,14 @@ public:
     StateViewer(QWidget *parent = 0);
     ~StateViewer();
 
-    /*
+    /**
      * This method returns the list which represents the velocity graphical
      * equalizator.
      */
 
     QList<QLabel*>* getVelocityList(){return velocityList;};
 
-    /*
+    /**
      * This method returns the list which represents the acceleration graphical
      * equalizator.
      */

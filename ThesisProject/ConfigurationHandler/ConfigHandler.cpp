@@ -125,14 +125,9 @@ float ConfigHandler::getLightStabilizerThresholdDelta()
 int ConfigHandler::getSkinDelta()
 {
 
-	int delta = 42;
+	logger->addEntry(componenetName,"El valor delta debe ser mayor a cero. Se uso el valor por defecto--> delta = 42");
+	return 42;//es el valor del umbral para decidir si es piel o no
 
-	if ( delta == 0 ){
-		logger->addEntry(componenetName,"El valor delta debe ser mayor a cero. Se uso el valor por defecto--> delta = 42");
-		return 42;//es el valor del umbral para decidir si es piel o no
-	}
-	else
-		return delta;
 
 }
 

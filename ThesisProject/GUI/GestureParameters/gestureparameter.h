@@ -1,8 +1,8 @@
-/*
+/**
  * gestureparameter.h
  *
  *  Created on: 25/05/2009
- *      Author: Pablo
+ *      \author  Pablo
  *
  * This GUI class provides the interface to set the Gesture
  * Recognition Parameters.

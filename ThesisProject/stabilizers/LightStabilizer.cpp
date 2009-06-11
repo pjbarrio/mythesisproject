@@ -45,7 +45,7 @@ void LightStabilizer::runAmbientDiagnostic(CamHandler *cam,FilterHandler*filterH
 {
 
 	Container::getInstance()->createCamViewerInstance(handDiagnostic->getCaptureLabel());
-	/**/
+	/*
 	 * Capturamos una serie de frames y sacamos datos como la cantidad de pixeles
 	 * similares al color de la piel y demas
 	 */

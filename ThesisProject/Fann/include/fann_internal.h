@@ -1,4 +1,4 @@
-/*
+/**
 Fast Artificial Neural Network Library (fann)
 Copyright (C) 2003 Steffen Nissen (lukesky@diku.dk)
 
@@ -19,7 +19,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 #ifndef __fann_internal_h__
 #define __fann_internal_h__
-/* internal include file, not to be included directly
+/** internal include file, not to be included directly
  */
 
 #include <math.h>
@@ -101,7 +101,7 @@ fann_type fann_activation_derived(unsigned int activation_function,
 
 int fann_desired_error_reached(struct fann *ann, float desired_error);
 
-/* Some functions for cascade */
+/** Some functions for cascade */
 int fann_train_outputs(struct fann *ann, struct fann_train_data *data, float desired_error);
 
 float fann_train_outputs_epoch(struct fann *ann, struct fann_train_data *data);
@@ -116,12 +116,12 @@ int fann_initialize_candidates(struct fann *ann);
 
 void fann_set_shortcut_connections(struct fann *ann);
 
-/* called fann_max, in order to not interferre with predefined versions of max */
+/** called fann_max, in order to not interferre with predefined versions of max */
 #define fann_max(x, y) (((x) > (y)) ? (x) : (y))
 #define fann_min(x, y) (((x) < (y)) ? (x) : (y))
 #define fann_safe_free(x) {if(x) { free(x); x = NULL; }}
 #define fann_clip(x, lo, hi) (((x) < (lo)) ? (lo) : (((x) > (hi)) ? (hi) : (x)))
-/*#define fann_clip(x, lo, hi) (x)*/
+/**#define fann_clip(x, lo, hi) (x)*/
 
 #define fann_rand(min_value, max_value) (((float)(min_value))+(((float)(max_value)-((float)(min_value)))*rand()/(RAND_MAX+1.0f)))
 
@@ -132,7 +132,7 @@ void fann_set_shortcut_connections(struct fann *ann);
 #define fann_mult(x,y) ((x*y) >> decimal_point)
 #define fann_div(x,y) (((x) << decimal_point)/y)
 #define fann_random_weight() (fann_type)(fann_rand((0-multiplier)/10,multiplier/10))
-/* sigmoid calculated with use of floats, only as reference */
+/** sigmoid calculated with use of floats, only as reference */
 
 #else
 

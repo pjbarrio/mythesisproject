@@ -1,8 +1,8 @@
-/*
+/**
  * RawDTWAlgorithm.h
  *
  *  Created on: 05/02/2009
- *      Author: Pablo
+ *      \author  Pablo
  *
  *  This Class Implements the basic implementation of DTW. It doesn't provide
  *  a perform. The main algorithm is O(n2).
@@ -29,4 +29,4 @@ protected:
 	int getSupValue(int,int,int);
 };
 
-#endif /* RAWDTWALGORITHM_H_ */
+#endif /** RAWDTWALGORITHM_H_ */

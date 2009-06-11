@@ -1,8 +1,8 @@
-/*
+/**
  * Event.h
  *
  *  Created on: 01/02/2009
- *      Author: Pablo
+ *      \author  Pablo
  *
  *  This Class represent the events which can be executed when the
  *  asociated gesture is detected
@@ -22,13 +22,13 @@ public:
 	Event(const char*);
 	virtual ~Event();
 
-	/*
+	/**
 	 * This method produces an impact in the GUI application.
 	 */
 
 	virtual int execute() = 0;
 
-	/*
+	/**
 	 * This method writes the event in an xml file using the
 	 * QXmlStreamWriter object.
 	 */
@@ -39,4 +39,4 @@ private:
 	string id;
 };
 
-#endif /* EVENT_H_ */
+#endif /** EVENT_H_ */

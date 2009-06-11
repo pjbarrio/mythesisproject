@@ -1,8 +1,8 @@
-/*
+/**
  * CamViewer.h
  *
  *  Created on: 28/04/2009
- *      Author: Pablo
+ *      \author  Pablo
  * This class has the responsability of integrating GUI
  * with OpenCV. This class will show the captured images on
  * labels used in the Dialog Windows.
@@ -54,4 +54,4 @@ private:
 	bool saveVideo;
 };
 
-#endif /* CAMVIEWER_H_ */
+#endif /** CAMVIEWER_H_ */

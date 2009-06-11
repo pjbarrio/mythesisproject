@@ -1,4 +1,4 @@
-/*
+/**
 
 Originally timeval.h by Wu Yongwei
 
@@ -20,7 +20,7 @@ License along with this library; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */  
 	
-/*
+/**
  * timeval.h    1.0 01/12/19
  *
  * Defines gettimeofday, timeval, etc. for Win32
@@ -34,14 +34,14 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 	
 #ifdef _WIN32
 	
-/* Modified to compile as ANSI C without include of windows.h
+/** Modified to compile as ANSI C without include of windows.h
    If this gives problems with future Windows/MSC versions, then
    uncomment the USE_WINDOWS_H definition to switch back. */ 
-/* #define USE_WINDOWS_H */ 
+/** #define USE_WINDOWS_H */ 
 #ifdef USE_WINDOWS_H
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
-#else	/*  */
+#else	/**  */
 #ifndef _INC_WINDOWS
 #define VOID void
 #define WINAPI __stdcall
@@ -58,9 +58,9 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 typedef union _LARGE_INTEGER
 {
 	
-		/* Removed unnamed struct,
+		/** Removed unnamed struct,
 		 * it is not ANSI C compatible */ 
-		/* struct {
+		/** struct {
 		 * DWORD LowPart;
 		 * LONG HighPart;
 		 * }; */ 
@@ -74,25 +74,25 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 WINBASEAPI VOID WINAPI  GetSystemTimeAsFileTime(OUT LPFILETIME lpSystemTimeAsFileTime);
 
-#endif	/* _INC_WINDOWS */
-#endif	/* USE_WINDOWS_H */
+#endif	/** _INC_WINDOWS */
+#endif	/** USE_WINDOWS_H */
 	
 #include <time.h>
 	
 #ifndef __GNUC__
 #define EPOCHFILETIME (116444736000000000i64)
-#else	/*  */
+#else	/**  */
 #define EPOCHFILETIME (116444736000000000LL)
-#endif	/*  */
+#endif	/**  */
 	struct timeval
 {
-	long tv_sec;				/* seconds */
-	  long tv_usec;			/* microseconds */
+	long tv_sec;				/** seconds */
+	  long tv_usec;			/** microseconds */
  };
 struct timezone
 {
-	int tz_minuteswest;		/* minutes W of Greenwich */
-	  int tz_dsttime;			/* type of dst correction */
+	int tz_minuteswest;		/** minutes W of Greenwich */
+	  int tz_dsttime;			/** type of dst correction */
  };
 __inline int gettimeofday(struct timeval *tv, struct timezone *tz) 
 {
@@ -106,13 +106,13 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 	{
 		GetSystemTimeAsFileTime(&ft);
 		
-			/* The following two lines have been modified to use the named
+			/** The following two lines have been modified to use the named
 			 * union member. Unnamed members are not ANSI C compatible. */ 
 			li.u.LowPart = ft.dwLowDateTime;
 		li.u.HighPart = ft.dwHighDateTime;
-		t = li.QuadPart;		/* In 100-nanosecond intervals */
-		t -= EPOCHFILETIME;	/* Offset to the Epoch time */
-		t /= 10;				/* In microseconds */
+		t = li.QuadPart;		/** In 100-nanosecond intervals */
+		t -= EPOCHFILETIME;	/** Offset to the Epoch time */
+		t /= 10;				/** In microseconds */
 		tv->tv_sec = (long) (t / 1000000);
 		tv->tv_usec = (long) (t % 1000000);
 	}
@@ -132,10 +132,10 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 }
 
 
-#else	/* _WIN32 */
+#else	/** _WIN32 */
 	
 #include <sys/time.h>
 	
-#endif	/* _WIN32 */
+#endif	/** _WIN32 */
 	
-#endif	/* _TIMEVAL_H */
+#endif	/** _TIMEVAL_H */

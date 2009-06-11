@@ -1,9 +1,9 @@
 
-/*
+/**
  * GestureRecognizer.h
  *
  *  Created on: 01/02/2009
- *      Author: Pablo
+ *      \author  Pablo
  *
  *	This Class is the responsible of return the Gesture Detected.
  */
@@ -31,4 +31,4 @@ private:
 
 };
 
-#endif /* GESTURERECOGNIZER_H_ */
+#endif /** GESTURERECOGNIZER_H_ */

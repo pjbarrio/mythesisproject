@@ -1,8 +1,8 @@
-/*
+/**
  * addgesture.h
  *
  *  Created on: 05/05/2009
- *      Author: Pablo
+ *      \author  Pablo
  *
  * This GUI class is used to set new gestures.
  * This window offers an edit label where the user can
@@ -25,21 +25,21 @@ public:
     AddGesture(NewGesture*, QWidget *parent = 0);
     ~AddGesture();
 
-    /*
+    /**
      * This method returns the gesture id setted by the user.
      */
 
     QString *getId() const {return id;}
     void setId(QString *id) {this->id = id;}
 
-    /*
+    /**
      * This method returns the <T,X> component gesture.
      */
 
     DTWData *getTx() const {return tx;}
     void setTx(DTWData *tx) {this->tx = tx;}
 
-    /*
+    /**
      * This method returns the <T,Y> component gesture.
      */
 

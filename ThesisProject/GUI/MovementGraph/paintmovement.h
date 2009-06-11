@@ -1,8 +1,8 @@
-/*
+/**
  * paintmovement.h
  *
  *  Created on: 05/05/2009
- *      Author: Pablo
+ *      \author  Pablo
  *
  * This Widget class is used to draw the hand movement
  * captured by the tracker.

@@ -1,9 +1,9 @@
 
-/*
+/**
  * EventModel.h
  *
  *  Created on: 03/05/2009
- *      Author: Pablo
+ *      \author  Pablo
  *
  * This class is used to store the Events that the application will
  * use during the execution time.
@@ -39,4 +39,4 @@ private:
 	DoNothingEvent *doNothingEventInstance;
 };
 
-#endif /* EVENTMODEL_H_ */
+#endif /** EVENTMODEL_H_ */

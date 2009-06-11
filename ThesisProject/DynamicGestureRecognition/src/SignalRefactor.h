@@ -1,8 +1,8 @@
-/*
+/**
  * SignalRefactor.h
  *
  *  Created on: 24/01/2009
- *      Author: Pablo
+ *      \author  Pablo
  *
  *  This class has the responsability of refactorize the signal in case it is needed.
  */
@@ -23,4 +23,4 @@ private:
 
 };
 
-#endif /* SIGNALREFACTOR_H_ */
+#endif /** SIGNALREFACTOR_H_ */

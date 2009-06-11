@@ -1,8 +1,8 @@
-/*
+/**
  * ImageFilter.h
  *
  *  Created on: 05-feb-2009
- *      Author: Timpa
+ *      \author  Timpa
  *
  * This asbtract class is used to provide a unified interface
  * for the existing filters in the application.
@@ -22,4 +22,4 @@ public:
 	IplImage* applyFilter(IplImage*);
 };
 
-#endif /* IMAGEFILTER_H_ */
+#endif /** IMAGEFILTER_H_ */

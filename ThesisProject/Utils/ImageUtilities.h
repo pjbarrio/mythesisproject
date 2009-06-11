@@ -1,8 +1,8 @@
-/*
+/**
  * ImageUtilities.h
  *
  *  Created on: 05-feb-2009
- *      Author: Timpa
+ *      \author  Timpa
  *
  * This class draws lines or boxes in the current frame to refer
  * to an existing object.
@@ -23,4 +23,4 @@ public:
 
 };
 
-#endif /* IMAGEUTILITIES_H_ */
+#endif /** IMAGEUTILITIES_H_ */

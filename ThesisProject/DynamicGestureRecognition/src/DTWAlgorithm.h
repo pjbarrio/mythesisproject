@@ -1,8 +1,8 @@
-/*
+/**
  * DTWAlgorithm.h
  *
  *  Created on: 24/01/2009
- *      Author: Pablo
+ *      \author  Pablo
  *
  *  This class is the main class of the model. It defines the DTWAlgorithm to be used in
  *  gesture recognition
@@ -22,7 +22,7 @@ public:
 
 	double computeDTWValue(DTWData*,DTWData*);
 
-	/*
+	/**
 	 * This method decides if the value in the parameter list is an acceptance value
 	 * under the necesary conditions
 	*/
@@ -36,14 +36,14 @@ protected:
 
 	void calculateMatrix(DTWData*,DTWData*,vector<vector<double> > &);
 
-	/*
+	/**
 	 * This virtual method decides the minimun posible value for j when the
 	 * algorithm is iterating by the "pos" position.
 	 */
 
 	virtual int getInfValue(int,int,int) = 0;
 
-	/*
+	/**
 	 * This virtual method decides the minimun posible value for j when the
 	 * algorithm is iterating by the "pos" position.
 	 */
@@ -76,4 +76,4 @@ private:
 	int lastpos;
 };
 
-#endif /* DTWALGORITHM_H_ */
+#endif /** DTWALGORITHM_H_ */

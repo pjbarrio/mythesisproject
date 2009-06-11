@@ -1,8 +1,8 @@
-/*
+/**
  * SystemInfo.h
  *
  *  Created on: 08-feb-2009
- *      Author: Timpa
+ *      \author  Timpa
  *
  * This class provide the information about the resolution that
  * the process uses to work and the Screen Resolution configured
@@ -33,4 +33,4 @@ private:
 };
 
 
-#endif /* SYSTEMINFO_H_ */
+#endif /** SYSTEMINFO_H_ */

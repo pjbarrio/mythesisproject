@@ -1,8 +1,8 @@
-/*
+/**
  * newGesture.h
  *
  *  Created on: 05/05/2009
- *      Author: Pablo
+ *      \author  Pablo
  *
  * This class is an specific kind of Windows Dialog.
  * In this window a new gesture can be added.
@@ -29,13 +29,13 @@ public:
     NewGesture(QWidget *parent = 0);
     ~NewGesture();
 
-    /*
+    /**
      * This method returns the <T,X> Component of the saved Gesture.
      */
     DTWData *getTx() const {return tx;}
     void setTx(DTWData *tx) {this->tx = tx;}
 
-    /*
+    /**
      * This method returns the <T,Y> Component of the saved Gesture.
      */
 

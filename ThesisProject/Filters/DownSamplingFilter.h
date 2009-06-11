@@ -1,8 +1,8 @@
-/*
+/**
  * DownSamplingFilter.h
  *
  *  Created on: 05-feb-2009
- *      Author: Timpa
+ *      \author  Timpa
  *
  * This class extends from ImageFilter and implements
  * the Down Sampling Filter.
@@ -21,4 +21,4 @@ public:
 	IplImage* applyFilter(IplImage*);
 };
 
-#endif /* DOWNSAMPLINGFILTER_H_ */
+#endif /** DOWNSAMPLINGFILTER_H_ */

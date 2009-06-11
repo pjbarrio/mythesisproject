@@ -1,8 +1,8 @@
-/*
+/**
  * CameraVideo.h
  *
  *  Created on: 08/05/2009
- *      Author: Pablo
+ *      \author  Pablo
  *
  * This class represents a video source. It's a list of captured frames.
  */
@@ -36,4 +36,4 @@ private:
 	IplImage* free;
 };
 
-#endif /* CAMERAVIDEO_H_ */
+#endif /** CAMERAVIDEO_H_ */

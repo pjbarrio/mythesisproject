@@ -47,7 +47,7 @@ void FIRfilter::runLowPassFilter(int Xin, int Yin, int & Xout, int & Yout)
 
 {
 
-	/**/
+	/*
 	 * tags: Low-pass filter, wikipedia
 	 *
 	 */
@@ -84,7 +84,7 @@ void FIRfilter::runAverageSmoothing(int Xin, int Yin, int & Xout, int & Yout)
 {
 
 
-	/**/
+	/*
 	 * tags: Exponential smoothing, wikipedia
 	 *
 	 */

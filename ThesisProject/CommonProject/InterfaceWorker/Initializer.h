@@ -1,9 +1,9 @@
 
-/*
+/**
  * Initializer.h
  *
  *  Created on: 29/03/2009
- *      Author: Pablo
+ *      \author  Pablo
  *
  * This abstract class provides the interface to work with
  * coords consumers.
@@ -20,28 +20,28 @@ public:
 	virtual ~Initializer();
 	void start();
 
-	/*
+	/**
 	 * This virtual method sets the input coords to the consumer
 	 * which will use them
 	 */
 
 	virtual void setNewInput(double,double,double) = 0;
 
-	/*
+	/**
 	 * This virtual method initializes the consumer object. Is called when
 	 * start() is invoked.
 	 */
 
 	virtual void init() = 0;
 
-	/*
+	/**
 	 * This method set the running value. true means that the application
 	 * is generating source information. False means that the tracker has finished.
 	 */
 
 	void setRunning(bool val){running = val;};
 
-	/*
+	/**
 	 * This method returns the running value.
 	 */
 
@@ -52,4 +52,4 @@ protected:
 
 };
 
-#endif /* INITIALIZER_H_ */
+#endif /** INITIALIZER_H_ */

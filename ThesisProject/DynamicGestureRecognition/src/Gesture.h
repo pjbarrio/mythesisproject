@@ -1,9 +1,9 @@
 
-/*
+/**
  * Gesture.h
  *
  *  Created on: 01/02/2009
- *      Author: Pablo
+ *      \author  Pablo
  *
  *  This Class represent one Gesture in the Gesture Model
  */
@@ -20,19 +20,19 @@ class Gesture {
 public:
 	Gesture(DTWData*, DTWData*, const char*);
 	virtual ~Gesture();
-    /*
+    /**
      * This method returns the <T,X> component of the gesture
      */
 
 	DTWData *getTx() const {return tx;}
 
-	/*
+	/**
 	 * This method returns the <T,Y> component of the gesture
 	 */
 
 	DTWData *getTy() const {return ty;}
 
-	/*
+	/**
 	 * This method returns the Gesture's id.
 	 */
 
@@ -44,4 +44,4 @@ private:
 	string id;
 };
 
-#endif /* GESTURE_H_ */
+#endif /** GESTURE_H_ */

@@ -1,8 +1,8 @@
-/*
+/**
  * PrintCharEvent.h
  *
  *  Created on: 01/02/2009
- *      Author: Pablo
+ *      \author  Pablo
  *
  * This class represent an event that show a message when is executed.
  */
@@ -24,4 +24,4 @@ private:
 
 };
 
-#endif /* PRINTCHAREVENT_H_ */
+#endif /** PRINTCHAREVENT_H_ */

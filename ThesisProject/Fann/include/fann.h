@@ -1,4 +1,4 @@
-/*
+/**
 Fast Artificial Neural Network Library (fann)
 Copyright (C) 2003 Steffen Nissen (lukesky@diku.dk)
 
@@ -17,13 +17,13 @@ License along with this library; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */  
 	
-/* This file defines the user interface to the fann library.
+/** This file defines the user interface to the fann library.
    It is included from fixedfann.h, floatfann.h and doublefann.h and should
    NOT be included directly. If included directly it will react as if
    floatfann.h was included.
 */ 
 
-/* Section: FANN Creation/Execution
+/** Section: FANN Creation/Execution
    
    The FANN library is designed to be very easy to use. 
    A feedforward ann can be created by a simple <fann_create_standard> function, while
@@ -34,30 +34,30 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
    still be powerfull and effective. If you have more knowledge about ANNs, and desire more control, almost
    every part of the ANNs can be parametized to create specialized and highly optimal ANNs.
  */
-/* Group: Creation, Destruction & Execution */
+/** Group: Creation, Destruction & Execution */
 	
 #ifndef FANN_INCLUDE
-/* just to allow for inclusion of fann.h in normal stuations where only floats are needed */ 
+/** just to allow for inclusion of fann.h in normal stuations where only floats are needed */ 
 #ifdef FIXEDFANN
 #include "fixedfann.h"
 #else
 #include "floatfann.h"
-#endif	/* FIXEDFANN  */
+#endif	/** FIXEDFANN  */
 	
 #else
 	
-/* COMPAT_TIME REPLACEMENT */ 
+/** COMPAT_TIME REPLACEMENT */ 
 #ifndef _WIN32
 #include <sys/time.h>
-#else	/* _WIN32 */
+#else	/** _WIN32 */
 #if !defined(_MSC_EXTENSIONS) && !defined(_INC_WINDOWS)  
 extern unsigned long __stdcall GetTickCount(void);
 
-#else	/* _MSC_EXTENSIONS */
+#else	/** _MSC_EXTENSIONS */
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
-#endif	/* _MSC_EXTENSIONS */
-#endif	/* _WIN32 */
+#endif	/** _MSC_EXTENSIONS */
+#endif	/** _WIN32 */
 		
 #ifndef __fann_h__
 #define __fann_h__
@@ -67,16 +67,16 @@ extern "C"
 {
 	
 #ifndef __cplusplus
-} /* to fool automatic indention engines */ 
+} /** to fool automatic indention engines */ 
 #endif
-#endif	/* __cplusplus */
+#endif	/** __cplusplus */
  
 #ifndef NULL
 #define NULL 0
-#endif	/* NULL */
+#endif	/** NULL */
  
-/* ----- Macros used to define DLL external entrypoints ----- */ 
-/*
+/** ----- Macros used to define DLL external entrypoints ----- */ 
+/**
  DLL Export, import and calling convention for Windows.
  Only defined for Microsoft VC++ FANN_EXTERNAL indicates
  that a function will be exported/imported from a dll
@@ -104,7 +104,7 @@ extern "C"
  calling convention.
 */ 
  
-/*
+/**
  The following sets the default for MSVC++ 2003 or later to use
  the fann dll's. To use a lib or fixedfann.c, floatfann.c or doublefann.c
  with those compilers FANN_NO_DLL has to be defined before
@@ -116,20 +116,20 @@ extern "C"
 #if (_MSC_VER > 1300)
 #ifndef FANN_NO_DLL
 #define FANN_USE_DLL
-#endif	/* FANN_USE_LIB */
-#endif	/* _MSC_VER */
+#endif	/** FANN_USE_LIB */
+#endif	/** _MSC_VER */
 #if defined(_MSC_VER) && (defined(FANN_USE_DLL) || defined(FANN_DLL_EXPORTS))
 #ifdef FANN_DLL_EXPORTS
 #define FANN_EXTERNAL __declspec(dllexport)
-#else							/*  */
+#else							/**  */
 #define FANN_EXTERNAL __declspec(dllimport)
-#endif	/* FANN_DLL_EXPORTS*/
+#endif	/** FANN_DLL_EXPORTS*/
 #define FANN_API __stdcall
-#else							/*  */
+#else							/**  */
 #define FANN_EXTERNAL
 #define FANN_API
-#endif	/* _MSC_VER */
-/* ----- End of macros used to define DLL external entrypoints ----- */ 
+#endif	/** _MSC_VER */
+/** ----- End of macros used to define DLL external entrypoints ----- */ 
 
 #include "fann_error.h"
 #include "fann_activation.h"
@@ -139,7 +139,7 @@ extern "C"
 #include "fann_cascade.h"
 #include "fann_io.h"
 
-/* Function: fann_create_standard
+/** Function: fann_create_standard
 	
 	Creates a standard fully connected backpropagation neural network.
 
@@ -169,7 +169,7 @@ extern "C"
 */ 
 FANN_EXTERNAL struct fann *FANN_API fann_create_standard(unsigned int num_layers, ...);
 
-/* Function: fann_create_standard_array
+/** Function: fann_create_standard_array
    Just like <fann_create_standard>, but with an array of layer sizes
    instead of individual parameters.
 
@@ -187,7 +187,7 @@ FANN_EXTERNAL struct fann *FANN_API fann_create_standard(unsigned int num_layers
 FANN_EXTERNAL struct fann *FANN_API fann_create_standard_array(unsigned int num_layers,
 													           unsigned int *layers);
 
-/* Function: fann_create_sparse
+/** Function: fann_create_sparse
 
 	Creates a standard backpropagation neural network, which is not fully connected.
 
@@ -212,7 +212,7 @@ FANN_EXTERNAL struct fann *FANN_API fann_create_sparse(float connection_rate,
 	                                                   unsigned int num_layers, ...);
 
 
-/* Function: fann_create_sparse_array
+/** Function: fann_create_sparse_array
    Just like <fann_create_sparse>, but with an array of layer sizes
    instead of individual parameters.
 
@@ -227,7 +227,7 @@ FANN_EXTERNAL struct fann *FANN_API fann_create_sparse_array(float connection_ra
 	                                                         unsigned int num_layers, 
 															 unsigned int *layers);
 
-/* Function: fann_create_shortcut
+/** Function: fann_create_shortcut
 
 	Creates a standard backpropagation neural network, which is not fully connected and which
 	also has shortcut connections.
@@ -245,7 +245,7 @@ FANN_EXTERNAL struct fann *FANN_API fann_create_sparse_array(float connection_ra
 */ 
 FANN_EXTERNAL struct fann *FANN_API fann_create_shortcut(unsigned int num_layers, ...);
 
-/* Function: fann_create_shortcut_array
+/** Function: fann_create_shortcut_array
    Just like <fann_create_shortcut>, but with an array of layer sizes
    instead of individual parameters.
 
@@ -258,7 +258,7 @@ FANN_EXTERNAL struct fann *FANN_API fann_create_shortcut(unsigned int num_layers
 */
 FANN_EXTERNAL struct fann *FANN_API fann_create_shortcut_array(unsigned int num_layers,
 															   unsigned int *layers);
-/* Function: fann_destroy
+/** Function: fann_destroy
    Destroys the entire network and properly freeing all the associated memmory.
 
 	This function appears in FANN >= 1.0.0.
@@ -266,7 +266,7 @@ FANN_EXTERNAL struct fann *FANN_API fann_create_shortcut_array(unsigned int num_
 FANN_EXTERNAL void FANN_API fann_destroy(struct fann *ann);
 
 
-/* Function: fann_run
+/** Function: fann_run
 	Will run input through the neural network, returning an array of outputs, the number of which being 
 	equal to the number of neurons in the output layer.
 
@@ -277,7 +277,7 @@ FANN_EXTERNAL void FANN_API fann_destroy(struct fann *ann);
 */ 
 FANN_EXTERNAL fann_type * FANN_API fann_run(struct fann *ann, fann_type * input);
 
-/* Function: fann_randomize_weights
+/** Function: fann_randomize_weights
 	Give each connection a random weight between *min_weight* and *max_weight*
    
 	From the beginning the weights are random between -0.1 and 0.1.
@@ -290,7 +290,7 @@ FANN_EXTERNAL fann_type * FANN_API fann_run(struct fann *ann, fann_type * input)
 FANN_EXTERNAL void FANN_API fann_randomize_weights(struct fann *ann, fann_type min_weight,
 												   fann_type max_weight);
 
-/* Function: fann_init_weights
+/** Function: fann_init_weights
   	Initialize the weights using Widrow + Nguyen's algorithm.
 	
  	This function behaves similarly to fann_randomize_weights. It will use the algorithm developed 
@@ -309,7 +309,7 @@ FANN_EXTERNAL void FANN_API fann_randomize_weights(struct fann *ann, fann_type m
 */ 
 FANN_EXTERNAL void FANN_API fann_init_weights(struct fann *ann, struct fann_train_data *train_data);
 
-/* Function: fann_print_connections
+/** Function: fann_print_connections
 	Will print the connections of the ann in a compact matrix, for easy viewing of the internals 
 	of the ann.
 
@@ -336,8 +336,8 @@ FANN_EXTERNAL void FANN_API fann_init_weights(struct fann *ann, struct fann_trai
 */ 
 FANN_EXTERNAL void FANN_API fann_print_connections(struct fann *ann);
 
-/* Group: Parameters */
-/* Function: fann_print_parameters
+/** Group: Parameters */
+/** Function: fann_print_parameters
 
   	Prints all of the parameters and options of the ANN 
 
@@ -346,7 +346,7 @@ FANN_EXTERNAL void FANN_API fann_print_connections(struct fann *ann);
 FANN_EXTERNAL void FANN_API fann_print_parameters(struct fann *ann);
 
 
-/* Function: fann_get_num_input
+/** Function: fann_get_num_input
 
    Get the number of input neurons.
 
@@ -355,7 +355,7 @@ FANN_EXTERNAL void FANN_API fann_print_parameters(struct fann *ann);
 FANN_EXTERNAL unsigned int FANN_API fann_get_num_input(struct fann *ann);
 
 
-/* Function: fann_get_num_output
+/** Function: fann_get_num_output
 
    Get the number of output neurons.
 
@@ -364,7 +364,7 @@ FANN_EXTERNAL unsigned int FANN_API fann_get_num_input(struct fann *ann);
 FANN_EXTERNAL unsigned int FANN_API fann_get_num_output(struct fann *ann);
 
 
-/* Function: fann_get_total_neurons
+/** Function: fann_get_total_neurons
 
    Get the total number of neurons in the entire network. This number does also include the 
 	bias neurons, so a 2-4-2 network has 2+4+2 +2(bias) = 10 neurons.
@@ -374,7 +374,7 @@ FANN_EXTERNAL unsigned int FANN_API fann_get_num_output(struct fann *ann);
 FANN_EXTERNAL unsigned int FANN_API fann_get_total_neurons(struct fann *ann);
 
 
-/* Function: fann_get_total_connections
+/** Function: fann_get_total_connections
 
    Get the total number of connections in the entire network.
 
@@ -384,7 +384,7 @@ FANN_EXTERNAL unsigned int FANN_API fann_get_total_connections(struct fann *ann)
 
 #ifdef FIXEDFANN
 	
-/* Function: fann_get_decimal_point
+/** Function: fann_get_decimal_point
 
 	Returns the position of the decimal point in the ann.
 
@@ -400,7 +400,7 @@ FANN_EXTERNAL unsigned int FANN_API fann_get_total_connections(struct fann *ann)
 FANN_EXTERNAL unsigned int FANN_API fann_get_decimal_point(struct fann *ann);
 
 
-/* Function: fann_get_multiplier
+/** Function: fann_get_multiplier
 
     returns the multiplier that fix point data is multiplied with.
 
@@ -419,17 +419,17 @@ FANN_EXTERNAL unsigned int FANN_API fann_get_decimal_point(struct fann *ann);
 */ 
 FANN_EXTERNAL unsigned int FANN_API fann_get_multiplier(struct fann *ann);
 
-#endif	/* FIXEDFANN */
+#endif	/** FIXEDFANN */
 
 #ifdef __cplusplus
 #ifndef __cplusplus
-/* to fool automatic indention engines */ 
+/** to fool automatic indention engines */ 
 {
 	
 #endif
 } 
-#endif	/* __cplusplus */
+#endif	/** __cplusplus */
 	
-#endif	/* __fann_h__ */
+#endif	/** __fann_h__ */
 	
-#endif /* NOT FANN_INCLUDE */
+#endif /** NOT FANN_INCLUDE */

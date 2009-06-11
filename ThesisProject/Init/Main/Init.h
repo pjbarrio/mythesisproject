@@ -1,8 +1,8 @@
-/*
+/**
  * Init.h
  *
  *  Created on: 05/05/2009
- *      Author: Pablo
+ *      \author  Pablo
  *
  * This class is invoked when the application starts.
  * It has the implementation of the "main" method.
@@ -28,4 +28,4 @@ public:
 	int start(int argc, char *argv[]);
 };
 
-#endif /* INIT_H_ */
+#endif /** INIT_H_ */

@@ -1,8 +1,8 @@
-/*
+/**
  * NormalFilter.h
  *
  *  Created on: 05-feb-2009
- *      Author: Timpa
+ *      \author  Timpa
  *
  * This class is a kind of filter used to transform the image
  * to an intput for the Artificial Neural Network
@@ -25,4 +25,4 @@ public:
 
 };
 
-#endif /* NORMALFILTER_H_ */
+#endif /** NORMALFILTER_H_ */

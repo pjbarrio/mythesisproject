@@ -1,8 +1,8 @@
-/*
+/**
  * ConfigHandler.h
  *
  *  Created on: 05-feb-2009
- *      Author: Timpa
+ *      \author  Timpa
  *
  * This class has the configuration used to achieve hand Tracking
  */
@@ -46,4 +46,4 @@ private:
 	int SkinDelta;
 };
 
-#endif /* CONFIGHANDLER_H_ */
+#endif /** CONFIGHANDLER_H_ */
