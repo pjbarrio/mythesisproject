@@ -1,8 +1,8 @@
-/*
+/**
  * handdiagnostic.h
  *
  *  Created on: 05/05/2009
- *      Author: Pablo
+ *      \author  Pablo
  *
  * This GUI class is used to configure the values
  * of hand state (Open/Close).
@@ -24,14 +24,14 @@ public:
     ~HandDiagnostic();
     QLabel* getCaptureLabel(){return ui.label;};
 
-    /*
+    /**
      * This method returns the skin pixel count of
      * the open hand state.
      */
 
     double getFrameOpenCount(){return countOpen;};
 
-    /*
+    /**
      * This method returns the skin pixel count of
      * the close hand state.
      */

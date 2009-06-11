@@ -1,8 +1,8 @@
-/*
+/**
  * TrainingActivationGestureMethod.h
  *
  *  Created on: 19/04/2009
- *      Author: Pablo
+ *      \author  Pablo
  *
  * This class is used to store gestures during trainig stage.
  */
@@ -49,4 +49,4 @@ private:
 
 };
 
-#endif /* TRAININGACTIVATIONGESTUREMETHOD_H_ */
+#endif /** TRAININGACTIVATIONGESTUREMETHOD_H_ */

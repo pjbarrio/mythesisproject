@@ -1,8 +1,8 @@
-/*
+/**
  * ExecuteApplication.h
  *
  *  Created on: 04/05/2009
- *      Author: Pablo
+ *      \author  Pablo
  *
  * This class implements and Event that trigger an execution of
  * an application.
@@ -26,4 +26,4 @@ private:
 	std::string* args;
 };
 
-#endif /* EXECUTEAPPLICATION_H_ */
+#endif /** EXECUTEAPPLICATION_H_ */

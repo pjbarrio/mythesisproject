@@ -1,9 +1,9 @@
 
-/*
+/**
  * CoordsGetter.h
  *
  *  Created on: 14/02/2009
- *      Author: Pablo
+ *      \author  Pablo
  *
  *  This class recovers the coords from the Shared Buffer
  */
@@ -21,4 +21,4 @@ private:
 	Buffer_PC* buf;
 };
 
-#endif /* COORDSGETTER_H_ */
+#endif /** COORDSGETTER_H_ */

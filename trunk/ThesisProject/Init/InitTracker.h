@@ -1,10 +1,10 @@
 
 
-/*
+/**
  * InitTracker.h
  *
  *  Created on: 29/03/2009
- *      Author: Timpa
+ *      \author  Timpa
  *
  *  This class represents the producer thread. I will call the
  *  neuronal network to recognize the hand position.
@@ -52,4 +52,4 @@ private:
 	int ww,wh;
 };
 
-#endif /* INITTRACKER_H_ */
+#endif /** INITTRACKER_H_ */

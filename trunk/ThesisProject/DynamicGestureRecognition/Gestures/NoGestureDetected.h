@@ -1,8 +1,8 @@
-/*
+/**
  * NoGestureDetected.h
  *
  *  Created on: 01/02/2009
- *      Author: Pablo
+ *      \author  Pablo
  *
  * This class is used when no Gesture has been recognized. Is associated with
  * doNothingEvent to ensure completeness.
@@ -22,4 +22,4 @@ public:
 
 };
 
-#endif /* NOGESTUREDETECTED_H_ */
+#endif /** NOGESTUREDETECTED_H_ */

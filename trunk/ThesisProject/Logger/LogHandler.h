@@ -1,8 +1,8 @@
-/*
+/**
  * LogHandler.h
  *
  *  Created on: 05-feb-2009
- *      Author: Timpa
+ *      \author  Timpa
  *
  * This class has the responsabiliy of provide an interface
  * to handle the log file.
@@ -39,4 +39,4 @@ private:
 	std::string lastComponent;
 };
 
-#endif /* LOGHANDLER_H_ */
+#endif /** LOGHANDLER_H_ */

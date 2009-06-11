@@ -1,8 +1,8 @@
-/*
+/**
  * SkinFilter.h
  *
  *  Created on: 05-feb-2009
- *      Author: Timpa
+ *      \author  Timpa
  *
  * This class is an specific type of ImageFilter. Is used to
  * detect the skin colored pixels in an image.
@@ -57,4 +57,4 @@ private:
 
 };
 
-#endif /* SKINFILTER_H_ */
+#endif /** SKINFILTER_H_ */

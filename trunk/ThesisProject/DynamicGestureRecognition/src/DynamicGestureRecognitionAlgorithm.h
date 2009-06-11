@@ -1,8 +1,8 @@
-/*
+/**
  * DynamicGestureRecognitionAlgorithm.h
  *
  *  Created on: 30/01/2009
- *      Author: Pablo
+ *      \author  Pablo
  *
  *
  * This is the main class of the Gesture Recognition Process.
@@ -80,4 +80,4 @@ private:
 
 };
 
-#endif /* DYNAMICGESTURERECOGNITIONALGORITHM_H_ */
+#endif /** DYNAMICGESTURERECOGNITIONALGORITHM_H_ */

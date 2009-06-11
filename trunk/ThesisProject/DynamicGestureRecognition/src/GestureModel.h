@@ -1,8 +1,8 @@
-/*
+/**
  * GestureModel.h
  *
  *  Created on: 24/01/2009
- *      Author: Pablo
+ *      \author  Pablo
  *
  *  This class is a set of Gestures. In this case the model contains gestures, this is a GestureModel.
  */
@@ -33,7 +33,7 @@ public:
 	void next();
 	bool addGesture(Gesture*);
 
-	/*
+	/**
 	 * This method returns the dtwAlgorithm instance used to determine
 	 * if a Gesture is valid to be added.
 	 */
@@ -54,4 +54,4 @@ private:
 	NoGestureDetected *noGestureDetectedInstance;
 };
 
-#endif /* GESTUREMODEL_H_ */
+#endif /** GESTUREMODEL_H_ */

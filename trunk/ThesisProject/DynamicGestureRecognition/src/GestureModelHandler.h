@@ -1,8 +1,8 @@
-/*
+/**
  * GestureModelHandler.h
  *
  *  Created on: 06/02/2009
- *      Author: Pablo
+ *      \author  Pablo
  *
  * This class handle the Gesture Model. It isolate the Model from the Structure used
  * to persist the model.
@@ -21,7 +21,7 @@ public:
 	~GestureModelHandler();
 	bool fillModel(GestureModel*);
 	bool saveModel(GestureModel*,char*);
-	/*
+	/**
 	 * This Method returns the NoGestureDetected Instance. This instance is necesary
 	 * when the GestureRecognition Process has no detect any gesture.
 	 */
@@ -32,4 +32,4 @@ private:
 	static NoGestureDetected *noGestureDetected;
 };
 
-#endif /* GESTUREMODELHANDLER_H_ */
+#endif /** GESTUREMODELHANDLER_H_ */

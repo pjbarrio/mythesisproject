@@ -1,8 +1,8 @@
-/*
+/**
  * InitTrainer.h
  *
  *  Created on: 08/05/2009
- *      Author: Pablo
+ *      \author  Pablo
  *
  * This class is used to work with the Training Method.
  * It interacts with the DTWData objects.
@@ -26,4 +26,4 @@ private:
 	DTWData* dtwDataTY;
 };
 
-#endif /* INITTRAINER_H_ */
+#endif /** INITTRAINER_H_ */

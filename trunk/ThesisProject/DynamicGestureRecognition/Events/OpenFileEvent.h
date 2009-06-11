@@ -1,8 +1,8 @@
-/*
+/**
  * OpenFileEvent.h
  *
  *  Created on: 04/05/2009
- *      Author: Pablo
+ *      \author  Pablo
  *
  * This class implements the event which will open a file with its
  * predetermined by the operative System.
@@ -25,4 +25,4 @@ private:
 	std::string* file;
 };
 
-#endif /* OPENFILEEVENT_H_ */
+#endif /** OPENFILEEVENT_H_ */

@@ -1,8 +1,8 @@
-/*
+/**
  * About.h
  *
  *  Created on: 23/05/2009
- *      Author: Pablo
+ *      \author  Pablo
  *
  * This GUI class shows the info about the
  * project owners.

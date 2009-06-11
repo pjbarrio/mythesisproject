@@ -1,8 +1,8 @@
-/*
+/**
  * Thread_Tracker.h
  *
  *  Created on: 29/03/2009
- *      Author: Pablo
+ *      \author  Pablo
  *
  * This class extends from QThread and stablish the interface
  * which the producers whill extend.
@@ -27,4 +27,4 @@ private:
 };
 
 
-#endif /* THREAD_TRACKER_H_ */
+#endif /** THREAD_TRACKER_H_ */

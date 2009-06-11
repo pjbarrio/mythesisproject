@@ -1,8 +1,8 @@
-/*
+/**
  * SakoeChibaDTWAlgorithm.h
  *
  *  Created on: 05/02/2009
- *      Author: Pablo
+ *      \author  Pablo
  *
  *  This Class provides the implementation for the Sakoe-Chiba band in the
  *  DTW algorithm. It performs the main algoritm in O(n) time.
@@ -34,4 +34,4 @@ protected:
 	int getSupValue(int,int,int);
 };
 
-#endif /* SAKOECHIBADTWALGORITHM_H_ */
+#endif /** SAKOECHIBADTWALGORITHM_H_ */

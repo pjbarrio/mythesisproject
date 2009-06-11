@@ -1,8 +1,8 @@
-/*
+/**
  * InitDynamicGestureRecognition.h
  *
  *  Created on: 29/03/2009
- *      Author: Pablo
+ *      \author  Pablo
  *
  * This class implements Initializer and manipulates the
  * DynamicGestureRecognitionAlgorithm used to detect gestures
@@ -29,4 +29,4 @@ private:
 
 };
 
-#endif /* INITDYNAMICGESTURERECOGNITION_H_ */
+#endif /** INITDYNAMICGESTURERECOGNITION_H_ */

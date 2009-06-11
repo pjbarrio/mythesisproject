@@ -1,8 +1,8 @@
-/*
+/**
  * PressCharEvent.h
  *
  *  Created on: 04/05/2009
- *      Author: Pablo
+ *      \author  Pablo
  *
  * This class is used to emulate that a Key has been pressed.
  */
@@ -25,4 +25,4 @@ protected:
 	std::string key;
 };
 
-#endif /* PRESSCHAREVENT_H_ */
+#endif /** PRESSCHAREVENT_H_ */

@@ -1,8 +1,8 @@
-/*
+/**
  * FilterHandler.h
  *
  *  Created on: 05-feb-2009
- *      Author: Timpa
+ *      \author  Timpa
  *
  * This class has the responsability of managing the pipe&filter
  * process during the application execution.
@@ -80,4 +80,4 @@ private:
 
 };
 
-#endif /* FILTERHANDLER_H_ */
+#endif /** FILTERHANDLER_H_ */

@@ -1,4 +1,4 @@
-/*
+/**
 Fast Artificial Neural Network Library (fann)
 Copyright (C) 2003 Steffen Nissen (lukesky@diku.dk)
 
@@ -20,7 +20,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #ifndef __fann_train_h__
 #define __fann_train_h__
 
-/* Section: FANN Training 
+/** Section: FANN Training 
  
  	There are many different ways of training neural networks and the FANN library supports
  	a number of different approaches. 
@@ -38,7 +38,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  			is supported by <FANN Cascade Training>.
  */
 
-/* Struct: struct fann_train_data
+/** Struct: struct fann_train_data
 	Structure used to store data, for use with training.
 	
 	The data inside this structure should never be manipulated directly, but should use some 
@@ -63,12 +63,12 @@ struct fann_train_data
 	fann_type **output;
 };
 
-/* Section: FANN Training */
+/** Section: FANN Training */
 
-/* Group: Training */
+/** Group: Training */
 
 #ifndef FIXEDFANN
-/* Function: fann_train
+/** Function: fann_train
 
    Train one iteration with a set of inputs, and a set of desired outputs.
    This training is always incremental training (see <fann_train_enum>), since
@@ -87,9 +87,9 @@ struct fann_train_data
 FANN_EXTERNAL void FANN_API fann_train(struct fann *ann, fann_type * input,
 									   fann_type * desired_output);
 
-#endif	/* NOT FIXEDFANN */
+#endif	/** NOT FIXEDFANN */
 	
-/* Function: fann_test
+/** Function: fann_test
    Test with a set of inputs, and a set of desired outputs.
    This operation updates the mean square error, but does not
    change the network in any way.
@@ -102,7 +102,7 @@ FANN_EXTERNAL void FANN_API fann_train(struct fann *ann, fann_type * input,
 FANN_EXTERNAL fann_type * FANN_API fann_test(struct fann *ann, fann_type * input,
 												 fann_type * desired_output);
 
-/* Function: fann_get_MSE
+/** Function: fann_get_MSE
    Reads the mean square error from the network.
    
    Reads the mean square error from the network. This value is calculated during 
@@ -116,7 +116,7 @@ FANN_EXTERNAL fann_type * FANN_API fann_test(struct fann *ann, fann_type * input
  */ 
 FANN_EXTERNAL float FANN_API fann_get_MSE(struct fann *ann);
 
-/* Function: fann_get_bit_fail
+/** Function: fann_get_bit_fail
 	
 	The number of fail bits; means the number of output neurons which differ more 
 	than the bit fail limit (see <fann_get_bit_fail_limit>, <fann_set_bit_fail_limit>). 
@@ -133,7 +133,7 @@ FANN_EXTERNAL float FANN_API fann_get_MSE(struct fann *ann);
 */
 FANN_EXTERNAL unsigned int fann_get_bit_fail(struct fann *ann);
 
-/* Function: fann_reset_MSE
+/** Function: fann_reset_MSE
    Resets the mean square error from the network.
    
    This function also resets the number of bits that fail.
@@ -145,11 +145,11 @@ FANN_EXTERNAL unsigned int fann_get_bit_fail(struct fann *ann);
  */ 
 FANN_EXTERNAL void FANN_API fann_reset_MSE(struct fann *ann);
 
-/* Group: Training Data Training */
+/** Group: Training Data Training */
 
 #ifndef FIXEDFANN
 	
-/* Function: fann_train_on_data
+/** Function: fann_train_on_data
 
    Trains on an entire dataset, for a period of time. 
    
@@ -178,7 +178,7 @@ FANN_EXTERNAL void FANN_API fann_train_on_data(struct fann *ann, struct fann_tra
 											   unsigned int epochs_between_reports,
 											   float desired_error);
 
-/* Function: fann_train_on_file
+/** Function: fann_train_on_file
    
    Does the same as <fann_train_on_data>, but reads the training data directly from a file.
    
@@ -192,7 +192,7 @@ FANN_EXTERNAL void FANN_API fann_train_on_file(struct fann *ann, const char *fil
 											   unsigned int epochs_between_reports,
 											   float desired_error);
 
-/* Function: fann_train_epoch
+/** Function: fann_train_epoch
    Train one epoch with a set of training data.
    
     Train one epoch with the training data stored in data. One epoch is where all of 
@@ -212,9 +212,9 @@ FANN_EXTERNAL void FANN_API fann_train_on_file(struct fann *ann, const char *fil
 	This function appears in FANN >= 1.2.0.
  */ 
 FANN_EXTERNAL float FANN_API fann_train_epoch(struct fann *ann, struct fann_train_data *data);
-#endif	/* NOT FIXEDFANN */
+#endif	/** NOT FIXEDFANN */
 
-/* Function: fann_test_data
+/** Function: fann_test_data
   
    Test a set of training data and calculates the MSE for the training data. 
    
@@ -227,9 +227,9 @@ FANN_EXTERNAL float FANN_API fann_train_epoch(struct fann *ann, struct fann_trai
  */ 
 FANN_EXTERNAL float FANN_API fann_test_data(struct fann *ann, struct fann_train_data *data);
 
-/* Group: Training Data Manipulation */
+/** Group: Training Data Manipulation */
 
-/* Function: fann_read_train_from_file
+/** Function: fann_read_train_from_file
    Reads a file that stores training data.
    
    The file must be formatted like:
@@ -252,7 +252,7 @@ FANN_EXTERNAL float FANN_API fann_test_data(struct fann *ann, struct fann_train_
 FANN_EXTERNAL struct fann_train_data *FANN_API fann_read_train_from_file(const char *filename);
 
 
-/* Function: fann_destroy_train
+/** Function: fann_destroy_train
    Destructs the training data and properly deallocates all of the associated data.
    Be sure to call this function after finished using the training data.
 
@@ -261,7 +261,7 @@ FANN_EXTERNAL struct fann_train_data *FANN_API fann_read_train_from_file(const c
 FANN_EXTERNAL void FANN_API fann_destroy_train(struct fann_train_data *train_data);
 
 
-/* Function: fann_shuffle_train_data
+/** Function: fann_shuffle_train_data
    
    Shuffles training data, randomizing the order. 
    This is recommended for incremental training, while it have no influence during batch training.
@@ -271,7 +271,7 @@ FANN_EXTERNAL void FANN_API fann_destroy_train(struct fann_train_data *train_dat
 FANN_EXTERNAL void FANN_API fann_shuffle_train_data(struct fann_train_data *train_data);
 
 
-/* Function: fann_scale_input_train_data
+/** Function: fann_scale_input_train_data
    
    Scales the inputs in the training data to the specified range.
 
@@ -284,7 +284,7 @@ FANN_EXTERNAL void FANN_API fann_scale_input_train_data(struct fann_train_data *
 														fann_type new_min, fann_type new_max);
 
 
-/* Function: fann_scale_output_train_data
+/** Function: fann_scale_output_train_data
    
    Scales the outputs in the training data to the specified range.
 
@@ -297,7 +297,7 @@ FANN_EXTERNAL void FANN_API fann_scale_output_train_data(struct fann_train_data 
 														 fann_type new_min, fann_type new_max);
 
 
-/* Function: fann_scale_train_data
+/** Function: fann_scale_train_data
    
    Scales the inputs and outputs in the training data to the specified range.
    
@@ -310,7 +310,7 @@ FANN_EXTERNAL void FANN_API fann_scale_train_data(struct fann_train_data *train_
 												  fann_type new_min, fann_type new_max);
 
 
-/* Function: fann_merge_train_data
+/** Function: fann_merge_train_data
    
    Merges the data from *data1* and *data2* into a new <struct fann_train_data>.
    
@@ -320,7 +320,7 @@ FANN_EXTERNAL struct fann_train_data *FANN_API fann_merge_train_data(struct fann
 																	 struct fann_train_data *data2);
 
 
-/* Function: fann_duplicate_train_data
+/** Function: fann_duplicate_train_data
    
    Returns an exact copy of a <struct fann_train_data>.
 
@@ -329,7 +329,7 @@ FANN_EXTERNAL struct fann_train_data *FANN_API fann_merge_train_data(struct fann
 FANN_EXTERNAL struct fann_train_data *FANN_API fann_duplicate_train_data(struct fann_train_data
 																		 *data);
 	
-/* Function: fann_subset_train_data
+/** Function: fann_subset_train_data
    
    Returns an copy of a subset of the <struct fann_train_data>, starting at position *pos* 
    and *length* elements forward.
@@ -347,7 +347,7 @@ FANN_EXTERNAL struct fann_train_data *FANN_API fann_subset_train_data(struct fan
 																		 *data, unsigned int pos,
 																		 unsigned int length);
 	
-/* Function: fann_length_train_data
+/** Function: fann_length_train_data
    
    Returns the number of training patterns in the <struct fann_train_data>.
 
@@ -355,7 +355,7 @@ FANN_EXTERNAL struct fann_train_data *FANN_API fann_subset_train_data(struct fan
  */ 
 FANN_EXTERNAL unsigned int FANN_API fann_length_train_data(struct fann_train_data *data);
 	
-/* Function: fann_num_input_train_data
+/** Function: fann_num_input_train_data
    
    Returns the number of inputs in each of the training patterns in the <struct fann_train_data>.
    
@@ -366,7 +366,7 @@ FANN_EXTERNAL unsigned int FANN_API fann_length_train_data(struct fann_train_dat
  */ 
 FANN_EXTERNAL unsigned int FANN_API fann_num_input_train_data(struct fann_train_data *data);
 	
-/* Function: fann_num_output_train_data
+/** Function: fann_num_output_train_data
    
    Returns the number of outputs in each of the training patterns in the <struct fann_train_data>.
    
@@ -377,7 +377,7 @@ FANN_EXTERNAL unsigned int FANN_API fann_num_input_train_data(struct fann_train_
  */ 
 FANN_EXTERNAL unsigned int FANN_API fann_num_output_train_data(struct fann_train_data *data);
 	
-/* Function: fann_save_train
+/** Function: fann_save_train
    
    Save the training structure to a file, with the format as specified in <fann_read_train_from_file>
 
@@ -392,7 +392,7 @@ FANN_EXTERNAL unsigned int FANN_API fann_num_output_train_data(struct fann_train
 FANN_EXTERNAL int FANN_API fann_save_train(struct fann_train_data *data, const char *filename);
 
 
-/* Function: fann_save_train_to_fixed
+/** Function: fann_save_train_to_fixed
    
    Saves the training structure to a fixed point data file.
  
@@ -410,9 +410,9 @@ FANN_EXTERNAL int FANN_API fann_save_train_to_fixed(struct fann_train_data *data
 													 unsigned int decimal_point);
 
 
-/* Group: Parameters */
+/** Group: Parameters */
 
-/* Function: fann_get_training_algorithm
+/** Function: fann_get_training_algorithm
 
    Return the training algorithm as described by <fann_train_enum>. This training algorithm
    is used by <fann_train_on_data> and associated functions.
@@ -430,7 +430,7 @@ FANN_EXTERNAL int FANN_API fann_save_train_to_fixed(struct fann_train_data *data
 FANN_EXTERNAL enum fann_train_enum FANN_API fann_get_training_algorithm(struct fann *ann);
 
 
-/* Function: fann_set_training_algorithm
+/** Function: fann_set_training_algorithm
 
    Set the training algorithm.
    
@@ -442,7 +442,7 @@ FANN_EXTERNAL void FANN_API fann_set_training_algorithm(struct fann *ann,
 														enum fann_train_enum training_algorithm);
 
 
-/* Function: fann_get_learning_rate
+/** Function: fann_get_learning_rate
 
    Return the learning rate.
    
@@ -460,7 +460,7 @@ FANN_EXTERNAL void FANN_API fann_set_training_algorithm(struct fann *ann,
 FANN_EXTERNAL float FANN_API fann_get_learning_rate(struct fann *ann);
 
 
-/* Function: fann_set_learning_rate
+/** Function: fann_set_learning_rate
 
    Set the learning rate.
    
@@ -470,7 +470,7 @@ FANN_EXTERNAL float FANN_API fann_get_learning_rate(struct fann *ann);
  */ 
 FANN_EXTERNAL void FANN_API fann_set_learning_rate(struct fann *ann, float learning_rate);
 
-/* Function: fann_get_learning_momentum
+/** Function: fann_get_learning_momentum
 
    Get the learning momentum.
    
@@ -489,7 +489,7 @@ FANN_EXTERNAL void FANN_API fann_set_learning_rate(struct fann *ann, float learn
 FANN_EXTERNAL float FANN_API fann_get_learning_momentum(struct fann *ann);
 
 
-/* Function: fann_set_learning_momentum
+/** Function: fann_set_learning_momentum
 
    Set the learning momentum.
 
@@ -500,7 +500,7 @@ FANN_EXTERNAL float FANN_API fann_get_learning_momentum(struct fann *ann);
 FANN_EXTERNAL void FANN_API fann_set_learning_momentum(struct fann *ann, float learning_momentum);
 
 
-/* Function: fann_set_activation_function
+/** Function: fann_set_activation_function
 
    Set the activation function for neuron number *neuron* in layer number *layer*, 
    counting the input layer as layer 0. 
@@ -527,7 +527,7 @@ FANN_EXTERNAL void FANN_API fann_set_activation_function(struct fann *ann,
 																int layer,
 																int neuron);
 
-/* Function: fann_set_activation_function_layer
+/** Function: fann_set_activation_function_layer
 
    Set the activation function for all the neurons in the layer number *layer*, 
    counting the input layer as layer 0. 
@@ -545,7 +545,7 @@ FANN_EXTERNAL void FANN_API fann_set_activation_function_layer(struct fann *ann,
 																activation_function,
 																int layer);
 
-/* Function: fann_set_activation_function_hidden
+/** Function: fann_set_activation_function_hidden
 
    Set the activation function for all of the hidden layers.
 
@@ -560,7 +560,7 @@ FANN_EXTERNAL void FANN_API fann_set_activation_function_hidden(struct fann *ann
 																activation_function);
 
 
-/* Function: fann_set_activation_function_output
+/** Function: fann_set_activation_function_output
 
    Set the activation function for the output layer.
 
@@ -574,7 +574,7 @@ FANN_EXTERNAL void FANN_API fann_set_activation_function_output(struct fann *ann
 																enum fann_activationfunc_enum
 																activation_function);
 
-/* Function: fann_set_activation_steepness
+/** Function: fann_set_activation_steepness
 
    Set the activation steepness for neuron number *neuron* in layer number *layer*, 
    counting the input layer as layer 0. 
@@ -601,7 +601,7 @@ FANN_EXTERNAL void FANN_API fann_set_activation_steepness(struct fann *ann,
 																int layer,
 																int neuron);
 
-/* Function: fann_set_activation_steepness_layer
+/** Function: fann_set_activation_steepness_layer
 
    Set the activation steepness all of the neurons in layer number *layer*, 
    counting the input layer as layer 0. 
@@ -618,7 +618,7 @@ FANN_EXTERNAL void FANN_API fann_set_activation_steepness_layer(struct fann *ann
 																fann_type steepness,
 																int layer);
 
-/* Function: fann_set_activation_steepness_hidden
+/** Function: fann_set_activation_steepness_hidden
 
    Set the steepness of the activation steepness in all of the hidden layers.
 
@@ -632,7 +632,7 @@ FANN_EXTERNAL void FANN_API fann_set_activation_steepness_hidden(struct fann *an
 																 fann_type steepness);
 
 
-/* Function: fann_set_activation_steepness_output
+/** Function: fann_set_activation_steepness_output
 
    Set the steepness of the activation steepness in the output layer.
 
@@ -646,7 +646,7 @@ FANN_EXTERNAL void FANN_API fann_set_activation_steepness_output(struct fann *an
 																 fann_type steepness);
 
 
-/* Function: fann_get_train_error_function
+/** Function: fann_get_train_error_function
 
    Returns the error function used during training.
 
@@ -662,7 +662,7 @@ FANN_EXTERNAL void FANN_API fann_set_activation_steepness_output(struct fann *an
 FANN_EXTERNAL enum fann_errorfunc_enum FANN_API fann_get_train_error_function(struct fann *ann);
 
 
-/* Function: fann_set_train_error_function
+/** Function: fann_set_train_error_function
 
    Set the error function used during training.
    
@@ -678,7 +678,7 @@ FANN_EXTERNAL void FANN_API fann_set_train_error_function(struct fann *ann,
 														  train_error_function);
 
 
-/* Function: fann_get_train_stop_function
+/** Function: fann_get_train_stop_function
 
    Returns the the stop function used during training.
    
@@ -694,7 +694,7 @@ FANN_EXTERNAL void FANN_API fann_set_train_error_function(struct fann *ann,
 FANN_EXTERNAL enum fann_stopfunc_enum FANN_API fann_get_train_stop_function(struct fann *ann);
 
 
-/* Function: fann_set_train_stop_function
+/** Function: fann_set_train_stop_function
 
    Set the stop function used during training.
 
@@ -711,7 +711,7 @@ FANN_EXTERNAL void FANN_API fann_set_train_stop_function(struct fann *ann,
 														 enum fann_stopfunc_enum train_stop_function);
 
 
-/* Function: fann_get_bit_fail_limit
+/** Function: fann_get_bit_fail_limit
 
    Returns the bit fail limit used during training.
    
@@ -731,7 +731,7 @@ FANN_EXTERNAL void FANN_API fann_set_train_stop_function(struct fann *ann,
  */ 
 FANN_EXTERNAL fann_type FANN_API fann_get_bit_fail_limit(struct fann *ann);
 
-/* Function: fann_set_bit_fail_limit
+/** Function: fann_set_bit_fail_limit
 
    Set the bit fail limit used during training.
   
@@ -742,7 +742,7 @@ FANN_EXTERNAL fann_type FANN_API fann_get_bit_fail_limit(struct fann *ann);
  */ 
 FANN_EXTERNAL void FANN_API fann_set_bit_fail_limit(struct fann *ann, fann_type bit_fail_limit);
 
-/* Function: fann_set_callback
+/** Function: fann_set_callback
    
    Sets the callback function for use during training.
  	
@@ -754,7 +754,7 @@ FANN_EXTERNAL void FANN_API fann_set_bit_fail_limit(struct fann *ann, fann_type 
  */
 FANN_EXTERNAL void FANN_API fann_set_callback(struct fann *ann, fann_callback_type callback);
 
-/* Function: fann_get_quickprop_decay
+/** Function: fann_get_quickprop_decay
 
    The decay is a small negative valued number which is the factor that the weights 
    should become smaller in each iteration during quickprop training. This is used 
@@ -770,7 +770,7 @@ FANN_EXTERNAL void FANN_API fann_set_callback(struct fann *ann, fann_callback_ty
 FANN_EXTERNAL float FANN_API fann_get_quickprop_decay(struct fann *ann);
 
 
-/* Function: fann_set_quickprop_decay
+/** Function: fann_set_quickprop_decay
    
    Sets the quickprop decay factor.
    
@@ -782,7 +782,7 @@ FANN_EXTERNAL float FANN_API fann_get_quickprop_decay(struct fann *ann);
 FANN_EXTERNAL void FANN_API fann_set_quickprop_decay(struct fann *ann, float quickprop_decay);
 
 
-/* Function: fann_get_quickprop_mu
+/** Function: fann_get_quickprop_mu
 
    The mu factor is used to increase and decrease the step-size during quickprop training. 
    The mu factor should always be above 1, since it would otherwise decrease the step-size 
@@ -798,7 +798,7 @@ FANN_EXTERNAL void FANN_API fann_set_quickprop_decay(struct fann *ann, float qui
 FANN_EXTERNAL float FANN_API fann_get_quickprop_mu(struct fann *ann);
 
 
-/* Function: fann_set_quickprop_mu
+/** Function: fann_set_quickprop_mu
 
     Sets the quickprop mu factor.
    
@@ -810,7 +810,7 @@ FANN_EXTERNAL float FANN_API fann_get_quickprop_mu(struct fann *ann);
 FANN_EXTERNAL void FANN_API fann_set_quickprop_mu(struct fann *ann, float quickprop_mu);
 
 
-/* Function: fann_get_rprop_increase_factor
+/** Function: fann_get_rprop_increase_factor
 
    The increase factor is a value larger than 1, which is used to 
    increase the step-size during RPROP training.
@@ -825,7 +825,7 @@ FANN_EXTERNAL void FANN_API fann_set_quickprop_mu(struct fann *ann, float quickp
 FANN_EXTERNAL float FANN_API fann_get_rprop_increase_factor(struct fann *ann);
 
 
-/* Function: fann_set_rprop_increase_factor
+/** Function: fann_set_rprop_increase_factor
 
    The increase factor used during RPROP training.
 
@@ -838,7 +838,7 @@ FANN_EXTERNAL void FANN_API fann_set_rprop_increase_factor(struct fann *ann,
 														   float rprop_increase_factor);
 
 
-/* Function: fann_get_rprop_decrease_factor
+/** Function: fann_get_rprop_decrease_factor
 
    The decrease factor is a value smaller than 1, which is used to decrease the step-size during RPROP training.
 
@@ -852,7 +852,7 @@ FANN_EXTERNAL void FANN_API fann_set_rprop_increase_factor(struct fann *ann,
 FANN_EXTERNAL float FANN_API fann_get_rprop_decrease_factor(struct fann *ann);
 
 
-/* Function: fann_set_rprop_decrease_factor
+/** Function: fann_set_rprop_decrease_factor
 
    The decrease factor is a value smaller than 1, which is used to decrease the step-size during RPROP training.
 
@@ -865,7 +865,7 @@ FANN_EXTERNAL void FANN_API fann_set_rprop_decrease_factor(struct fann *ann,
 														   float rprop_decrease_factor);
 
 
-/* Function: fann_get_rprop_delta_min
+/** Function: fann_get_rprop_delta_min
 
    The minimum step-size is a small positive number determining how small the minimum step-size may be.
 
@@ -879,7 +879,7 @@ FANN_EXTERNAL void FANN_API fann_set_rprop_decrease_factor(struct fann *ann,
 FANN_EXTERNAL float FANN_API fann_get_rprop_delta_min(struct fann *ann);
 
 
-/* Function: fann_set_rprop_delta_min
+/** Function: fann_set_rprop_delta_min
 
    The minimum step-size is a small positive number determining how small the minimum step-size may be.
 
@@ -891,7 +891,7 @@ FANN_EXTERNAL float FANN_API fann_get_rprop_delta_min(struct fann *ann);
 FANN_EXTERNAL void FANN_API fann_set_rprop_delta_min(struct fann *ann, float rprop_delta_min);
 
 
-/* Function: fann_get_rprop_delta_max
+/** Function: fann_get_rprop_delta_max
 
    The maximum step-size is a positive number determining how large the maximum step-size may be.
 
@@ -905,7 +905,7 @@ FANN_EXTERNAL void FANN_API fann_set_rprop_delta_min(struct fann *ann, float rpr
 FANN_EXTERNAL float FANN_API fann_get_rprop_delta_max(struct fann *ann);
 
 
-/* Function: fann_set_rprop_delta_max
+/** Function: fann_set_rprop_delta_max
 
    The maximum step-size is a positive number determining how large the maximum step-size may be.
 

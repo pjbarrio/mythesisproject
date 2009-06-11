@@ -1,8 +1,8 @@
-/*
+/**
  * LightStabilizer.h
  *
  * Created on: 07-feb-2009
- *      Author: Timpa
+ *      \author  Timpa
  *
  * This class has the responsability of differentiate Hand's states
  * using skin pixel count.
@@ -56,4 +56,4 @@ private:
 	LogHandler* logger;
 };
 
-#endif /* LIGHTSTABILIZER_H_ */
+#endif /** LIGHTSTABILIZER_H_ */

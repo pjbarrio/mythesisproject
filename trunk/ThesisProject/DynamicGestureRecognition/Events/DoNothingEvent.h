@@ -1,8 +1,8 @@
-/*
+/**
  * DoNothingEvent.h
  *
  *  Created on: 01/02/2009
- *      Author: Pablo
+ *      \author  Pablo
  *
  *  This Event is triggered when no matching gesture has been detected
  */
@@ -20,4 +20,4 @@ public:
 	bool writeXML(QXmlStreamWriter*);
 };
 
-#endif /* DONOTHINGEVENT_H_ */
+#endif /** DONOTHINGEVENT_H_ */

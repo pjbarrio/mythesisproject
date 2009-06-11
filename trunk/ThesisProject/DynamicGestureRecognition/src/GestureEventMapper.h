@@ -1,9 +1,9 @@
 
-/*
+/**
  * GestureEventMapper.h
  *
  *  Created on: 01/02/2009
- *      Author: Pablo
+ *      \author  Pablo
  *
  *  This class maps one Gesture with an Event. This way we can make a gesture and an Event
  *  will be trigered.
@@ -43,4 +43,4 @@ private:
     void removeAssociationFromVector(Event*,vector<Association*>*);
 };
 
-#endif /* GESTUREEVENTMAPPER_H_ */
+#endif /** GESTUREEVENTMAPPER_H_ */

@@ -1,8 +1,8 @@
-/*
+/**
  * addGesturePolicy.h
  *
  *  Created on: 24/01/2009
- *      Author: Pablo
+ *      \author  Pablo
  *
  *  This Class has the responsability of analyze if a new gesture can be saved. It depends on
  *  the policy you use.
@@ -32,4 +32,4 @@ private:
 	DTWAlgorithm *getDtwAlgorithm() const {return dtwAlgorithm;}
 };
 
-#endif /* ADDGESTUREPOLICY_H_ */
+#endif /** ADDGESTUREPOLICY_H_ */

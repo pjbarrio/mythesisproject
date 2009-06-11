@@ -1,8 +1,8 @@
-/*
+/**
  * addasociation.h
  *
  *  Created on: 05/05/2009
- *      Author: Pablo
+ *      \author  Pablo
  *
  * This class offer the user the behaviour to add
  * new <Gesture,Event> mapping.
@@ -24,13 +24,13 @@ public:
     AddAsociation(QWidget *parent = 0);
     ~AddAsociation();
 
-    /*
+    /**
      * This method returns the associated gestures in order.
      */
 
     QList<QString*>* getGestures() const {return gestures;}
 
-    /*
+    /**
      * This method returns the associated events in order.
      */
 

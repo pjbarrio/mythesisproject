@@ -1,8 +1,8 @@
-/*
+/**
  * AccelerationActivation.h
  *
  *  Created on: 05/02/2009
- *      Author: Pablo
+ *      \author  Pablo
  *
  * This class detects a gesture when it realizes that the motion
  * has increase the velocity
@@ -68,4 +68,4 @@ private:
 	DistanceCalculator *distanceCalculator;
 };
 
-#endif /* ACCELERATIONACTIVATION_H_ */
+#endif /** ACCELERATIONACTIVATION_H_ */

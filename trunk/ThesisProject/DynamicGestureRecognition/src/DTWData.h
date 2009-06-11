@@ -1,8 +1,8 @@
-/*
+/**
  * DTWData.h
  *
  *  Created on: 24/01/2009
- *      Author: Pablo
+ *      \author  Pablo
  *
  *  This class is a set of pairs <x,y> which will be used to represent one serie.
  */
@@ -41,4 +41,4 @@ private:
 	list<double>::iterator getYIterator() const {return yIterator;}
 };
 
-#endif /* DTWDATA_H_ */
+#endif /** DTWDATA_H_ */

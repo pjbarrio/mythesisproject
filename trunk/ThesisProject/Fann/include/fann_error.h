@@ -1,4 +1,4 @@
-/*
+/**
 Fast Artificial Neural Network Library (fann)
 Copyright (C) 2003 Steffen Nissen (lukesky@diku.dk)
 
@@ -25,7 +25,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #define FANN_ERRSTR_MAX 128
 struct fann_error;
 
-/* Section: FANN Error Handling
+/** Section: FANN Error Handling
 
    Errors from the fann library are usually reported on stderr. 
    It is however possible to redirect these error messages to a file, 
@@ -35,7 +35,7 @@ struct fann_error;
    <fann_get_errno> and <fann_get_errstr> functions.
  */
 
-/* Enum: fann_errno_enum
+/** Enum: fann_errno_enum
 	Used to define error events on <struct fann> and <struct fann_train_data>. 
 
 	See also:
@@ -82,9 +82,9 @@ enum fann_errno_enum
 	FANN_E_INDEX_OUT_OF_BOUND
 };
 
-/* Group: Error Handling */
+/** Group: Error Handling */
 	
-/* Function: fann_set_error_log
+/** Function: fann_set_error_log
 
    Change where errors are logged to. Both <struct fann> and <struct fann_data> can be 
    casted to <struct fann_error>, so this function can be used to set either of these.
@@ -105,7 +105,7 @@ enum fann_errno_enum
 FANN_EXTERNAL void FANN_API fann_set_error_log(struct fann_error *errdat, FILE * log_file);
 
 
-/* Function: fann_get_errno
+/** Function: fann_get_errno
 
    Returns the last error number.
    
@@ -117,7 +117,7 @@ FANN_EXTERNAL void FANN_API fann_set_error_log(struct fann_error *errdat, FILE *
 FANN_EXTERNAL enum fann_errno_enum FANN_API fann_get_errno(struct fann_error *errdat);
 
 
-/* Function: fann_reset_errno
+/** Function: fann_reset_errno
 
    Resets the last error number.
    
@@ -126,7 +126,7 @@ FANN_EXTERNAL enum fann_errno_enum FANN_API fann_get_errno(struct fann_error *er
 FANN_EXTERNAL void FANN_API fann_reset_errno(struct fann_error *errdat);
 
 
-/* Function: fann_reset_errstr
+/** Function: fann_reset_errstr
 
    Resets the last error string.
 
@@ -135,7 +135,7 @@ FANN_EXTERNAL void FANN_API fann_reset_errno(struct fann_error *errdat);
 FANN_EXTERNAL void FANN_API fann_reset_errstr(struct fann_error *errdat);
 
 
-/* Function: fann_get_errstr
+/** Function: fann_get_errstr
 
    Returns the last errstr.
   
@@ -146,7 +146,7 @@ FANN_EXTERNAL void FANN_API fann_reset_errstr(struct fann_error *errdat);
 FANN_EXTERNAL char *FANN_API fann_get_errstr(struct fann_error *errdat);
 
 
-/* Function: fann_print_error
+/** Function: fann_print_error
 
    Prints the last error to stderr.
 

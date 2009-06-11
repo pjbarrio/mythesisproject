@@ -1,8 +1,8 @@
-/*
+/**
  * GrayFilter.h
  *
  *  Created on: 05-feb-2009
- *      Author: Timpa
+ *      \author  Timpa
  *
  * This class is a specific kind of Image Filter. It will transform the image
  * to gray scale.
@@ -22,4 +22,4 @@ public:
 
 };
 
-#endif /* GRAYFILTER_H_ */
+#endif /** GRAYFILTER_H_ */

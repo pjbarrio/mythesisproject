@@ -1,8 +1,8 @@
-/*
+/**
  * addevent.h
  *
  *  Created on: 05/05/2009
- *      Author: Pablo
+ *      \author  Pablo
  *
  * This GUI class has the responsability of setting
  * the variables to create an event.
@@ -24,14 +24,14 @@ public:
 
     int exec();
 
-    /*
+    /**
      * This method returns the event's id.
      */
 
     QString *getId() const {return id;}
     void setId(QString *id){this->id = id;}
 
-    /*
+    /**
      * This method returns if the event created is an
      * execution application event.
      */
@@ -39,7 +39,7 @@ public:
     bool getIsApp() const {return isApp;}
     void setIsApp(bool isApp) {this->isApp = isApp;}
 
-    /*
+    /**
      * This method returns if the created event is a
      * press key event.
      */
@@ -47,14 +47,14 @@ public:
     bool getIsKey() const {return isKey;}
     void setIsKey(bool isKey) {this->isKey = isKey;}
 
-    /*
+    /**
      * This method returns the key selected.
      */
 
     QString *getKey() const {return key;}
     void setKey(QString *key) {this->key = key;}
 
-    /*
+    /**
      * This method returns the filename and the path of the
      * application selected to be executed by the event.
      */
@@ -62,7 +62,7 @@ public:
     QString *getApp() const {return app;}
     void setApp(QString *app) {this->app = app;}
 
-    /*
+    /**
      * This method returns if the application is executed
      * with predetermined args.
      */
@@ -70,14 +70,14 @@ public:
     bool getHasArgs() const {return hasArgs;}
     void setHasArgs(bool hasArgs) {this->hasArgs = hasArgs;}
 
-    /*
+    /**
      * This method returns the args setted by the user.
      */
 
     QString *getArgs() const {return args;}
     void setArgs(QString *args) {this->args = args;}
 
-    /*
+    /**
      * This method returns if the application selected is an
      * exe file.
      */
@@ -85,7 +85,7 @@ public:
     bool getIsExe() const {return isExe;}
     void setIsExe(bool isExe) {this->isExe = isExe;}
 
-    /*
+    /**
      * This method returns if the file selected is a common file
      * to be opened by a predetermined application.
      */

@@ -1,4 +1,4 @@
-/*
+/**
 Fast Artificial Neural Network Library (fann)
 Copyright (C) 2003 Steffen Nissen (lukesky@diku.dk)
 
@@ -22,7 +22,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 #include <stdio.h>
 
-/* Section: FANN Datatypes
+/** Section: FANN Datatypes
 
    The two main datatypes used in the fann library is <struct fann>, 
    which represents an artificial neural network, and <struct fann_train_data>,
@@ -30,7 +30,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
 
-/* Type: fann_type
+/** Type: fann_type
    fann_type is the type used for the weights, inputs and outputs of the neural network.
    
 	fann_type is defined as a:
@@ -40,7 +40,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 			only to be used during execution, and not during training).
 */
 
-/* Enum: fann_train_enum
+/** Enum: fann_train_enum
 	The Training algorithms used when training on <struct fann_train_data> with functions like
 	<fann_train_on_data> or <fann_train_on_file>. The incremental training looks alters the weights
 	after each time it is presented an input pattern, while batch only alters the weights once after
@@ -80,7 +80,7 @@ enum fann_train_enum
 	FANN_TRAIN_QUICKPROP
 };
 
-/* Constant: FANN_TRAIN_NAMES
+/** Constant: FANN_TRAIN_NAMES
    
    Constant array consisting of the names for the training algorithms, so that the name of an
    training function can be received by:
@@ -98,7 +98,7 @@ static char const *const FANN_TRAIN_NAMES[] = {
 	"FANN_TRAIN_QUICKPROP"
 };
 
-/* Enums: fann_activationfunc_enum
+/** Enums: fann_activationfunc_enum
    
 	The activation functions used for the neurons during training. The activation functions
 	can either be defined for a group of neurons by <fann_set_activation_function_hidden> and
@@ -189,7 +189,7 @@ enum fann_activationfunc_enum
 	FANN_SIGMOID_SYMMETRIC_STEPWISE,
 	FANN_GAUSSIAN,
 	FANN_GAUSSIAN_SYMMETRIC,
-	/* Stepwise linear approximation to gaussian.
+	/** Stepwise linear approximation to gaussian.
 	 * Faster than gaussian but a bit less precise.
 	 * NOT implemented yet.
 	 */
@@ -200,7 +200,7 @@ enum fann_activationfunc_enum
 	FANN_LINEAR_PIECE_SYMMETRIC
 };
 
-/* Constant: FANN_ACTIVATIONFUNC_NAMES
+/** Constant: FANN_ACTIVATIONFUNC_NAMES
    
    Constant array consisting of the names for the activation function, so that the name of an
    activation function can be received by:
@@ -228,7 +228,7 @@ static char const *const FANN_ACTIVATIONFUNC_NAMES[] = {
 	"FANN_LINEAR_PIECE_SYMMETRIC"
 };
 
-/* Enum: fann_errorfunc_enum
+/** Enum: fann_errorfunc_enum
 	Error function used during training.
 	
 	FANN_ERRORFUNC_LINEAR - Standard linear error function.
@@ -246,7 +246,7 @@ enum fann_errorfunc_enum
 	FANN_ERRORFUNC_TANH
 };
 
-/* Constant: FANN_ERRORFUNC_NAMES
+/** Constant: FANN_ERRORFUNC_NAMES
    
    Constant array consisting of the names for the training error functions, so that the name of an
    error function can be received by:
@@ -262,7 +262,7 @@ static char const *const FANN_ERRORFUNC_NAMES[] = {
 	"FANN_ERRORFUNC_TANH"
 };
 
-/* Enum: fann_stopfunc_enum
+/** Enum: fann_stopfunc_enum
 	Stop criteria used during training.
 
 	FANN_STOPFUNC_MSE - Stop criteria is Mean Square Error (MSE) value.
@@ -281,7 +281,7 @@ enum fann_stopfunc_enum
 	FANN_STOPFUNC_BIT
 };
 
-/* Constant: FANN_STOPFUNC_NAMES
+/** Constant: FANN_STOPFUNC_NAMES
    
    Constant array consisting of the names for the training stop functions, so that the name of a
    stop function can be received by:
@@ -297,10 +297,10 @@ static char const *const FANN_STOPFUNC_NAMES[] = {
 	"FANN_STOPFUNC_BIT"
 };
 
-/* forward declarations for use with the callback */
+/** forward declarations for use with the callback */
 struct fann;
 struct fann_train_data;
-/* Type: fann_callback_type
+/** Type: fann_callback_type
    This callback function can be called during training when using <fann_train_on_data>, 
    <fann_train_on_file> or <fann_cascade_train>.
 	
@@ -336,24 +336,24 @@ FANN_EXTERNAL typedef int (FANN_API * fann_callback_type) (struct fann *ann, str
 														   float desired_error, unsigned int epochs);
 
 
-/* ----- Data structures -----
+/** ----- Data structures -----
  * No data within these structures should be altered directly by the user.
  */
 
 struct fann_neuron
 {
-	/* Index to the first and last connection
+	/** Index to the first and last connection
 	 * (actually the last is a past end index)
 	 */
 	unsigned int first_con;
 	unsigned int last_con;
-	/* The sum of the inputs multiplied with the weights */
+	/** The sum of the inputs multiplied with the weights */
 	fann_type sum;
-	/* The value of the activation function applied to the sum */
+	/** The value of the activation function applied to the sum */
 	fann_type value;
-	/* The steepness of the activation function */
+	/** The steepness of the activation function */
 	fann_type activation_steepness;
-	/* Used to choose which activation function to use */
+	/** Used to choose which activation function to use */
 	enum fann_activationfunc_enum activation_function;
 #ifdef __GNUC__
 } __attribute__ ((packed));
@@ -361,23 +361,23 @@ struct fann_neuron
 };
 #endif
 
-/* A single layer in the neural network.
+/** A single layer in the neural network.
  */
 struct fann_layer
 {
-	/* A pointer to the first neuron in the layer 
+	/** A pointer to the first neuron in the layer 
 	 * When allocated, all the neurons in all the layers are actually
 	 * in one long array, this is because we wan't to easily clear all
 	 * the neurons at once.
 	 */
 	struct fann_neuron *first_neuron;
 
-	/* A pointer to the neuron past the last neuron in the layer */
-	/* the number of neurons is last_neuron - first_neuron */
+	/** A pointer to the neuron past the last neuron in the layer */
+	/** the number of neurons is last_neuron - first_neuron */
 	struct fann_neuron *last_neuron;
 };
 
-/* Struct: struct fann_error
+/** Struct: struct fann_error
    
 	Structure used to store error-related information, both
 	<struct fann> and <struct fann_train_data> can be casted to this type.
@@ -393,7 +393,7 @@ struct fann_error
 };
 
 
-/* 	Struct: struct fann
+/** 	Struct: struct fann
 	The fast artificial neural network(fann) structure.
 
 	Data within this structure should never be accessed directly, but only by using the
@@ -407,83 +407,83 @@ struct fann_error
  */
 struct fann
 {
-	/* The type of error that last occured. */
+	/** The type of error that last occured. */
 	enum fann_errno_enum errno_f;
 
-	/* Where to log error messages. */
+	/** Where to log error messages. */
 	FILE *error_log;
 
-	/* A string representation of the last error. */
+	/** A string representation of the last error. */
 	char *errstr;
 
-	/* the learning rate of the network */
+	/** the learning rate of the network */
 	float learning_rate;
 
-	/* The learning momentum used for backpropagation algorithm. */
+	/** The learning momentum used for backpropagation algorithm. */
 	float learning_momentum;
 
-	/* the connection rate of the network
+	/** the connection rate of the network
 	 * between 0 and 1, 1 meaning fully connected
 	 */
 	float connection_rate;
 
-	/* is 1 if shortcut connections are used in the ann otherwise 0
+	/** is 1 if shortcut connections are used in the ann otherwise 0
 	 * Shortcut connections are connections that skip layers.
 	 * A fully connected ann with shortcut connections are a ann where
 	 * neurons have connections to all neurons in all later layers.
 	 */
 	unsigned int shortcut_connections;
 
-	/* pointer to the first layer (input layer) in an array af all the layers,
+	/** pointer to the first layer (input layer) in an array af all the layers,
 	 * including the input and outputlayers 
 	 */
 	struct fann_layer *first_layer;
 
-	/* pointer to the layer past the last layer in an array af all the layers,
+	/** pointer to the layer past the last layer in an array af all the layers,
 	 * including the input and outputlayers 
 	 */
 	struct fann_layer *last_layer;
 
-	/* Total number of neurons.
+	/** Total number of neurons.
 	 * very usefull, because the actual neurons are allocated in one long array
 	 */
 	unsigned int total_neurons;
 
-	/* Number of input neurons (not calculating bias) */
+	/** Number of input neurons (not calculating bias) */
 	unsigned int num_input;
 
-	/* Number of output neurons (not calculating bias) */
+	/** Number of output neurons (not calculating bias) */
 	unsigned int num_output;
 
-	/* The weight array */
+	/** The weight array */
 	fann_type *weights;
 
-	/* The connection array */
+	/** The connection array */
 	struct fann_neuron **connections;
 
-	/* Used to contain the errors used during training
+	/** Used to contain the errors used during training
 	 * Is allocated during first training session,
 	 * which means that if we do not train, it is never allocated.
 	 */
 	fann_type *train_errors;
 
-	/* Training algorithm used when calling fann_train_on_..
+	/** Training algorithm used when calling fann_train_on_..
 	 */
 	enum fann_train_enum training_algorithm;
 
 #ifdef FIXEDFANN
-	/* the decimal_point, used for shifting the fix point
+	/** the decimal_point, used for shifting the fix point
 	 * in fixed point integer operatons.
 	 */
 	unsigned int decimal_point;
 
-	/* the multiplier, used for multiplying the fix point
+	/** the multiplier, used for multiplying the fix point
 	 * in fixed point integer operatons.
 	 * Only used in special cases, since the decimal_point is much faster.
 	 */
 	unsigned int multiplier;
 
-	/* When in choosen (or in fixed point), the sigmoid function is
+	/** When in choosen (or in fixed point), the sigmoid function is
 	 * calculated as a stepwise linear function. In the
 	 * activation_results array, the result is saved, and in the
 	 * two values arrays, the values that gives the results are saved.
@@ -494,109 +494,109 @@ struct fann
 	fann_type sigmoid_symmetric_values[6];
 #endif
 
-	/* Total number of connections.
+	/** Total number of connections.
 	 * very usefull, because the actual connections
 	 * are allocated in one long array
 	 */
 	unsigned int total_connections;
 
-	/* used to store outputs in */
+	/** used to store outputs in */
 	fann_type *output;
 
-	/* the number of data used to calculate the mean square error.
+	/** the number of data used to calculate the mean square error.
 	 */
 	unsigned int num_MSE;
 
-	/* the total error value.
+	/** the total error value.
 	 * the real mean square error is MSE_value/num_MSE
 	 */
 	float MSE_value;
 
-	/* The number of outputs which would fail (only valid for classification problems)
+	/** The number of outputs which would fail (only valid for classification problems)
 	 */
 	unsigned int num_bit_fail;
 
-	/* The maximum difference between the actual output and the expected output 
+	/** The maximum difference between the actual output and the expected output 
 	 * which is accepted when counting the bit fails.
 	 * This difference is multiplied by two when dealing with symmetric activation functions,
 	 * so that symmetric and not symmetric activation functions can use the same limit.
 	 */
 	fann_type bit_fail_limit;
 
-	/* The error function used during training. (default FANN_ERRORFUNC_TANH)
+	/** The error function used during training. (default FANN_ERRORFUNC_TANH)
 	 */
 	enum fann_errorfunc_enum train_error_function;
 	
-	/* The stop function used during training. (default FANN_STOPFUNC_MSE)
+	/** The stop function used during training. (default FANN_STOPFUNC_MSE)
 	*/
 	enum fann_stopfunc_enum train_stop_function;
 
-	/* The callback function used during training. (default NULL)
+	/** The callback function used during training. (default NULL)
 	*/
 	fann_callback_type callback;
 
-	/* Variables for use with Cascade Correlation */
+	/** Variables for use with Cascade Correlation */
 
-	/* The error must change by at least this
+	/** The error must change by at least this
 	 * fraction of its old value to count as a
 	 * significant change.
 	 */
 	float cascade_output_change_fraction;
 
-	/* No change in this number of epochs will cause
+	/** No change in this number of epochs will cause
 	 * stagnation.
 	 */
 	unsigned int cascade_output_stagnation_epochs;
 
-	/* The error must change by at least this
+	/** The error must change by at least this
 	 * fraction of its old value to count as a
 	 * significant change.
 	 */
 	float cascade_candidate_change_fraction;
 
-	/* No change in this number of epochs will cause
+	/** No change in this number of epochs will cause
 	 * stagnation.
 	 */
 	unsigned int cascade_candidate_stagnation_epochs;
 
-	/* The current best candidate, which will be installed.
+	/** The current best candidate, which will be installed.
 	 */
 	unsigned int cascade_best_candidate;
 
-	/* The upper limit for a candidate score
+	/** The upper limit for a candidate score
 	 */
 	fann_type cascade_candidate_limit;
 
-	/* Scale of copied candidate output weights
+	/** Scale of copied candidate output weights
 	 */
 	fann_type cascade_weight_multiplier;
 	
-	/* Maximum epochs to train the output neurons during cascade training
+	/** Maximum epochs to train the output neurons during cascade training
 	 */
 	unsigned int cascade_max_out_epochs;
 	
-	/* Maximum epochs to train the candidate neurons during cascade training
+	/** Maximum epochs to train the candidate neurons during cascade training
 	 */
 	unsigned int cascade_max_cand_epochs;	
 
-	/* An array consisting of the activation functions used when doing
+	/** An array consisting of the activation functions used when doing
 	 * cascade training.
 	 */
 	enum fann_activationfunc_enum *cascade_activation_functions;
 	
-	/* The number of elements in the cascade_activation_functions array.
+	/** The number of elements in the cascade_activation_functions array.
 	*/
 	unsigned int cascade_activation_functions_count;
 	
-	/* An array consisting of the steepnesses used during cascade training.
+	/** An array consisting of the steepnesses used during cascade training.
 	*/
 	fann_type *cascade_activation_steepnesses;
 
-	/* The number of elements in the cascade_activation_steepnesses array.
+	/** The number of elements in the cascade_activation_steepnesses array.
 	*/
 	unsigned int cascade_activation_steepnesses_count;
 	
-	/* The number of candidates of each type that will be present.
+	/** The number of candidates of each type that will be present.
 	 * The actual number of candidates is then 
 	 * cascade_activation_functions_count * 
 	 * cascade_activation_steepnesses_count *
@@ -604,65 +604,65 @@ struct fann
 	*/
 	unsigned int cascade_num_candidate_groups;
 	
-	/* An array consisting of the score of the individual candidates,
+	/** An array consisting of the score of the individual candidates,
 	 * which is used to decide which candidate is the best
 	 */
 	fann_type *cascade_candidate_scores;
 	
-	/* The number of allocated neurons during cascade correlation algorithms.
+	/** The number of allocated neurons during cascade correlation algorithms.
 	 * This number might be higher than the actual number of neurons to avoid
 	 * allocating new space too often.
 	 */
 	unsigned int total_neurons_allocated;
 
-	/* The number of allocated connections during cascade correlation algorithms.
+	/** The number of allocated connections during cascade correlation algorithms.
 	 * This number might be higher than the actual number of neurons to avoid
 	 * allocating new space too often.
 	 */
 	unsigned int total_connections_allocated;
 
-	/* Variables for use with Quickprop training */
+	/** Variables for use with Quickprop training */
 
-	/* Decay is used to make the weights not go so high */
+	/** Decay is used to make the weights not go so high */
 	float quickprop_decay;
 
-	/* Mu is a factor used to increase and decrease the stepsize */
+	/** Mu is a factor used to increase and decrease the stepsize */
 	float quickprop_mu;
 
-	/* Variables for use with with RPROP training */
+	/** Variables for use with with RPROP training */
 
-	/* Tells how much the stepsize should increase during learning */
+	/** Tells how much the stepsize should increase during learning */
 	float rprop_increase_factor;
 
-	/* Tells how much the stepsize should decrease during learning */
+	/** Tells how much the stepsize should decrease during learning */
 	float rprop_decrease_factor;
 
-	/* The minimum stepsize */
+	/** The minimum stepsize */
 	float rprop_delta_min;
 
-	/* The maximum stepsize */
+	/** The maximum stepsize */
 	float rprop_delta_max;
 
-	/* The initial stepsize */
+	/** The initial stepsize */
 	float rprop_delta_zero;
         
-	/* Used to contain the slope errors used during batch training
+	/** Used to contain the slope errors used during batch training
 	 * Is allocated during first training session,
 	 * which means that if we do not train, it is never allocated.
 	 */
 	fann_type *train_slopes;
 
-	/* The previous step taken by the quickprop/rprop procedures.
+	/** The previous step taken by the quickprop/rprop procedures.
 	 * Not allocated if not used.
 	 */
 	fann_type *prev_steps;
 
-	/* The slope values used by the quickprop/rprop procedures.
+	/** The slope values used by the quickprop/rprop procedures.
 	 * Not allocated if not used.
 	 */
 	fann_type *prev_train_slopes;
         
-	/* The last delta applied to a connection weight.
+	/** The last delta applied to a connection weight.
 	 * This is used for the momentum term in the backpropagation algorithm.
 	 * Not allocated if not used.	 
 	 */

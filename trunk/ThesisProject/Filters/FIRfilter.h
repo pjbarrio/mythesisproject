@@ -1,8 +1,8 @@
-/*
+/**
  * FIRfilter.h
  *
  *  Created on: 05-feb-2009
- *      Author: Timpa
+ *      \author  Timpa
  *
  * This class is the last filter used in the hand tracking process.
  * The main responsability of this class is to smooth the movement detected
@@ -45,4 +45,4 @@ private:
 
 };
 
-#endif /* FIRFILTER_H_ */
+#endif /** FIRFILTER_H_ */

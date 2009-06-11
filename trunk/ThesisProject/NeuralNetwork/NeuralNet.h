@@ -1,8 +1,8 @@
-/*
+/**
  * NeuralNet.h
  *
  *  Created on: 05-feb-2009
- *      Author: Timpa
+ *      \author  Timpa
  *
  * This class represents the ANN which will detect the hand
  * position in a picture.
@@ -35,13 +35,13 @@ public:
 	bool startNet();
 	void shutDown();
 
-	/*
+	/**
 	 * This method returns the net file name.
 	 */
 
     std::string getnetFile() const{return netFile;}
 
-    /*
+    /**
      * This method saves the net file name.
      */
 
@@ -75,4 +75,4 @@ private:
 
 };
 
-#endif /* NEURALNET_H_ */
+#endif /** NEURALNET_H_ */

@@ -1,4 +1,4 @@
-/*
+/**
 Fast Artificial Neural Network Library (fann)
 Copyright (C) 2003 Steffen Nissen (lukesky@diku.dk)
 

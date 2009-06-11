@@ -1,9 +1,9 @@
 
-/*
+/**
  * InitCursor.h
  *
  *  Created on: 29/03/2009
- *      Author: Pablo
+ *      \author  Pablo
  *
  * This class is used to simulate the movement
  * of the mouse with the coords provided by the
@@ -34,4 +34,4 @@ private:
 	bool openclick;
 };
 
-#endif /* INITCURSOR_H_ */
+#endif /** INITCURSOR_H_ */

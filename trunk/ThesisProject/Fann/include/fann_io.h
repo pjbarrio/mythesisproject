@@ -1,4 +1,4 @@
-/*
+/**
 Fast Artificial Neural Network Library (fann)
 Copyright (C) 2003 Steffen Nissen (lukesky@diku.dk)
 
@@ -20,14 +20,14 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #ifndef __fann_io_h__
 #define __fann_io_h__
 	
-/* Section: FANN File Input/Output 
+/** Section: FANN File Input/Output 
    
    It is possible to save an entire ann to a file with <fann_save> for future loading with <fann_create_from_file>.
  */	
 
-/* Group: File Input and Output */	
+/** Group: File Input and Output */	
 
-/* Function: fann_create_from_file
+/** Function: fann_create_from_file
    
    Constructs a backpropagation neural network from a configuration file, which have been saved by <fann_save>.
    
@@ -39,7 +39,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 FANN_EXTERNAL struct fann *FANN_API fann_create_from_file(const char *configuration_file);
 
 
-/* Function: fann_save
+/** Function: fann_save
 
    Save the entire network to a configuration file.
    
@@ -62,7 +62,7 @@ FANN_EXTERNAL struct fann *FANN_API fann_create_from_file(const char *configurat
 FANN_EXTERNAL int FANN_API fann_save(struct fann *ann, const char *configuration_file);
 
 
-/* Function: fann_save_to_fixed
+/** Function: fann_save_to_fixed
 
    Saves the entire network to a configuration file.
    But it is saved in fixed point format no matter which

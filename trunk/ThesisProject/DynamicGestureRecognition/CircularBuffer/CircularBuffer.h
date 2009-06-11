@@ -1,8 +1,8 @@
-/*
+/**
  * CircularBuffer.h
  *
  *  Created on: 10/02/2009
- *      Author: Pablo
+ *      \author  Pablo
  *
  * This class is a circular buffer. The size can be setted in the
  * constructor method.
@@ -32,4 +32,4 @@ private:
 	bool hasCompleted;
 };
 
-#endif /* CIRCULARBUFFER_H_ */
+#endif /** CIRCULARBUFFER_H_ */
