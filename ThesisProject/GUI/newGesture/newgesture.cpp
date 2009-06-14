@@ -5,7 +5,7 @@
 #include "../Utils/Container.h"
 #include "../../CommonProject/src/CoordsSaver.h"
 #include "../../DynamicGestureRecognition/Initializer/InitTrainer.h"
-#include "../../Utils/SystemInfo.h"
+
 #include "../../Init/InitTracker.h"
 #include "../../CommonProject/Threads/Thread_Tracker.h"
 #include <QFileDialog>
@@ -17,10 +17,12 @@
  * This method sets the User interface.
  */
 
-NewGesture::NewGesture(QWidget *parent)
+NewGesture::NewGesture(SystemInfo* systemInfo,QWidget *parent)
     : QDialog(parent)
 {
 	ui.setupUi(this);
+	this->systemInfo = systemInfo;
+	ui.visualWidget->setSystemInfo(systemInfo);
 }
 
 /**
@@ -168,16 +170,16 @@ void NewGesture::saveMovement(QList<IplImage*>* video){
 	Thread_Worker* tw = new Thread_Worker(itrainer);
 	tw->start();
 
-	SystemInfo* si = new SystemInfo(80,60);
+//	SystemInfo* si = new SystemInfo(80,60);
 	cv = new CameraVideo(Container::getInstance()->getLog(),video);
-	InitTracker* it = new InitTracker(cs,si,cv);
+	InitTracker* it = new InitTracker(cs,systemInfo,cv);
 	Thread_Tracker* tt = new Thread_Tracker(it);
 
 	tt->start();
 	tt->wait();
 	tw->wait();
 
-	ValuesNormalizator* vn = new ValuesNormalizator(si);
+	ValuesNormalizator* vn = new ValuesNormalizator(systemInfo);
 
 	this->setTx(vn->normalizeSignal(dtwTX));
 	this->setTy(vn->normalizeSignal(dtwTY));

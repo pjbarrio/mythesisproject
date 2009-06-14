@@ -87,6 +87,157 @@ public:
     ValuesNormalizator *getValuesNormalizator() const {return valuesNormalizator;}
 
     void initGestureParameters();
+    int getDistanceCalculatorAGMIndex() const {return distanceCalculatorAGMIndex;}
+
+    void setDistanceCalculatorAGMIndex(int distanceCalculatorAGMIndex) {this->distanceCalculatorAGMIndex = distanceCalculatorAGMIndex;}
+
+    int getValuesNormalizatorIndex() const {return valuesNormalizatorIndex;}
+
+    void setValuesNormalizatorIndex(int valuesNormalizatorIndex) {this->valuesNormalizatorIndex = valuesNormalizatorIndex;}
+
+    int getDistanceCalculatorDTWIndex() const {return distanceCalculatorDTWIndex;}
+
+    void setDistanceCalculatorDTWIndex(int distanceCalculatorDTWIndex) {this->distanceCalculatorDTWIndex = distanceCalculatorDTWIndex;}
+
+    int getDTWAlgorithmIndex() const {return dTWAlgorithmIndex;}
+
+    void setDTWAlgorithmIndex(int dTWAlgorithmIndex) {this->dTWAlgorithmIndex = dTWAlgorithmIndex;}
+
+    std::string getTnf() const {return tnf;}
+
+    void setTnf(std::string tnf){this->tnf = tnf;}
+
+    std::string getGnf() const {return gnf;}
+
+    void setGnf(std::string gnf) {this->gnf = gnf;}
+
+    double getGestureThreshold() const {return gestureThreshold;}
+
+    void setGestureThreshold(double gestureThreshold){this->gestureThreshold = gestureThreshold;}
+
+    int getMaxFramesToAnalize() const {return maxFramesToAnalize;}
+
+    void setMaxFramesToAnalize(int maxFramesToAnalize) {this->maxFramesToAnalize = maxFramesToAnalize;}
+
+    double getLightStabilizerThresholdDelta() const {return lightStabilizerThresholdDelta;}
+
+    void setLightStabilizerThresholdDelta(double lightStabilizerThresholdDelta) {this->lightStabilizerThresholdDelta = lightStabilizerThresholdDelta;}
+
+    int getSkinDelta() const {return skinDelta;}
+
+    void setSkinDelta(int skinDelta) {this->skinDelta = skinDelta;}
+
+    double getNormalizedTime() const {return normalizedTime;}
+
+    void setNormalizedTime(double normalizedTime) {this->normalizedTime = normalizedTime;}
+
+    double getMaxAcceptedDTWValue() const {return maxAcceptedDTWValue;}
+
+    void setMaxAcceptedDTWValue(double maxAcceptedDTWValue) {this->maxAcceptedDTWValue = maxAcceptedDTWValue;}
+
+    int getXValueDis() const {return xValueDis;}
+
+    void setXValueDis(int xValueDis){this->xValueDis = xValueDis;}
+
+    int getYValueDis() const {return yValueDis;}
+
+    void setYValueDis(int yValueDis) {this->yValueDis = yValueDis;}
+
+    int getSleepValue() const {return sleepValue;}
+
+    void setSleepValue(int sleepValue) {this->sleepValue = sleepValue;}
+
+    int getInputSize() const {return inputSize;}
+
+    void setInputSize(int inputSize) {this->inputSize = inputSize;}
+
+    int getK_Factor() const {return k_factor;}
+
+    void setK_Factor(int k_factor) {this->k_factor = k_factor;}
+
+    int getFrameWindow() const {return frameWindow;}
+
+    void setFrameWindow(int frameWindow) {this->frameWindow = frameWindow;}
+
+    double getDelta() const {return delta;}
+
+    void setDelta(double delta) {this->delta = delta;}
+
+    int getHValue() const {return hValue;}
+
+    void setHValue(int hValue) {this->hValue = hValue;}
+
+    int getSValue() const {return sValue;}
+
+    void setSValue(int sValue) {this->sValue = sValue;}
+
+    double getNoVelocityDetected() const {return noVelocityDetected;}
+
+    void setNoVelocityDetected(double noVelocityDetected) {this->noVelocityDetected = noVelocityDetected;}
+
+    double getNoAccelerationDetected() const {return noAccelerationDetected;}
+
+    void setNoAccelerationDetected(double noAccelerationDetected) {this->noAccelerationDetected = noAccelerationDetected;}
+
+    int getMaxVelocity() const {return maxVelocity;}
+
+    void setMaxVelocity(int maxVelocity) {this->maxVelocity = maxVelocity;}
+
+    int getMaxAcceleration() const {return maxAcceleration;}
+
+    void setMaxAcceleration(int maxAcceleration) {this->maxAcceleration = maxAcceleration;}
+
+    int getDrawSize() const {return drawSize;}
+
+    void setDrawSize(int drawSize) {this->drawSize = drawSize;}
+
+    std::string getLogFile() const {return logFile;}
+
+    void setLogFile(std::string logFile) {this->logFile = logFile;}
+
+    int getNetOutput() const {return netOutput;}
+
+    void setNetOutput(int netOutput) {this->netOutput = netOutput;}
+
+    int getStaticGestureOutput() const {return staticGestureOutput;}
+
+    void setStaticGestureOutput(int staticGestureOutput) {this->staticGestureOutput = staticGestureOutput;}
+
+    double getThresholdDelta() const {return thresholdDelta;}
+
+    void setThresholdDelta(double thresholdDelta) {this->thresholdDelta = thresholdDelta;}
+
+    double getDif() const {return dif;}
+
+    void setDif(double dif) {this->dif = dif;}
+
+    double getFactor() const {return factor;}
+
+    void setFactor(double factor) {this->factor = factor;}
+
+    QString getConfigurationFolder() const {return configurationFolder;}
+
+    void setConfigurationFolder(QString configurationFolder) {this->configurationFolder = configurationFolder;}
+
+    std::string getConfigFile() const {return configFile;}
+
+    void setConfigFile(std::string configFile) {this->configFile = configFile;}
+
+    int getWorkW() const {return workW;}
+
+    void setWorkW(int workW) {this->workW = workW;}
+
+    int getWorkH() const {return workH;}
+
+    void setWorkH(int workH) {this->workH = workH;}
+
+    double getRate() const {return rate;}
+
+    void setRate(double rate) {this->rate = rate;}
+
+    GestureModel *getGestureModel() const {return gestureModel;}
+
+    void setGestureModel(GestureModel *gestureModel) {this->gestureModel = gestureModel;}
 
     void setBufferSize(int bufferSize) {this->bufferSize = bufferSize;}
     void setWalkedPixels(int walkedPixels){this->walkedPixels = walkedPixels;}
@@ -149,8 +300,48 @@ private:
 	DistanceCalculator* distanceCalculatorAGM;
 	DistanceCalculator* distanceCalculatorDTW;
 	DTWAlgorithm *dTWAlgorithm;
+	GestureModel* gestureModel;
 	double relaxedRatio;
 	ValuesNormalizator* valuesNormalizator;
+
+	std::string tnf;
+	std::string gnf;
+	double gestureThreshold;
+	int maxFramesToAnalize;
+	double lightStabilizerThresholdDelta;
+	int skinDelta;
+	double normalizedTime;
+	double maxAcceptedDTWValue;
+	int xValueDis;
+	int yValueDis;
+	int sleepValue;
+	int inputSize;
+	int k_factor;
+	int frameWindow;
+	double delta;
+	int hValue;
+	int sValue;
+	double noVelocityDetected;
+	double noAccelerationDetected;
+	int maxVelocity;
+	int maxAcceleration;
+	int drawSize;
+	std::string logFile;
+	int netOutput;
+	int staticGestureOutput;
+	double thresholdDelta;
+	double dif;
+	double factor;
+	QString configurationFolder;
+	std::string configFile;
+	int workW;
+	int workH;
+	double rate;
+
+	int distanceCalculatorAGMIndex;
+	int valuesNormalizatorIndex;
+	int distanceCalculatorDTWIndex;
+	int dTWAlgorithmIndex;
 };
 
 #endif /** CONTAINER_H_ */

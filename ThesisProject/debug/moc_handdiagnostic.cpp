@@ -1,7 +1,7 @@
-/*****************************************************************************
+/****************************************************************************
 ** Meta object code from reading C++ file 'handdiagnostic.h'
 **
-** Created: Sat 16. May 20:09:09 2009
+** Created: Sat 13. Jun 18:37:12 2009
 **      by: The Qt Meta Object Compiler version 61 (Qt 4.5.0)
 **
 ** WARNING! All changes made in this file will be lost!

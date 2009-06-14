@@ -9,6 +9,8 @@
 #include "../../GUI/Utils/Container.h"
 #include "../../GUI/HandDiagnostic/handdiagnostic.h"
 #include "../../GUI/CamViewer.h"
+#include "../../XML/XMLParametersWriter.h"
+#include "../../XML/XMLParametersReader.h"
 
 
 
@@ -26,6 +28,8 @@ Init::~Init() {
 
 int Init::start(int argc, char *argv[]){
 
+	loadParameters();
+
 	QApplication a(argc, argv);
 
 	if (!QSystemTrayIcon::isSystemTrayAvailable()) {
@@ -37,7 +41,9 @@ int Init::start(int argc, char *argv[]){
 
 	QApplication::setQuitOnLastWindowClosed(false);
 
-	NewGesture* newGesture = new NewGesture();
+	SystemInfo* si = new SystemInfo(80,60);
+
+	NewGesture* newGesture = new NewGesture(si);
 
 	AddGesture* addGesture = new AddGesture(newGesture,0);
 
@@ -50,8 +56,6 @@ int Init::start(int argc, char *argv[]){
 	HandDiagnostic* handDiagnostic = new HandDiagnostic();
 
 	About* about = new About();
-
-	SystemInfo* si = new SystemInfo(80,60);
 
 	GestureParameter* gp = new GestureParameter(si);
 
@@ -67,5 +71,25 @@ int Init::start(int argc, char *argv[]){
 
 	Container::getInstance()->finishCamViewer();
 
+	saveParameters();
+
 	return ret;
+}
+
+/*
+ * This method load the application Parameters
+ */
+
+void Init::loadParameters(){
+	XMLParametersReader* xmlReader = new XMLParametersReader();
+	xmlReader->readFile("Configuration/Parameters.xml");
+}
+
+/*
+ * This method saves the application Parameters
+ */
+
+void Init::saveParameters(){
+	XMLParametersWriter* xmlWriter = new XMLParametersWriter();
+	xmlWriter->writeXML("Configuration/Parameters.xml");
 }

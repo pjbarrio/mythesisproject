@@ -16,6 +16,7 @@
 #include <QPaintEvent>
 #include "ui_paintmovement.h"
 #include "../../DynamicGestureRecognition/CircularBuffer/CircularBuffer.h"
+#include "../../Utils/SystemInfo.h"
 
 class paintMovement : public QWidget
 {
@@ -26,11 +27,13 @@ public:
     ~paintMovement();
     void paintEvent(QPaintEvent *event);
     void setData(CircularBuffer*,CircularBuffer*);
+    void setSystemInfo(SystemInfo* si){systemInfo = si;systemInfo->getSystemWorkResolution(ancho,alto);};
 
 private:
     Ui::paintMovementClass ui;
     CircularBuffer* xvalues;
     CircularBuffer* yvalues;
+    SystemInfo* systemInfo;
     int alpha;
     QColor* q1;
     QPen* p1;
@@ -39,6 +42,8 @@ private:
     int w;
     int h;
     int inc;
+    int ancho;
+    int alto;
     int adapt(int,int);
 };
 

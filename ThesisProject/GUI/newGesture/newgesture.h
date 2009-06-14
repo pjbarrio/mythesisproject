@@ -19,6 +19,7 @@
 #include "cv.h"
 #include "../../Camera/CameraVideo.h"
 #include "../../DynamicGestureRecognition/CircularBuffer/CircularBuffer.h"
+#include "../../Utils/SystemInfo.h"
 
 
 class NewGesture : public QDialog
@@ -26,7 +27,7 @@ class NewGesture : public QDialog
     Q_OBJECT
 
 public:
-    NewGesture(QWidget *parent = 0);
+    NewGesture(SystemInfo* systemInfo,QWidget *parent = 0);
     ~NewGesture();
 
     /**
@@ -55,6 +56,7 @@ private:
     DTWData* ty;
     CircularBuffer* cx;
     CircularBuffer* cy;
+    SystemInfo* systemInfo;
     void startCapturing();
     void finishCapturing();
     bool hasStarted;

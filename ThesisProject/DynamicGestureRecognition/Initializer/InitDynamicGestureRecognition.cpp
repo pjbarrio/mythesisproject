@@ -52,7 +52,8 @@ void InitDynamicGestureRecognition::init()
 			maxGestureTime, distanceCalculatorAGM);
 
 	DTWAlgorithm *dTWAlgorithm = cont->getDTWAlgorithm();//new ItakuraDTWAlgorithm(3.0,dcDTW);
-	GestureModel *gestureModel = new GestureModel(dTWAlgorithm);
+	GestureModel *gestureModel = cont->getGestureModel();
+//	cont->setGestureModel(gestureModel);
 	double relaxedRatio = cont->getRelaxedRatio();//=3.0;
 	ValuesNormalizator* valuesNormalizator = cont->getValuesNormalizator();
 	dgra = new DynamicGestureRecognitionAlgorithm(gestureModel,agm,relaxedRatio,dTWAlgorithm,valuesNormalizator);

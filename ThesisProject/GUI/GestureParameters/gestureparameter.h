@@ -60,10 +60,10 @@ private:
 	bool dirtydTWAlgorithm;
 	bool dirtyrelaxedRatio;
 	bool dirtyvaluesNormalizator;
-	QString distanceCalculatorAGMString;
-	QString valuesNormalizatorString;
-	QString distanceCalculatorDTWString;
-	QString dTWAlgorithmString;
+	int distanceCalculatorAGMIndex;
+	int valuesNormalizatorIndex;
+	int distanceCalculatorDTWIndex;
+	int dTWAlgorithmIndex;
 	void convertStringToRealValues();
 private slots:
 	void setDetectedCount(int);
