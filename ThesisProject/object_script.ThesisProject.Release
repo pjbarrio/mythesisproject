@@ -1,4 +1,6 @@
 INPUT(
+./release\XMLParametersWriter.o
+./release\XMLParametersReader.o
 ./release\gestureparameter.o
 ./release\about.o
 ./release\Association.o
