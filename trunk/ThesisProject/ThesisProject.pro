@@ -1,7 +1,9 @@
 TARGET = ThesisProject
 QT += core \
     gui
-HEADERS += GUI/GestureParameters/gestureparameter.h \
+HEADERS += XML/XMLParametersWriter.h \
+    XML/XMLParametersReader.h \
+    GUI/GestureParameters/gestureparameter.h \
     GUI/About/about.h \
     DynamicGestureRecognition/src/Association.h \
     QtOpenCV/qcv/qcvcg.h \
@@ -98,7 +100,9 @@ HEADERS += GUI/GestureParameters/gestureparameter.h \
     DynamicGestureRecognition/src/DynamicGestureRecognitionAlgorithm.h \
     DynamicGestureRecognition/src/addGesturePolicy.h \
     mainwindow.h
-SOURCES += GUI/GestureParameters/gestureparameter.cpp \
+SOURCES += XML/XMLParametersWriter.cpp \
+    XML/XMLParametersReader.cpp \
+    GUI/GestureParameters/gestureparameter.cpp \
     GUI/About/about.cpp \
     DynamicGestureRecognition/src/Association.cpp \
     QtOpenCV/qcv/qcvcg.cpp \

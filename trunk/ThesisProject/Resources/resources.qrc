@@ -1,39 +1,42 @@
 <RCC>
-  <qresource prefix="/GraphicalEqualizer" >
-    <file>Green.jpg</file>
-    <file>GreenDark.jpg</file>
-    <file>Orange.jpg</file>
-    <file>Red.jpg</file>
-    <file>Yellow.jpg</file>
-    <file>YellowLight.jpg</file>
-  </qresource>
-  <qresource prefix="ToolBar" >
-    <file>ViewState.jpg</file>
-    <file>Restore.png</file>
-    <file>minimize.png</file>
-    <file>Stop.jpg</file>
-    <file>Events.jpg</file>
-    <file>import.jpg</file>
-    <file>OpenFile.jpg</file>
-    <file>openconf.jpg</file>
-    <file>about.jpg</file>
-    <file>combined.jpg</file>
-    <file>ExeApp.jpg</file>
-    <file>gesture.png</file>
-    <file>importall.jpg</file>
-    <file>key.jpg</file>
-    <file>quit.jpg</file>
-    <file>saveConfig.jpg</file>
-  </qresource>
-  <qresource prefix="/HandState" >
-    <file>hand_close.jpg</file>
-    <file>hand_open.jpg</file>
-  </qresource>
-  <qresource prefix="/Icon" >
-    <file>webcamicon.jpg</file>
-  </qresource>
-  <qresource prefix="/buttonsImages" >
-    <file>Add.jpg</file>
-    <file>Remove.jpg</file>
-  </qresource>
+    <qresource prefix="/GraphicalEqualizer" >
+        <file>Green.jpg</file>
+        <file>GreenDark.jpg</file>
+        <file>Orange.jpg</file>
+        <file>Red.jpg</file>
+        <file>Yellow.jpg</file>
+        <file>YellowLight.jpg</file>
+    </qresource>
+    <qresource prefix="/HandState" >
+        <file>hand_close.jpg</file>
+        <file>hand_open.jpg</file>
+    </qresource>
+    <qresource prefix="/Icon" >
+        <file>webcamicon.jpg</file>
+    </qresource>
+    <qresource prefix="/SkinMask" >
+        <file>skin.jpg</file>
+    </qresource>
+    <qresource prefix="/ToolBar" >
+        <file>Events.jpg</file>
+        <file>ExeApp.jpg</file>
+        <file>OpenFile.jpg</file>
+        <file>Restore.png</file>
+        <file>Stop.jpg</file>
+        <file>ViewState.jpg</file>
+        <file>about.jpg</file>
+        <file>combined.jpg</file>
+        <file>gesture.png</file>
+        <file>import.jpg</file>
+        <file>importall.jpg</file>
+        <file>key.jpg</file>
+        <file>minimize.png</file>
+        <file>openconf.jpg</file>
+        <file>quit.jpg</file>
+        <file>saveConfig.jpg</file>
+    </qresource>
+    <qresource prefix="/buttonsImages" >
+        <file>Add.jpg</file>
+        <file>Remove.jpg</file>
+    </qresource>
 </RCC>

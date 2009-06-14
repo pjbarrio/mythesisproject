@@ -1,8 +1,8 @@
-/*
+/**
  * XmlStreamReader.h
  *
  *  Created on: 10/05/2009
- *      Author: Pablo
+ *      \author  Pablo
  *
  * This class read the configuration file and fill the models provided in the constructor.
  */
@@ -69,4 +69,4 @@ private:
     QString ALTTAB_STR;
 };
 
-#endif /* XMLSTREAMREADER_H_ */
+#endif /** XMLSTREAMREADER_H_ */

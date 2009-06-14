@@ -1,8 +1,8 @@
-/*
+/**
  * XMLStreamWriter.h
  *
  *  Created on: 10/05/2009
- *      Author: Pablo
+ *      \author  Pablo
  *
  * This class is used to write the xml configuration file.
  */
@@ -40,4 +40,4 @@ private:
 	QXmlStreamWriter* xmlWriter;
 };
 
-#endif /* XMLSTREAMWRITER_H_ */
+#endif /** XMLSTREAMWRITER_H_ */

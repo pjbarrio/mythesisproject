@@ -1,4 +1,6 @@
 INPUT(
+./debug\XMLParametersWriter.o
+./debug\XMLParametersReader.o
 ./debug\gestureparameter.o
 ./debug\about.o
 ./debug\Association.o
