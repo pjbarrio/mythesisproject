@@ -104,5 +104,5 @@ void paintMovement::setData(CircularBuffer* xs,CircularBuffer* ys){
  */
 
 int paintMovement::adapt(int val,int max){
-	return (val*max)/80;
+	return (val*max)/ancho;
 }

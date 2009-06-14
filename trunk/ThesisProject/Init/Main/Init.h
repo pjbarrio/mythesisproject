@@ -26,6 +26,9 @@ public:
 	Init();
 	virtual ~Init();
 	int start(int argc, char *argv[]);
+private:
+	void loadParameters();
+	void saveParameters();
 };
 
 #endif /** INIT_H_ */

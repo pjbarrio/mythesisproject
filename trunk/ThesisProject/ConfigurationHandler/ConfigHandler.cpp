@@ -102,7 +102,7 @@ int ConfigHandler::getMax_frames_to_analize()
 std::string ConfigHandler::getSkinMaskFile()
 {
 
-	return "Images\\skin.jpg";
+	return ":/SkinMask/skin.jpg";
 
 }
 

@@ -44,36 +44,56 @@ void GestureParameter::setMaxRelatedRatio(int maxValue){
  */
 void GestureParameter::initVariables(){
 	Container* cont = Container::getInstance();
-	bufferSize = 6;
-	cont->setBufferSize(bufferSize);
-	relaxedCount = 3;
-	cont->setRelaxedCount(relaxedCount);
-	distanceCalculatorAGM = new EuclideanDistance();
-	cont->setDistanceCalculatorAGM(distanceCalculatorAGM);
-	nonVaryingAccelerationRate = 450.0;
-	cont->setNonVaryingAccelerationRate(nonVaryingAccelerationRate);
-	accelerationThreshold = 600.0;
-	cont->setAccelerationThreshold(accelerationThreshold);
-	desaccelerationThreshold = 400.0;
-	cont->setDesaccelerationThreshold(desaccelerationThreshold);
-	walkedPixels = 30;
-	cont->setWalkedPixels(walkedPixels);
-	minimumPointsCount = 6;
-	cont->setMinimumPointsCount(minimumPointsCount);
-	distanceThreshold = 0.75;
-	cont->setDistanceThreshold(distanceThreshold);
-	maxGestureTime = 2.0;
-	cont->setMaxGestureTime(maxGestureTime);
-	valuesNormalizator = new ValuesNormalizator(si);
-	cont->setValuesNormalizator(valuesNormalizator);
-	relaxedRatio = 2.0;
-	cont->setRelaxedRatio(relaxedRatio);
-	distanceCalculatorDTW = new EuclideanDistance();
-	cont->setDistanceCalculatorDTW(distanceCalculatorDTW);
-	rate = 0.3;
 
-	dTWAlgorithm = new ItakuraDTWAlgorithm(rate,distanceCalculatorDTW);
-	cont->setDTWAlgorithm(dTWAlgorithm);
+	//TODO todos los setText y esas cosas. Obteniendo del Container.
+	bufferSize = cont->getBufferSize();
+	ui.bufferSize->setValue(bufferSize);
+
+	relaxedCount = cont->getRelaxedCount();
+	ui.relaxedCount->setValue(relaxedCount);
+
+	distanceCalculatorAGM = cont->getDistanceCalculatorAGM();
+	distanceCalculatorAGMIndex = cont->getDistanceCalculatorAGMIndex();
+	ui.distanceCalculatorAGM->setCurrentIndex(distanceCalculatorAGMIndex);
+
+	nonVaryingAccelerationRate = cont->getNonVaryingAccelerationRate();
+	ui.nonVaryingAccelerationRate->setText(QString::number(nonVaryingAccelerationRate));
+
+	accelerationThreshold = cont->getAccelerationThreshold();
+	ui.accelerationThreshold->setText(QString::number(accelerationThreshold));
+
+	desaccelerationThreshold = cont->getDesaccelerationThreshold();
+	ui.desaccelerationThreshold->setText(QString::number(desaccelerationThreshold));
+
+	walkedPixels = cont->getWalkedPixels();
+	ui.walkedPixels->setValue(walkedPixels);
+
+	minimumPointsCount = cont->getMinimumPointsCount();
+	ui.minimunPointCount->setValue(minimumPointsCount);
+
+	distanceThreshold = cont->getDistanceThreshold();
+	ui.distanceThreshold->setValue(distanceThreshold);
+
+	maxGestureTime = cont->getMaxGestureTime();
+	ui.maxGestureTime->setValue(maxGestureTime);
+
+	valuesNormalizatorIndex = cont->getValuesNormalizatorIndex();
+	ui.valuesNormalizator->setCurrentIndex(valuesNormalizatorIndex);
+	valuesNormalizator = cont->getValuesNormalizator();
+
+	relaxedRatio = cont->getRelaxedRatio();
+	ui.relaxedRatio->setValue(relaxedRatio);
+
+	distanceCalculatorDTWIndex = cont->getDistanceCalculatorDTWIndex();
+	ui.distanceCalculatorDTW->setCurrentIndex(distanceCalculatorDTWIndex);
+	distanceCalculatorDTW = cont->getDistanceCalculatorDTW();
+
+	rate = cont->getRate();
+	ui.rate->setValue(rate);
+
+	dTWAlgorithm = cont->getDTWAlgorithm();
+	dTWAlgorithmIndex = cont->getDTWAlgorithmIndex();
+	ui.dtwAlgorithm->setCurrentIndex(dTWAlgorithmIndex);
 
 }
 
@@ -151,25 +171,30 @@ void GestureParameter::accept(){
  * by the user.
  */
 void GestureParameter::convertStringToRealValues(){
-	if (dirtydistanceCalculatorAGM)
-		if (QString::compare(distanceCalculatorAGMString,tr("Distancia Eucl\303\255dea"))==0)
+	if (dirtydistanceCalculatorAGM){
+		if (ui.distanceCalculatorAGM->currentIndex()==0)
 			distanceCalculatorAGM = new EuclideanDistance();
-
-	if (dirtyvaluesNormalizator)
-		if (QString::compare(valuesNormalizatorString,tr("Normalizador Simple"))==0)
+		Container::getInstance()->setDistanceCalculatorAGMIndex(ui.distanceCalculatorAGM->currentIndex());
+	}
+	if (dirtyvaluesNormalizator){
+		if (ui.valuesNormalizator->currentIndex()==0)
 			valuesNormalizator = new ValuesNormalizator(si);
-
-	if (dirtydistanceCalculatorDTW)
-		if (QString::compare(distanceCalculatorDTWString,tr("Distancia Eucl\303\255dea"))==0)
+		Container::getInstance()->setValuesNormalizatorIndex(ui.valuesNormalizator->currentIndex());
+	}
+	if (dirtydistanceCalculatorDTW){
+		if (ui.distanceCalculatorDTW->currentIndex()==0)
 			distanceCalculatorDTW = new EuclideanDistance();
-
+		Container::getInstance()->setDistanceCalculatorDTWIndex(ui.distanceCalculatorDTW->currentIndex());
+	}
 	if (dirtydTWAlgorithm){
-		if (QString::compare(dTWAlgorithmString,tr("Paralelogramo de Itakura"))==0)
+		int dtwAlIn = ui.dtwAlgorithm->currentIndex();
+		if (dtwAlIn==0)
 			dTWAlgorithm = new ItakuraDTWAlgorithm(rate,distanceCalculatorDTW);
-		else if (QString::compare(dTWAlgorithmString,tr("DTW Simple"))==0)
+		else if (dtwAlIn==1)
 			dTWAlgorithm = new RawDTWAlgorithm(distanceCalculatorDTW);
-		else if (QString::compare(dTWAlgorithmString,tr("Banda de Sakoe/Chiba"))==0)
+		else if (dtwAlIn==2)
 			dTWAlgorithm = new SakoeChibaDTWAlgorithm(rate,distanceCalculatorDTW);
+		Container::getInstance()->setDTWAlgorithmIndex(dtwAlIn);
 	}
 }
 
@@ -192,7 +217,7 @@ void GestureParameter::relaxedCountModified(int val){
  */
 void GestureParameter::distanceCalculatorAGMModified(QString val){
 	dirtydistanceCalculatorAGM = true;
-	distanceCalculatorAGMString = val;
+	distanceCalculatorAGMIndex = ui.distanceCalculatorAGM->currentIndex();
 }
 /**
  * This method stores the new non varying acceleration rate value
@@ -253,7 +278,7 @@ void GestureParameter::maxGestureTimeModified(double val){
  */
 void GestureParameter::valuesNormalizatorModified(QString val){
 	dirtyvaluesNormalizator = true;
-	valuesNormalizatorString = val;
+	valuesNormalizatorIndex = ui.valuesNormalizator->currentIndex();
 }
 /**
  * This method stores the new relaxed ratio value
@@ -268,14 +293,14 @@ void GestureParameter::relaxedRatioModified(int val){
 void GestureParameter::distanceCalculatorDTWModified(QString val){
 	dirtydistanceCalculatorDTW = true;
 	dirtydTWAlgorithm = true;
-	distanceCalculatorDTWString = val;
+	distanceCalculatorDTWIndex = ui.distanceCalculatorDTW->currentIndex();
 }
 /**
  * This method stores the new dtw Algorithm
  */
 void GestureParameter::dtwAlgorithmModified(QString val){
 	dirtydTWAlgorithm = true;
-	dTWAlgorithmString = val;
+	dTWAlgorithmIndex = ui.dtwAlgorithm->currentIndex();
 }
 /**
  * This method stores the new rate value

@@ -47,7 +47,6 @@ ThesisProject::ThesisProject(AddGesture* addGesture,AddEvent* addEvent,AddAsocia
 	createCompleteTrayIcon();
 
 	createToolbar();
-
 }
 
 /**
@@ -923,14 +922,15 @@ void ThesisProject::runHandDiagnostic(){
 
 GestureModel* ThesisProject::getGestureModel()
 {
-	if (gestureModel == 0){
+/*	if (gestureModel == 0){
 		distanceCalculator = new EuclideanDistance();
 		//TODO VER CUAL ES EL RATE!!
 		dtwAlgorithm = new ItakuraDTWAlgorithm(0.3,distanceCalculator);
 		gestureModel = new GestureModel(dtwAlgorithm);
 	}
 
-	return gestureModel;
+	return gestureModel;*/
+	return Container::getInstance()->getGestureModel();
 
 }
 
