@@ -6,6 +6,7 @@
  */
 
 #include "GestureNeuralNet.h"
+#include "../GUI/Utils/NeuralNetParameters.h"
 
 GestureNeuralNet::GestureNeuralNet() {
 	;
@@ -80,9 +81,11 @@ bool GestureNeuralNet::startNet()
 
 	normal_filter = new NormalFilter();
 
-	input_values  = new fann_type[4800];
+	NeuralNetParameters* nnpar = NeuralNetParameters::getInstance();
 
-	output_values = new fann_type[1];
+	input_values  = new fann_type[nnpar->getInputSize()];
+
+	output_values = new fann_type[nnpar->getStaticGestureOutput()];
 
 	return true;
 }

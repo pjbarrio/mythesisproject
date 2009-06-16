@@ -10,6 +10,7 @@
 #include <sstream>
 #include <fstream>
 #include <iomanip>
+#include "../GUI/Utils/NeuralNetParameters.h"
 
 /**
  * This method saves the logger instances and initializes the
@@ -131,11 +132,13 @@ bool NeuralNet::startNet()
 
 	}
 
+	NeuralNetParameters* nnpar = NeuralNetParameters::getInstance();
+
 	normal_filter = new NormalFilter();
 
-	input_values  = new fann_type[4800];
+	input_values  = new fann_type[nnpar->getInputSize()];
 
-	output_values = new fann_type[2];
+	output_values = new fann_type[nnpar->getNetOutput()];
 
 	xCoord = 0;
 	yCoord = 0;

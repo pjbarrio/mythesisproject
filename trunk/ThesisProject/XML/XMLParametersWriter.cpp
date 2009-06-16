@@ -8,6 +8,7 @@
 #include "XMLParametersWriter.h"
 #include "../GUI/Utils/Container.h"
 #include <QFile>
+#include "../GUI/Utils/NeuralNetParameters.h"
 
 XMLParametersWriter::XMLParametersWriter() {
 
@@ -59,6 +60,7 @@ bool XMLParametersWriter::writeXML(const QString & fileName)
 void XMLParametersWriter::writeParametersElement()
 {
 	Container* cont = Container::getInstance();
+	NeuralNetParameters* nnpar = NeuralNetParameters::getInstance();
 
 	std::string tnf = cont->getTnf();
 
@@ -116,7 +118,7 @@ void XMLParametersWriter::writeParametersElement()
 
 	//1
 
-	int inputSize = cont->getInputSize();
+	int inputSize = nnpar->getInputSize();
 	xmlWriter->writeTextElement("InputSize",QString::number(inputSize));
 
 	// 4800
@@ -178,12 +180,12 @@ void XMLParametersWriter::writeParametersElement()
 
 	//"log.txt"
 
-	int netOutput = cont->getNetOutput();
+	int netOutput = nnpar->getNetOutput();
 	xmlWriter->writeTextElement("NetOutPut",QString::number(netOutput));
 
 	//2
 
-	int staticGestureOutput = cont->getStaticGestureOutput();
+	int staticGestureOutput = nnpar->getStaticGestureOutput();
 	xmlWriter->writeTextElement("StaticGestureOutput",QString::number(staticGestureOutput));
 
 	//1

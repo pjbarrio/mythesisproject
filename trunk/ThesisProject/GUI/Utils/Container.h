@@ -147,10 +147,6 @@ public:
 
     void setSleepValue(int sleepValue) {this->sleepValue = sleepValue;}
 
-    int getInputSize() const {return inputSize;}
-
-    void setInputSize(int inputSize) {this->inputSize = inputSize;}
-
     int getK_Factor() const {return k_factor;}
 
     void setK_Factor(int k_factor) {this->k_factor = k_factor;}
@@ -194,14 +190,6 @@ public:
     std::string getLogFile() const {return logFile;}
 
     void setLogFile(std::string logFile) {this->logFile = logFile;}
-
-    int getNetOutput() const {return netOutput;}
-
-    void setNetOutput(int netOutput) {this->netOutput = netOutput;}
-
-    int getStaticGestureOutput() const {return staticGestureOutput;}
-
-    void setStaticGestureOutput(int staticGestureOutput) {this->staticGestureOutput = staticGestureOutput;}
 
     double getThresholdDelta() const {return thresholdDelta;}
 
@@ -315,7 +303,7 @@ private:
 	int xValueDis;
 	int yValueDis;
 	int sleepValue;
-	int inputSize;
+
 	int k_factor;
 	int frameWindow;
 	double delta;
@@ -327,8 +315,7 @@ private:
 	int maxAcceleration;
 	int drawSize;
 	std::string logFile;
-	int netOutput;
-	int staticGestureOutput;
+
 	double thresholdDelta;
 	double dif;
 	double factor;

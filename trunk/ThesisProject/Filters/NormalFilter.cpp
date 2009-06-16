@@ -6,6 +6,7 @@
  */
 
 #include "NormalFilter.h"
+#include "../GUI/Utils/NeuralNetParameters.h"
 
 
 
@@ -25,6 +26,8 @@ NormalFilter::~NormalFilter() {
 fann_type* NormalFilter::applyFilter(IplImage *scr)
 {
 
+	NeuralNetParameters* nnpar = NeuralNetParameters::getInstance();
+
 	int height = scr->height;
 	int width  = scr->width;
     int step   = scr->widthStep;
@@ -33,7 +36,7 @@ fann_type* NormalFilter::applyFilter(IplImage *scr)
 
     uchar* data = (uchar *)scr ->imageData;
 
-    fann_type input[4800];
+    fann_type input[nnpar->getInputSize()];
 
 	for (i= 0; i < height ; i++)
 	   for (j= 0; j < width ; j++ )
