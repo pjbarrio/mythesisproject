@@ -1,7 +1,8 @@
 TARGET = ThesisProject
 QT += core \
     gui
-HEADERS += DynamicGestureRecognition/DTWAlgorithms/AddGestureToModelAlgorithm.h \
+HEADERS += GUI/Utils/NeuralNetParameters.h \
+    DynamicGestureRecognition/DTWAlgorithms/AddGestureToModelAlgorithm.h \
     XML/XMLParametersWriter.h \
     XML/XMLParametersReader.h \
     GUI/GestureParameters/gestureparameter.h \
@@ -101,7 +102,8 @@ HEADERS += DynamicGestureRecognition/DTWAlgorithms/AddGestureToModelAlgorithm.h 
     DynamicGestureRecognition/src/DynamicGestureRecognitionAlgorithm.h \
     DynamicGestureRecognition/src/addGesturePolicy.h \
     mainwindow.h
-SOURCES += DynamicGestureRecognition/DTWAlgorithms/AddGestureToModelAlgorithm.cpp \
+SOURCES += GUI/Utils/NeuralNetParameters.cpp \
+    DynamicGestureRecognition/DTWAlgorithms/AddGestureToModelAlgorithm.cpp \
     XML/XMLParametersWriter.cpp \
     XML/XMLParametersReader.cpp \
     GUI/GestureParameters/gestureparameter.cpp \

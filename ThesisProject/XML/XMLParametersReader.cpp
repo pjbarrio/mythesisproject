@@ -17,6 +17,7 @@
 #include "../DynamicGestureRecognition/src/GestureModel.h"
 #include "../DynamicGestureRecognition/DistanceCalculators/EuclideanDistance.h"
 #include "../DynamicGestureRecognition/src/ValuesNormalizator.h"
+#include "../GUI/Utils/NeuralNetParameters.h"
 
 XMLParametersReader::XMLParametersReader() {
 ;
@@ -75,6 +76,7 @@ bool XMLParametersReader::readFile(const QString & fileName){
 
 void XMLParametersReader::readParametersElement(){
 	Container* cont = Container::getInstance();
+	NeuralNetParameters* nnpar = NeuralNetParameters::getInstance();
 	reader.readNext();
 	reader.readNext();
 
@@ -169,7 +171,7 @@ void XMLParametersReader::readParametersElement(){
 	reader.readNext();
 	reader.readNext();
 	int inputSize = InputSize.toInt();
-	cont->setInputSize(inputSize);
+	nnpar->setInputSize(inputSize);
 
 	// 4800
 
@@ -266,7 +268,7 @@ void XMLParametersReader::readParametersElement(){
 	reader.readNext();
 	reader.readNext();
 	int netOutput = NetOutput.toInt();
-	cont->setNetOutput(netOutput);
+	nnpar->setNetOutput(netOutput);
 
 	//2
 
@@ -274,7 +276,7 @@ void XMLParametersReader::readParametersElement(){
 	reader.readNext();
 	reader.readNext();
 	int staticGestureOutput = StaticGestureOutput.toInt();
-	cont->setStaticGestureOutput(staticGestureOutput);
+	nnpar->setStaticGestureOutput(staticGestureOutput);
 
 	//1
 
