@@ -6,6 +6,7 @@
  */
 
 #include "RawDTWAlgorithm.h"
+#include "../../GUI/Utils/Container.h"
 
 RawDTWAlgorithm::RawDTWAlgorithm(DistanceCalculator *distanceCalculator):DTWAlgorithm(distanceCalculator)
 {
@@ -23,7 +24,7 @@ RawDTWAlgorithm::~RawDTWAlgorithm()
 
 bool RawDTWAlgorithm::acceptDTWValue(double dtwvalue)
 {
-	return (dtwvalue < DTWAlgorithm::maxAcceptedDTWValue);
+	return (dtwvalue < Container::getInstance()->getMaxAcceptedDTWValue());
 }
 
 /**

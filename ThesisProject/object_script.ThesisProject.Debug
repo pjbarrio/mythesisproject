@@ -1,4 +1,5 @@
 INPUT(
+./debug\AddGestureToModelAlgorithm.o
 ./debug\XMLParametersWriter.o
 ./debug\XMLParametersReader.o
 ./debug\gestureparameter.o

@@ -7,6 +7,8 @@
 
 #include "NormalFilter.h"
 
+
+
 NormalFilter::NormalFilter() {
 ;
 }
@@ -22,7 +24,6 @@ NormalFilter::~NormalFilter() {
 
 fann_type* NormalFilter::applyFilter(IplImage *scr)
 {
-
 
 	int height = scr->height;
 	int width  = scr->width;

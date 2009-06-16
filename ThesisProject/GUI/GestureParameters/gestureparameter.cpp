@@ -160,9 +160,9 @@ void GestureParameter::accept(){
 		cont->setRelaxedRatio(relaxedRatio);
 	if (dirtydistanceCalculatorDTW)
 		cont->setDistanceCalculatorDTW(distanceCalculatorDTW);
-	if (dirtydTWAlgorithm)
+	if (dirtydTWAlgorithm){
 		cont->setDTWAlgorithm(dTWAlgorithm);
-
+	}
 	QDialog::accept();
 }
 

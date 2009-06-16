@@ -6,6 +6,7 @@
  */
 
 #include "LogHandler.h"
+#include "../GUI/Utils/Container.h"
 
 LogHandler::LogHandler() {
 
@@ -24,7 +25,8 @@ LogHandler::~LogHandler() {
 void LogHandler::initLogger()
 {
 
-	log.open("log.txt",ios::out);
+
+	log.open(Container::getInstance()->getLogFile().c_str(),ios::out);
 
 	char dateStr [9];
     char timeStr [9];

@@ -23,7 +23,7 @@ LightStabilizer::LightStabilizer(LogHandler* logger) {
 
 	componentName = "Light Stabilizer";
 
-	threshold_delta = 0.20;
+	threshold_delta = Container::getInstance()->getThresholdDelta();
 }
 
 /**
@@ -77,13 +77,13 @@ void LightStabilizer::runAmbientDiagnostic(CamHandler *cam,FilterHandler*filterH
 
 	float dif = skinHandOpen * 1.0 / skinHandClose * 1.0;
 
-	if ( dif < 1.01 ){
+	if ( dif < Container::getInstance()->getDif() ){
 
 		logger->addEntry(componentName,"Hand Analisis failed. Using proportional values");
 
 		skinHandOpen = (skinHandOpen < skinHandClose )? skinHandClose : skinHandClose;
 
-		skinHandClose = (double)skinHandOpen * 0.75;
+		skinHandClose = (double)skinHandOpen * Container::getInstance()->getFactor();
 
 	}
 

@@ -22,7 +22,7 @@ public:
 	DTWData* normalizeSignal(DTWData*);
 private:
 	SystemInfo* sysinfo;
-	static const double NORMALIZED_TIME = 2.0;
+	double norm_Time;
 };
 
 #endif /** VALUESNORMALIZATOR_H_ */

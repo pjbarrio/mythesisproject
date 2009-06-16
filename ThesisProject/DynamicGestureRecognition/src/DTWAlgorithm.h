@@ -32,8 +32,6 @@ public:
 
 protected:
 
-	static const double maxAcceptedDTWValue = 7000.0;
-
 	void calculateMatrix(DTWData*,DTWData*,vector<vector<double> > &);
 
 	/**

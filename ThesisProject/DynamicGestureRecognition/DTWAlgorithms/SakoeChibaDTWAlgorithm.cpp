@@ -8,6 +8,7 @@
 #include "SakoeChibaDTWAlgorithm.h"
 #include "math.h"
 #include "iostream.h"
+#include "../../GUI/Utils/Container.h"
 
 /**
  * This method saves the rate value used to detect similar gestures with the SakoeChiba DTW algorithm.
@@ -36,7 +37,7 @@ SakoeChibaDTWAlgorithm::~SakoeChibaDTWAlgorithm()
 
 bool SakoeChibaDTWAlgorithm::acceptDTWValue(double dtwvalue)
 {
-	return (dtwvalue < DTWAlgorithm::maxAcceptedDTWValue);
+	return (dtwvalue < Container::getInstance()->getMaxAcceptedDTWValue());
 }
 
 /**

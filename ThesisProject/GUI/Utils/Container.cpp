@@ -191,7 +191,7 @@ ConfigHandler* Container::getConfigHandler(){
 
 	if (configHandler == 0){
 		configHandler = new ConfigHandler(getLog());
-		if ( !configHandler->openConfigFile("config.data") ){
+		if ( !configHandler->openConfigFile(getConfigFile()) ){
 
 			getLog()->closeLogger();
 

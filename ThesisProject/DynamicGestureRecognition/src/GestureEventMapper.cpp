@@ -258,7 +258,7 @@ void GestureEventMapper::begin(){
  */
 
 bool GestureEventMapper::hasNext(){
-	if (mapIterator != getAssociationTable()->end() && vectorIterator != mapIterator->second->end() )
+	if (mapIterator != getAssociationTable()->end() || vectorIterator != mapIterator->second->end() )
 		return true;
 	return false;
 }

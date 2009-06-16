@@ -21,6 +21,7 @@
 #include "Init/ThesisStart.h"
 #include "XML/XmlStreamReader.h"
 #include "XML/XMLStreamWriter.h"
+#include "DynamicGestureRecognition/DTWAlgorithms/AddGestureToModelAlgorithm.h"
 
 
 /**
@@ -189,7 +190,7 @@ void ThesisProject::openConfiguration(){
 QString* ThesisProject::selectXmlFile(){
 	QString* filter = new QString();
 	QString fileName = QFileDialog::getOpenFileName(this,
-			 "Seleccionar xml de configuración", "Configuration/", tr("Archivos Configuración (*.xml)"),filter);
+			 "Seleccionar xml de configuración", Container::getInstance()->getConfigurationFolder(), tr("Archivos Configuración (*.xml)"),filter);
 	if (QString::compare(*filter,tr("Archivos Configuración (*.xml)")) == 0){
 		return new QString(fileName);
 	}
@@ -838,6 +839,18 @@ void ThesisProject::startApplication(){
 
 	}
 
+	if (Container::getInstance()->getGestureSupport()){
+		bool veri = TransferGestures();
+		if (!veri){
+			int ret = QMessageBox::warning(this,tr("Conflicto entre gestos"),tr("Se ha detectado"
+					"La existencia de gestos similares en la misma configuración de ejecución"
+					"Esto podría causar el funcionamiento incorrecto de la aplicación"
+					"Verifique las asociaciones seleccionadas y comience nuevamente"),QMessageBox::Ok);
+			return;
+		}
+
+	}
+
 	Container::getInstance()->finishCamViewer();
 
 	SystemInfo* si = getSystemInfo();
@@ -860,6 +873,33 @@ void ThesisProject::startApplication(){
 
 	ts->start();
 
+}
+
+/**
+ * This method transfers the active gestures to the GestureModel
+ * used by the application.
+ */
+
+bool ThesisProject::TransferGestures(){
+	Container* cont = Container::getInstance();
+	GestureModel* gestmodel = new GestureModel(cont->getDTWAlgorithm());
+
+	GestureEventMapper* gestEventMap = GestureEventMapper::getInstance();
+	gestEventMap->begin();
+	while (gestEventMap->hasNext()){
+		Association* as = gestEventMap->getActualAssociation();
+		if (as->getActivated()){
+			bool can = gestmodel->addGesture(as->getGesture());
+			if (!can){
+				//TODO Podría verificarse que se trate del mismo evento
+				return false;
+			}
+		}
+		gestEventMap->next();
+	}
+
+	cont->setGestureModel(gestmodel);
+	return true;
 }
 
 /**
@@ -922,15 +962,12 @@ void ThesisProject::runHandDiagnostic(){
 
 GestureModel* ThesisProject::getGestureModel()
 {
-/*	if (gestureModel == 0){
-		distanceCalculator = new EuclideanDistance();
-		//TODO VER CUAL ES EL RATE!!
-		dtwAlgorithm = new ItakuraDTWAlgorithm(0.3,distanceCalculator);
+	if (gestureModel == 0){
+		dtwAlgorithm = new AddGestureToModelAlgorithm(0);
 		gestureModel = new GestureModel(dtwAlgorithm);
 	}
 
-	return gestureModel;*/
-	return Container::getInstance()->getGestureModel();
+	return gestureModel;
 
 }
 
@@ -1211,7 +1248,7 @@ void ThesisProject::updateShowFiletered(){
 
 SystemInfo* ThesisProject::getSystemInfo(){
 	if (sysInfo==0)
-		sysInfo = new SystemInfo(80,60);
+		sysInfo = new SystemInfo(Container::getInstance()->getWorkW(),Container::getInstance()->getWorkH());
 	return sysInfo;
 }
 

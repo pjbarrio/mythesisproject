@@ -25,7 +25,6 @@ private:
 
 protected:
 
-	double **calculateMatrix(DTWData*,DTWData*);
 
 	int getInfValue(int,int,int);
 

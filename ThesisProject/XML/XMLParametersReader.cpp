@@ -131,7 +131,6 @@ void XMLParametersReader::readParametersElement(){
 	reader.readNext();
 	double normalizedTime = NormalizedTime.toDouble();
 	cont->setNormalizedTime(normalizedTime);
-
 	// 2.0;
 
 	QString MaxAcceptedDTWValue = reader.readElementText();
@@ -468,9 +467,6 @@ void XMLParametersReader::readParametersElement(){
 	cont->setDTWAlgorithm(dTWAlgorithm);
 
 	//Paralelogramo de Itakura
-
-	GestureModel* gestureModel = new GestureModel(dTWAlgorithm);
-	cont->setGestureModel(gestureModel);
 
 	reader.readNext();
 }
