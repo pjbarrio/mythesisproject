@@ -131,7 +131,6 @@ bool NeuralNet::startNet()
 
 	}
 
-
 	normal_filter = new NormalFilter();
 
 	input_values  = new fann_type[4800];

@@ -38,6 +38,7 @@ private:
 	double desp;
 	double x1,x2,y1,y2;
 	bool clickperformed;
+	int sleep;
 };
 
 #endif /** CURSORVISUALIZER_H_ */

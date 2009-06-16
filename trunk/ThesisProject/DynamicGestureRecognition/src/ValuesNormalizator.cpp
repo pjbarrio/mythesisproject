@@ -6,6 +6,7 @@
  */
 
 #include "ValuesNormalizator.h"
+#include "../../GUI/Utils/Container.h"
 
 /**
  * This method saves the SystemInfo object.
@@ -14,6 +15,7 @@
 ValuesNormalizator::ValuesNormalizator(SystemInfo* sysinfo) {
 	cout << "Hello Values Normalizator\n";
 	this->sysinfo = sysinfo;
+
 }
 
 /**
@@ -33,6 +35,8 @@ ValuesNormalizator::~ValuesNormalizator() {
 
 DTWData *ValuesNormalizator::normalizeSignal(DTWData *signal)
 {
+	norm_Time = Container::getInstance()->getNormalizedTime();
+
 	double maxTime = 0;
 
 	DTWData* ret = new DTWData();
@@ -77,7 +81,7 @@ DTWData *ValuesNormalizator::normalizeSignal(DTWData *signal)
 
 		double coord = signal->getY();
 
-		double lastTime = ((signal->getX() - firstTime)/difTime)*NORMALIZED_TIME;
+		double lastTime = ((signal->getX() - firstTime)/difTime)*norm_Time;
 
 		valToSave = coord - avg;
 

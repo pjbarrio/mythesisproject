@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'gestureparameter.h'
 **
-** Created: Sat 13. Jun 18:37:07 2009
+** Created: Tue 16. Jun 18:20:21 2009
 **      by: The Qt Meta Object Compiler version 61 (Qt 4.5.0)
 **
 ** WARNING! All changes made in this file will be lost!

@@ -7,6 +7,7 @@
 
 #include "ItakuraDTWAlgorithm.h"
 #include "math.h"
+#include "../../GUI/Utils/Container.h"
 
 /**
  * This constructor method saves the rate value used to create
@@ -37,7 +38,7 @@ ItakuraDTWAlgorithm::~ItakuraDTWAlgorithm()
 
 bool ItakuraDTWAlgorithm::acceptDTWValue(double dtwvalue)
 {
-	return (dtwvalue < DTWAlgorithm::maxAcceptedDTWValue);
+	return (dtwvalue < Container::getInstance()->getMaxAcceptedDTWValue());
 }
 
 /**

@@ -23,6 +23,11 @@ InitVisualizer::InitVisualizer(CoordsGetter* cg, SystemInfo* si,ThesisProject* t
 	this->sv = sv;
 	firstXY = true;
 	firstVelocity = true;
+	NO_VELOCITY_DETECTED = Container::getInstance()->getNoVelocityDetected();
+	NO_ACCELERATION_DETECTED = Container::getInstance()->getNoAccelerationDetected();
+	MAX_VELOCITY = Container::getInstance()->getMaxVelocity();
+	MAX_ACCELERATION = Container::getInstance()->getMaxAcceleration();
+	DRAW_SIZE = Container::getInstance()->getDrawSize();
 }
 
 /**
@@ -35,6 +40,11 @@ InitVisualizer::~InitVisualizer() {
 	this->sv = 0;
 	firstXY = false;
 	firstVelocity = false;
+	NO_VELOCITY_DETECTED = 0;
+	NO_ACCELERATION_DETECTED = 0;
+	MAX_VELOCITY = 0;
+	MAX_ACCELERATION = 0;
+	DRAW_SIZE = 0;
 }
 
 /**

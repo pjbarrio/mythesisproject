@@ -6,6 +6,7 @@
  */
 
 #include "FIRfilter.h"
+#include "../GUI/Utils/Container.h"
 
 /**
  * This method initializes the useful variables to achieve
@@ -20,15 +21,15 @@ FIRfilter::FIRfilter() {
 	active =0;
 
 
-	k_factor = 1;//OJO: tiene que ser menor o igual a frameWindow
+	k_factor = Container::getInstance()->getK_Factor();//OJO: tiene que ser menor o igual a frameWindow
 
-	frameWindow = 5; // ventana de analisis
+	frameWindow = Container::getInstance()->getFrameWindow(); // ventana de analisis
 
 
 	previousXValues = new float[frameWindow];
 	previousYValues = new float[frameWindow];
 
-	delta = 0.20;
+	delta = Container::getInstance()->getDelta();
 
 
 

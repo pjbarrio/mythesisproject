@@ -156,6 +156,7 @@ private:
 	void updateGesturesView();
 	void updateEventsView();
 	void updateEventView(EventModel*);
+	bool TransferGestures();
 private slots:
 	void showNormal();
 	void addGesture();

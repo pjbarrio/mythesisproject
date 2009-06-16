@@ -22,8 +22,6 @@ public:
 
 protected:
 
-	double **calculateMatrix(DTWData*,DTWData*);
-
 	int getInfValue(int,int,int);
 
 	int getSupValue(int,int,int);

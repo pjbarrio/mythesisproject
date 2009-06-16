@@ -6,6 +6,7 @@
  */
 
 #include "Initializer.h"
+#include "../../GUI/Utils/Container.h"
 
 /**
  * This method saves the coordGetter which will be used to
@@ -32,11 +33,12 @@ Initializer::~Initializer() {
 
 void Initializer::start()
 {
+	Container* cont = Container::getInstance();
 	init();
 	double x,y,t;
 	while (isRunning()){
 		coordGetter->getNextCoords(x,y,t);
-		if (x==-1 && y==-1)
+		if (x==cont->getXValueDis() && y==cont->getYValueDis())
 			setRunning(false);
 		else
 			setNewInput(x,y,t);

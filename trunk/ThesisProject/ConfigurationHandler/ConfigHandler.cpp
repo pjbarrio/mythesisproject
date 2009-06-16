@@ -6,6 +6,7 @@
  */
 
 #include "ConfigHandler.h"
+#include "../GUI/Utils/Container.h"
 
 /**
  * This constructor method stores the LogHandler object to inform the events
@@ -36,7 +37,7 @@ ConfigHandler::~ConfigHandler() {
 std::string ConfigHandler::getTrackerNetFile()
 {
 
-	return "NetDesktopSkin.net";
+	return Container::getInstance()->getTnf();
 
 	//return "NetDesktopskin_23125.net"; //anda bien!
 
@@ -50,8 +51,7 @@ std::string ConfigHandler::getTrackerNetFile()
 std::string ConfigHandler::getGestureNetFile()
 {
 
-	return "Net_Desktop_skin_Gesture_2096.net";
-
+	return Container::getInstance()->getGnf();
 
 }
 
@@ -78,7 +78,7 @@ bool ConfigHandler::openConfigFile(std::string configFile)
 
 float ConfigHandler::getGestureThreshold()
 {
-	return 50.0;
+	return Container::getInstance()->getGestureThreshold();
 
 }
 
@@ -90,7 +90,7 @@ float ConfigHandler::getGestureThreshold()
 int ConfigHandler::getMax_frames_to_analize()
 {
 
-	return 20;
+	return Container::getInstance()->getMaxFramesToAnalize();
 
 }
 
@@ -113,7 +113,7 @@ std::string ConfigHandler::getSkinMaskFile()
 
 float ConfigHandler::getLightStabilizerThresholdDelta()
 {
-	return 0.20; // es un valor para ver cuando paso de un estado de mano abierta a cerrada o viceversa
+	return Container::getInstance()->getThresholdDelta(); // es un valor para ver cuando paso de un estado de mano abierta a cerrada o viceversa
 
 }
 
@@ -126,7 +126,7 @@ int ConfigHandler::getSkinDelta()
 {
 
 	logger->addEntry(componenetName,"El valor delta debe ser mayor a cero. Se uso el valor por defecto--> delta = 42");
-	return 42;//es el valor del umbral para decidir si es piel o no
+	return Container::getInstance()->getSkinDelta();//es el valor del umbral para decidir si es piel o no
 
 
 }

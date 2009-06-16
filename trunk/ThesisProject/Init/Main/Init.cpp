@@ -41,7 +41,7 @@ int Init::start(int argc, char *argv[]){
 
 	QApplication::setQuitOnLastWindowClosed(false);
 
-	SystemInfo* si = new SystemInfo(80,60);
+	SystemInfo* si = new SystemInfo(Container::getInstance()->getWorkW(),Container::getInstance()->getWorkH());
 
 	NewGesture* newGesture = new NewGesture(si);
 

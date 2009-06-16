@@ -13,6 +13,7 @@
 #include <sstream>
 #include <fstream>
 #include <iomanip>
+#include "../GUI/Utils/Container.h"
 
 /**
  * This method saves the LogHandler reference to log every event
@@ -61,15 +62,16 @@ void FilterHandler::init(){
 
 		 sf->setDelta(SkinDelta);
 
+		 Container* cont = Container::getInstance();
 
 		 if ( !sf->skinValuesGetter() ){
 
 			 logger->addEntry(componentName,"Failed to load Skin Mask. Using Default Values");
 			 logger->addEntry(componentName,"Default Values--> Hue:11 -- Sat:106 -- Delta:42");
 
-			 sf->seHValue(11);
-			 sf->setSValue(106);
-			 sf->setDelta(42);
+			 sf->seHValue(cont->getHValue());
+			 sf->setSValue(cont->getSValue());
+			 sf->setDelta(cont->getSkinDelta());
 
 		 }
 		 else

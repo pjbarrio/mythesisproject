@@ -9,6 +9,7 @@
 #include "wtypes.h"
 #include "iostream.h"
 #include "math.h"
+#include "../../GUI/Utils/Container.h"
 
 /**
  * This method initializes the variables used to work. These are: resolution,
@@ -25,6 +26,7 @@ cursorVisualizer::cursorVisualizer(SystemInfo* sysInfo) {
 	lastx = p.x;
 	lasty = p.y;
 	clickperformed = false;
+	sleep = Container::getInstance()->getSleepValue();
 }
 
 /**
@@ -114,7 +116,7 @@ void cursorVisualizer::drawSequence(int ix1,int iy1,int ix2,int iy2){
 			while (y1 < y2){
 				x1++;
 				y1 = pend * x1 + desp;
-				Sleep(1);
+				Sleep(sleep);
 				SetCursorPos(x1,y1);
 			}
 		}
@@ -124,14 +126,14 @@ void cursorVisualizer::drawSequence(int ix1,int iy1,int ix2,int iy2){
 			while (y2 < y1){
 				x1++;
 				y1 = pend * x1 + desp;
-				Sleep(1);
+				Sleep(sleep);
 				SetCursorPos(x1,y1);
 			}
 		}
 		else{
 			while (x1 < x2){
 				x1++;
-				Sleep(1);
+				Sleep(sleep);
 				SetCursorPos(x1,y1);
 			}
 		}
@@ -143,7 +145,7 @@ void cursorVisualizer::drawSequence(int ix1,int iy1,int ix2,int iy2){
 			while (y1 < y2){
 				x1--;
 				y1 = pend * x1 + desp;
-				Sleep(1);
+				Sleep(sleep);
 				SetCursorPos(x1,y1);
 			}
 		}
@@ -153,14 +155,14 @@ void cursorVisualizer::drawSequence(int ix1,int iy1,int ix2,int iy2){
 			while (y2 < y1){
 				x1--;
 				y1 = pend * x1 + desp;
-				Sleep(1);
+				Sleep(sleep);
 				SetCursorPos(x1,y1);
 			}
 		}
 		else{
 			while (x2 < x1){
 				x1--;
-				Sleep(1);
+				Sleep(sleep);
 				SetCursorPos(x1,y1);
 			}
 		}
@@ -169,19 +171,19 @@ void cursorVisualizer::drawSequence(int ix1,int iy1,int ix2,int iy2){
 		if (y1 < y2){
 			while (y1 <= y2){
 				y1++;
-				Sleep(1);
+				Sleep(sleep);
 				SetCursorPos(x1,y1);
 			}
 		}
 		else if (y2 < y1){
 			while (y2 < y1){
 				y1--;
-				Sleep(1);
+				Sleep(sleep);
 				SetCursorPos(x1,y1);
 			}
 		}
 		else{
-			Sleep(1);
+			Sleep(sleep);
 			SetCursorPos(x2,y2);
 		}
 	}

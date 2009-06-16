@@ -52,11 +52,11 @@ private:
 	void updateVelocityDrawer(double);
 	void updateAccelerationDrawer(double);
 	void drawFilteredImage(QPixmap*);
-	static const double NO_VELOCITY_DETECTED = -1.0;
-	static const double NO_ACCELERATION_DETECTED = -0.1;
-	static const double MAX_VELOCITY = 110.0;
-	static const double MAX_ACCELERATION = 3400.0;
-	static const int DRAW_SIZE = 30;
+	double NO_VELOCITY_DETECTED;
+	double NO_ACCELERATION_DETECTED;
+	double MAX_VELOCITY;
+	double MAX_ACCELERATION;
+	int DRAW_SIZE;
 	DistanceCalculator* distanceCalculator;
 	void writeCoords(double,double);
 	void drawHand(bool);

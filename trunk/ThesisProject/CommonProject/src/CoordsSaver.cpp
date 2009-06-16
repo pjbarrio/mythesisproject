@@ -6,6 +6,7 @@
  */
 
 #include "CoordsSaver.h"
+#include "../../GUI/Utils/Container.h"
 
 /**
  * This method creates an empty list which will store the buffers
@@ -60,5 +61,6 @@ void CoordsSaver::addNewBuffer(Buffer_PC *buffer)
  */
 
 void CoordsSaver::finishCoordSaver(){
-	saveCoords(-1,-1);
+	Container* cont = Container::getInstance();
+	saveCoords(cont->getXValueDis(),cont->getYValueDis());
 }
