@@ -869,7 +869,7 @@ void ThesisProject::startApplication(){
 
     connect(timer, SIGNAL(timeout()), this, SLOT(captureNextFrame()));
 
-    timer->start(13);
+    timer->start(Container::getInstance()->getFrequency());
 
 	ts->start();
 

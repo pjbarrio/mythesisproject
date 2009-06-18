@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Parameters>
-    <TrackerNetFile>NetDesktopSkin.net</TrackerNetFile>
+    <TrackerNetFile>NetFormatted_18761.net</TrackerNetFile>
     <GestureNetFile>Net_Desktop_skin_Gesture_2096.net</GestureNetFile>
     <GestureThreshold>50</GestureThreshold>
     <MaxFramesToAnalize>20</MaxFramesToAnalize>
@@ -47,4 +47,5 @@
     <DistanceCalculatorDTWIndex>0</DistanceCalculatorDTWIndex>
     <Rate>0.3</Rate>
     <DTWAlgorithmIndex>0</DTWAlgorithmIndex>
+    <Frequency>13</Frequency>
 </Parameters>

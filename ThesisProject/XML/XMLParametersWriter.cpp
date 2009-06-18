@@ -297,6 +297,8 @@ void XMLParametersWriter::writeParametersElement()
 	xmlWriter->writeTextElement("DTWAlgorithmIndex",QString::number(dTWAlgorithmIndex));
 	//0
 
+	int frequency = cont->getFrequency();
+	xmlWriter->writeTextElement("Frequency",QString::number(frequency));
 }
 
 

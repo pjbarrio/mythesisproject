@@ -471,4 +471,13 @@ void XMLParametersReader::readParametersElement(){
 	//Paralelogramo de Itakura
 
 	reader.readNext();
+	reader.readNext();
+
+	QString Frequency = reader.readElementText();
+	int frequency = Frequency.toInt();
+	cont->setFrequency(frequency);
+
+	reader.readNext();
+
+
 }
