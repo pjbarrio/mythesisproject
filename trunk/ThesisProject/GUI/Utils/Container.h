@@ -87,6 +87,11 @@ public:
     ValuesNormalizator *getValuesNormalizator() const {return valuesNormalizator;}
 
     void initGestureParameters();
+
+    int getFrequency() const {return Frequency;}
+
+    void setFrequency(int Frequency) {this->Frequency = Frequency;}
+
     int getDistanceCalculatorAGMIndex() const {return distanceCalculatorAGMIndex;}
 
     void setDistanceCalculatorAGMIndex(int distanceCalculatorAGMIndex) {this->distanceCalculatorAGMIndex = distanceCalculatorAGMIndex;}
@@ -324,6 +329,8 @@ private:
 	int workW;
 	int workH;
 	double rate;
+
+	int Frequency;
 
 	int distanceCalculatorAGMIndex;
 	int valuesNormalizatorIndex;
