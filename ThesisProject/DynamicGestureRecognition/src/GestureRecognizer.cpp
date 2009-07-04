@@ -49,11 +49,19 @@ Gesture *GestureRecognizer::getRecognizedGesture(DTWData *txData, DTWData *tyDat
 
 		Gesture *auxGesture = getGestureModel()->getNextGesture();
 
-		txdtw = getDtwAlgorithm()->computeDTWValue(auxGesture->getTx(),txData);
+		DTWData* auxTx = auxGesture->getTx();
+
+		txdtw = getDtwAlgorithm()->computeDTWValue(auxTx,txData);
+
+		cout << "\nComparación <T , X> " << txdtw << "\n";
 
 		if (getDtwAlgorithm()->acceptDTWValue(txdtw)){
 
-			tydtw = getDtwAlgorithm()->computeDTWValue(auxGesture->getTy(),tyData);
+			DTWData* auxTy = auxGesture->getTy();
+
+			tydtw = getDtwAlgorithm()->computeDTWValue(auxTy,tyData);
+
+			cout << "\nComparación <T , Y> " << tydtw << "\n";
 
 			if (getDtwAlgorithm()->acceptDTWValue(tydtw)){
 
@@ -70,6 +78,8 @@ Gesture *GestureRecognizer::getRecognizedGesture(DTWData *txData, DTWData *tyDat
 		rt = GestureModelHandler::getNoGestureDetectedInstance();
 
 	return rt;
+
+
 
 }
 

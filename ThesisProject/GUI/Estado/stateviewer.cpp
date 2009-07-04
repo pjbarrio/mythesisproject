@@ -6,12 +6,12 @@
  * representation.
  */
 
-StateViewer::StateViewer(QWidget *parent)
+StateViewer::StateViewer(SystemInfo* si,QWidget *parent)
     : QDialog(parent)
 {
 	ui.setupUi(this);
 	createArrays();
-
+	ui.widget_4->setSystemInfo(si);
 }
 
 /**

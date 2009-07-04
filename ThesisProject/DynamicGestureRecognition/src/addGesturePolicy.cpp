@@ -51,6 +51,7 @@ bool addGesturePolicy::canBeAdded(Gesture *gesture, GestureModel *model)
 		}
 		model->next();
 	}
+
 	return !conflictDetected;
 }
 

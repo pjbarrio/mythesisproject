@@ -107,11 +107,11 @@ void DynamicGestureRecognitionAlgorithm::addNewInput(double x, double y, double 
 
 		getAgm()->setNewInput(xa,ya,ta);
 
-		if (getAgm()->DetectedGestureActivation() && !getInGesture())
+		if (!getInGesture() && getAgm()->DetectedGestureActivation())
 			ActivationDetected();
-		else if (getAgm()->DetectedErroneousGestureActivation() && getInGesture())
+		else if (getInGesture() && getAgm()->DetectedErroneousGestureActivation())
 			ErroneusGestureActivation();
-		else if (getAgm()->DetectedGestureDeactivation() && getInGesture())
+		else if (getInGesture() && getAgm()->DetectedGestureDeactivation())
 			DeactivationDetected();
 		else
 			NoChangeDetected();
@@ -248,10 +248,15 @@ void DynamicGestureRecognitionAlgorithm::RecognizeMotionDetected()
 		getTy()->removeLastXYPair();
 	}
 
+	DTWData* normTX = valuesNormalizator->normalizeSignal(getTx());
 
-	Gesture *gesture = getGr()->getRecognizedGesture(valuesNormalizator->normalizeSignal(getTx()),valuesNormalizator->normalizeSignal(getTy()));
+	DTWData* normTY = valuesNormalizator->normalizeSignal(getTy());
+
+	Gesture *gesture = getGr()->getRecognizedGesture(normTX,normTY);
 
 	Event *event = getGestureEventMapper()->getEvent(gesture);
+
+	cout << "Evento: " << event->getId() << "\n";
 
 	event->execute();
 }

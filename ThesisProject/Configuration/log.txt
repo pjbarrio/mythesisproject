@@ -1,4 +1,4 @@
-log created on 07/02/09 22:42:17
+log created on 07/01/09 18:59:54
 
 
 
@@ -19,8 +19,6 @@ log created on 07/02/09 22:42:17
 
 
 --- NetHandler ---
-- The Network was succesfully created from NetDesktopSkin.net
+- The Network file does not exist
 
-- Average time per Frame: 1.23729
-
-log close on 07/02/09 22:42:30
+log close on 07/01/09 18:59:56

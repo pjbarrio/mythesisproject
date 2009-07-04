@@ -163,6 +163,9 @@ void GestureParameter::accept(){
 	if (dirtydTWAlgorithm){
 		cont->setDTWAlgorithm(dTWAlgorithm);
 	}
+	if (dirtyrate){
+		cont->setRate(rate);
+	}
 	QDialog::accept();
 }
 

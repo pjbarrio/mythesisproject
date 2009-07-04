@@ -17,13 +17,14 @@
 #include "../../DynamicGestureRecognition/CircularBuffer/CircularBuffer.h"
 #include <QList>
 #include <QLabel>
+#include "../../Utils/SystemInfo.h"
 
 class StateViewer : public QDialog
 {
     Q_OBJECT
 
 public:
-    StateViewer(QWidget *parent = 0);
+    StateViewer(SystemInfo*,QWidget *parent = 0);
     ~StateViewer();
 
     /**

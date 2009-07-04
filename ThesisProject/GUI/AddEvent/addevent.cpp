@@ -25,16 +25,24 @@ AddEvent::~AddEvent()
 
 void AddEvent::openExecutableFile(){
 
-	QString *filter = new QString();
+	QString filter;
 
-	file = QFileDialog::getOpenFileName(this,
-	     "Abrir archivo ejecutable o archivo común", "C:/", tr("Archivos ejecutables (*.exe *.com *.bat);;Otros Archivos (*.*)"),filter);
+	QStringList files;
+	QFileDialog dialog(this, tr("Abrir archivo ejecutable o archivo común"));
+	dialog.setDirectory("C:/");
+	dialog.setFileMode(QFileDialog::ExistingFile);
+	dialog.setNameFilter(tr("Archivos ejecutables (*.exe *.com *.bat);;Otros Archivos (*.*)"));
 
-	if (QString::compare(*filter,QString("Archivos ejecutables (*.exe *.com *.bat)")) == 0){
+	if (dialog.exec()){
+		file = dialog.selectedFiles().first();
+		filter = dialog.selectedNameFilter();
+	}
+
+	if (QString::compare(filter,QString("Archivos ejecutables (*.exe *.com *.bat)")) == 0){
 		setIsExe(true);
 		ui.argCheck->setEnabled(true);
 	}
-	if (QString::compare(*filter,QString("Otros Archivos (*.*)")) == 0){
+	if (QString::compare(filter,QString("Otros Archivos (*.*)")) == 0){
 		setIsOther(true);
 		ui.argCheck->setEnabled(false);
 	}

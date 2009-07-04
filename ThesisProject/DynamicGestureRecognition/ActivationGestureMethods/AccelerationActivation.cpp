@@ -75,6 +75,9 @@ void AccelerationActivation::setNewInput(double x, double y, double t)
 	getXValues()->addValue(x);
 	getYValues()->addValue(y);
 	getTValues()->addValue(t);
+
+	cout << "\n" << x << " | " << y << " | " << t;
+
 	int size = getXValues()->size();
 	if (size>1){
 		double xant = getXValues()->at(size-2);
@@ -83,15 +86,21 @@ void AccelerationActivation::setNewInput(double x, double y, double t)
 
 		double dist = getDistance(x,y,xant,yant);
 		double velocity = dist / (t-tant);
+
 		getVelocity()->addValue(velocity);
+
+
+		cout << " | "<< velocity;
 
 		if (size==2)
 			getAcceleration()->addValue(0);
 		if (size>2){
 			double vant = getVelocity()->at(getVelocity()->size() - 2);
 
-			getAcceleration()->addValue((velocity-vant)/(t-tant));
+			double accel = (velocity-vant)/(t-tant);
+			getAcceleration()->addValue(accel);
 
+			cout << " | " << accel;
 
 		}
 	}
@@ -111,7 +120,11 @@ bool AccelerationActivation::DetectedGestureActivation()
 {
 	bool td = trajectoryDetected();
 
+//	cout << "Trajectory Detected: " << td << "\n";
+
 	bool ad = AccelerationDetected();
+
+//	cout << "Acceleration Detected: " << ad << "\n";
 
 	return (td && ad);
 }
@@ -127,8 +140,20 @@ bool AccelerationActivation::DetectedGestureDeactivation()
 {
 	bool sd = SlowDownDetected();
 
+//	cout << "SlowDownDetected: "<< sd << "\n";
+
 	bool min_p = getNumber_of_points() >= min_number_of_points;
 
+//	cout  << "Number of Points: "  << getNumber_of_points() << "\n";
+
+	if (sd && min_p){
+		setNumber_of_points(0);
+		getXValues()->clear();
+		getYValues()->clear();
+		getTValues()->clear();
+		getVelocity()->clear();
+		getAcceleration()->clear();
+	}
 	return  sd && min_p;
 }
 
@@ -164,11 +189,37 @@ bool AccelerationActivation::DetectedErroneousGestureActivation()
 {
 	bool sd = SlowDownDetected();
 
+//	cout << "SlowDownDetected: " << sd << "\n";
+
 	bool min_p = getNumber_of_points() < min_number_of_points;
 
-	bool ftexc = (getTValues()->at(getTValues()->size()-1) - firstTime) > maxTimeGesture;
+//	cout << "Number of Points: " << getNumber_of_points() << "\n";
 
-	return ((sd && min_p) || ftexc);
+	double time = getTValues()->at(getTValues()->size()-1) - firstTime;
+
+//	cout << "Time : " << time << "\n";
+
+	bool ftexc = (time > maxTimeGesture);
+
+	bool ret = ((sd && min_p) || ftexc);
+
+	if (ret){
+
+		cout << "\nSUCEDIÓ PORQUE: \n";
+		cout << "SlowDownDetected: " << sd << "\n";
+		cout << "Number of Points: " << getNumber_of_points() << "\n";
+		cout << "Time : " << time << "\n";
+
+		setNumber_of_points(0);
+		getXValues()->clear();
+		getYValues()->clear();
+		getTValues()->clear();
+		getVelocity()->clear();
+		getAcceleration()->clear();
+
+	}
+
+	return ret;
 }
 
 /**
@@ -195,7 +246,7 @@ bool AccelerationActivation::AccelerationDetected()
 
 			if (relaxedPoints==0){
 				setNumber_of_points(i_threshold+1);
-				firstTime = getTValues()->at(getTValues()->size()-1);
+				firstTime = getTValues()->at(getTValues()->size()-1-i_threshold);
 				return true;
 			}
 

@@ -15,6 +15,7 @@ paintMovement::paintMovement(QWidget *parent)
 	p1 = new QPen(*q1, 12, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin);
 	this->xvalues = 0;
 	this->yvalues = 0;
+
 }
 
 /**
@@ -78,11 +79,11 @@ void paintMovement::paintEvent(QPaintEvent *event)
 
     	painter.setPen(*p1);
 
-    	painter.drawPoint(adapt(xvalues->at(index),w),adapt(yvalues->at(index),h));
+    	painter.drawPoint(adapt(xvalues->at(index),w,ancho),adapt(yvalues->at(index),h,alto));
 
     	alpha += inc;
 
-    	index++;
+     	index++;
 
     }
 }
@@ -103,6 +104,6 @@ void paintMovement::setData(CircularBuffer* xs,CircularBuffer* ys){
  * Widget size.
  */
 
-int paintMovement::adapt(int val,int max){
-	return (val*max)/ancho;
+int paintMovement::adapt(int val,int max,int maxloc){
+	return ((double)val/(double)maxloc)*(double)max;
 }
