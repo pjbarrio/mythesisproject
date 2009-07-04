@@ -17,23 +17,12 @@ AddGestureToModelAlgorithm::~AddGestureToModelAlgorithm() {
 }
 
 /**
- * This method returns a escape value.
- */
-
-double AddGestureToModelAlgorithm::computeDTWValue(DTWData *dtw1, DTWData *dtw2)
-{
-	return 0.0;
-}
-
-/**
  * This method returns true. We need this
  */
 
 bool AddGestureToModelAlgorithm::acceptDTWValue(double value)
 {
-	return true;
+	return false;
 }
-
-
 
 

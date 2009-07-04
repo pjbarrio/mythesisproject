@@ -602,7 +602,6 @@ void XmlStreamReader::createAssociation(QString idGest, QString idEvent, QString
 	bool added;
 	if (QString::compare(isActive,QString("true")) == 0)
 		active = true;
-
 	if (gem!=0);
 		gem->addAssociation(g,e,active,added);
 }

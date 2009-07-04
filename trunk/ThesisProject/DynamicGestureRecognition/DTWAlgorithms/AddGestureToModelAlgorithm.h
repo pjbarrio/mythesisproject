@@ -18,12 +18,11 @@ class AddGestureToModelAlgorithm: public DTWAlgorithm {
 public:
 	AddGestureToModelAlgorithm(DistanceCalculator*);
 	virtual ~AddGestureToModelAlgorithm();
-	double computeDTWValue(DTWData*,DTWData*);
 	bool acceptDTWValue(double);
 protected:
-	int getInfValue(int a,int b,int c) {return 0;};
+	int getInfValue(int a,int b,int c) {return 1;};
 
-	int getSupValue(int a,int b,int c) {return 0;};
+	int getSupValue(int a,int b,int c) {return 1;};
 
 };
 

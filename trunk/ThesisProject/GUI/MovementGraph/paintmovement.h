@@ -44,7 +44,7 @@ private:
     int inc;
     int ancho;
     int alto;
-    int adapt(int,int);
+    int adapt(int,int,int);
 };
 
 #endif // PAINTMOVEMENT_H

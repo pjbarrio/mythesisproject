@@ -25,7 +25,7 @@ CameraVideo::~CameraVideo() {
  */
 
 bool CameraVideo::initCamDevice(){
-	index = 0;
+	index = 8;
 	logger->addEntry("Camera_Video","created Successfully");
 	return true;
 }

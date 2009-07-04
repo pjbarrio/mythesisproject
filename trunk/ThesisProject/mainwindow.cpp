@@ -43,6 +43,7 @@ ThesisProject::ThesisProject(AddGesture* addGesture,AddEvent* addEvent,AddAsocia
 	this->about = about;
 	this->gestureParameter = gp;
 	this->sysInfo = sysInfo;
+	this->ConfigurationFileName = 0;
 	initVariables();
 
 	createCompleteTrayIcon();
@@ -105,6 +106,7 @@ void ThesisProject::updateAssociationsView(){
 	bool activated;
 	while (gem->hasNext()){
 		association = gem->getActualAssociation();
+		activated = association->getActivated();
 		QString gid(association->getGesture()->getId().c_str());
 		if (QString::compare(NoDet,gid)!=0)
 		{
@@ -112,7 +114,6 @@ void ThesisProject::updateAssociationsView(){
 			QString eid(association->getEvent()->getId().c_str());
 			ass = new QString(gid + " <-> " + eid);
 			qListItem->setText(*ass);
-			activated = association->getActivated();
 			if (activated)
 				qListItem->setCheckState(Qt::Checked);
 			else
@@ -177,6 +178,19 @@ void ThesisProject::openConfiguration(){
 	QString* fileName = selectXmlFile();
 	if (fileName != 0){
 		ConfigurationFileName = fileName;
+		delete (getGestureModel());
+		gestureModel = 0;
+		delete (getKeyEventModel());
+		keyEventModel = 0;
+		delete (getCombinedKeyEventModel());
+		combinedKeyEventModel = 0;
+		delete (getApplicationEventModel());
+		AppEventModel = 0;
+		delete (getOpenFileEventModel());
+		fileEventModel = 0;
+
+		GestureEventMapper::deleteInstance();
+
 		fillModels(*fileName,getGestureModel(),getKeyEventModel(),getCombinedKeyEventModel(),
 				getApplicationEventModel(),getOpenFileEventModel(),GestureEventMapper::getInstance());
 		updateListViews();
@@ -188,13 +202,19 @@ void ThesisProject::openConfiguration(){
  */
 
 QString* ThesisProject::selectXmlFile(){
-	QString* filter = new QString();
-	QString fileName = QFileDialog::getOpenFileName(this,
-			 "Seleccionar xml de configuración", Container::getInstance()->getConfigurationFolder(), tr("Archivos Configuración (*.xml)"),filter);
-	if (QString::compare(*filter,tr("Archivos Configuración (*.xml)")) == 0){
-		return new QString(fileName);
+	QStringList files;
+	QString fileName;
+	QFileDialog dialog(this, tr("Seleccionar xml de configuración"));
+	dialog.setFileMode(QFileDialog::ExistingFile);
+	dialog.setNameFilter(tr("Archivos Configuración (*.xml)"));
+
+	if (dialog.exec()){
+		files = dialog.selectedFiles();
+		return new QString(files.first());
 	}
-	return 0;
+	else
+		return 0;
+
 }
 
 /**
@@ -479,7 +499,6 @@ void ThesisProject::initVariables(){
     sysInfo = 0;
     coordSaver = 0;
 
-    ConfigurationFileName = 0;
     rightGestureParameters = false;
 }
 
@@ -509,8 +528,6 @@ void ThesisProject::addGesture()
 		QString* id = addGestureDialog->getId();
 		DTWData* tx = addGestureDialog->getTx();
 		DTWData* ty = addGestureDialog->getTy();
-
-
 
 		std::string* s1 = new std::string(id->toStdString());
 
@@ -883,19 +900,21 @@ void ThesisProject::startApplication(){
 bool ThesisProject::TransferGestures(){
 	Container* cont = Container::getInstance();
 	GestureModel* gestmodel = new GestureModel(cont->getDTWAlgorithm());
-
 	GestureEventMapper* gestEventMap = GestureEventMapper::getInstance();
 	gestEventMap->begin();
 	while (gestEventMap->hasNext()){
 		Association* as = gestEventMap->getActualAssociation();
-		if (as->getActivated()){
-			bool can = gestmodel->addGesture(as->getGesture());
-			if (!can){
-				//TODO Podría verificarse que se trate del mismo evento
-				return false;
+		if (std::strcmp(as->getGesture()->getId().c_str(),"NoGestureDetected")!=0){
+			if (as->getActivated()){
+				bool can = gestmodel->addGesture(as->getGesture());
+				if (!can){
+					//TODO Podría verificarse que se trate del mismo evento
+					return false;
+				}
 			}
 		}
 		gestEventMap->next();
+
 	}
 
 	cont->setGestureModel(gestmodel);
@@ -963,10 +982,9 @@ void ThesisProject::runHandDiagnostic(){
 GestureModel* ThesisProject::getGestureModel()
 {
 	if (gestureModel == 0){
-		dtwAlgorithm = new AddGestureToModelAlgorithm(0);
+		dtwAlgorithm = new AddGestureToModelAlgorithm(new EuclideanDistance());
 		gestureModel = new GestureModel(dtwAlgorithm);
 	}
-
 	return gestureModel;
 
 }
@@ -1131,7 +1149,7 @@ void ThesisProject::finishTrack(){
 
 	initiatedCamera = false;
 
-	if (Container::getInstance()->getStateSupport()){
+	if (Container::getInstance()->getStateSupport() && stateViewer->isVisible()){
 		ViewState->setEnabled(false);
 		QMetaObject::invokeMethod(stateViewer,"close");
 	}

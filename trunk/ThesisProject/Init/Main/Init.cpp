@@ -51,7 +51,7 @@ int Init::start(int argc, char *argv[]){
 
 	AddAsociation* addAsociation = new AddAsociation();
 
-	StateViewer* stateViewer = new StateViewer();
+	StateViewer* stateViewer = new StateViewer(si);
 
 	HandDiagnostic* handDiagnostic = new HandDiagnostic();
 
@@ -82,7 +82,7 @@ int Init::start(int argc, char *argv[]){
 
 void Init::loadParameters(){
 	XMLParametersReader* xmlReader = new XMLParametersReader();
-	xmlReader->readFile("Configuration/Parameters.xml");
+	xmlReader->readFile("Parameters/Parameters.xml");
 }
 
 /*
@@ -91,5 +91,5 @@ void Init::loadParameters(){
 
 void Init::saveParameters(){
 	XMLParametersWriter* xmlWriter = new XMLParametersWriter();
-	xmlWriter->writeXML("Configuration/Parameters.xml");
+	xmlWriter->writeXML("Parameters/Parameters.xml");
 }
