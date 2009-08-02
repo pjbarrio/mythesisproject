@@ -23,10 +23,14 @@ cursorVisualizer::cursorVisualizer(SystemInfo* sysInfo) {
 	this->sysInfo->getSystemResolution(horizontal,vertical);
 	POINT p;
 	GetCursorPos(&p);
-	lastx = p.x;
-	lasty = p.y;
+	lastx = adapt(p.x,horizontal,65535);
+	lasty = adapt(p.y,vertical,65535);
 	clickperformed = false;
 	sleep = Container::getInstance()->getSleepValue();
+
+	incx = 65535.0 / (double)horizontal;
+	incy = 65535.0 / (double)vertical;
+
 }
 
 /**
@@ -47,12 +51,12 @@ cursorVisualizer::~cursorVisualizer() {
  * This Method shows the cursor pointer on the screen.
  */
 
-void cursorVisualizer::setCursorPos(int x, int y)
+void cursorVisualizer::setCursorPos(int x, int y, bool click)
 {
-	valx = adapt(x,minhori,horizontal);
-	valy = adapt(y,minver,vertical);
+	valx = adapt(x,minhori,65535);
+	valy = adapt(y,minver,65535);
 
-	drawSequence(lastx,lasty,valx,valy);
+	drawSequence(lastx,lasty,valx,valy,click);
 
 	lastx = valx;
 	lasty = valy;
@@ -64,10 +68,10 @@ void cursorVisualizer::setCursorPos(int x, int y)
  */
 
 void cursorVisualizer::click(){
-	if (!clickperformed){
+//	if (!clickperformed){
 		mouse_event(MOUSEEVENTF_LEFTDOWN, lastx, lasty, 0, 0);
 		clickperformed = true;
-	}
+//	}
 }
 
 /**
@@ -75,10 +79,10 @@ void cursorVisualizer::click(){
  */
 
 void cursorVisualizer::releaseClick(){
-	if (clickperformed){
+//	if (clickperformed){
 		mouse_event(MOUSEEVENTF_LEFTUP, lastx, lasty, 0, 0);
 		clickperformed = false;
-	}
+//	}
 }
 
 /**
@@ -102,7 +106,7 @@ int cursorVisualizer::adapt(int pos, int max,int fact)
  * through the segment determined by (ix1,iy1) and (ix2,iy2).
  */
 
-void cursorVisualizer::drawSequence(int ix1,int iy1,int ix2,int iy2){
+void cursorVisualizer::drawSequence(int ix1,int iy1,int ix2,int iy2,bool click){
 	x1 = ix1;
 	x2 = ix2;
 	y1 = iy1;
@@ -114,27 +118,39 @@ void cursorVisualizer::drawSequence(int ix1,int iy1,int ix2,int iy2){
 			pend = ( y2 - y1 ) / ( x2 - x1 );
 			desp = y1 - pend * x1;
 			while (y1 < y2){
-				x1++;
+				x1+=incx;
 				y1 = pend * x1 + desp;
 				Sleep(sleep);
-				SetCursorPos(x1,y1);
+				if (click)
+					mouse_event(MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE | MOUSEEVENTF_LEFTDOWN, x1, y1, 0, 0);
+				else
+					mouse_event(MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE | MOUSEEVENTF_LEFTUP, x1, y1, 0, 0);
+				//SetCursorPos(x1,y1);
 			}
 		}
 		else if (y2 < y1){
 			pend = ( y2 - y1 ) / ( x2 - x1 );
 			desp = y1 - pend * x1;
 			while (y2 < y1){
-				x1++;
+				x1+=incx;
 				y1 = pend * x1 + desp;
 				Sleep(sleep);
-				SetCursorPos(x1,y1);
+				if (click)
+					mouse_event(MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE | MOUSEEVENTF_LEFTDOWN, x1, y1, 0, 0);
+				else
+					mouse_event(MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE | MOUSEEVENTF_LEFTUP, x1, y1, 0, 0);
+				//SetCursorPos(x1,y1);
 			}
 		}
 		else{
 			while (x1 < x2){
-				x1++;
+				x1+=incx;
 				Sleep(sleep);
-				SetCursorPos(x1,y1);
+				if (click)
+					mouse_event(MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE | MOUSEEVENTF_LEFTDOWN, x1, y1, 0, 0);
+				else
+					mouse_event(MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE | MOUSEEVENTF_LEFTUP, x1, y1, 0, 0);
+				//SetCursorPos(x1,y1);
 			}
 		}
 	}
@@ -143,48 +159,72 @@ void cursorVisualizer::drawSequence(int ix1,int iy1,int ix2,int iy2){
 			pend = ( y2 - y1 ) / ( x2 - x1 );
 			desp = y1 - pend * x1;
 			while (y1 < y2){
-				x1--;
+				x1-=incx;
 				y1 = pend * x1 + desp;
 				Sleep(sleep);
-				SetCursorPos(x1,y1);
+				if (click)
+					mouse_event(MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE | MOUSEEVENTF_LEFTDOWN, x1, y1, 0, 0);
+				else
+					mouse_event(MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE | MOUSEEVENTF_LEFTUP, x1, y1, 0, 0);
+				//SetCursorPos(x1,y1);
 			}
 		}
 		else if (y2 < y1){
 			pend = ( y2 - y1 ) / ( x2 - x1 );
 			desp = y1 - pend * x1;
 			while (y2 < y1){
-				x1--;
+				x1-=incx;
 				y1 = pend * x1 + desp;
 				Sleep(sleep);
-				SetCursorPos(x1,y1);
+				if (click)
+					mouse_event(MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE | MOUSEEVENTF_LEFTDOWN, x1, y1, 0, 0);
+				else
+					mouse_event(MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE | MOUSEEVENTF_LEFTUP, x1, y1, 0, 0);
+				//SetCursorPos(x1,y1);
 			}
 		}
 		else{
 			while (x2 < x1){
-				x1--;
+				x1-=incx;
 				Sleep(sleep);
-				SetCursorPos(x1,y1);
+				if (click)
+					mouse_event(MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE | MOUSEEVENTF_LEFTDOWN, x1, y1, 0, 0);
+				else
+					mouse_event(MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE | MOUSEEVENTF_LEFTUP, x1, y1, 0, 0);
+				//SetCursorPos(x1,y1);
 			}
 		}
 	}
 	else if (x1==x2){
 		if (y1 < y2){
 			while (y1 <= y2){
-				y1++;
+				y1+=incy;
 				Sleep(sleep);
-				SetCursorPos(x1,y1);
+				if (click)
+					mouse_event(MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE | MOUSEEVENTF_LEFTDOWN, x1, y1, 0, 0);
+				else
+					mouse_event(MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE | MOUSEEVENTF_LEFTUP, x1, y1, 0, 0);
+				//SetCursorPos(x1,y1);
 			}
 		}
 		else if (y2 < y1){
 			while (y2 < y1){
-				y1--;
+				y1-=incy;
 				Sleep(sleep);
-				SetCursorPos(x1,y1);
+				if (click)
+					mouse_event(MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE | MOUSEEVENTF_LEFTDOWN, x1, y1, 0, 0);
+				else
+					mouse_event(MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE | MOUSEEVENTF_LEFTUP, x1, y1, 0, 0);
+				//SetCursorPos(x1,y1);
 			}
 		}
 		else{
 			Sleep(sleep);
-			SetCursorPos(x2,y2);
+			if (click)
+				mouse_event(MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE | MOUSEEVENTF_LEFTDOWN, x2, y2, 0, 0);
+			else
+				mouse_event(MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE | MOUSEEVENTF_LEFTUP, x2, y2, 0, 0);
+			//SetCursorPos(x2,y2);
 		}
 	}
 

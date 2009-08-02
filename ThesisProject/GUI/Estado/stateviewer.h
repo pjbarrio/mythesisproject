@@ -46,6 +46,8 @@ public:
     QLabel* getHandPicture();
     paintMovement* getPaintMovement(){return ui.widget_4;};
     QLabel* getFilteredImage();
+    void closeEvent(QCloseEvent *event);
+
 private:
 	Ui::StateViewerClass ui;
 	CircularBuffer* cbx;

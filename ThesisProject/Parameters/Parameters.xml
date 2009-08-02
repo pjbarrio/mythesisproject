@@ -10,7 +10,7 @@
     <MaxAcceptedDTWValue>750</MaxAcceptedDTWValue>
     <XValueDisernible>-1</XValueDisernible>
     <YValueDisernible>-1</YValueDisernible>
-    <SleepValue>1</SleepValue>
+    <SleepValue>0</SleepValue>
     <InputSize>4800</InputSize>
     <K_FACTOR>1</K_FACTOR>
     <FrameWindow>5</FrameWindow>
@@ -39,7 +39,7 @@
     <AccelerationThreshold>1300</AccelerationThreshold>
     <DesaccelerationThreshold>450</DesaccelerationThreshold>
     <WalkedPixel>18</WalkedPixel>
-    <MinimumPointsCount>7</MinimumPointsCount>
+    <MinimumPointsCount>5</MinimumPointsCount>
     <DistanceThreshold>0.85</DistanceThreshold>
     <MaxGestureTime>2</MaxGestureTime>
     <ValuesNormalizatorIndex>0</ValuesNormalizatorIndex>

@@ -463,7 +463,8 @@ void ThesisProject::stopCapture(){
  */
 
 void ThesisProject::ViewCaptureState(){
-	QMetaObject::invokeMethod(stateViewer,"show");
+	//QMetaObject::invokeMethod(stateViewer,"show");
+	stateViewer->show();
 }
 
 /**
@@ -1151,7 +1152,8 @@ void ThesisProject::finishTrack(){
 
 	if (Container::getInstance()->getStateSupport() && stateViewer->isVisible()){
 		ViewState->setEnabled(false);
-		QMetaObject::invokeMethod(stateViewer,"close");
+		//QMetaObject::invokeMethod(stateViewer,"hide");
+		stateViewer->hide();
 	}
 	showCaptureCross->setChecked(false);
 	showCaptureCross->setEnabled(false);
