@@ -20,7 +20,7 @@ class cursorVisualizer {
 public:
 	cursorVisualizer(SystemInfo*);
 	virtual ~cursorVisualizer();
-	void setCursorPos(int,int);
+	void setCursorPos(int,int,bool);
 	void click();
 	void releaseClick();
 
@@ -32,8 +32,10 @@ private:
 	int lasty;
 	int valx;
 	int valy;
+	int incx;
+	int incy;
 	int adapt(int,int,int);
-	void drawSequence(int,int,int,int);
+	void drawSequence(int,int,int,int,bool);
 	double pend;
 	double desp;
 	double x1,x2,y1,y2;

@@ -63,19 +63,19 @@ void InitCursor::setNewInput(double x, double y, double t)
 		x = lastx;
 		y = lasty;
 	}
-	else
-		cv->setCursorPos((int)x,(int)y);
-	if (click){
-		if (close && closeclick){
-			cv->click();
-		} else if (!close && openclick){
-			cv->click();
-		}
-		else {
-			cv->releaseClick();
+	else{
+		if (!click)
+			cv->setCursorPos((int)x,(int)y,false);
+		else if (click){
+			if (close && closeclick){
+				cv->setCursorPos((int)x,(int)y,true);
+			} else if (!close && openclick){
+				cv->setCursorPos((int)x,(int)y,true);
+			} else {
+				cv->setCursorPos((int)x,(int)y,false);
+			}
 		}
 	}
-
 	lastx = x;
 	lasty = y;
 }

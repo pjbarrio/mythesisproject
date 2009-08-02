@@ -1,7 +1,7 @@
-/*********************************************************************************
+/********************************************************************************
 ** Form generated from reading ui file 'gestureparameter.ui'
 **
-** Created: Sun 31. May 14:29:29 2009
+** Created: Mon 27. Jul 17:07:57 2009
 **      by: Qt User Interface Compiler version 4.5.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling ui file!
@@ -252,7 +252,7 @@ public:
 
         minimunPointCount = new QSpinBox(gestureDescriptionGroup);
         minimunPointCount->setObjectName(QString::fromUtf8("minimunPointCount"));
-        minimunPointCount->setMinimum(6);
+        minimunPointCount->setMinimum(5);
         minimunPointCount->setMaximum(80);
         minimunPointCount->setValue(6);
 

@@ -115,3 +115,13 @@ void StateViewer::createAccelerationArray(){
 	accelerationList->append(ui.ared2);
 	accelerationList->append(ui.ared1);
 }
+
+/**
+ * This method intercepts the close event and hide the window.
+ */
+
+void StateViewer::closeEvent(QCloseEvent *event)
+{
+	hide();
+	event->ignore();
+}

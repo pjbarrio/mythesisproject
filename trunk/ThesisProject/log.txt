@@ -1,4 +1,4 @@
-log created on 07/02/09 22:42:17
+log created on 08/01/09 23:16:51
 
 
 
@@ -21,6 +21,6 @@ log created on 07/02/09 22:42:17
 --- NetHandler ---
 - The Network was succesfully created from NetDesktopSkin.net
 
-- Average time per Frame: 1.23729
+- Average time per Frame: 1.16228
 
-log close on 07/02/09 22:42:30
+log close on 08/01/09 23:17:07
