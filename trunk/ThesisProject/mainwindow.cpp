@@ -934,10 +934,11 @@ void ThesisProject::saveConfiguration(){
 	bool ss = ui.StateSupport->isChecked();
 	bool vp = ui.viewPointer->isChecked();
 	bool cs = ui.ClickSupport->isChecked();
-	bool oh = ui.OpenHandRadio->isChecked();
 	bool ch = ui.CloseHandRadio->isChecked();
+	bool oh = ui.OpenHandRadio->isChecked();
 
-	Container::getInstance()->setModel(rx,ry,gs,ss,vp,cs,oh,ch);
+
+	Container::getInstance()->setModel(rx,ry,gs,ss,vp,cs,ch,oh);
 }
 
 /**

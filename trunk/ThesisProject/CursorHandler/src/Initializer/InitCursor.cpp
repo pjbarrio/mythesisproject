@@ -17,12 +17,14 @@
 InitCursor::InitCursor(CoordsGetter* coordGetter,SystemInfo* sysInfo,bool click, bool closeclick, bool openclick):Initializer(coordGetter) {
 
 	this->sysInfo = sysInfo;
-
 	lastx = 0;
 	lasty = 0;
 	this->click = click;
-	this->closeclick = click;
+	this->closeclick = closeclick;
 	this->openclick = openclick;
+	clickperformed = false;
+	errorX = Container::getInstance()->getErrorX();
+	errorY = Container::getInstance()->getErrorY();
 }
 
 /**
@@ -49,9 +51,12 @@ void InitCursor::init()
  * cursorVisualizator object to draw the mouse pointer position.
  */
 
-void InitCursor::setNewInput(double x, double y, double t)
+void InitCursor::setNewInput(double xdob, double ydob, double t)
 {
+	int x = (int)xdob;
+	int y = (int)ydob;
 	bool close = Container::getInstance()->isClosed();
+
 	double first = x-lastx;
 	if (first<0)
 		first*=(-1);
@@ -59,23 +64,41 @@ void InitCursor::setNewInput(double x, double y, double t)
 	if (second<0)
 		second*=(-1);
 
-	if (first<=3 && second<=3){
+	if (first<=errorX && second<=errorY){
 		x = lastx;
 		y = lasty;
 	}
-	else{
-		if (!click)
+
+	if (!click){
+		if (x!=lastx || y!=lasty)
 			cv->setCursorPos((int)x,(int)y,false);
-		else if (click){
-			if (close && closeclick){
+	}
+	else if (click){
+		if (x==lastx && y==lasty){
+			//same positions, verify change state.
+			if (close && closeclick || !close && openclick){
+				if (!clickperformed){
+					cv->setCursorPos((int)x,(int)y,true);
+					clickperformed = true;
+				}
+			}else {
+				if (clickperformed){
+					cv->setCursorPos((int)x,(int)y,false);
+					clickperformed = false;
+				}
+			}
+		} else {
+			//different possition, make all the arrangements.
+			if (close && closeclick || !close && openclick){
 				cv->setCursorPos((int)x,(int)y,true);
-			} else if (!close && openclick){
-				cv->setCursorPos((int)x,(int)y,true);
-			} else {
+				clickperformed = true;
+			} else{
 				cv->setCursorPos((int)x,(int)y,false);
+				clickperformed = false;
 			}
 		}
 	}
+
 	lastx = x;
 	lasty = y;
 }
