@@ -478,6 +478,19 @@ void XMLParametersReader::readParametersElement(){
 	cont->setFrequency(frequency);
 
 	reader.readNext();
+	reader.readNext();
 
+	QString ErrorX = reader.readElementText();
+	int errorX = ErrorX.toInt();
+	cont->setErrorX(errorX);
+
+	reader.readNext();
+	reader.readNext();
+
+	QString ErrorY = reader.readElementText();
+	int errorY = ErrorY.toInt();
+	cont->setErrorY(errorY);
+
+	reader.readNext();
 
 }

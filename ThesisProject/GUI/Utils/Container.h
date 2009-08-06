@@ -88,6 +88,14 @@ public:
 
     void initGestureParameters();
 
+    int getErrorX() const {return errorX;}
+
+    void setErrorX(int errorX) {this->errorX = errorX;}
+
+    int getErrorY() const {return errorY;}
+
+    void setErrorY(int errorY) {this->errorY = errorY;}
+
     int getFrequency() const {return Frequency;}
 
     void setFrequency(int Frequency) {this->Frequency = Frequency;}
@@ -330,7 +338,10 @@ private:
 	int workH;
 	double rate;
 
+	int errorX;
+	int errorY;
 	int Frequency;
+
 
 	int distanceCalculatorAGMIndex;
 	int valuesNormalizatorIndex;

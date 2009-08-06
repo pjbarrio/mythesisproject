@@ -59,9 +59,6 @@ bool CamHandler::initCamDevice()
 
      cvSetCaptureProperty( capture, CV_CAP_PROP_FRAME_HEIGHT, h);
 
-     //Parece que no funciona
-//     cvSetCaptureProperty( capture, CV_CAP_PROP_POS_FRAMES, 25);
-
 
      logger->addEntry(componentName,"Camera started succefully");
 

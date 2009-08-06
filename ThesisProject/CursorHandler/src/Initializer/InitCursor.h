@@ -32,6 +32,9 @@ private:
 	bool click;
 	bool closeclick;
 	bool openclick;
+	bool clickperformed;
+	int errorX;
+	int errorY;
 };
 
 #endif /** INITCURSOR_H_ */

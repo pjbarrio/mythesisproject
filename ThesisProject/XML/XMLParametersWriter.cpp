@@ -299,6 +299,12 @@ void XMLParametersWriter::writeParametersElement()
 
 	int frequency = cont->getFrequency();
 	xmlWriter->writeTextElement("Frequency",QString::number(frequency));
+
+	int errorX = cont->getErrorX();
+	xmlWriter->writeTextElement("ErrorX",QString::number(errorX));
+
+	int errorY = cont->getErrorY();
+	xmlWriter->writeTextElement("ErrorY",QString::number(errorY));
 }
 
 

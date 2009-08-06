@@ -48,4 +48,6 @@
     <Rate>0.6</Rate>
     <DTWAlgorithmIndex>0</DTWAlgorithmIndex>
     <Frequency>38</Frequency>
+    <ErrorX>8</ErrorX>
+    <ErrorY>6</ErrorY>
 </Parameters>
